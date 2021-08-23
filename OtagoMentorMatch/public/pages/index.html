@@ -1,0 +1,255 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/OMM/public/css/index-styles.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <title>Otago Mentor Match</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <header>
+        <nav class="nav-wrapper transparent">
+            <div class="container">
+                <a href="#" class="brand-logo"> Otago Mentor Match </a>
+                <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="logged-out">
+                        <a href="#" class="white-text text-darken-4 modal-trigger" data-target="modal-login">Login</a
+              >
+            </li>
+            <li class="logged-out">
+              <a
+                href="#"
+                class="white-text text-darken-4 modal-trigger"
+                data-target="modal-signup"
+                >Sign up</a
+              >
+            </li>
+          </ul>
+          <ul class="sidenav grey lighten-2" id="mobile-menu">
+            <li><a href="#">Login</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content">
+            <h4>Sign up</h4>
+            <br />
+            <form id="signup-form">
+                <div class="input-field">
+                    <input type="email" id="signup-email" required />
+                    <label for="signup-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-password" required />
+                    <label for="signup-password">Choose password</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="signup-bio" required />
+                    <label for="signup-bio">One Line Bio</label>
+                </div>
+                <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal">
+        <div class="modal-content">
+            <h4>Login</h4>
+            <br />
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" required />
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" required />
+                    <label for="login-password">Your password</label>
+                </div>
+                <button class="btn yellow darken-2 z-depth-0">Login</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- photo / grid -->
+    <section class="container section scrollSpy" id="photos">
+        <div class="row">
+            <div class="col s12 l4">
+                <img src="/OMM/public/img/otago3.jpg" alt="" class="responsive-img materialboxed" />
+            </div>
+            <div class="col s12 l6 offset-l1">
+                <h2 class="indigo-text text-darken-4">Otago Mentor Match programme</h2>
+                <p>The Otago Mentor Match programme connects Otago students with experienced industry professionals &ndash; our alumni.</p>
+                <p>Linked by common experiences, our alumni present an amazing resource to our current students. Otago Mentor Match pairings help students find out what it takes to succeed in their future careers and provides a platform for alumni mentors
+                    to share their invaluable knowledge in areas such as:</p>
+                <ul>
+                    <li>- Advice</li>
+                    <li>- Career development</li>
+                    <li>- Goal setting</li>
+                    <li>- Job strategy (how to stand out as a candidate)</li>
+                    <li>- Motivation</li>
+                    <li>- Networking</li>
+                    <li>- Resume / cover letters</li>
+                    <li>- Time management</li>
+                    <li>- Work / life balance</li>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l4 offset-l1 push-l7">
+                <img src="/OMM/public/img/mentor2.png" alt="" class="responsive-img materialboxed" />
+            </div>
+            <div class="col s12 l6 offset-l1 pull-l5 right-align">
+                <h2 class="indigo-text text-darken-4">How it works</h2>
+                <p>Each programme intake runs over a semester. There are two intakes per year. Matching usually occurs a few weeks prior to the start of each semester.</p>
+                <p>The matching process begins when Otago alumni volunteers (mentors) and students (mentees) each register to participate in the programme. They provide details like their credentials preferences, and areas of interest. The Otago Mentor Match
+                    team uses this information to make a match based on professional background and programme of study.</p>
+                <p>Once matched, a mentor and mentee usually meet at least three times over a semester. Most correspondence is through email or phone, with lengthier interactions over applications like Skype or Zoom. If mentors are in Dunedin, there may
+                    be an opportunity to meet face to face.</p>
+                <p>If there is no good match, there will be opportunities to participate in a future intake.</p>
+                <p>What you&rsquo;ll talk about during your match meetings is up to you, but we&rsquo;ve provided some helpful tips to help guide you through each discussion and make the most of your mentoring experience.</p>
+                <p class="content-button"><a href="/careers/skills/mentor/otago718734.html" target="">Mentor meeting guide</a></p>
+                <p>The Otago Mentor Match programme is a bonded programme between both mentee and mentor. There are no obligations to continue the mentor-mentee relationship beyond the end date of the programme unless agreed with both parties.</p>
+                <p>Mentors and mentees are supported throughout the programme by the Career Development Centre and are encouraged to contact the Programme Co-ordinator with feedback at any time.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l4">
+                <img src="/OMM/public/img/mentor1.jpeg" alt="" class="responsive-img materialboxed" />
+            </div>
+            <div class="col s12 l6 offset-l1">
+                <h2 class="indigo-text text-darken-4">Mentors</h2>
+                <p>Otago Mentor Match allows you to share your story &ndash; how you navigated your way from student to professional. Mentors act as role models and volunteer three to five hours of their time to support student mentees.</p>
+                <p>Mentoring is a great way to give back to the Otago community. Through mentoring a future graduate, you can make a difference in their development and enhance their skills.</p>
+                <p>You&rsquo;ll develop new skills as well. Being a mentor allows you to develop leadership, interpersonal and, of course, mentoring skills.</p>
+                <p>Mentors are not expected to provide internships or employment. As a mentor, you are expected to:</p>
+                <ul>
+                    <li>- Be patient and build trust between you and your mentee</li>
+                    <li>- Give honest feedback based on your experiences</li>
+                    <li>- Help the mentee to think through and consider their career goals</li>
+                    <li>- Encourage, inspire and motivate your mentee</li>
+                    <li>- Encourage your mentee to be proactive and set goals</li>
+                    <li>- Encourage reflection, analysis and problem solving</li>
+                    <li>- Listen with empathy, being non-judgmental and respectful to your mentee</li>
+                    <li>- Offer alternative perspectives</li>
+                </ul>
+                <blockquote class="blockquote">
+                    <p>"I think mentoring works best when you let the mentee guide the direction of conversations. But mentoring also provides a challenge to mentors to think about issues in a way they may not have previously and to understand the issues
+                        that are front of mind for future graduates. This provides a unique insight into the future workforce."</p>
+                </blockquote>
+                <p class="quote-author"><strong>Monique Esplin</strong><br>"Senior Solicitor at the Ministry of Business, Innovation and Employment"</p>
+                <p>You will receive an email to confirm receipt of your registration. At the start of the semester, students will be recruited. Mentors and mentees will then be matched up, and you will be sent email confirmation of the student you are mentoring.</p>
+                <p>Mentors will able to catch up with the Career Development Centre team prior to starting the mentoring programme</p>
+                <p>The advice and support you offer will be invaluable to a young graduate faced with making the same transition you did. Pay it forward and join us in sharing.</p>
+                <p><a href="#" class="btn indigo waves-effect waves-light">Register now and be part of Otago Mentor Match</a></p>
+                <button class="btn yellow darken-2 z-depth-0 waves-effect waves-light">Register now and be part of Otago Mentor Match</button>
+
+            </div>
+            <div class="col s12 l6 offset-l1">
+                <h2 class="indigo-text text-darken-4">Mentees</h2>
+                <p>Otago Mentor Match is your chance to learn from someone who was once in your shoes and successfully made the transition from student to professional.</p>
+                <p>Mentees are undergraduate or postgraduate students in their final year of study at Otago.</p>
+                <p>A mentoring match is not an internship. As a mentee, you&rsquo;ll spend around three to five hours exploring your aspirations and goals with an experienced industry professional.</p>
+                <p>Through connecting with an alumni mentor, one who may have once taken the same papers you&rsquo;re now taking, you&rsquo;ll gain industry knowledge and insight into how to navigate the challenges you&rsquo;ll face as you enter the job
+                    market.
+                </p>
+                <blockquote class="blockquote">
+                    <p>"Make the most of it! Really great experience to talk to someone who knows what you may be feeling about coming to the end of your degree, and they can give you a lot of advice in regards to your particular field of study."</p>
+                </blockquote>
+                <p class="quote-author"><strong>Nikita Rosenbrock</strong><br />Law</p>
+                <p>As a mentee, you are expected to:</p>
+                <ul>
+                    <li>- Ask questions</li>
+                    <li>- Be honest with your mentor to gain as much from this experience</li>
+                    <li>- Be proactive</li>
+                    <li>- Be patient and build trust between you and your mentor</li>
+                    <li>- Keep an open mind and accept constructive feedback</li>
+                    <li>- Listen</li>
+                    <li>- Respect your mentor&rsquo;s time</li>
+                </ul>
+                <p>You will receive an email to confirm receipt of your registration. Once you are matched, you will be invited to a mentee training/information session. This session will allow you to discuss what your expectations are and discuss tips on
+                    how to maximize the productivity of the mentoring programme.</p>
+                <p>The advice and support you receive from your mentor can help give you the confidence, career development skills, and job-readiness needed to stand out in the employment market.</p>
+                <p><a href="#" class="btn indigo waves-effect waves-light">Register now to make the most of the Otago Mentor Match</a></p>
+                <button class="btn yellow darken-2 z-depth-0 waves-effect waves-light">Register now to make the most of the Otago Mentor Match</button>
+            </div>
+        </div>
+    </section>
+
+    <!--featurebox-->
+    <div class="container">
+        <div class="featurebox_blue col s12 l6 offset-l6">
+            <h2>Intakes for 2021</h2>
+            <p>Programme dates:&nbsp;<strong> </strong></p>
+            <p><strong>March&ndash;September</strong><br /><strong>April&ndash;October </strong></p>
+            <p>Target programmes: <strong>Physical Education, Sport and Exercise Sciences, Languages and Culture, Marketing, Human Nutrition, HR Management, History, Physics, Toursim and Pharmacology and Toxicology</strong></p>
+            <h3 class="blue-text text-darken-2">Target programmes</h3>
+            <p>Students enrolled in other programmes are welcome to apply. However, preference will be given to those in our current target programmes. If you are a head of department/school and would like to know more about and how your programme can become
+                one of our future target programmes, contact the programme co-ordinator.</p>
+        </div>
+    </div>
+
+
+    <!-- services / tabs -->
+
+    <!-- parallax -->
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="/OMM/public/img/otago7.jpg" alt="" class="responsive-img" />
+        </div>
+    </div>
+
+
+
+    <!-- contact form -->
+    <section class="section container scrollspy" id="contact">
+        <div class="row">
+            <div class="col s12 l5">
+                <h2 class="indigo-text text-darken-4">Contact</h2>
+                <p>Mena Taripo <br /> Programme Co-ordinator <br /> Tel <a href="tel:+6434798372" target="">+64 3 479 8372</a><br /> Email <a href="mailto:mentor@otago.ac.nz " target="">mentor@otago.ac.nz </a></p>
+            </div>
+        </div>
+
+        <!-- footer -->
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".modal").modal();
+                $(".sidenav").sidenav();
+                $(".materialboxed").materialbox();
+                $(".parallax").parallax();
+                $('.tabs').tabs();
+                $('.datepicker').datepicker({
+                    disableWeekends: true,
+                    yearRange: 1
+
+                });
+                $('.tooltipped').tooltip();
+                $('.scrollspy').scrollSpy();
+            });
+        </script>
+</body>
+
+</html>
