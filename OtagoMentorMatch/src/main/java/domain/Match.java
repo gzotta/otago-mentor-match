@@ -7,6 +7,14 @@ public class Match {
     private Date date;
     private Mentor mentor;
     private Mentee mentee;
+//Constructor
+
+    public Match(int match_id, Date date, Mentor mentor, Mentee mentee) {
+        this.match_id = match_id;
+        this.date = date;
+        this.mentor = mentor;
+        this.mentee = mentee;
+    }
 
     //getters and setters
     public int getMatch_id() {
