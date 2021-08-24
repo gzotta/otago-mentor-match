@@ -10,5 +10,5 @@ package domain;
  * @author zotta
  */
 public class Mentor {
-    
+    private int fname;
 }
