@@ -7,6 +7,18 @@ public class Admin {
     private String email;
     private String phone_number;
     private String password;
+
+    //
+
+    public Admin(int admin_id, String fname, String lname, String email, String phone_number, String password) {
+        this.admin_id = admin_id;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.phone_number = phone_number;
+        this.password = password;
+    }
+
 //getters and settes
     public int getAdmin_id() {
         return this.admin_id;
