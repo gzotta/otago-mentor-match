@@ -1,3 +1,5 @@
+package domain;
+
 public class Workshop {
 
     private Integer workshopId;
@@ -8,10 +10,8 @@ public class Workshop {
     private Boolean mentor;
     private Boolean mentee;
 
-
     // Empty constructor.
-    public Workshop() {
-    }
+    public Workshop() {}
 
     // Constructor with all fields.
     public Workshop(Integer workshopId, String topic, Date date, String location, Boolean online, Boolean mentor, Boolean mentee) {
@@ -23,7 +23,6 @@ public class Workshop {
         this.mentor = mentor;
         this.mentee = mentee;
     }
-
 
     // Getters and Setters.
     public Integer getWorkshopId() {
@@ -94,11 +93,10 @@ public class Workshop {
         this.mentee = mentee;
     }
 
-
     // To string
     @Override
     public String toString() {
-        return "{" +
+        return "Workshop{" +
             " workshopId='" + getWorkshopId() + "'" +
             ", topic='" + getTopic() + "'" +
             ", date='" + getDate() + "'" +
@@ -108,12 +106,8 @@ public class Workshop {
             ", mentee='" + isMentee() + "'" +
             "}";
     }
- 
-    
 
-
-
-}
+}//end class
 
 
 
