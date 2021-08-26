@@ -1,9 +1,3 @@
-package domain;
-
-/**
- *
- * @author zotta
- */
 public class Mentor {
     private Integer mentorId;
     private String mentorPassword;
