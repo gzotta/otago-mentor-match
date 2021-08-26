@@ -96,16 +96,17 @@ public class Workshop {
     // To string
     @Override
     public String toString() {
-        return "Workshop{" +
-            " workshopId='" + getWorkshopId() + "'" +
-            ", topic='" + getTopic() + "'" +
-            ", date='" + getDate() + "'" +
-            ", location='" + getLocation() + "'" +
-            ", online='" + isOnline() + "'" +
-            ", mentor='" + isMentor() + "'" +
-            ", mentee='" + isMentee() + "'" +
+        return "{" +
+            " workshopId='" + workshopId + "'" +
+            ", topic='" + topic + "'" +
+            ", date='" + date + "'" +
+            ", location='" + location + "'" +
+            ", online='" + online + "'" +
+            ", mentor='" + mentor + "'" +
+            ", mentee='" + mentee + "'" +
             "}";
     }
+
 
 }//end class
 
