@@ -1,7 +1,7 @@
 package @domain;
 
 public class Match {
-    private int matchId;
+    private Integer matchId;
     private Date date;
     private Mentor mentor;
     private Mentee mentee;
