@@ -1,3 +1,5 @@
+package domain;
+
 public class Mentor {
     private Integer mentorId;
     private String mentorPassword;
