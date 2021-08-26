@@ -1,6 +1,6 @@
 public class Workshop {
 
-    private Integer workshop_id;
+    private Integer workshopId;
     private String topic;
     private Date date;
     private String location;
@@ -8,15 +8,14 @@ public class Workshop {
     private Boolean mentor;
     private Boolean mentee;
 
-    
-}
 
-
+    // Empty constructor.
     public Workshop() {
     }
 
-    public Workshop(Integer workshop_id, String topic, Date date, String location, Boolean online, Boolean mentor, Boolean mentee) {
-        this.workshop_id = workshop_id;
+    // Constructor with all fields.
+    public Workshop(Integer workshopId, String topic, Date date, String location, Boolean online, Boolean mentor, Boolean mentee) {
+        this.workshopId = workshopId;
         this.topic = topic;
         this.date = date;
         this.location = location;
@@ -25,12 +24,14 @@ public class Workshop {
         this.mentee = mentee;
     }
 
-    public Integer getWorkshop_id() {
-        return this.workshop_id;
+
+    // Getters and Setters.
+    public Integer getWorkshopId() {
+        return this.workshopId;
     }
 
-    public void setWorkshop_id(Integer workshop_id) {
-        this.workshop_id = workshop_id;
+    public void setWorkshopId(Integer workshopId) {
+        this.workshopId = workshopId;
     }
 
     public String getTopic() {
@@ -93,10 +94,12 @@ public class Workshop {
         this.mentee = mentee;
     }
 
+
+    // To string
     @Override
     public String toString() {
         return "{" +
-            " workshop_id='" + getWorkshop_id() + "'" +
+            " workshopId='" + getWorkshopId() + "'" +
             ", topic='" + getTopic() + "'" +
             ", date='" + getDate() + "'" +
             ", location='" + getLocation() + "'" +
@@ -105,3 +108,12 @@ public class Workshop {
             ", mentee='" + isMentee() + "'" +
             "}";
     }
+ 
+    
+
+
+
+}
+
+
+
