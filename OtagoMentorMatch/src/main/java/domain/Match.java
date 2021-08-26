@@ -22,7 +22,7 @@ public class Match {
         return this.matchId;
     }
 
-    public void setMatchId(int matchId) {
+    public void setMatchId(Integer matchId) {
         this.matchId = matchId;
     }
 
