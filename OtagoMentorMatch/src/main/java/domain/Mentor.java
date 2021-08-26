@@ -33,19 +33,14 @@ public class Mentor {
     private String extraInfo;
     private Boolean newToMentory;
 
-    
-    // Empty constructor
-    public Mentor() {
-    }
-
-
+    public Mentor() {}
 
     // Constructor with all fields
-    public Mentor(Integer mentorId, String mentorPassword, String fName, String lName, String email, String phoneNumber, String ethnicity, String iwiAfiliation, String companyName, String employerJobTitle, String jobTitleDepartment, String industry, String primaryWorkingIndustry, String briefCareerHistory, String modeOfMentoringSessions, String undergraduateCourse, String undergraduateInstitution, String undergraduateYearOfGraduation, String postgraduateCourse, String postgraduateInstitution, String postgraduateYearOfGraduation, String currentWorkAndLivingCountry, String mentoringPreference, String howFindOMM, String bio, String extraInfo, Boolean newToMentory) {
+    public Mentor(Integer mentorId, String mentorPassword, String fname, String lname, String email, String phoneNumber, String ethnicity, String iwiAfiliation, String companyName, String employerJobTitle, String jobTitleDepartment, String industry, String primaryWorkingIndustry, String briefCareerHistory, String modeOfMentoringSessions, String undergraduateCourse, String undergraduateInstitution, String undergraduateYearOfGraduation, String postgraduateCourse, String postgraduateInstitution, String postgraduateYearOfGraduation, String currentWorkAndLivingCountry, String mentoringPreference, String howFindOMM, String bio, String extraInfo, Boolean newToMentory) {
         this.mentorId = mentorId;
         this.mentorPassword = mentorPassword;
-        this.fName = fName;
-        this.lName = lName;
+        this.fname = fname;
+        this.lname = lname;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.ethnicity = ethnicity;
@@ -90,19 +85,19 @@ public class Mentor {
     }
 
     public String getFName() {
-        return this.fName;
+        return this.fname;
     }
 
-    public void setFName(String fName) {
-        this.fName = fName;
+    public void setFName(String fname) {
+        this.fname = fname;
     }
 
     public String getLName() {
-        return this.lName;
+        return this.lname;
     }
 
-    public void setLName(String lName) {
-        this.lName = lName;
+    public void setLName(String lname) {
+        this.lname = lname;
     }
 
     public String getEmail() {
@@ -293,42 +288,38 @@ public class Mentor {
         this.newToMentory = newToMentory;
     }
 
-
-
     // To string
-
     @Override
     public String toString() {
         return "{" +
-            " mentorId='" + mentorId + "'" +
-            ", mentorPassword='" + mentorPassword + "'" +
-            ", fName='" + fName + "'" +
-            ", lName='" + lName + "'" +
-            ", email='" + email + "'" +
-            ", phoneNumber='" + phoneNumber + "'" +
-            ", ethnicity='" + ethnicity + "'" +
-            ", iwiAfiliation='" + iwiAfiliation + "'" +
-            ", companyName='" + companyName + "'" +
-            ", employerJobTitle='" + employerJobTitle + "'" +
-            ", jobTitleDepartment='" + jobTitleDepartment + "'" +
-            ", industry='" + industry + "'" +
-            ", primaryWorkingIndustry='" + primaryWorkingIndustry + "'" +
-            ", briefCareerHistory='" + briefCareerHistory + "'" +
-            ", modeOfMentoringSessions='" + modeOfMentoringSessions + "'" +
-            ", undergraduateCourse='" + undergraduateCourse + "'" +
-            ", undergraduateInstitution='" + undergraduateInstitution + "'" +
-            ", undergraduateYearOfGraduation='" + undergraduateYearOfGraduation + "'" +
-            ", postgraduateCourse='" + postgraduateCourse + "'" +
-            ", postgraduateInstitution='" + postgraduateInstitution + "'" +
-            ", postgraduateYearOfGraduation='" + postgraduateYearOfGraduation + "'" +
-            ", currentWorkAndLivingCountry='" + currentWorkAndLivingCountry + "'" +
-            ", mentoringPreference='" + mentoringPreference + "'" +
-            ", howFindOMM='" + howFindOMM + "'" +
-            ", bio='" + bio + "'" +
-            ", extraInfo='" + extraInfo + "'" +
-            ", newToMentory='" + newToMentory + "'" +
+            " mentorId='" + this.mentorId + "'" +
+            ", mentorPassword='" + this.mentorPassword + "'" +
+            ", fName='" + this.fname + "'" +
+            ", lName='" + this.lname + "'" +
+            ", email='" + this.email + "'" +
+            ", phoneNumber='" + this.phoneNumber + "'" +
+            ", ethnicity='" + this.ethnicity + "'" +
+            ", iwiAfiliation='" + this.iwiAfiliation + "'" +
+            ", companyName='" + this.companyName + "'" +
+            ", employerJobTitle='" + this.employerJobTitle + "'" +
+            ", jobTitleDepartment='" + this.jobTitleDepartment + "'" +
+            ", industry='" + this.industry + "'" +
+            ", primaryWorkingIndustry='" + this.primaryWorkingIndustry + "'" +
+            ", briefCareerHistory='" + this.briefCareerHistory + "'" +
+            ", modeOfMentoringSessions='" + this.modeOfMentoringSessions + "'" +
+            ", undergraduateCourse='" + this.undergraduateCourse + "'" +
+            ", undergraduateInstitution='" + this.undergraduateInstitution + "'" +
+            ", undergraduateYearOfGraduation='" + this.undergraduateYearOfGraduation + "'" +
+            ", postgraduateCourse='" + this.postgraduateCourse + "'" +
+            ", postgraduateInstitution='" + this.postgraduateInstitution + "'" +
+            ", postgraduateYearOfGraduation='" + this.postgraduateYearOfGraduation + "'" +
+            ", currentWorkAndLivingCountry='" + this.currentWorkAndLivingCountry + "'" +
+            ", mentoringPreference='" + this.mentoringPreference + "'" +
+            ", howFindOMM='" + this.howFindOMM + "'" +
+            ", bio='" + this.bio + "'" +
+            ", extraInfo='" + this.extraInfo + "'" +
+            ", newToMentory='" + this.newToMentory + "'" +
             "}";
     }
 
-    
-}
+}//end class
