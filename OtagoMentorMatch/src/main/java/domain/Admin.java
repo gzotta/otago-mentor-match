@@ -79,14 +79,15 @@ public class Admin {
     @Override
     public String toString() {
         return "{" +
-            " adminId='" + getAdminId() + "'" +
-            ", fname='" + getFname() + "'" +
-            ", lname='" + getLname() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", phoneNumber='" + getPhoneNumber() + "'" +
-            ", password='" + getPassword() + "'" +
+            " adminId='" + adminId + "'" +
+            ", fname='" + fname + "'" +
+            ", lname='" + lname + "'" +
+            ", email='" + email + "'" +
+            ", phoneNumber='" + phoneNumber + "'" +
+            ", password='" + password + "'" +
             "}";
     }
+
 
 
 
