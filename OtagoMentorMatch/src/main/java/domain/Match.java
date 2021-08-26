@@ -1,23 +1,28 @@
 package domain;
 
+import java.util.Date;
+
 public class Match {
     private Integer matchId;
     private Date date;
-    private Mentor mentor;
-    private Mentee mentee;
+    private Integer mentorId;
+    private Integer menteeId;
 
     // Empty Constructor
     public Match() {}
 
     // Constructor with all fields
-    public Match(Integer matchId, Date date, Mentor mentor, Mentee mentee) {
+    public Match(Integer matchId, Date date, Integer mentorId, Integer menteeId) {
         this.matchId = matchId;
         this.date = date;
-        this.mentor = mentor;
-        this.mentee = mentee;
+        this.mentorId = mentorId;
+        this.menteeId = menteeId;
     }
 
+    
+
     //getters and setters
+
     public Integer getMatchId() {
         return this.matchId;
     }
@@ -34,31 +39,33 @@ public class Match {
         this.date = date;
     }
 
-    public Mentor getMentor() {
-        return this.mentor;
+    public Integer getMentorId() {
+        return this.mentorId;
     }
 
-    public void setMentor(Mentor mentor) {
-        this.mentor = mentor;
+    public void setMentorId(Integer mentorId) {
+        this.mentorId = mentorId;
     }
 
-    public Mentee getMentee() {
-        return this.mentee;
+    public Integer getMenteeId() {
+        return this.menteeId;
     }
 
-    public void setMentee(Mentee mentee) {
-        this.mentee = mentee;
+    public void setMenteeId(Integer menteeId) {
+        this.menteeId = menteeId;
     }
+
 
     // To string method
     @Override
     public String toString() {
-        return "Match{" +
-            " matchId='" + this.matchId + "'" +
-            ", date='" + this.date + "'" +
-            ", mentor='" + this.mentor + "'" +
-            ", mentee='" + this.mentee + "'" +
+        return "{" +
+            " matchId='" + matchId + "'" +
+            ", date='" + date + "'" +
+            ", mentorId='" + mentorId + "'" +
+            ", menteeId='" + menteeId + "'" +
             "}";
     }
+
     
 }//end class

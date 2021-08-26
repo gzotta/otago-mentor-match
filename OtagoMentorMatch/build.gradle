@@ -3,7 +3,7 @@ apply plugin: 'jacoco'
 apply plugin: 'application'
 
 
-mainClassName = 'OtagoMentorMatch.Main'
+mainClassName = 'web.Server'
 
 repositories {
    jcenter()
@@ -13,7 +13,6 @@ dependencies {
     
     //Jooby dependency
     def joobyVer =  '1.6.8'
-    
     /*Jooby does not provide its own web server so needs to be run on top of 
      *another server. In this case we are using Netty as the server. 
      *Netty provides a high-performance Java-based web server.
