@@ -5,12 +5,12 @@ package domain;
  * @author james pettitt
  */
 public class Mentee {
-    private int menteeId;
+    private Integer menteeId;
     private String fName;
     private String lName;
-    private int phoneNumber;
+    private String phoneNumber;
     private String email;
-    private int yearOfStudy;
+    private String yearOfStudy;
     private String motivationForJoiningOMM;
     private String industryOfInterest;
     private String learningMethod;
