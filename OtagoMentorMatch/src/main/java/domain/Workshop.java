@@ -1,3 +1,4 @@
+package @domain;
 public class Workshop {
 
     private Integer workshopId;
