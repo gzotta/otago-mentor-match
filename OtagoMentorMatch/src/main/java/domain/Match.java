@@ -1,6 +1,5 @@
 package @domain;
 
-
 public class Match {
     private int matchId;
     private Date date;
@@ -18,7 +17,6 @@ public class Match {
         this.mentor = mentor;
         this.mentee = mentee;
     }
-
 
     //getters and setters
     public int getMatchId() {
@@ -53,9 +51,7 @@ public class Match {
         this.mentee = mentee;
     }
 
-
     // To string method
-
     @Override
     public String toString() {
         return "{" +
