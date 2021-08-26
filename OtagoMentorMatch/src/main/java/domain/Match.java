@@ -66,10 +66,4 @@ public class Match {
     }
 
 
-    }
-
-
-
-    
-    //Other match methods
-}
+}//end class
