@@ -19,7 +19,11 @@ public class Mentee {
     private String randomMatching;
     private String bio;
 
+
+    // Empty constructor.
     public Mentee(){}
+
+    // Constructor with all fields.
     public Mentee(int menteeId, String fName, String lName, int phoneNumber, String email, int yearOfStudy, String motivationForJoiningOMM, String industryOfInterest, String learningMethod, String personalInterests, String howFindOMM, String randomMatching, String bio) {
         this.menteeId = menteeId;
         this.fName = fName;
@@ -36,68 +40,135 @@ public class Mentee {
         this.bio = bio;
     }
 
-    //no setters  at the moment
-    public int getMenteeId(){
+
+    // Getters and Setters.
+
+    public int getMenteeId() {
         return this.menteeId;
     }
 
-    public String getMenteeFirstName(){
-        return fName;
+    public void setMenteeId(int menteeId) {
+        this.menteeId = menteeId;
     }
 
-    public String getMenteeLastName(){
-        return fName;
+    public String getFName() {
+        return this.fName;
     }
 
-    public String getMenteeFullName(){
-        return fName + " " + lName;
+    public void setFName(String fName) {
+        this.fName = fName;
     }
 
-    public int getMenteePhoneNumber(){
-        return phoneNumber;
+    public String getLName() {
+        return this.lName;
     }
 
-    public String getMenteeEmail(){
-        return email;
+    public void setLName(String lName) {
+        this.lName = lName;
     }
 
-    public int getMenteeYearOfStudy(){
-        return yearOfStudy;
+    public int getPhoneNumber() {
+        return this.phoneNumber;
     }
 
-    public String getMenteeMotivation(){
-        return motivationForJoiningOMM;
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getMenteeIndustryOfInterest(){
-        return industryOfInterest;
+    public String getEmail() {
+        return this.email;
     }
 
-    public String getMenteeLearningMethod(){
-        return learningMethod;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getMenteePersonalInterests(){
-        return personalInterests;
+    public int getYearOfStudy() {
+        return this.yearOfStudy;
     }
 
-    public String getMenteeHowFindOMM(){
-        return howFindOMM;
+    public void setYearOfStudy(int yearOfStudy) {
+        this.yearOfStudy = yearOfStudy;
     }
 
-    public String getMenteeRandomMatching(){
-        return randomMatching;
+    public String getMotivationForJoiningOMM() {
+        return this.motivationForJoiningOMM;
     }
 
-    public String getMenteeBio(){
-        return bio;
+    public void setMotivationForJoiningOMM(String motivationForJoiningOMM) {
+        this.motivationForJoiningOMM = motivationForJoiningOMM;
     }
 
+    public String getIndustryOfInterest() {
+        return this.industryOfInterest;
+    }
+
+    public void setIndustryOfInterest(String industryOfInterest) {
+        this.industryOfInterest = industryOfInterest;
+    }
+
+    public String getLearningMethod() {
+        return this.learningMethod;
+    }
+
+    public void setLearningMethod(String learningMethod) {
+        this.learningMethod = learningMethod;
+    }
+
+    public String getPersonalInterests() {
+        return this.personalInterests;
+    }
+
+    public void setPersonalInterests(String personalInterests) {
+        this.personalInterests = personalInterests;
+    }
+
+    public String getHowFindOMM() {
+        return this.howFindOMM;
+    }
+
+    public void setHowFindOMM(String howFindOMM) {
+        this.howFindOMM = howFindOMM;
+    }
+
+    public String getRandomMatching() {
+        return this.randomMatching;
+    }
+
+    public void setRandomMatching(String randomMatching) {
+        this.randomMatching = randomMatching;
+    }
+
+    public String getBio() {
+        return this.bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    
+    // To string
     @Override
-    public String toString(){
-        String menteedetails = String.format("Mentee{ id=%d, name=%s %s, phoneNumber=%d, email=%s, yearOfStudy=%d, motivation=%s, industryofinterest=%s, learningmethod=%s, personalinterests=%s, howfindomm=%s, randommatching=%s, bio=%s", menteeId, fName, lName, phoneNumber, email, yearOfStudy, motivationForJoiningOMM, industryOfInterest, learningMethod, personalInterests, howFindOMM, randomMatching, bio);
-        return menteedetails;
+    public String toString() {
+        return "{" +
+            " menteeId='" + getMenteeId() + "'" +
+            ", fName='" + getFName() + "'" +
+            ", lName='" + getLName() + "'" +
+            ", phoneNumber='" + getPhoneNumber() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", yearOfStudy='" + getYearOfStudy() + "'" +
+            ", motivationForJoiningOMM='" + getMotivationForJoiningOMM() + "'" +
+            ", industryOfInterest='" + getIndustryOfInterest() + "'" +
+            ", learningMethod='" + getLearningMethod() + "'" +
+            ", personalInterests='" + getPersonalInterests() + "'" +
+            ", howFindOMM='" + getHowFindOMM() + "'" +
+            ", randomMatching='" + getRandomMatching() + "'" +
+            ", bio='" + getBio() + "'" +
+            "}";
     }
+
+
 
 }//end class
 
