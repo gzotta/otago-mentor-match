@@ -6,8 +6,8 @@ package domain;
  */
 public class Mentee {
     private Integer menteeId;
-    private String fName;
-    private String lName;
+    private String fname;
+    private String lname;
     private String phoneNumber;
     private String email;
     private String yearOfStudy;
@@ -48,7 +48,7 @@ public class Mentee {
     }
 
     public String getFName() {
-        return this.fName;
+        return this.fname;
     }
 
     public void setFName(String fname) {
