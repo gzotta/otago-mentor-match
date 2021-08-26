@@ -11,7 +11,7 @@ public class Admin {
     public Admin() {}
 
     // Constructor with all fields.
-    public Admin(int adminId, String fname, String lname, String email, String phoneNumber, String password) {
+    public Admin(Integer adminId, String fname, String lname, String email, String phoneNumber, String password) {
         this.adminId = adminId;
         this.fname = fname;
         this.lname = lname;
@@ -21,11 +21,11 @@ public class Admin {
     }
 
     // Getters and Setters.
-    public int getAdminId() {
+    public Integer getAdminId() {
         return this.adminId;
     }
 
-    public void setAdminId(int adminId) {
+    public void setAdminId(Integer adminId) {
         this.adminId = adminId;
     }
 
