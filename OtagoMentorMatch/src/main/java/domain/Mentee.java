@@ -39,7 +39,7 @@ public class Mentee {
     }
 
     // Getters and Setters.
-    public int getMenteeId() {
+    public Integer getMenteeId() {
         return this.menteeId;
     }
 
@@ -63,11 +63,11 @@ public class Mentee {
         this.lname = lname;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -79,11 +79,11 @@ public class Mentee {
         this.email = email;
     }
 
-    public int getYearOfStudy() {
+    public String getYearOfStudy() {
         return this.yearOfStudy;
     }
 
-    public void setYearOfStudy(int yearOfStudy) {
+    public void setYearOfStudy(String yearOfStudy) {
         this.yearOfStudy = yearOfStudy;
     }
 
