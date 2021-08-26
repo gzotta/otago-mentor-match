@@ -1,4 +1,4 @@
-package @domain;
+package domain;
 
 public class Admin {
     private int adminId;
@@ -9,9 +9,7 @@ public class Admin {
     private String password;
 
     // Empty constructor.
-    public Admin() {
-    }
-
+    public Admin() {}
 
     // Constructor with all fields.
     public Admin(int adminId, String fname, String lname, String email, String phoneNumber, String password) {
@@ -22,7 +20,6 @@ public class Admin {
         this.phoneNumber = phoneNumber;
         this.password = password;
     }
-
 
     // Getters and Setters.
     public int getAdminId() {
@@ -73,12 +70,10 @@ public class Admin {
         this.password = password;
     }
     
-
-
     // To String.
     @Override
     public String toString() {
-        return "{" +
+        return "Admin{" +
             " adminId='" + getAdminId() + "'" +
             ", fname='" + getFname() + "'" +
             ", lname='" + getLname() + "'" +
@@ -88,6 +83,4 @@ public class Admin {
             "}";
     }
 
-
-
-}
+}//end class
