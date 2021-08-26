@@ -105,7 +105,6 @@ public class Workshop {
             "}";
     }
 
-
 }//end class
 
 
