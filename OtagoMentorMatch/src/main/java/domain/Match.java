@@ -3,26 +3,33 @@ import domain.Mentor;
 import domain.Mentee;
 
 public class Match {
-    private int match_id;
+    private int matchId;
     private Date date;
     private Mentor mentor;
     private Mentee mentee;
-//Constructor
 
-    public Match(int match_id, Date date, Mentor mentor, Mentee mentee) {
-        this.match_id = match_id;
+    // Empty Constructor
+
+    public Match() {
+    }
+
+    // Constructor with all fields
+    public Match(int matchId, Date date, Mentor mentor, Mentee mentee) {
+        this.matchId = matchId;
         this.date = date;
         this.mentor = mentor;
         this.mentee = mentee;
     }
 
+
     //getters and setters
-    public int getMatch_id() {
-        return this.match_id;
+
+    public int getMatchId() {
+        return this.matchId;
     }
 
-    public void setMatch_id(int match_id) {
-        this.match_id = match_id;
+    public void setMatchId(int matchId) {
+        this.matchId = matchId;
     }
 
     public Date getDate() {
@@ -32,10 +39,7 @@ public class Match {
     public void setDate(Date date) {
         this.date = date;
     }
-    @Override
-    public String toString() {
-        return "Match{" + "matchID=" + match_id + ", date=" + date'}';
-    }
+
     public Mentor getMentor() {
         return this.mentor;
     }
@@ -51,6 +55,24 @@ public class Match {
     public void setMentee(Mentee mentee) {
         this.mentee = mentee;
     }
+
+
+    // To string method
+    @Override
+    public String toString() {
+        return "{" +
+            " matchId='" + getMatchId() + "'" +
+            ", date='" + getDate() + "'" +
+            ", mentor='" + getMentor() + "'" +
+            ", mentee='" + getMentee() + "'" +
+            "}";
+    }
+
+
+    }
+
+
+
     
     //Other match methods
 }
