@@ -5,7 +5,7 @@ public class Admin {
     private String fname;
     private String lname;
     private String email;
-    private String phone_number;
+    private String phoneNumber;
     private String password;
 
     // Empty constructor.
@@ -14,12 +14,12 @@ public class Admin {
 
 
     // Constructor with all fields.
-    public Admin(int adminId, String fname, String lname, String email, String phone_number, String password) {
+    public Admin(int adminId, String fname, String lname, String email, String phoneNumber, String password) {
         this.adminId = adminId;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.password = password;
     }
 
@@ -57,12 +57,12 @@ public class Admin {
         this.email = email;
     }
 
-    public String getPhone_number() {
-        return this.phone_number;
+    public String getPhoneNumber() {
+        return this.phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPassword() {
@@ -72,6 +72,7 @@ public class Admin {
     public void setPassword(String password) {
         this.password = password;
     }
+    
 
 
     // To String.
@@ -82,10 +83,11 @@ public class Admin {
             ", fname='" + getFname() + "'" +
             ", lname='" + getLname() + "'" +
             ", email='" + getEmail() + "'" +
-            ", phone_number='" + getPhone_number() + "'" +
+            ", phoneNumber='" + getPhoneNumber() + "'" +
             ", password='" + getPassword() + "'" +
             "}";
     }
+
 
 
 }
