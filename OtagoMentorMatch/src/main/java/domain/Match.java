@@ -1,4 +1,4 @@
-package @domain;
+package domain;
 
 public class Match {
     private Integer matchId;
@@ -7,11 +7,10 @@ public class Match {
     private Mentee mentee;
 
     // Empty Constructor
-    public Match() {
-    }
+    public Match() {}
 
     // Constructor with all fields
-    public Match(int matchId, Date date, Mentor mentor, Mentee mentee) {
+    public Match(Integer matchId, Date date, Mentor mentor, Mentee mentee) {
         this.matchId = matchId;
         this.date = date;
         this.mentor = mentor;
@@ -19,7 +18,7 @@ public class Match {
     }
 
     //getters and setters
-    public int getMatchId() {
+    public Integer getMatchId() {
         return this.matchId;
     }
 
@@ -54,17 +53,12 @@ public class Match {
     // To string method
     @Override
     public String toString() {
-        return "{" +
-            " matchId='" + matchId + "'" +
-            ", date='" + date + "'" +
-            ", mentor='" + mentor + "'" +
-            ", mentee='" + mentee + "'" +
+        return "Match{" +
+            " matchId='" + this.matchId + "'" +
+            ", date='" + this.date + "'" +
+            ", mentor='" + this.mentor + "'" +
+            ", mentee='" + this.mentee + "'" +
             "}";
     }
-
-
-
-
     
-    //Other match methods
-}
+}//end class
