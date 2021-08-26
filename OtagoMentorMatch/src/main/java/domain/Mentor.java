@@ -296,37 +296,39 @@ public class Mentor {
 
 
     // To string
+
     @Override
     public String toString() {
         return "{" +
-            " mentorId='" + getMentorId() + "'" +
-            ", mentorPassword='" + getMentorPassword() + "'" +
-            ", fName='" + getFName() + "'" +
-            ", lName='" + getLName() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", phoneNumber='" + getPhoneNumber() + "'" +
-            ", ethnicity='" + getEthnicity() + "'" +
-            ", iwiAfiliation='" + getIwiAfiliation() + "'" +
-            ", companyName='" + getCompanyName() + "'" +
-            ", employerJobTitle='" + getEmployerJobTitle() + "'" +
-            ", jobTitleDepartment='" + getJobTitleDepartment() + "'" +
-            ", industry='" + getIndustry() + "'" +
-            ", primaryWorkingIndustry='" + getPrimaryWorkingIndustry() + "'" +
-            ", briefCareerHistory='" + getBriefCareerHistory() + "'" +
-            ", modeOfMentoringSessions='" + getModeOfMentoringSessions() + "'" +
-            ", undergraduateCourse='" + getUndergraduateCourse() + "'" +
-            ", undergraduateInstitution='" + getUndergraduateInstitution() + "'" +
-            ", undergraduateYearOfGraduation='" + getUndergraduateYearOfGraduation() + "'" +
-            ", postgraduateCourse='" + getPostgraduateCourse() + "'" +
-            ", postgraduateInstitution='" + getPostgraduateInstitution() + "'" +
-            ", postgraduateYearOfGraduation='" + getPostgraduateYearOfGraduation() + "'" +
-            ", currentWorkAndLivingCountry='" + getCurrentWorkAndLivingCountry() + "'" +
-            ", mentoringPreference='" + getMentoringPreference() + "'" +
-            ", howFindOMM='" + getHowFindOMM() + "'" +
-            ", bio='" + getBio() + "'" +
-            ", extraInfo='" + getExtraInfo() + "'" +
-            ", newToMentory='" + isNewToMentory() + "'" +
+            " mentorId='" + mentorId + "'" +
+            ", mentorPassword='" + mentorPassword + "'" +
+            ", fName='" + fName + "'" +
+            ", lName='" + lName + "'" +
+            ", email='" + email + "'" +
+            ", phoneNumber='" + phoneNumber + "'" +
+            ", ethnicity='" + ethnicity + "'" +
+            ", iwiAfiliation='" + iwiAfiliation + "'" +
+            ", companyName='" + companyName + "'" +
+            ", employerJobTitle='" + employerJobTitle + "'" +
+            ", jobTitleDepartment='" + jobTitleDepartment + "'" +
+            ", industry='" + industry + "'" +
+            ", primaryWorkingIndustry='" + primaryWorkingIndustry + "'" +
+            ", briefCareerHistory='" + briefCareerHistory + "'" +
+            ", modeOfMentoringSessions='" + modeOfMentoringSessions + "'" +
+            ", undergraduateCourse='" + undergraduateCourse + "'" +
+            ", undergraduateInstitution='" + undergraduateInstitution + "'" +
+            ", undergraduateYearOfGraduation='" + undergraduateYearOfGraduation + "'" +
+            ", postgraduateCourse='" + postgraduateCourse + "'" +
+            ", postgraduateInstitution='" + postgraduateInstitution + "'" +
+            ", postgraduateYearOfGraduation='" + postgraduateYearOfGraduation + "'" +
+            ", currentWorkAndLivingCountry='" + currentWorkAndLivingCountry + "'" +
+            ", mentoringPreference='" + mentoringPreference + "'" +
+            ", howFindOMM='" + howFindOMM + "'" +
+            ", bio='" + bio + "'" +
+            ", extraInfo='" + extraInfo + "'" +
+            ", newToMentory='" + newToMentory + "'" +
             "}";
     }
+
     
 }
