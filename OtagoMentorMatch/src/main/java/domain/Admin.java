@@ -1,17 +1,21 @@
 package @domain;
 
 public class Admin {
-    private int admin_id;
+    private int adminId;
     private String fname;
     private String lname;
     private String email;
     private String phone_number;
     private String password;
 
-    //
+    // Empty constructor.
+    public Admin() {
+    }
 
-    public Admin(int admin_id, String fname, String lname, String email, String phone_number, String password) {
-        this.admin_id = admin_id;
+
+    // Constructor with all fields.
+    public Admin(int adminId, String fname, String lname, String email, String phone_number, String password) {
+        this.adminId = adminId;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
@@ -19,13 +23,14 @@ public class Admin {
         this.password = password;
     }
 
-//getters and settes
-    public int getAdmin_id() {
-        return this.admin_id;
+
+    // Getters and Setters.
+    public int getAdminId() {
+        return this.adminId;
     }
 
-    public void setAdmin_id(int admin_id) {
-        this.admin_id = admin_id;
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 
     public String getFname() {
@@ -66,6 +71,20 @@ public class Admin {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    // To String.
+    @Override
+    public String toString() {
+        return "{" +
+            " adminId='" + getAdminId() + "'" +
+            ", fname='" + getFname() + "'" +
+            ", lname='" + getLname() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", phone_number='" + getPhone_number() + "'" +
+            ", password='" + getPassword() + "'" +
+            "}";
     }
 
 
