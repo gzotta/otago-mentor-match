@@ -22,7 +22,7 @@ public class Mentee {
     public Mentee(){}
 
     // Constructor with all fields.
-    public Mentee(Integer menteeId, String fname, String lname, int phoneNumber, String email, int yearOfStudy, String motivationForJoiningOMM, String industryOfInterest, String learningMethod, String personalInterests, String howFindOMM, String randomMatching, String bio) {
+    public Mentee(Integer menteeId, String fname, String lname, String phoneNumber, String email, String yearOfStudy, String motivationForJoiningOMM, String industryOfInterest, String learningMethod, String personalInterests, String howFindOMM, String randomMatching, String bio) {
         this.menteeId = menteeId;
         this.fname = fname;
         this.lname = lname;
