@@ -5,17 +5,25 @@ public class JournalEntry {
     private String topics_covered;
     private String length_of_session;
     private String notes;
-    private String match_id;
+    private Integer matchId;
 
 
-    public JournalEntry(Integer journal_entry_id, String topics_covered, String length_of_session, String notes, String match_id) {
+    //empty constructor.
+    public JournalEntry() {
+    }
+
+
+    //constructor with all fields.
+    public JournalEntry(Integer journal_entry_id, String topics_covered, String length_of_session, String notes, Integer matchId) {
         this.journal_entry_id = journal_entry_id;
         this.topics_covered = topics_covered;
         this.length_of_session = length_of_session;
         this.notes = notes;
-        this.match_id = match_id;
+        this.matchId = matchId;
     }
 
+
+    //getters and setters.
     public Integer getJournal_entry_id() {
         return this.journal_entry_id;
     }
@@ -48,23 +56,28 @@ public class JournalEntry {
         this.notes = notes;
     }
 
-    public String getMatch_id() {
-        return this.match_id;
+    public Integer getMatchId() {
+        return this.matchId;
     }
 
-    public void setMatch_id(String match_id) {
-        this.match_id = match_id;
+    public void setMatchId(Integer matchId) {
+        this.matchId = matchId;
     }
 
+
+
+    //to string. 
     @Override
     public String toString() {
         return "{" +
-            " journal_entry_id='" + getJournal_entry_id() + "'" +
-            ", topics_covered='" + getTopics_covered() + "'" +
-            ", length_of_session='" + getLength_of_session() + "'" +
-            ", notes='" + getNotes() + "'" +
-            ", match_id='" + getMatch_id() + "'" +
+            " journal_entry_id='" + journal_entry_id + "'" +
+            ", topics_covered='" + topics_covered + "'" +
+            ", length_of_session='" + length_of_session + "'" +
+            ", notes='" + notes + "'" +
+            ", matchId='" + matchId + "'" +
             "}";
     }
+
+
 
 }
