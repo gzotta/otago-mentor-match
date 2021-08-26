@@ -3,8 +3,8 @@ package domain;
 public class Match {
     private Integer matchId;
     private Date date;
-    private Mentor mentor;
-    private Mentee mentee;
+    private Integer mentorId;
+    private Integer menteeId;
 
     // Empty Constructor
     public Match() {}
