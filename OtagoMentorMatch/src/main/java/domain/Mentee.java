@@ -22,7 +22,7 @@ public class Mentee {
     public Mentee(){}
 
     // Constructor with all fields.
-    public Mentee(int menteeId, String fname, String lname, int phoneNumber, String email, int yearOfStudy, String motivationForJoiningOMM, String industryOfInterest, String learningMethod, String personalInterests, String howFindOMM, String randomMatching, String bio) {
+    public Mentee(Integer menteeId, String fname, String lname, int phoneNumber, String email, int yearOfStudy, String motivationForJoiningOMM, String industryOfInterest, String learningMethod, String personalInterests, String howFindOMM, String randomMatching, String bio) {
         this.menteeId = menteeId;
         this.fname = fname;
         this.lname = lname;
@@ -43,7 +43,7 @@ public class Mentee {
         return this.menteeId;
     }
 
-    public void setMenteeId(int menteeId) {
+    public void setMenteeId(Integer menteeId) {
         this.menteeId = menteeId;
     }
 
