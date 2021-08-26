@@ -7,8 +7,8 @@ package domain;
 public class Mentor {
     private Integer mentorId;
     private String mentorPassword;
-    private String fName;
-    private String lName;
+    private String fname;
+    private String lname;
     private String email;
     private String phoneNumber;
     private String ethnicity;
@@ -65,7 +65,6 @@ public class Mentor {
         this.extraInfo = extraInfo;
         this.newToMentory = newToMentory;
     }
-
 
     // Getters and Setters
     public Integer getMentorId() {
