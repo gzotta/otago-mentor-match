@@ -1,4 +1,4 @@
-package @domain;
+package domain;
 
 public class Match {
     private Integer matchId;
@@ -60,5 +60,5 @@ public class Match {
             ", mentee='" + this.mentee + "'" +
             "}";
     }
-
+    
 }//end class
