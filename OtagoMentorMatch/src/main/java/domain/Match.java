@@ -1,17 +1,16 @@
 package @domain;
 
 public class Match {
-    private int matchId;
+    private Integer matchId;
     private Date date;
     private Mentor mentor;
     private Mentee mentee;
 
     // Empty Constructor
-    public Match() {
-    }
+    public Match() {}
 
     // Constructor with all fields
-    public Match(int matchId, Date date, Mentor mentor, Mentee mentee) {
+    public Match(Integer matchId, Date date, Mentor mentor, Mentee mentee) {
         this.matchId = matchId;
         this.date = date;
         this.mentor = mentor;
@@ -19,7 +18,7 @@ public class Match {
     }
 
     //getters and setters
-    public int getMatchId() {
+    public Integer getMatchId() {
         return this.matchId;
     }
 
@@ -54,11 +53,11 @@ public class Match {
     // To string method
     @Override
     public String toString() {
-        return "{" +
-            " matchId='" + getMatchId() + "'" +
-            ", date='" + getDate() + "'" +
-            ", mentor='" + getMentor() + "'" +
-            ", mentee='" + getMentee() + "'" +
+        return "Match{" +
+            " matchId='" + this.matchId + "'" +
+            ", date='" + this.date + "'" +
+            ", mentor='" + this.mentor + "'" +
+            ", mentee='" + this.mentee + "'" +
             "}";
     }
 
