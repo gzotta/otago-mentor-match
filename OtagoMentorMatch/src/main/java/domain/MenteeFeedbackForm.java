@@ -19,11 +19,9 @@ public class MenteeFeedbackForm {
     private boolean testimonial;
     private String other_comments;
     private String takeaways;
-    private String matchId;
+    private Integer matchId;
 
-
-
-    public MenteeFeedbackForm(String communication_platform, String finding_omm, String session_quality, String quality_of_match, boolean reccomendation, String active_listening_rating, String feedback_rating, String trust_rating, String achieve_golas_rating, String developing_strategiies_rating, String motivation_rating, String working_goals_rating, String programme_improvements, String time_contributed, boolean continue_relationship, boolean testimonial, String other_comments, String takeaways, String matchId) {
+    public MenteeFeedbackForm(String communication_platform, String finding_omm, String session_quality, String quality_of_match, boolean reccomendation, String active_listening_rating, String feedback_rating, String trust_rating, String achieve_golas_rating, String developing_strategiies_rating, String motivation_rating, String working_goals_rating, String programme_improvements, String time_contributed, boolean continue_relationship, boolean testimonial, String other_comments, String takeaways, Integer matchId) {
         this.communication_platform = communication_platform;
         this.finding_omm = finding_omm;
         this.session_quality = session_quality;
@@ -201,14 +199,12 @@ public class MenteeFeedbackForm {
         this.takeaways = takeaways;
     }
 
-    public String getMatchId() {
+    public Integer getMatchId() {
         return this.matchId;
     }
 
-    public void setMatchId(String matchId) {
+    public void setMatchId(Integer matchId) {
         this.matchId = matchId;
     }
     
-
-
-}
+}//end class
