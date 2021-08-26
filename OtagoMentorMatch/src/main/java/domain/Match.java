@@ -55,18 +55,17 @@ public class Match {
 
 
     // To string method
+
     @Override
     public String toString() {
         return "{" +
-            " matchId='" + getMatchId() + "'" +
-            ", date='" + getDate() + "'" +
-            ", mentor='" + getMentor() + "'" +
-            ", mentee='" + getMentee() + "'" +
+            " matchId='" + matchId + "'" +
+            ", date='" + date + "'" +
+            ", mentor='" + mentor + "'" +
+            ", mentee='" + mentee + "'" +
             "}";
     }
 
-
-    }
 
 
 
