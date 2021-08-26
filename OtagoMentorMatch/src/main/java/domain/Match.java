@@ -1,6 +1,5 @@
 package @domain;
-import domain.Mentor;
-import domain.Mentee;
+
 
 public class Match {
     private int matchId;
@@ -9,7 +8,6 @@ public class Match {
     private Mentee mentee;
 
     // Empty Constructor
-
     public Match() {
     }
 
@@ -23,7 +21,6 @@ public class Match {
 
 
     //getters and setters
-
     public int getMatchId() {
         return this.matchId;
     }
