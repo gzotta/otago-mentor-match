@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain;
 
 /**
@@ -38,10 +33,14 @@ public class Mentor {
     private String extraInfo;
     private Boolean newToMentory;
 
+    
+    // Empty constructor
     public Mentor() {
     }
 
 
+
+    // Constructor with all fields
     public Mentor(Integer mentorId, String mentorPassword, String fName, String lName, String email, String phoneNumber, String ethnicity, String iwiAfiliation, String companyName, String employerJobTitle, String jobTitleDepartment, String industry, String primaryWorkingIndustry, String briefCareerHistory, String modeOfMentoringSessions, String undergraduateCourse, String undergraduateInstitution, String undergraduateYearOfGraduation, String postgraduateCourse, String postgraduateInstitution, String postgraduateYearOfGraduation, String currentWorkAndLivingCountry, String mentoringPreference, String howFindOMM, String bio, String extraInfo, Boolean newToMentory) {
         this.mentorId = mentorId;
         this.mentorPassword = mentorPassword;
@@ -72,6 +71,8 @@ public class Mentor {
         this.newToMentory = newToMentory;
     }
 
+
+    // Getters and Setters
     public Integer getMentorId() {
         return this.mentorId;
     }
@@ -293,6 +294,8 @@ public class Mentor {
     }
 
 
+
+    // To string
     @Override
     public String toString() {
         return "{" +
