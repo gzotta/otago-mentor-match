@@ -6,8 +6,8 @@ package domain;
  */
 public class Mentee {
     private int menteeId;
-    private String fName;
-    private String lName;
+    private String fname;
+    private String lname;
     private int phoneNumber;
     private String email;
     private int yearOfStudy;
@@ -19,15 +19,13 @@ public class Mentee {
     private String randomMatching;
     private String bio;
 
-
-    // Empty constructor.
     public Mentee(){}
 
     // Constructor with all fields.
-    public Mentee(int menteeId, String fName, String lName, int phoneNumber, String email, int yearOfStudy, String motivationForJoiningOMM, String industryOfInterest, String learningMethod, String personalInterests, String howFindOMM, String randomMatching, String bio) {
+    public Mentee(int menteeId, String fname, String lname, int phoneNumber, String email, int yearOfStudy, String motivationForJoiningOMM, String industryOfInterest, String learningMethod, String personalInterests, String howFindOMM, String randomMatching, String bio) {
         this.menteeId = menteeId;
-        this.fName = fName;
-        this.lName = lName;
+        this.fname = fname;
+        this.lname = lname;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.yearOfStudy = yearOfStudy;
@@ -40,9 +38,7 @@ public class Mentee {
         this.bio = bio;
     }
 
-
     // Getters and Setters.
-
     public int getMenteeId() {
         return this.menteeId;
     }
@@ -55,16 +51,16 @@ public class Mentee {
         return this.fName;
     }
 
-    public void setFName(String fName) {
-        this.fName = fName;
+    public void setFName(String fname) {
+        this.fname = fname;
     }
 
     public String getLName() {
-        return this.lName;
+        return this.lname;
     }
 
-    public void setLName(String lName) {
-        this.lName = lName;
+    public void setLName(String lname) {
+        this.lname = lname;
     }
 
     public int getPhoneNumber() {
@@ -147,28 +143,25 @@ public class Mentee {
         this.bio = bio;
     }
 
-    
     // To string
     @Override
     public String toString() {
         return "{" +
-            " menteeId='" + getMenteeId() + "'" +
-            ", fName='" + getFName() + "'" +
-            ", lName='" + getLName() + "'" +
-            ", phoneNumber='" + getPhoneNumber() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", yearOfStudy='" + getYearOfStudy() + "'" +
-            ", motivationForJoiningOMM='" + getMotivationForJoiningOMM() + "'" +
-            ", industryOfInterest='" + getIndustryOfInterest() + "'" +
-            ", learningMethod='" + getLearningMethod() + "'" +
-            ", personalInterests='" + getPersonalInterests() + "'" +
-            ", howFindOMM='" + getHowFindOMM() + "'" +
-            ", randomMatching='" + getRandomMatching() + "'" +
-            ", bio='" + getBio() + "'" +
+            " menteeId='" + this.menteeId + "'" +
+            ", fName='" + this.fname + "'" +
+            ", lName='" + this.lname + "'" +
+            ", phoneNumber='" + this.phoneNumber + "'" +
+            ", email='" + this.email + "'" +
+            ", yearOfStudy='" + this.yearOfStudy + "'" +
+            ", motivationForJoiningOMM='" + this.motivationForJoiningOMM + "'" +
+            ", industryOfInterest='" + this.industryOfInterest + "'" +
+            ", learningMethod='" + this.learningMethod + "'" +
+            ", personalInterests='" + this.personalInterests + "'" +
+            ", howFindOMM='" + this.howFindOMM + "'" +
+            ", randomMatching='" + this.randomMatching + "'" +
+            ", bio='" + this.bio + "'" +
             "}";
     }
-
-
 
 }//end class
 
