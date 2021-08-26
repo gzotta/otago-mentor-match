@@ -21,6 +21,13 @@ public class MenteeFeedbackForm {
     private String takeaways;
     private Integer matchId;
 
+
+    //empty constructor.
+    public MenteeFeedbackForm() {
+    }
+
+
+    //constructor with all fields.
     public MenteeFeedbackForm(String communication_platform, String finding_omm, String session_quality, String quality_of_match, boolean reccomendation, String active_listening_rating, String feedback_rating, String trust_rating, String achieve_golas_rating, String developing_strategiies_rating, String motivation_rating, String working_goals_rating, String programme_improvements, String time_contributed, boolean continue_relationship, boolean testimonial, String other_comments, String takeaways, Integer matchId) {
         this.communication_platform = communication_platform;
         this.finding_omm = finding_omm;
@@ -42,6 +49,9 @@ public class MenteeFeedbackForm {
         this.takeaways = takeaways;
         this.matchId = matchId;
     }
+
+
+    //getters and setters.
 
     public String getCommunication_platform() {
         return this.communication_platform;
@@ -206,5 +216,34 @@ public class MenteeFeedbackForm {
     public void setMatchId(Integer matchId) {
         this.matchId = matchId;
     }
+
+
+
+    //to string.
+    @Override
+    public String toString() {
+        return "{" +
+            " communication_platform='" + communication_platform + "'" +
+            ", finding_omm='" + finding_omm + "'" +
+            ", session_quality='" + session_quality + "'" +
+            ", quality_of_match='" + quality_of_match + "'" +
+            ", reccomendation='" + reccomendation + "'" +
+            ", active_listening_rating='" + active_listening_rating + "'" +
+            ", feedback_rating='" + feedback_rating + "'" +
+            ", trust_rating='" + trust_rating + "'" +
+            ", achieve_golas_rating='" + achieve_golas_rating + "'" +
+            ", developing_strategiies_rating='" + developing_strategiies_rating + "'" +
+            ", motivation_rating='" + motivation_rating + "'" +
+            ", working_goals_rating='" + working_goals_rating + "'" +
+            ", programme_improvements='" + programme_improvements + "'" +
+            ", time_contributed='" + time_contributed + "'" +
+            ", continue_relationship='" + continue_relationship + "'" +
+            ", testimonial='" + testimonial + "'" +
+            ", other_comments='" + other_comments + "'" +
+            ", takeaways='" + takeaways + "'" +
+            ", matchId='" + matchId + "'" +
+            "}";
+    }
+ 
     
 }//end class
