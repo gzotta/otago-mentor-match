@@ -8,7 +8,6 @@ public class Admin {
     private String phoneNumber;
     private String password;
 
-    // Empty constructor.
     public Admin() {}
 
     // Constructor with all fields.
@@ -74,12 +73,12 @@ public class Admin {
     @Override
     public String toString() {
         return "Admin{" +
-            " adminId='" + getAdminId() + "'" +
-            ", fname='" + getFname() + "'" +
-            ", lname='" + getLname() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", phoneNumber='" + getPhoneNumber() + "'" +
-            ", password='" + getPassword() + "'" +
+            " adminId='" + this.adminId + "'" +
+            ", fname='" + this.fname + "'" +
+            ", lname='" + this.lname + "'" +
+            ", email='" + this.email + "'" +
+            ", phoneNumber='" + this.phoneNumber + "'" +
+            ", password='" + this.password + "'" +
             "}";
     }
 
