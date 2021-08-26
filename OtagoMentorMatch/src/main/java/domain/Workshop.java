@@ -1,7 +1,6 @@
 package domain;
 
 public class Workshop {
-
     private Integer workshopId;
     private String topic;
     private Date date;
@@ -10,7 +9,6 @@ public class Workshop {
     private Boolean mentor;
     private Boolean mentee;
 
-    // Empty constructor.
     public Workshop() {}
 
     // Constructor with all fields.
@@ -97,13 +95,13 @@ public class Workshop {
     @Override
     public String toString() {
         return "Workshop{" +
-            " workshopId='" + getWorkshopId() + "'" +
-            ", topic='" + getTopic() + "'" +
-            ", date='" + getDate() + "'" +
-            ", location='" + getLocation() + "'" +
-            ", online='" + isOnline() + "'" +
-            ", mentor='" + isMentor() + "'" +
-            ", mentee='" + isMentee() + "'" +
+            " workshopId='" + this.workshopId + "'" +
+            ", topic='" + this.topic + "'" +
+            ", date='" + this.date + "'" +
+            ", location='" + this.location + "'" +
+            ", online='" + this.online + "'" +
+            ", mentor='" + this.mentor + "'" +
+            ", mentee='" + this.mentee + "'" +
             "}";
     }
 
