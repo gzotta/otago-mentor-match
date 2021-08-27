@@ -20,10 +20,16 @@ public class MentorFeedbackForm {
         private String join_next_intake;
         private String testimonial;
         private String takeaways;
-        private Integer match_id;
+        private Integer matchId;
 
 
-    public MentorFeedbackForm(Integer mentor_feedback_id, String finding_omm, String enough_time_to_establish_relationship, String describe_sessions, String active_listening_rating, String feedback_rating, String trust_rating, String achieve_goals_rating, String developing_strategies_rating, String motivation_rating, String working_goals_rating, String suitable_match, String recommendation, String potential_improvements, String time_contributed, String stay_in_touch, String join_next_intake, String testimonial, String takeaways, Integer match_id) {
+    //empty constructor.
+    public MentorFeedbackForm() {
+    }
+
+
+    //constructor with all fields.
+    public MentorFeedbackForm(Integer mentor_feedback_id, String finding_omm, String enough_time_to_establish_relationship, String describe_sessions, String active_listening_rating, String feedback_rating, String trust_rating, String achieve_goals_rating, String developing_strategies_rating, String motivation_rating, String working_goals_rating, String suitable_match, String recommendation, String potential_improvements, String time_contributed, String stay_in_touch, String join_next_intake, String testimonial, String takeaways, Integer matchId) {
         this.mentor_feedback_id = mentor_feedback_id;
         this.finding_omm = finding_omm;
         this.enough_time_to_establish_relationship = enough_time_to_establish_relationship;
@@ -36,16 +42,20 @@ public class MentorFeedbackForm {
         this.motivation_rating = motivation_rating;
         this.working_goals_rating = working_goals_rating;
         this.suitable_match = suitable_match;
-        this.recommendation = reccommendation;
+        this.recommendation = recommendation;
         this.potential_improvements = potential_improvements;
         this.time_contributed = time_contributed;
         this.stay_in_touch = stay_in_touch;
         this.join_next_intake = join_next_intake;
         this.testimonial = testimonial;
         this.takeaways = takeaways;
-        this.match_id = match_id;
+        this.matchId = matchId;
     }
 
+    
+    
+    
+    //getters and setters.
     public Integer getMentor_feedback_id() {
         return this.mentor_feedback_id;
     }
@@ -143,11 +153,11 @@ public class MentorFeedbackForm {
     }
 
     public String getRecommendation() {
-        return this.reccommendation;
+        return this.recommendation;
     }
 
-    public void setRecommendation(String reccommendation) {
-        this.reccommendation = reccommendation;
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
     }
 
     public String getPotential_improvements() {
@@ -198,38 +208,40 @@ public class MentorFeedbackForm {
         this.takeaways = takeaways;
     }
 
-    public Integer getMatch_id() {
-        return this.match_id;
+    public Integer getMatchId() {
+        return this.matchId;
     }
 
-    public void setMatch_id(Integer match_id) {
-        this.match_id = match_id;
+    public void setMatchId(Integer matchId) {
+        this.matchId = matchId;
     }
 
+
+    //to string.
     @Override
     public String toString() {
         return "{" +
-            " mentor_feedback_id='" + getMentor_feedback_id() + "'" +
-            ", finding_omm='" + getFinding_omm() + "'" +
-            ", enough_time_to_establish_relationship='" + getEnough_time_to_establish_relationship() + "'" +
-            ", describe_sessions='" + getDescribe_sessions() + "'" +
-            ", active_listening_rating='" + getActive_listening_rating() + "'" +
-            ", feedback_rating='" + getFeedback_rating() + "'" +
-            ", trust_rating='" + getTrust_rating() + "'" +
-            ", achieve_goals_rating='" + getAchieve_goals_rating() + "'" +
-            ", developing_strategies_rating='" + getDeveloping_strategies_rating() + "'" +
-            ", motivation_rating='" + getMotivation_rating() + "'" +
-            ", working_goals_rating='" + getWorking_goals_rating() + "'" +
-            ", suitable_match='" + getSuitable_match() + "'" +
-            ", recommendation='" + getRecommendation() + "'" +
-            ", potential_improvements='" + getPotential_improvements() + "'" +
-            ", time_contributed='" + getTime_contributed() + "'" +
-            ", stay_in_touch='" + getStay_in_touch() + "'" +
-            ", join_next_intake='" + getJoin_next_intake() + "'" +
-            ", testimonial='" + getTestimonial() + "'" +
-            ", takeaways='" + getTakeaways() + "'" +
-            ", match_id='" + getMatch_id() + "'" +
+            " mentor_feedback_id='" + mentor_feedback_id + "'" +
+            ", finding_omm='" + finding_omm + "'" +
+            ", enough_time_to_establish_relationship='" + enough_time_to_establish_relationship + "'" +
+            ", describe_sessions='" + describe_sessions + "'" +
+            ", active_listening_rating='" + active_listening_rating + "'" +
+            ", feedback_rating='" + feedback_rating + "'" +
+            ", trust_rating='" + trust_rating + "'" +
+            ", achieve_goals_rating='" + achieve_goals_rating + "'" +
+            ", developing_strategies_rating='" + developing_strategies_rating + "'" +
+            ", motivation_rating='" + motivation_rating + "'" +
+            ", working_goals_rating='" + working_goals_rating + "'" +
+            ", suitable_match='" + suitable_match + "'" +
+            ", recommendation='" + recommendation + "'" +
+            ", potential_improvements='" + potential_improvements + "'" +
+            ", time_contributed='" + time_contributed + "'" +
+            ", stay_in_touch='" + stay_in_touch + "'" +
+            ", join_next_intake='" + join_next_intake + "'" +
+            ", testimonial='" + testimonial + "'" +
+            ", takeaways='" + takeaways + "'" +
+            ", matchId='" + matchId + "'" +
             "}";
     }
-
+   
 }
