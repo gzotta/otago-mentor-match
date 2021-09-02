@@ -1,5 +1,6 @@
+USE OMM;
 CREATE TABLE Admin (
-    adminId int(1000) AUTO_INCREMENT,
+    adminId int AUTO_INCREMENT,
     password varchar(16) NOT NULL,
     fname varchar(15) NOT NULL,
     lname varchar (15) NOT NULL,
@@ -9,7 +10,7 @@ CREATE TABLE Admin (
 
 
 CREATE TABLE Mentor (
-    mentorId int(1000) AUTO_INCREMENT,
+    mentorId int AUTO_INCREMENT,
     mentorPassword varchar(16) NOT NULL,
     fname varchar(15) NOT NULL,
     lname varchar (15) NOT NULL,
@@ -42,7 +43,7 @@ CREATE TABLE Mentor (
 
 
 CREATE TABLE Mentee (
-    menteeId int(1000) AUTO_INCREMENT;
+    menteeId int AUTO_INCREMENT,
     password varchar(16) NOT NULL,
     fname varchar(15) NOT NULL,
     lname varchar (15) NOT NULL,
@@ -61,29 +62,29 @@ CREATE TABLE Mentee (
 
 
 
-CREATE TABLE Match (
-    matchId int(1000) AUTO_INCREMENT,
+CREATE TABLE MatchTable (
+    matchId int AUTO_INCREMENT,
     date datetime NOT NULL,
-    mentorId varchar(1000) NOT NULL,
-    menteeId varchar(1000) NOT NULL,
-    CONSTRAINT Match_PK PRIMARY KEY (matchId),
-    CONSTRAINT Match_Mentor FOREIGN KEY (mentorId),
-    CONSTRAINT Match_Mentee FOREIGN KEY (menteeId)
+    mentorId int NOT NULL,
+    menteeId int NOT NULL,
+    CONSTRAINT MatchTable_PK PRIMARY KEY (matchId),
+    CONSTRAINT MatchTable_Mentor_FK FOREIGN KEY (mentorId) REFERENCES Mentor(mentorId),
+    CONSTRAINT MatchTable_Mentee_FK FOREIGN KEY (menteeId) REFERENCES Mentee(menteeId)
 );
 
 
 CREATE TABLE JournalEntry (
-    journalEntryId int(1000) AUTO_INCREMENT,
+    journalEntryId int AUTO_INCREMENT,
     topicsCovered varchar(100) NOT NULL,
     lengthOfSession varchar(15) NOT NULL,
     notes varchar(100),
-    matchId varchar(1000) NOT NULL,
+    matchId int NOT NULL,
     CONSTRAINT JournalEntry_PK PRIMARY KEY (journalEntryId),
-    CONSTRAINT JournalEntry_Match FOREIGN KEY (matchId) REFERENCES Match
+    CONSTRAINT JournalEntry_MatchTable FOREIGN KEY (matchId) REFERENCES MatchTable(matchId)
 );
 
 CREATE TABLE MenteeFeedbackForm(
-    menteeFeedbackFormId int(1000) AUTO_INCREMENT,
+    menteeFeedbackFormId int AUTO_INCREMENT,
     communicationPlatform varchar(20) NOT NULL,
     findingOMM varchar (50) NOT NULL,
     sessionQuality varchar(20) NOT NULL,
@@ -102,13 +103,13 @@ CREATE TABLE MenteeFeedbackForm(
     testimonial varchar(3) NOT NULL,
     otherComments varchar(50) NOT NULL,
     takeaways varchar(50) NOT NULL,
-    matchId varchar(1000) NOT NULL.
+    matchId int NOT NULL,
     CONSTRAINT MenteeFeedbackForm_PK PRIMARY KEY (menteeFeedbackFormId),
-    CONSTRAINT MenteeFeedbackForm_Match FOREIGN KEY (matchId) REFERENCES Match
+    CONSTRAINT MenteeFeedbackForm_MatchTable FOREIGN KEY (matchId) REFERENCES MatchTable(matchId)
 );
 
 CREATE TABLE Workshop (
-    workshopId int(1000) AUTO_INCREMENT,
+    workshopId int AUTO_INCREMENT,
     topic varchar(20) NOT NULL,
     date datetime NOT NULL,
     location varchar(20) NOT NULL,
@@ -118,3 +119,14 @@ CREATE TABLE Workshop (
     CONSTRAINT Workshop_PK PRIMARY KEY (workshopId)
 
 );
+
+
+/*Drop table statements
+DROP TABLE Admin;
+DROP TABLE Mentor;
+DROP TABLE Mentee;
+DROP TABLE Match
+DROP TABLE JournalEntry
+DROP TABLE MenteeFeedbackForm
+DROP TABLE Workshop
+*/
