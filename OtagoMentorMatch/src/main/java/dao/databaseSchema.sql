@@ -1,4 +1,4 @@
-USE OMM;
+
 CREATE TABLE Admin (
     adminId int AUTO_INCREMENT,
     password varchar(16) NOT NULL,
