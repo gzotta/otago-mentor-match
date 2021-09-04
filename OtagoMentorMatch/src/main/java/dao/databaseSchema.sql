@@ -1,132 +1,132 @@
 
-CREATE TABLE Admin (
-    adminId int AUTO_INCREMENT,
+CREATE TABLE admin (
+    admin_id int AUTO_INCREMENT,
     password varchar(16) NOT NULL,
     fname varchar(15) NOT NULL,
     lname varchar (15) NOT NULL,
-    phoneNumber varchar(13) NOT NULL,
-    CONSTRAINT Admin_PK PRIMARY KEY (adminId)
+    phone_number varchar(13) NOT NULL,
+    CONSTRAINT admin_PK PRIMARY KEY (admin_id)
 );
 
 
-CREATE TABLE Mentor (
-    mentorId int AUTO_INCREMENT,
-    mentorPassword varchar(16) NOT NULL,
+CREATE TABLE mentor (
+    mentor_id int AUTO_INCREMENT,
+    mentor_password varchar(16) NOT NULL,
     fname varchar(15) NOT NULL,
     lname varchar (15) NOT NULL,
     email varchar(50) NOT NULL,
-    phoneNumber varchar(13) NOT NULL,
+    phone_number varchar(13) NOT NULL,
     ethnicity varchar (20) NOT NULL,
-    iwiAfilitation varchar (20) NOT NULL,
-    companyName varchar (20) NOT NULL,
-    employerJobTitle varchar (20) NOT NULL,
-    jobTitleDepartment varchar (20) NOT NULL,
+    iwi_afilitation varchar (20) NOT NULL,
+    company_name varchar (20) NOT NULL,
+    employer_job_title varchar (20) NOT NULL,
+    job_title_department varchar (20) NOT NULL,
     industry varchar (20) NOT NULL,
-    primaryWorkingIndustry varchar (20) NOT NULL,
-    briefCareerHistory varchar (20) NOT NULL,
-    modeOfMentoringSessions varchar (20) NOT NULL,
-    undergraduateCourse varchar (20) NOT NULL,
-    undergraduateInstitution varchar (20) NOT NULL,
-    undergraduateYearOfGraduation varchar (4) NOT NULL,
-    postgraduateCourse varchar (20) NOT NULL,
-    postgraduateInstitution varchar (20) NOT NULL,
-    postgraduateYearOfGraduation varchar (4) NOT NULL,
-    currentWorkingAndLivingCountry varchar (20) NOT NULL,
-    mentoringPreference varchar (20) NOT NULL,
-    howFindOMM varchar (20) NOT NULL,
+    primary_working_industry varchar (20) NOT NULL,
+    brief_career_history varchar (20) NOT NULL,
+    mode_of_mentoring_sessions varchar (20) NOT NULL,
+    undergraduate_course varchar (20) NOT NULL,
+    undergraduate_institution varchar (20) NOT NULL,
+    undergraduate_year_of_graduation varchar (4) NOT NULL,
+    postgraduate_course varchar (20) NOT NULL,
+    postgraduate_institution varchar (20) NOT NULL,
+    postgraduate_year_of_graduation varchar (4) NOT NULL,
+    current_working_and_living_country varchar (20) NOT NULL,
+    mentoring_preference varchar (20) NOT NULL,
+    how_find_omm varchar (20) NOT NULL,
     bio varchar (100) NOT NULL,
-    extraInfo varchar (100) NOT NULL,
-    newToMentory varchar (3) NOT NULL,
-    CONSTRAINT Mentor_PK PRIMARY KEY (mentorId)
+    extra_info varchar (100) NOT NULL,
+    new_to_mentory varchar (3) NOT NULL,
+    CONSTRAINT mentor_PK PRIMARY KEY (mentor_id)
     
 );
 
 
-CREATE TABLE Mentee (
-    menteeId int AUTO_INCREMENT,
+CREATE TABLE mentee (
+    mentee_id int AUTO_INCREMENT,
     password varchar(16) NOT NULL,
     fname varchar(15) NOT NULL,
     lname varchar (15) NOT NULL,
-    phoneNumber varchar(13) NOT NULL,
+    phone_number varchar(13) NOT NULL,
     email varchar(50) NOT NULL,
-    yearOfStudy varchar(4) NOT NULL,
-    motivationForJoiningOMM varchar(100) NOT NULL,
-    industryOfInterest varchar(20) NOT NULL,
-    learningMethod varchar(20) NOT NULL,
-    personalInterests varchar(50) NOT NULL,
-    howFindOMM varchar(50) NOT NULL,
-    randomMatching varchar(3) NOT NULL,
+    year_of_study varchar(4) NOT NULL,
+    motivation_for_joining_omm varchar(100) NOT NULL,
+    industry_of_interest varchar(20) NOT NULL,
+    learning_method varchar(20) NOT NULL,
+    personal_interests varchar(50) NOT NULL,
+    how_find_omm varchar(50) NOT NULL,
+    random_matching varchar(3) NOT NULL,
     bio varchar(100) NOT NULL,
-    CONSTRAINT Mentee_PK PRIMARY KEY (menteeId)
+    CONSTRAINT mentee_PK PRIMARY KEY (mentee_id)
 );
 
 
 
-CREATE TABLE MatchTable (
-    matchId int AUTO_INCREMENT,
+CREATE TABLE match_table (
+    match_id int AUTO_INCREMENT,
     date datetime NOT NULL,
-    mentorId int NOT NULL,
-    menteeId int NOT NULL,
-    CONSTRAINT MatchTable_PK PRIMARY KEY (matchId),
-    CONSTRAINT MatchTable_Mentor_FK FOREIGN KEY (mentorId) REFERENCES Mentor(mentorId),
-    CONSTRAINT MatchTable_Mentee_FK FOREIGN KEY (menteeId) REFERENCES Mentee(menteeId)
+    mentor_id int NOT NULL,
+    mentee_id int NOT NULL,
+    CONSTRAINT match_table_PK PRIMARY KEY (match_id),
+    CONSTRAINT match_table_mentor_FK FOREIGN KEY (mentor_id) REFERENCES mentor(mentor_id),
+    CONSTRAINT match_table_mentee_FK FOREIGN KEY (mentee_id) REFERENCES mentee(mentee_id)
 );
 
 
-CREATE TABLE JournalEntry (
-    journalEntryId int AUTO_INCREMENT,
-    topicsCovered varchar(100) NOT NULL,
-    lengthOfSession varchar(15) NOT NULL,
+CREATE TABLE journal_entry (
+    journal_entry_id int AUTO_INCREMENT,
+    topics_covered varchar(100) NOT NULL,
+    length_of_session varchar(15) NOT NULL,
     notes varchar(100),
-    matchId int NOT NULL,
-    CONSTRAINT JournalEntry_PK PRIMARY KEY (journalEntryId),
-    CONSTRAINT JournalEntry_MatchTable FOREIGN KEY (matchId) REFERENCES MatchTable(matchId)
+    match_id int NOT NULL,
+    CONSTRAINT journal_entry_PK PRIMARY KEY (journal_entry_id),
+    CONSTRAINT journal_entry_match_table FOREIGN KEY (match_id) REFERENCES match_table(match_id)
 );
 
-CREATE TABLE MenteeFeedbackForm(
-    menteeFeedbackFormId int AUTO_INCREMENT,
-    communicationPlatform varchar(20) NOT NULL,
-    findingOMM varchar (50) NOT NULL,
-    sessionQuality varchar(20) NOT NULL,
-    qualityOfMatch varchar(20) NOT  NULL,
+CREATE TABLE mentee_feedback_form (
+    mentee_feedback_form_id int AUTO_INCREMENT,
+    communication_platform varchar(20) NOT NULL,
+    finding_omm varchar (50) NOT NULL,
+    session_quality varchar(20) NOT NULL,
+    quality_of_match varchar(20) NOT  NULL,
     recommendation varchar(50) NOT NULL,
-    activeListeningRating varchar(20) NOT NULL,
-    feedbackRating varchar(20) NOT NULL,
-    trustRating varchar(20) NOT NULL,
-    achieveGoalsrating varchar(20) NOT NULL,
-    developingStrategiesRating varchar(20) NOT NULL,
-    motivationRating varchar(20) NOT NULL,
-    workingLoadRating varchar(20) NOT NULL,
-    programmeImprovements varchar(100) NOT NULL,
-    timeContributed varchar(20) NOT NULL,
-    continueRelationship varchar(3) NOT NULL,
+    active_listening_rating varchar(20) NOT NULL,
+    feedback_rating varchar(20) NOT NULL,
+    trust_rating varchar(20) NOT NULL,
+    achieved_goals_rating varchar(20) NOT NULL,
+    developing_strategies_rating varchar(20) NOT NULL,
+    motivation_rating varchar(20) NOT NULL,
+    working_load_rating varchar(20) NOT NULL,
+    programme_improvements varchar(100) NOT NULL,
+    time_contributed varchar(20) NOT NULL,
+    continue_relationship varchar(3) NOT NULL,
     testimonial varchar(3) NOT NULL,
-    otherComments varchar(50) NOT NULL,
+    other_comments varchar(50) NOT NULL,
     takeaways varchar(50) NOT NULL,
-    matchId int NOT NULL,
-    CONSTRAINT MenteeFeedbackForm_PK PRIMARY KEY (menteeFeedbackFormId),
-    CONSTRAINT MenteeFeedbackForm_MatchTable FOREIGN KEY (matchId) REFERENCES MatchTable(matchId)
+    match_id int NOT NULL,
+    CONSTRAINT mentee_feedback_form_PK PRIMARY KEY (mentee_feedback_form_id),
+    CONSTRAINT mentee_feedback_form_match_table FOREIGN KEY (match_id) REFERENCES match_table(match_id)
 );
 
 CREATE TABLE Workshop (
-    workshopId int AUTO_INCREMENT,
+    workshop_id int AUTO_INCREMENT,
     topic varchar(20) NOT NULL,
     date datetime NOT NULL,
     location varchar(20) NOT NULL,
     online varchar(3) NOT NULL,
     mentor varchar(3) NOT NULL,
     mentee varchar(3) NOT NULL,
-    CONSTRAINT Workshop_PK PRIMARY KEY (workshopId)
+    CONSTRAINT Workshop_PK PRIMARY KEY (workshop_id)
 
 );
 
 
 /*Drop table statements
-DROP TABLE Admin;
-DROP TABLE Mentor;
-DROP TABLE Mentee;
+DROP TABLE admin;
+DROP TABLE mentor;
+DROP TABLE mentee;
 DROP TABLE Match
-DROP TABLE JournalEntry
-DROP TABLE MenteeFeedbackForm
+DROP TABLE journal_entry
+DROP TABLE mentee_feedback_form
 DROP TABLE Workshop
 */
