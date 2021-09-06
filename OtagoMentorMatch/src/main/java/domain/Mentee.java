@@ -6,6 +6,7 @@ package domain;
  */
 public class Mentee {
     private Integer menteeId;
+    private String menteePassword;
     private String fname;
     private String lname;
     private String phoneNumber;
@@ -22,8 +23,9 @@ public class Mentee {
     public Mentee(){}
 
     // Constructor with all fields.
-    public Mentee(Integer menteeId, String fname, String lname, String phoneNumber, String email, String yearOfStudy, String motivationForJoiningOMM, String industryOfInterest, String learningMethod, String personalInterests, String howFindOMM, String randomMatching, String bio) {
+    public Mentee(Integer menteeId, String menteePassword, String fname, String lname, String phoneNumber, String email, String yearOfStudy, String motivationForJoiningOMM, String industryOfInterest, String learningMethod, String personalInterests, String howFindOMM, String randomMatching, String bio) {
         this.menteeId = menteeId;
+        this.menteePassword = menteePassword;
         this.fname = fname;
         this.lname = lname;
         this.phoneNumber = phoneNumber;
@@ -38,6 +40,7 @@ public class Mentee {
         this.bio = bio;
     }
 
+
     // Getters and Setters.
     public Integer getMenteeId() {
         return this.menteeId;
@@ -47,19 +50,27 @@ public class Mentee {
         this.menteeId = menteeId;
     }
 
-    public String getFName() {
+    public String getMenteePassword() {
+        return this.menteePassword;
+    }
+
+    public void setMenteePassword(String menteePassword) {
+        this.menteePassword = menteePassword;
+    }
+
+    public String getFname() {
         return this.fname;
     }
 
-    public void setFName(String fname) {
+    public void setFname(String fname) {
         this.fname = fname;
     }
 
-    public String getLName() {
+    public String getLname() {
         return this.lname;
     }
 
-    public void setLName(String lname) {
+    public void setLname(String lname) {
         this.lname = lname;
     }
 
@@ -142,26 +153,29 @@ public class Mentee {
     public void setBio(String bio) {
         this.bio = bio;
     }
+   
 
     // To string
     @Override
     public String toString() {
         return "{" +
-            " menteeId='" + this.menteeId + "'" +
-            ", fName='" + this.fname + "'" +
-            ", lName='" + this.lname + "'" +
-            ", phoneNumber='" + this.phoneNumber + "'" +
-            ", email='" + this.email + "'" +
-            ", yearOfStudy='" + this.yearOfStudy + "'" +
-            ", motivationForJoiningOMM='" + this.motivationForJoiningOMM + "'" +
-            ", industryOfInterest='" + this.industryOfInterest + "'" +
-            ", learningMethod='" + this.learningMethod + "'" +
-            ", personalInterests='" + this.personalInterests + "'" +
-            ", howFindOMM='" + this.howFindOMM + "'" +
-            ", randomMatching='" + this.randomMatching + "'" +
-            ", bio='" + this.bio + "'" +
+            " menteeId='" + menteeId + "'" +
+            ", menteePassword='" + menteePassword + "'" +
+            ", fname='" + fname + "'" +
+            ", lname='" + lname + "'" +
+            ", phoneNumber='" + phoneNumber + "'" +
+            ", email='" + email + "'" +
+            ", yearOfStudy='" + yearOfStudy + "'" +
+            ", motivationForJoiningOMM='" + motivationForJoiningOMM + "'" +
+            ", industryOfInterest='" + industryOfInterest + "'" +
+            ", learningMethod='" + learningMethod + "'" +
+            ", personalInterests='" + personalInterests + "'" +
+            ", howFindOMM='" + howFindOMM + "'" +
+            ", randomMatching='" + randomMatching + "'" +
+            ", bio='" + bio + "'" +
             "}";
     }
+
 
 }//end class
 
