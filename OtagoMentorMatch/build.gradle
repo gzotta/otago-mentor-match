@@ -33,7 +33,8 @@ dependencies {
     implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre'
     
     
-    //database library
+    // Get MariaDB Java Driver.
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
    
     
     
