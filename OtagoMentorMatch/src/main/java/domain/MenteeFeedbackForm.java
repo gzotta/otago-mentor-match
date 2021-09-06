@@ -1,11 +1,12 @@
 package domain;
 
 public class MenteeFeedbackForm {
+    private Integer menteeFeedbackFormId;
     private String communication_platform;
     private String finding_omm;
     private String session_quality;
     private String quality_of_match;
-    private boolean reccomendation;
+    private boolean recommendation;
     private String active_listening_rating;
     private String feedback_rating;
     private String trust_rating;
@@ -28,12 +29,13 @@ public class MenteeFeedbackForm {
 
 
     //constructor with all fields.
-    public MenteeFeedbackForm(String communication_platform, String finding_omm, String session_quality, String quality_of_match, boolean reccomendation, String active_listening_rating, String feedback_rating, String trust_rating, String achieve_golas_rating, String developing_strategiies_rating, String motivation_rating, String working_goals_rating, String programme_improvements, String time_contributed, boolean continue_relationship, boolean testimonial, String other_comments, String takeaways, Integer matchId) {
+    public MenteeFeedbackForm(Integer menteeFeedbackFormId, String communication_platform, String finding_omm, String session_quality, String quality_of_match, boolean recommendation, String active_listening_rating, String feedback_rating, String trust_rating, String achieve_golas_rating, String developing_strategiies_rating, String motivation_rating, String working_goals_rating, String programme_improvements, String time_contributed, boolean continue_relationship, boolean testimonial, String other_comments, String takeaways, Integer matchId) {
+        this.menteeFeedbackFormId = menteeFeedbackFormId;
         this.communication_platform = communication_platform;
         this.finding_omm = finding_omm;
         this.session_quality = session_quality;
         this.quality_of_match = quality_of_match;
-        this.reccomendation = reccomendation;
+        this.recommendation = recommendation;
         this.active_listening_rating = active_listening_rating;
         this.feedback_rating = feedback_rating;
         this.trust_rating = trust_rating;
@@ -51,7 +53,15 @@ public class MenteeFeedbackForm {
     }
 
 
+
     //getters and setters.
+    public Integer getMenteeFeedbackFormId() {
+        return this.menteeFeedbackFormId;
+    }
+
+    public void setMenteeFeedbackFormId(Integer menteeFeedbackFormId) {
+        this.menteeFeedbackFormId = menteeFeedbackFormId;
+    }
 
     public String getCommunication_platform() {
         return this.communication_platform;
@@ -85,16 +95,16 @@ public class MenteeFeedbackForm {
         this.quality_of_match = quality_of_match;
     }
 
-    public boolean isReccomendation() {
-        return this.reccomendation;
+    public boolean isRecommendation() {
+        return this.recommendation;
     }
 
-    public boolean getReccomendation() {
-        return this.reccomendation;
+    public boolean getRecommendation() {
+        return this.recommendation;
     }
 
-    public void setReccomendation(boolean reccomendation) {
-        this.reccomendation = reccomendation;
+    public void setRecommendation(boolean recommendation) {
+        this.recommendation = recommendation;
     }
 
     public String getActive_listening_rating() {
@@ -219,15 +229,18 @@ public class MenteeFeedbackForm {
 
 
 
+
     //to string.
+
     @Override
     public String toString() {
         return "{" +
-            " communication_platform='" + communication_platform + "'" +
+            " menteeFeedbackFormId='" + menteeFeedbackFormId + "'" +
+            ", communication_platform='" + communication_platform + "'" +
             ", finding_omm='" + finding_omm + "'" +
             ", session_quality='" + session_quality + "'" +
             ", quality_of_match='" + quality_of_match + "'" +
-            ", reccomendation='" + reccomendation + "'" +
+            ", recommendation='" + recommendation + "'" +
             ", active_listening_rating='" + active_listening_rating + "'" +
             ", feedback_rating='" + feedback_rating + "'" +
             ", trust_rating='" + trust_rating + "'" +
@@ -244,6 +257,6 @@ public class MenteeFeedbackForm {
             ", matchId='" + matchId + "'" +
             "}";
     }
- 
+
     
 }//end class

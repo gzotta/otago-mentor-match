@@ -24,7 +24,7 @@ public class Mentor {
     private String postgraduateYearOfGraduation;
     private String currentWorkAndLivingCountry;
     private String mentoringPreference;
-    private String howFindOMM;;
+    private String howFindOMM;
     private String bio;
     private String extraInfo;
     private Boolean newToMentory;
