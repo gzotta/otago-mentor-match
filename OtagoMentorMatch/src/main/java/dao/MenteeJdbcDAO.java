@@ -62,7 +62,7 @@ public class MenteeJdbcDAO {
                 } else {
                     throw new DAOException("Problem getting generated Mentee ID");
                 }
-                
+
                 mentee.setMenteeId(Id);
             
             } catch (SQLException ex) {  // we are forced to catch SQLException.
@@ -97,26 +97,27 @@ public class MenteeJdbcDAO {
                     String year_of_study = rs.getString("year_of_study");
                     String motivation_for_joining_omm = rs.getString("motivation_for_joining_omm");
                     String industry_of_interest = rs.getString("industry_of_interest");
+                    String learning_method = rs.getString("learning_method");
                     String personal_interests = rs.getString("personal_interests");
                     String how_find_omm = rs.getString("how_find_omm");
                     String random_matching = rs.getString("random_matching");
                     String bio = rs.getString("bio");
                     
                     // use the data to create a Mentee object.
-                    Mentee mentee = new Mwentee();
-                    mentee.setMenteeId();
-                    mentee.setMenteePassword();
-                    mentee.setLname();
-                    mentee.setPhoneNumber();
-                    mentee.setEmail();
-                    mentee.setYearOfStudy();
-                    mentee.setMotivationForJoiningOMM();
-                    mentee.setIndustryOfInterest();
-                    mentee.setLearningMethod();
-                    mentee.setPersonalInterests();
-                    mentee.setHowFindOMM();
-                    mentee.setRandomMatching();
-                    mentee.setBio();
+                    Mentee mentee = new Mentee();
+                    mentee.setMenteeId(menteeId);
+                    mentee.setMenteePassword(password);
+                    mentee.setLname(lname);
+                    mentee.setPhoneNumber(phone_number);
+                    mentee.setEmail(email);
+                    mentee.setYearOfStudy(year_of_study);
+                    mentee.setMotivationForJoiningOMM(motivation_for_joining_omm);
+                    mentee.setIndustryOfInterest(industry_of_interest);
+                    mentee.setLearningMethod(learning_method);
+                    mentee.setPersonalInterests(personal_interests);
+                    mentee.setHowFindOMM(how_find_omm);
+                    mentee.setRandomMatching(random_matching);
+                    mentee.setBio(bio);
                     
                     return mentee;
                 } else {
@@ -133,7 +134,7 @@ public class MenteeJdbcDAO {
     // accesses getMenteeByFname() above.
     public Boolean validateCredentials(String fname, String password) {
         Mentee mentee = getMenteeByFname(fname);
-        if ((mentee != null) && (mentee.getPassword().equals(password))) {
+        if ((mentee != null) && (mentee.getMenteePassword().equals(password))) {
             return true;
         } else {
             return false;
