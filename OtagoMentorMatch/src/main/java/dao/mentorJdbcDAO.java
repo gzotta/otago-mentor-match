@@ -27,7 +27,7 @@ public class MentorJdbcDAO {
  
     // method to save Mentee.
     public void saveMentor(Mentor mentor) {
-        String sql = "INSERT INTO mentor (mentor_password, fname, lname, email, phone_number, ethnicity, iwi_afiliation, company_name, employer_job_title, job_title_department, industry, primary_working_industry, brief_career_history, mode_of_mentoring_sessions, undergraduate_course, undergraduate_institution, undergraduate_year_of_graduation, postgraduate_course, postgraduate_instituition, postgraduate_year_of_graduation, current_working_and_living_country, mentoring_preference, how_find_omm, bio, extra_info, new_to_mentory) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO mentor (mentor_password, fname, lname, email, phone_number, ethnicity, iwi_afiliation, company_name, employer_job_title, job_title_department, industry, primary_working_industry, brief_career_history, mode_of_mentoring_sessions, undergraduate_course, undergraduate_institution, undergraduate_year_of_graduation, postgraduate_course, postgraduate_institution, postgraduate_year_of_graduation, current_working_and_living_country, mentoring_preference, how_find_omm, bio, extra_info, new_to_mentory) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
  
         try (
                 // get connection to database.
