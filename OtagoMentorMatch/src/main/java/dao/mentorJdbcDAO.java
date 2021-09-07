@@ -17,7 +17,7 @@ public class MentorJdbcDAO {
     private String databaseURI = DbConnection.getDefaultConnectionUri();
  
     // default constructor.
-    public MenteeJdbcDAO() {
+    public MentorJdbcDAO() {
     }
  
     // constructor that intialises the URI.
