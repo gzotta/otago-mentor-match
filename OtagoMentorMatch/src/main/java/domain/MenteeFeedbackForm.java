@@ -2,23 +2,23 @@ package domain;
 
 public class MenteeFeedbackForm {
     private Integer menteeFeedbackFormId;
-    private String communication_platform;
-    private String finding_omm;
-    private String session_quality;
-    private String quality_of_match;
+    private String communicationPlatform;
+    private String findingOMM;
+    private String sessionQuality;
+    private String qualityOfMatch;
     private boolean recommendation;
-    private String active_listening_rating;
-    private String feedback_rating;
-    private String trust_rating;
-    private String achieve_golas_rating;
-    private String developing_strategiies_rating;
-    private String motivation_rating;
-    private String working_goals_rating;
-    private String programme_improvements;
-    private String time_contributed;
-    private boolean continue_relationship;
+    private String activeListeningRating;
+    private String feedbackRating;
+    private String trustRating;
+    private String achievedGoalsRating;
+    private String developingStrategiesRating;
+    private String motivationRating;
+    private String workingLoadRating;
+    private String programmeImprovements;
+    private String timeContributed;
+    private boolean continueRelationship;
     private boolean testimonial;
-    private String other_comments;
+    private String otherComments;
     private String takeaways;
     private Integer matchId;
 
@@ -29,28 +29,29 @@ public class MenteeFeedbackForm {
 
 
     //constructor with all fields.
-    public MenteeFeedbackForm(Integer menteeFeedbackFormId, String communication_platform, String finding_omm, String session_quality, String quality_of_match, boolean recommendation, String active_listening_rating, String feedback_rating, String trust_rating, String achieve_golas_rating, String developing_strategiies_rating, String motivation_rating, String working_goals_rating, String programme_improvements, String time_contributed, boolean continue_relationship, boolean testimonial, String other_comments, String takeaways, Integer matchId) {
+    public MenteeFeedbackForm(Integer menteeFeedbackFormId, String communicationPlatform, String findingOMM, String sessionQuality, String qualityOfMatch, boolean recommendation, String activeListeningRating, String feedbackRating, String trustRating, String achievedGoalsRating, String developingStrategiesRating, String motivationRating, String workingLoadRating, String programmeImprovements, String timeContributed, boolean continueRelationship, boolean testimonial, String otherComments, String takeaways, Integer matchId) {
         this.menteeFeedbackFormId = menteeFeedbackFormId;
-        this.communication_platform = communication_platform;
-        this.finding_omm = finding_omm;
-        this.session_quality = session_quality;
-        this.quality_of_match = quality_of_match;
+        this.communicationPlatform = communicationPlatform;
+        this.findingOMM = findingOMM;
+        this.sessionQuality = sessionQuality;
+        this.qualityOfMatch = qualityOfMatch;
         this.recommendation = recommendation;
-        this.active_listening_rating = active_listening_rating;
-        this.feedback_rating = feedback_rating;
-        this.trust_rating = trust_rating;
-        this.achieve_golas_rating = achieve_golas_rating;
-        this.developing_strategiies_rating = developing_strategiies_rating;
-        this.motivation_rating = motivation_rating;
-        this.working_goals_rating = working_goals_rating;
-        this.programme_improvements = programme_improvements;
-        this.time_contributed = time_contributed;
-        this.continue_relationship = continue_relationship;
+        this.activeListeningRating = activeListeningRating;
+        this.feedbackRating = feedbackRating;
+        this.trustRating = trustRating;
+        this.achievedGoalsRating = achievedGoalsRating;
+        this.developingStrategiesRating = developingStrategiesRating;
+        this.motivationRating = motivationRating;
+        this.workingLoadRating = workingLoadRating;
+        this.programmeImprovements = programmeImprovements;
+        this.timeContributed = timeContributed;
+        this.continueRelationship = continueRelationship;
         this.testimonial = testimonial;
-        this.other_comments = other_comments;
+        this.otherComments = otherComments;
         this.takeaways = takeaways;
         this.matchId = matchId;
     }
+
 
 
 
@@ -63,36 +64,36 @@ public class MenteeFeedbackForm {
         this.menteeFeedbackFormId = menteeFeedbackFormId;
     }
 
-    public String getCommunication_platform() {
-        return this.communication_platform;
+    public String getCommunicationPlatform() {
+        return this.communicationPlatform;
     }
 
-    public void setCommunication_platform(String communication_platform) {
-        this.communication_platform = communication_platform;
+    public void setCommunicationPlatform(String communicationPlatform) {
+        this.communicationPlatform = communicationPlatform;
     }
 
-    public String getFinding_omm() {
-        return this.finding_omm;
+    public String getFindingOMM() {
+        return this.findingOMM;
     }
 
-    public void setFinding_omm(String finding_omm) {
-        this.finding_omm = finding_omm;
+    public void setFindingOMM(String findingOMM) {
+        this.findingOMM = findingOMM;
     }
 
-    public String getSession_quality() {
-        return this.session_quality;
+    public String getSessionQuality() {
+        return this.sessionQuality;
     }
 
-    public void setSession_quality(String session_quality) {
-        this.session_quality = session_quality;
+    public void setSessionQuality(String sessionQuality) {
+        this.sessionQuality = sessionQuality;
     }
 
-    public String getQuality_of_match() {
-        return this.quality_of_match;
+    public String getQualityOfMatch() {
+        return this.qualityOfMatch;
     }
 
-    public void setQuality_of_match(String quality_of_match) {
-        this.quality_of_match = quality_of_match;
+    public void setQualityOfMatch(String qualityOfMatch) {
+        this.qualityOfMatch = qualityOfMatch;
     }
 
     public boolean isRecommendation() {
@@ -107,88 +108,88 @@ public class MenteeFeedbackForm {
         this.recommendation = recommendation;
     }
 
-    public String getActive_listening_rating() {
-        return this.active_listening_rating;
+    public String getActiveListeningRating() {
+        return this.activeListeningRating;
     }
 
-    public void setActive_listening_rating(String active_listening_rating) {
-        this.active_listening_rating = active_listening_rating;
+    public void setActiveListeningRating(String activeListeningRating) {
+        this.activeListeningRating = activeListeningRating;
     }
 
-    public String getFeedback_rating() {
-        return this.feedback_rating;
+    public String getFeedbackRating() {
+        return this.feedbackRating;
     }
 
-    public void setFeedback_rating(String feedback_rating) {
-        this.feedback_rating = feedback_rating;
+    public void setFeedbackRating(String feedbackRating) {
+        this.feedbackRating = feedbackRating;
     }
 
-    public String getTrust_rating() {
-        return this.trust_rating;
+    public String getTrustRating() {
+        return this.trustRating;
     }
 
-    public void setTrust_rating(String trust_rating) {
-        this.trust_rating = trust_rating;
+    public void setTrustRating(String trustRating) {
+        this.trustRating = trustRating;
     }
 
-    public String getAchieve_golas_rating() {
-        return this.achieve_golas_rating;
+    public String getAchievedGoalsRating() {
+        return this.achievedGoalsRating;
     }
 
-    public void setAchieve_golas_rating(String achieve_golas_rating) {
-        this.achieve_golas_rating = achieve_golas_rating;
+    public void setAchievedGoalsRating(String achievedGoalsRating) {
+        this.achievedGoalsRating = achievedGoalsRating;
     }
 
-    public String getDeveloping_strategiies_rating() {
-        return this.developing_strategiies_rating;
+    public String getDevelopingStrategiesRating() {
+        return this.developingStrategiesRating;
     }
 
-    public void setDeveloping_strategiies_rating(String developing_strategiies_rating) {
-        this.developing_strategiies_rating = developing_strategiies_rating;
+    public void setDevelopingStrategiesRating(String developingStrategiesRating) {
+        this.developingStrategiesRating = developingStrategiesRating;
     }
 
-    public String getMotivation_rating() {
-        return this.motivation_rating;
+    public String getMotivationRating() {
+        return this.motivationRating;
     }
 
-    public void setMotivation_rating(String motivation_rating) {
-        this.motivation_rating = motivation_rating;
+    public void setMotivationRating(String motivationRating) {
+        this.motivationRating = motivationRating;
     }
 
-    public String getWorking_goals_rating() {
-        return this.working_goals_rating;
+    public String getWorkingLoadRating() {
+        return this.workingLoadRating;
     }
 
-    public void setWorking_goals_rating(String working_goals_rating) {
-        this.working_goals_rating = working_goals_rating;
+    public void setWorkingLoadRating(String workingLoadRating) {
+        this.workingLoadRating = workingLoadRating;
     }
 
-    public String getProgramme_improvements() {
-        return this.programme_improvements;
+    public String getProgrammeImprovements() {
+        return this.programmeImprovements;
     }
 
-    public void setProgramme_improvements(String programme_improvements) {
-        this.programme_improvements = programme_improvements;
+    public void setProgrammeImprovements(String programmeImprovements) {
+        this.programmeImprovements = programmeImprovements;
     }
 
-    public String getTime_contributed() {
-        return this.time_contributed;
+    public String getTimeContributed() {
+        return this.timeContributed;
     }
 
-    public void setTime_contributed(String time_contributed) {
-        this.time_contributed = time_contributed;
+    public void setTimeContributed(String timeContributed) {
+        this.timeContributed = timeContributed;
     }
 
-    public boolean isContinue_relationship() {
-        return this.continue_relationship;
+    public boolean isContinueRelationship() {
+        return this.continueRelationship;
     }
 
-    public boolean getContinue_relationship() {
-        return this.continue_relationship;
+    public boolean getContinueRelationship() {
+        return this.continueRelationship;
     }
 
-    public void setContinue_relationship(boolean continue_relationship) {
-        this.continue_relationship = continue_relationship;
+    public void setContinueRelationship(boolean continueRelationship) {
+        this.continueRelationship = continueRelationship;
     }
 
     public boolean isTestimonial() {
@@ -203,12 +204,12 @@ public class MenteeFeedbackForm {
         this.testimonial = testimonial;
     }
 
-    public String getOther_comments() {
-        return this.other_comments;
+    public String getOtherComments() {
+        return this.otherComments;
     }
 
-    public void setOther_comments(String other_comments) {
-        this.other_comments = other_comments;
+    public void setOtherComments(String otherComments) {
+        this.otherComments = otherComments;
     }
 
     public String getTakeaways() {
@@ -230,33 +231,34 @@ public class MenteeFeedbackForm {
 
 
 
-    //to string.
 
+    //to string.
     @Override
     public String toString() {
         return "{" +
             " menteeFeedbackFormId='" + menteeFeedbackFormId + "'" +
-            ", communication_platform='" + communication_platform + "'" +
-            ", finding_omm='" + finding_omm + "'" +
-            ", session_quality='" + session_quality + "'" +
-            ", quality_of_match='" + quality_of_match + "'" +
+            ", communicationPlatform='" + communicationPlatform + "'" +
+            ", findingOMM='" + findingOMM + "'" +
+            ", sessionQuality='" + sessionQuality + "'" +
+            ", qualityOfMatch='" + qualityOfMatch + "'" +
             ", recommendation='" + recommendation + "'" +
-            ", active_listening_rating='" + active_listening_rating + "'" +
-            ", feedback_rating='" + feedback_rating + "'" +
-            ", trust_rating='" + trust_rating + "'" +
-            ", achieve_golas_rating='" + achieve_golas_rating + "'" +
-            ", developing_strategiies_rating='" + developing_strategiies_rating + "'" +
-            ", motivation_rating='" + motivation_rating + "'" +
-            ", working_goals_rating='" + working_goals_rating + "'" +
-            ", programme_improvements='" + programme_improvements + "'" +
-            ", time_contributed='" + time_contributed + "'" +
-            ", continue_relationship='" + continue_relationship + "'" +
+            ", activeListeningRating='" + activeListeningRating + "'" +
+            ", feedbackRating='" + feedbackRating + "'" +
+            ", trustRating='" + trustRating + "'" +
+            ", achievedGoalsRating='" + achievedGoalsRating + "'" +
+            ", developingStrategiesRating='" + developingStrategiesRating + "'" +
+            ", motivationRating='" + motivationRating + "'" +
+            ", workingLoadRating='" + workingLoadRating + "'" +
+            ", programmeImprovements='" + programmeImprovements + "'" +
+            ", timeContributed='" + timeContributed + "'" +
+            ", continueRelationship='" + continueRelationship + "'" +
             ", testimonial='" + testimonial + "'" +
-            ", other_comments='" + other_comments + "'" +
+            ", otherComments='" + otherComments + "'" +
             ", takeaways='" + takeaways + "'" +
             ", matchId='" + matchId + "'" +
             "}";
     }
+
 
     
 }//end class
