@@ -55,15 +55,15 @@ public class MenteeJdbcDAO {
             
 
 	            // getting generated keys and adding it to domain.
-                Integer Id = null;
+                Integer id = null;
                 ResultSet rs = stmt.getGeneratedKeys();
                 if (rs.next()) {
-                    Id = rs.getInt(1);
+                    id = rs.getInt(1);
                 } else {
                     throw new DAOException("Problem getting generated Mentee ID");
                 }
 
-                mentee.setMenteeId(Id);
+                mentee.setMenteeId(id);
             
             } catch (SQLException ex) {  // we are forced to catch SQLException.
                 // don't let the SQLException leak from our DAO encapsulation.
