@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'application'
+apply plugin: 'java-library'
 
 
 mainClassName = 'web.Server'
@@ -34,7 +35,7 @@ dependencies {
     
     
     // Get MariaDB Java Driver.
-    implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
+     implementation 'org.mariadb.jdbc:mariadb-java-client:2.6.0'
    
     
     
