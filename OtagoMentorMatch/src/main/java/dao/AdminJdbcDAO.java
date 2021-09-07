@@ -37,8 +37,8 @@ public class AdminJdbcDAO {
  
                 // copy the data from the Mentee domain object into the SQL parameters.
                 stmt.setString(1, admin.getPassword());
-                stmt.setString(3, admin.getLname());
-                stmt.setString(4, admin.getEmail());
+                stmt.setString(2, admin.getLname());
+                stmt.setString(3, admin.getEmail());
                 stmt.setString(4, admin.getPhoneNumber());
 	            
  
