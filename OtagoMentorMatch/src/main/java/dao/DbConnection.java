@@ -1,8 +1,10 @@
 package dao;
 
 
+import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
+import org.mariadb.jdbc.MariaDbPoolDataSource;
 
 
 /*
@@ -20,14 +22,15 @@ public class DbConnection {
    private static final String PASSWORD = "admin";
 
    private static final Integer DB_PORT = 3306;
-   private static final String DEFAULT_URI = "jdbc:mariadb://localhost:" + DB_PORT + "/";
+   private static final String DEFAULT_URI = "jdbc:mariadb://localhost:" + DB_PORT + "/omm?user="+USERNAME;
+   
 
-   private static Connection  pool;
+   private static MariaDbPoolDataSource pool;
 
    public static Connection getConnection(String uri) {
 
       if (pool == null) {
-	  pool = DriveManager.getConnection((uri, USERNAME, PASSWORD);
+	  pool = new MariaDbPoolDataSource(DEFAULT_URI);
       }
 
       try {
