@@ -63,8 +63,7 @@ public class MentorJdbcDAO {
                 stmt.setString(25, mentor.getExtraInfo());
                 stmt.setString(26, mentor.getNewToMentory());
 	   
-	            stmt.executeUpdate(); // execute the statement.
-            
+	            stmt.executeUpdate(); // execute the statement.           
  
 	            // getting generated keys and adding it to domain.
                 Integer Id = null;
@@ -83,10 +82,7 @@ public class MentorJdbcDAO {
             }
         }//end of method to save Mentor
  
- 
-  
-        
- 
+
     // method to sign users in.
     // accesses getMentorByEmail() above.
     public Boolean validateCredentials(String email, String password) {
@@ -116,7 +112,7 @@ public class MentorJdbcDAO {
                 if (rs.next()) {
                     // get the data out of the query.
                     //email not included; count should be 26 get's
-                    int menteeId = rs.getInt("mentor_id");
+                    Integer menteeId = rs.getInteger("mentor_id");
                     String password = rs.getString("password");
                     String fname = rs.getString("fname");
                     String lname = rs.getString("lname");
@@ -172,7 +168,6 @@ public class MentorJdbcDAO {
                     mentor.setBio(bio);
                     mentor.setExtraInfo(extra_info);
                     mentor.setNewToMentory(new_to_mentory);
-                    
                     
                     return mentor;
                 } else {
