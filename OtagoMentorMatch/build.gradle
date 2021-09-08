@@ -1,14 +1,15 @@
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'application'
-
-
+apply plugin: 'java-library'
+ 
+ 
 mainClassName = 'web.Server'
-
+ 
 repositories {
    jcenter()
 }
-
+ 
 dependencies {
     
     //Jooby dependency
@@ -33,7 +34,8 @@ dependencies {
     implementation group: 'com.google.guava', name: 'guava', version: '29.0-jre'
     
     
-    //database library
+    // Get MariaDB Java Driver.
+     implementation 'org.mariadb.jdbc:mariadb-java-client:2.6.0'
    
     
     
@@ -55,18 +57,18 @@ dependencies {
     
     
 }
-
+ 
 test {
     useJUnitPlatform()
 }
-
+ 
 run {
     standardInput = System.in
 }
-
-
-
-
+ 
+ 
+ 
+ 
 task createMissingSourceDirs {
     group = "Source Directories"
     description = "Create all of the missing source directories for this project."
@@ -96,7 +98,7 @@ task deleteEmptySourceDirs {
         }
     }
 }
-
+ 
 /*
 Jooby looks for its assets in a resource folder with the name public so 
 we need to add this to our project.
@@ -111,12 +113,10 @@ sourceSets {
         }
     }
 }
-
-
+ 
+ 
 //This is to package the release of the application
 compileJava {
     sourceCompatibility = '1.8'
     targetCompatibility = '1.8'
 }
-
- 
