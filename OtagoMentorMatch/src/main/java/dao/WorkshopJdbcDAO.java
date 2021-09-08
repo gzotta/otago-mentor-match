@@ -69,7 +69,7 @@ public class WorkshopJdbcDAO {
  
     
     // method to delete workshop
-    public void removeWorkshop(Integer workshopId) {
+    public void removeWorkshop(Workshop workshop) {
         String sql = "DELETE FROM workshop WHERE workshop_id = ?";
         
         try (
