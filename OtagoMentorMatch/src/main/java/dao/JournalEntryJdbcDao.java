@@ -33,10 +33,10 @@ public class JournalEntryJdbcDAO {
                 // copy the data from the JE object into the SQL parameters.
 
                 //these methods dont exist until changes are made in domain class
-                stmt.setString(2, journalEntry.getTopicsCovered());
-                stmt.setString(3, journalEntry.getLengthOfSession());
-                stmt.setString(4, journalEntry.getNotes());
-                stmt.setString(5, journalEntry.getMatchId());
+                stmt.setString(1, journalEntry.getTopics_covered());
+                stmt.setString(2, journalEntry.getLength_of_session());
+                stmt.setString(3, journalEntry.getNotes());
+                stmt.setInt(4, journalEntry.getMatchId());
                 
 	            stmt.executeUpdate();
             
@@ -77,7 +77,7 @@ public class JournalEntryJdbcDAO {
                     String topicsCovered = rs.getString("topics_covered");
                     String lengthOfSession = rs.getString("length_of_session");
                     String notes = rs.getString("notes");
-                    String matchId = rs.getString("match_id");
+                    Integer matchId = rs.getInt("match_id");
                     
                     // use the data to create a Journal Entry
                     JournalEntry journalEntry = new JournalEntry(journalEntryId, topicsCovered, lengthOfSession, notes, matchId);
