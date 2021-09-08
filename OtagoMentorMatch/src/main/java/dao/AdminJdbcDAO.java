@@ -37,9 +37,10 @@ public class AdminJdbcDAO {
  
                 // copy the data from the Mentee domain object into the SQL parameters.
                 stmt.setString(1, admin.getPassword());
-                stmt.setString(2, admin.getLname());
-                stmt.setString(3, admin.getEmail());
-                stmt.setString(4, admin.getPhoneNumber());
+                stmt.setString(2, admin.getFname());
+                stmt.setString(3, admin.getLname());
+                stmt.setString(4, admin.getEmail());
+                stmt.setString(5, admin.getPhoneNumber());
 	            
  
 	   
@@ -47,15 +48,15 @@ public class AdminJdbcDAO {
             
  
 	            // getting generated keys and adding it to domain.
-                Integer Id = null;
+                Integer id = null;
                 ResultSet rs = stmt.getGeneratedKeys();
                 if (rs.next()) {
-                    Id = rs.getInt(1);
+                    id = rs.getInt(1);
                 } else {
                     throw new DAOException("Problem getting generated Admin ID");
                 }
  
-                admin.setAdminId(Id);
+                admin.setAdminId(id);
             
             } catch (SQLException ex) {  // we are forced to catch SQLException.
                 // don't let the SQLException leak from our DAO encapsulation.
@@ -81,7 +82,7 @@ public class AdminJdbcDAO {
             
                 if (rs.next()) {
                     // get the data out of the query.
-                    int adminId = rs.getInt("admin_id");
+                    Integer adminId = rs.getInt("admin_id");
                     String password = rs.getString("password");
                     String fname = rs.getString("fname");
                     String lname = rs.getString("lname");
@@ -107,14 +108,14 @@ public class AdminJdbcDAO {
                 // don't let the SQLException leak from our DAO encapsulation.
                 throw new DAOException(ex.getMessage(), ex);
             }
-        }// end of method to get Admin by first name.
+        }// end of method to get Admin by email.
         
  
     // method to sign users in.
     // accesses getAdminByemail() above.
     public Boolean validateCredentials(String email, String password) {
         Admin admin = getAdminByEmail(email);
-        if ((mentee != null) && (mentee.getAdminPassword().equals(password))) {
+       if ((admin != null) && (admin.getPassword().equals(password))) if ((admin != null) && (admin.getPassword().equals(password))) {
             return true;
         } else {
             return false;
@@ -124,7 +125,7 @@ public class AdminJdbcDAO {
  
     
     // method to delete Admin
-    public void removeadmin(Admin admin) {
+    public void removeAdmin(Admin admin) {
         String sql = "DELETE FROM admin WHERE email = ?";
         
         try (
