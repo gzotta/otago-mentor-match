@@ -112,7 +112,7 @@ public class MentorJdbcDAO {
                 if (rs.next()) {
                     // get the data out of the query.
                     //email not included; count should be 26 get's
-                    Integer menteeId = rs.getInteger("mentor_id");
+                    Integer menteeId = rs.getInt("mentor_id");
                     String password = rs.getString("password");
                     String fname = rs.getString("fname");
                     String lname = rs.getString("lname");
