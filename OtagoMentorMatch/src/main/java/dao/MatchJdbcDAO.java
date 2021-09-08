@@ -32,8 +32,8 @@ public class MatchJdbcDAO {
 
                 // copy the data from the Match object into the SQL parameters.
                 stmt.setString(1, match.getDate());
-                stmt.setString(2, match.getMentorId());
-                stmt.setString(3, match.getMenteeId());
+                stmt.setInt(2, match.getMentorId());
+                stmt.setInt(3, match.getMenteeId());
 	   
 	            stmt.executeUpdate();
             
@@ -70,13 +70,13 @@ public class MatchJdbcDAO {
             
                 if (rs.next()) {
                     // get the data out of the query.
-                    int matchId = rs.getInt("match_id");
+                    Integer matchId = rs.getInt("match_id");
                     Date date = rs.getString("date");
-                    String mentorId = rs.getString("mentor_id");
-                    String menteeId = rs.getString("mentee_id");
+                    Integer mentorId = rs.getInt("mentor_id");
+                    Integer menteeId = rs.getInt("mentee_id");
                     
                     // use the data to create a Match object.
-                    Match match = new Match(menteeId, date, mentorId, menteeId);
+                    Match match = new Match(matchId, date, mentorId, menteeId);
                     return match;
                 } else {
                     return null;
