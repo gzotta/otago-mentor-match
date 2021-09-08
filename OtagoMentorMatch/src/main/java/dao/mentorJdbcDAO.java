@@ -25,7 +25,7 @@ public class MentorJdbcDAO {
         this.databaseURI = databaseURI;
     }
  
-    // method to save Mentee.
+    // method to save Mentor.
     public void saveMentor(Mentor mentor) {
         String sql = "INSERT INTO mentor (mentor_password, fname, lname, email, phone_number, ethnicity, iwi_afiliation, company_name, employer_job_title, job_title_department, industry, primary_working_industry, brief_career_history, mode_of_mentoring_sessions, undergraduate_course, undergraduate_institution, undergraduate_year_of_graduation, postgraduate_course, postgraduate_institution, postgraduate_year_of_graduation, current_working_and_living_country, mentoring_preference, how_find_omm, bio, extra_info, new_to_mentory) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
  
@@ -66,15 +66,15 @@ public class MentorJdbcDAO {
 	            stmt.executeUpdate(); // execute the statement.           
  
 	            // getting generated keys and adding it to domain.
-                Integer Id = null;
+                Integer id = null;
                 ResultSet rs = stmt.getGeneratedKeys();
                 if (rs.next()) {
-                    Id = rs.getInt(1);
+                    id = rs.getInt(1);
                 } else {
                     throw new DAOException("Problem getting generated Mentor ID");
                 }
  
-                mentor.setMentorId(Id);
+                mentor.setMentorId(id);
             
             } catch (SQLException ex) {  // we are forced to catch SQLException.
                 // don't let the SQLException leak from our DAO encapsulation.
@@ -86,8 +86,8 @@ public class MentorJdbcDAO {
     // method to sign users in.
     // accesses getMentorByEmail() above.
     public Boolean validateCredentials(String email, String password) {
-        Mentor mentor = getMentorByEmail(fname);//Fix this part
-        if ((mentee != null) && (mentor.getMentorPassword().equals(password))) {
+        Mentor mentor = getMentorByEmail(email);
+        if ((mentor != null) && (mentor.getMentorPassword().equals(password))) {
             return true;
         } else {
             return false;
