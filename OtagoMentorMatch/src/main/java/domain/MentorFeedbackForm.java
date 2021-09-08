@@ -1,7 +1,7 @@
 package domain;
 
 public class MentorFeedbackForm {
-        private Integer mentorFeedbackId;
+        private Integer mentorFeedbackFormId;
         private String findingOMM;
         private String enoughTimeToEstablishRelationship;
         private String describeSessions;
@@ -13,20 +13,20 @@ public class MentorFeedbackForm {
         private String motivationRating;
         private String workingGoalsRating;
         private String suitableMatch;
-        private String recommendation;
+        private boolean recommendation;
         private String potentialImprovements;
         private String timeContributed;
-        private String stayInTouch;
+        private boolean continueRelationship;
         private String joinNextIntake;
-        private String testimonial;
+        private boolean testimonial;
         private String takeaways;
         private Integer matchId;
 
     public MentorFeedbackForm() {}
 
     //constructor with all fields.
-    public MentorFeedbackForm(Integer mentorFeedbackId, String findingOMM, String enoughTimeToEstablishRelationship, String describeSessions, String activeListeningRating, String feedbackRating, String trustRating, String achieveGoalRating, String developingStrategiesRating, String motivationRating, String workingGoalsRating, String suitableMatch, String recommendation, String potentialImprovements, String timeContributed, String stayInTouch, String joinNextIntake, String testimonial, String takeaways, Integer matchId) {
-        this.mentorFeedbackId = mentorFeedbackId;
+    public MentorFeedbackForm(Integer mentorFeedbackFormId, String findingOMM, String enoughTimeToEstablishRelationship, String describeSessions, String activeListeningRating, String feedbackRating, String trustRating, String achieveGoalRating, String developingStrategiesRating, String motivationRating, String workingGoalsRating, String suitableMatch, boolean recommendation, String potentialImprovements, String timeContributed, boolean continueRelationship, String joinNextIntake, boolean testimonial, String takeaways, Integer matchId) {
+        this.mentorFeedbackFormId = mentorFeedbackFormId;
         this.findingOMM = findingOMM;
         this.enoughTimeToEstablishRelationship = enoughTimeToEstablishRelationship;
         this.describeSessions = describeSessions;
@@ -41,7 +41,7 @@ public class MentorFeedbackForm {
         this.recommendation = recommendation;
         this.potentialImprovements = potentialImprovements;
         this.timeContributed = timeContributed;
-        this.stayInTouch = stayInTouch;
+        this.continueRelationship = continueRelationship;
         this.joinNextIntake = joinNextIntake;
         this.testimonial = testimonial;
         this.takeaways = takeaways;
@@ -49,12 +49,12 @@ public class MentorFeedbackForm {
     }
 
     //getters and setters.
-    public Integer getMentorFeedbackId() {
-        return this.mentorFeedbackId;
+    public Integer getMentorFeedbackFormId() {
+        return this.mentorFeedbackFormId;
     }
 
-    public void setMentorFeedbackId(Integer mentorFeedbackId) {
-        this.mentorFeedbackId = mentorFeedbackId;
+    public void setMentorFeedbackFormId(Integer mentorFeedbackFormId) {
+        this.mentorFeedbackFormId = mentorFeedbackFormId;
     }
 
     public String getFindingOMM() {
@@ -145,11 +145,11 @@ public class MentorFeedbackForm {
         this.suitableMatch = suitableMatch;
     }
 
-    public String getRecommendation() {
+    public boolean getRecommendation() {
         return this.recommendation;
     }
 
-    public void setRecommendation(String recommendation) {
+    public void setRecommendation(boolean recommendation) {
         this.recommendation = recommendation;
     }
 
@@ -169,12 +169,12 @@ public class MentorFeedbackForm {
         this.timeContributed = timeContributed;
     }
 
-    public String getStayInTouch() {
-        return this.stayInTouch;
+    public boolean getContinueRelationship() {
+        return this.continueRelationship;
     }
 
-    public void setStayInTouch(String stayInTouch) {
-        this.stayInTouch = stayInTouch;
+    public void setContinueRelationship(boolean continueRelationship) {
+        this.continueRelationship = continueRelationship;
     }
 
     public String getJoinNextIntake() {
@@ -185,11 +185,11 @@ public class MentorFeedbackForm {
         this.joinNextIntake = joinNextIntake;
     }
 
-    public String getTestimonial() {
+    public boolean getTestimonial() {
         return this.testimonial;
     }
 
-    public void setTestimonial(String testimonial) {
+    public void setTestimonial(boolean testimonial) {
         this.testimonial = testimonial;
     }
 
@@ -212,7 +212,7 @@ public class MentorFeedbackForm {
     @Override
     public String toString() {
         return "{" +
-            " mentorFeedbackId='" + mentorFeedbackId + "'" +
+            " mentorFeedbackFormId='" + mentorFeedbackFormId + "'" +
             ", findingOMM='" + findingOMM + "'" +
             ", enoughTimeToEstablishRelationship='" + enoughTimeToEstablishRelationship + "'" +
             ", describeSessions='" + describeSessions + "'" +
@@ -227,7 +227,7 @@ public class MentorFeedbackForm {
             ", recommendation='" + recommendation + "'" +
             ", potentialImprovements='" + potentialImprovements + "'" +
             ", timeContributed='" + timeContributed + "'" +
-            ", stayInTouch='" + stayInTouch + "'" +
+            ", continueRelationship='" + continueRelationship + "'" +
             ", joinNextIntake='" + joinNextIntake + "'" +
             ", testimonial='" + testimonial + "'" +
             ", takeaways='" + takeaways + "'" +
