@@ -49,15 +49,15 @@ public class WorkshopJdbcDAO {
             
  
 	            // getting generated keys and adding it to domain.
-                Integer Id = null;
+                Integer id = null;
                 ResultSet rs = stmt.getGeneratedKeys();
                 if (rs.next()) {
-                    Id = rs.getInt(1);
+                    id = rs.getInt(1);
                 } else {
                     throw new DAOException("Problem getting generated Workshop ID");
                 }
  
-                workshop.setWorkshopId(Id);
+                workshop.setWorkshopId(id);
             
             } catch (SQLException ex) {  // we are forced to catch SQLException.
                 // don't let the SQLException leak from our DAO encapsulation.
@@ -69,8 +69,8 @@ public class WorkshopJdbcDAO {
  
     
     // method to delete workshop
-    public void removeWorkshop(Workshop workshop) {
-        String sql = "DELETE FROM workshop WHERE email = ?";
+    public void removeWorkshop(Integer workshopId) {
+        String sql = "DELETE FROM workshop WHERE workshop_id = ?";
         
         try (
             // get connection to database.
@@ -78,7 +78,7 @@ public class WorkshopJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the Admin domain object into the SQL parameters.
-                stmt.setString(1, admin.getEmail());
+                stmt.setInt(1, workshop.getWorkshopId());
                 stmt.executeUpdate(); // execute the statement
             
             } catch (SQLException ex) {  // we are forced to catch SQLException
@@ -87,4 +87,4 @@ public class WorkshopJdbcDAO {
             }
         }// end of method to delete Admin.
  
-}// end of AdminJdbcDAO class.
+}// end of WorkshopJdbcDAO class.
