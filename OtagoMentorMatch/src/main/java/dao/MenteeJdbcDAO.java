@@ -89,7 +89,7 @@ public class MenteeJdbcDAO {
             
                 if (rs.next()) {
                     // get the data out of the query.
-                    int menteeId = rs.getInt("mentee_id");
+                    Integer menteeId = rs.getInt("mentee_id");
                     String password = rs.getString("password");
                     String fname = rs.getString("fname");
                     String lname = rs.getString("lname");
