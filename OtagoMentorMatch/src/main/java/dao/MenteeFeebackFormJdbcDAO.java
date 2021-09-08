@@ -27,7 +27,7 @@ public class MenteeFeedbackFormJdbcDAO {
 
     // method to save Feedback Form.
     public void saveMenteeFeedbackForm(MenteeFeedbackForm fedbackForm) {
-        String sql = "INSERT INTO mentee (communication_platform, finding_omm, session_quality, quality_of_match, recommendation, active_listening_rating, feedback_rating, trust_rating, achieved_goals_rating, developing_strategies_rating, motivation_rating, working_load_rating, programme_improvements, time_contributed, continue_relationship, testimonial, other_comments, takeaways, match_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO mentee_feedback_form (communication_platform, finding_omm, session_quality, quality_of_match, recommendation, active_listening_rating, feedback_rating, trust_rating, achieved_goals_rating, developing_strategies_rating, motivation_rating, working_load_rating, programme_improvements, time_contributed, continue_relationship, testimonial, other_comments, takeaways, match_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try (
                 // get connection to database.
@@ -79,8 +79,8 @@ public class MenteeFeedbackFormJdbcDAO {
 
     // method to get MenteeFeeback by matchId.
     // support method only - used by validateCredentials() below.
-    public Mentee getFormByMatchId(String matchId) {
-        String sql = "SELECT * FROM mentee_feedback_form WHERE match_id = ?";
+    public MenteeFeedbackForm getFormById(Integer formId) {
+        String sql = "SELECT * FROM mentee_feedback_form WHERE mentee_feedback_form_id = ?";
 
         try (
             // get a connection to the database.
@@ -88,7 +88,7 @@ public class MenteeFeedbackFormJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the Mentee domain object into the SQL parameters.
-                stmt.setString(1, matchId);
+                stmt.setString(1, formId);
                 // execute the query.
                 ResultSet rs = stmt.executeQuery();
             
@@ -138,7 +138,7 @@ public class MenteeFeedbackFormJdbcDAO {
                     fedbackForm.setTakeaways(takeaways);
                     fedbackForm.setMatchId(matchId);
                     
-                    return mentee;
+                    return fedbackForm;
                 } else {
                     return null;
                 }
@@ -146,7 +146,7 @@ public class MenteeFeedbackFormJdbcDAO {
                 // don't let the SQLException leak from our DAO encapsulation.
                 throw new DAOException(ex.getMessage(), ex);
             }
-        }// end of method getFormByMatchId.
+        }// end of method getFormById.
         
 
     
