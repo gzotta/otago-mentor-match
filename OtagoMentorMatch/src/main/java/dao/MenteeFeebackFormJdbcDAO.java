@@ -26,7 +26,7 @@ public class MenteeFeedbackFormJdbcDAO {
     }
 
     // method to save Feedback Form.
-    public void saveMenteeFeedbackForm(MenteeFeedbackForm fedbackForm) {
+    public void saveMenteeFeedbackForm(MenteeFeedbackForm feedbackForm) {
         String sql = "INSERT INTO mentee_feedback_form (communication_platform, finding_omm, session_quality, quality_of_match, recommendation, active_listening_rating, feedback_rating, trust_rating, achieved_goals_rating, developing_strategies_rating, motivation_rating, working_load_rating, programme_improvements, time_contributed, continue_relationship, testimonial, other_comments, takeaways, match_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try (
@@ -151,7 +151,7 @@ public class MenteeFeedbackFormJdbcDAO {
 
     
     // method to delete MenteeFeedbackForm.
-    public void removeMenteeFeedbackForm(MenteeFeedbackForm feedbackForm {
+    public void removeMenteeFeedbackForm(MenteeFeedbackForm feedbackForm) {
         String sql = "DELETE FROM mentee_feedback_form WHERE mentee_feedback_form_id = ?";
         
         try (
