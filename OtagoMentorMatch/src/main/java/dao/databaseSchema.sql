@@ -108,6 +108,22 @@ CREATE TABLE mentee_feedback_form (
     CONSTRAINT mentee_feedback_form_match_table FOREIGN KEY (match_id) REFERENCES match_table(match_id)
 );
 
+CREATE TABLE mentor_feedback_form (
+    mentor_feedback_form_id int AUTO_INCREMENT,
+    finding_omm varchar(50) NOT NULL,
+    enough_time_to_establish_relationship varchar(20) NOT NULL,
+    describe_sessions varchar(100) NOT NULL,
+    active_listening_rating varchar(20) NOT NULL,
+    feedback_rating varchar(20) NOT NULL,
+    trust_rating varchar(20) NOT NULL,;
+    achieved_goals_rating varchar(20) NOT NULL,
+    developing_strategies_rating varchar(20) NOT NULL,
+    motivation_rating varchar(20) NOT NULL,
+    working_goals_rating varchar(20) NOT NULL,
+    suitable_match varchar(20) NOT NULL,
+)
+
+
 CREATE TABLE Workshop (
     workshop_id int AUTO_INCREMENT,
     topic varchar(20) NOT NULL,
