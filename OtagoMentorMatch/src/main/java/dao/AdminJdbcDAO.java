@@ -35,7 +35,7 @@ public class AdminJdbcDAO {
                 // create the statement.
                 PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
  
-                // copy the data from the Mentee domain object into the SQL parameters.
+                // copy the data from the amdmin domain object into the SQL parameters.
                 stmt.setString(1, admin.getPassword());
                 stmt.setString(2, admin.getFname());
                 stmt.setString(3, admin.getLname());
@@ -67,7 +67,7 @@ public class AdminJdbcDAO {
  
     // method to get Admin by email.
     // support method only - used by validateCredentials() below.
-    public Mentee getAdminByEmail(String email) {
+    public Admin getAdminByEmail(String email) {
         String sql = "SELECT * FROM admin WHERE email = ?";
  
         try (
@@ -75,7 +75,7 @@ public class AdminJdbcDAO {
             Connection dbCon = DbConnection.getConnection(databaseURI);
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
-                // copy the data from the Mentee domain object into the SQL parameters.
+                // copy the data from the amdmin domain object into the SQL parameters.
                 stmt.setString(1, email);
                 // execute the query.
                 ResultSet rs = stmt.executeQuery();
@@ -94,7 +94,7 @@ public class AdminJdbcDAO {
                     Admin admin = new Admin();
 
                     admin.setAdminId(adminId);
-                    admin.setMenteePassword(password);
+                    admin.setPassword(password);
                     admin.setFname(fname);
                     admin.setLname(lname);
                     admin.setPhoneNumber(phone_number);
@@ -113,7 +113,7 @@ public class AdminJdbcDAO {
  
     // method to sign users in.
     // accesses getAdminByemail() above.
-    public Boolean validateCredentials(String email, String password) {
+    public boolean validateCredentials(String email, String password) {
         Admin admin = getAdminByEmail(email);
        if ((admin != null) && (admin.getPassword().equals(password))) if ((admin != null) && (admin.getPassword().equals(password))) {
             return true;
