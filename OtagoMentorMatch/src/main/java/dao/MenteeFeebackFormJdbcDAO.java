@@ -36,25 +36,25 @@ public class MenteeFeedbackFormJdbcDAO {
                 PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
 
                 // copy the data from the MenteeFeedbackForm domain object into the SQL parameters.
-                stmt.setString(1, fedbackForm.getCommunicationPlatform());
-                stmt.setString(2, fedbackForm.getFindingOMM());
-                stmt.setString(3, fedbackForm.getSessionQuality());
-                stmt.setString(4, fedbackForm.getQualityOfMatch());
-	            stmt.setString(5, fedbackForm.getRecommendation());
-	            stmt.setString(6, fedbackForm.getAchieveGoalsRating());
-	            stmt.setString(7, fedbackForm.getFeedbackRating());
-	            stmt.setString(8, fedbackForm.getTrustRating());
-	            stmt.setString(9, fedbackForm.getAchieveGoalsRating());
-	            stmt.setString(10, fedbackForm.getDevelopingStrategiiesRating());
-	            stmt.setString(11, fedbackForm.getMotivationRating());
-	            stmt.setString(12, fedbackForm.getWorkingLoadRating());
-	            stmt.setString(13, fedbackForm.getProgrammeImprovements());
-                stmt.setString(14, fedbackForm.getTimeContributed()));
-                stmt.setString(15, fedbackForm.getContinueRelationship());
-                stmt.setString(16, fedbackForm.getTestimonial()));
-                stmt.setString(17, fedbackForm.getOtherComments());
-                stmt.setString(18, fedbackForm.getTakeaways());
-                stmt.setString(19, fedbackForm.matchId());
+                stmt.setString(1, feedbackForm.getCommunicationPlatform());
+                stmt.setString(2, feedbackForm.getFindingOMM());
+                stmt.setString(3, feedbackForm.getSessionQuality());
+                stmt.setString(4, feedbackForm.getQualityOfMatch());
+	            stmt.setString(5, feedbackForm.getRecommendation());
+	            stmt.setString(6, feedbackForm.getAchieveGoalsRating());
+	            stmt.setString(7, feedbackForm.getFeedbackRating());
+	            stmt.setString(8, feedbackForm.getTrustRating());
+	            stmt.setString(9, feedbackForm.getAchieveGoalsRating());
+	            stmt.setString(10, feedbackForm.getDevelopingStrategiiesRating());
+	            stmt.setString(11, feedbackForm.getMotivationRating());
+	            stmt.setString(12, feedbackForm.getWorkingLoadRating());
+	            stmt.setString(13, feedbackForm.getProgrammeImprovements());
+                stmt.setString(14, feedbackForm.getTimeContributed()));
+                stmt.setString(15, feedbackForm.getContinueRelationship());
+                stmt.setString(16, feedbackForm.getTestimonial()));
+                stmt.setString(17, feedbackForm.getOtherComments());
+                stmt.setString(18, feedbackForm.getTakeaways());
+                stmt.setString(19, feedbackForm.matchId());
 	   
 	            stmt.executeUpdate(); // execute the statement.
             
@@ -68,7 +68,7 @@ public class MenteeFeedbackFormJdbcDAO {
                     throw new DAOException("Problem getting generated MenteeFeedbackForm ID");
                 }
 
-                fedbackForm.setMenteeFeedbackFormId(id);
+                feedbackForm.setMenteeFeedbackFormId(id);
             
             } catch (SQLException ex) {  // we are forced to catch SQLException.
                 // don't let the SQLException leak from our DAO encapsulation.
@@ -77,7 +77,7 @@ public class MenteeFeedbackFormJdbcDAO {
         }//end of method saveMenteeFeedbackForm.
 
 
-    // method to get MenteeFeeback by matchId.
+    // method to get MenteeFeeback by formId.
     // support method only - used by validateCredentials() below.
     public MenteeFeedbackForm getFormById(Integer formId) {
         String sql = "SELECT * FROM mentee_feedback_form WHERE mentee_feedback_form_id = ?";
@@ -117,28 +117,28 @@ public class MenteeFeedbackFormJdbcDAO {
                     
                     // use the data to create a MenteeFeedbackForm object.
                     MenteeFeedbackForm feedbackForm = new MenteeFeedbackForm();
-                    fedbackForm.setMenteeFeedbackFormId(menteeFeedbackFormId);
-                    fedbackForm.setCommunicationPlatform(communicationPlatform);
-                    fedbackForm.setFindingOMM(findingOMM);
-                    fedbackForm.setSessionQuality(sessionQuality);
-                    fedbackForm.setQualityOfMatch(qualityOfMatch);
-                    fedbackForm.setRecommendation(recommendation);
-                    fedbackForm.setActiveListeningRating(activeListeningRating);
-                    fedbackForm.setFeedbackRating(feedbackRating);
-                    fedbackForm.setTrustRating(trustRating);
-                    fedbackForm.setAchievedGoalsRating(achievedGoalsRating);
-                    fedbackForm.setDevelopingStrategiesRating(developingStrategiesRating);
-                    fedbackForm.setMotivationRating(motivationRating);
-                    fedbackForm.setWorkingLoadRating(workingLoadRating);
-                    fedbackForm.setProgrammeImprovements(programmeImprovements);
-                    fedbackForm.setTimeContributed(timeContributed);
-                    fedbackForm.setContinueRelationship(continueRelationship);
-                    fedbackForm.setTestimonial(testimonial);
-                    fedbackForm.setOtherComments(otherComments);
-                    fedbackForm.setTakeaways(takeaways);
-                    fedbackForm.setMatchId(matchId);
+                    feedbackForm.setMenteeFeedbackFormId(menteeFeedbackFormId);
+                    feedbackForm.setCommunicationPlatform(communicationPlatform);
+                    feedbackForm.setFindingOMM(findingOMM);
+                    feedbackForm.setSessionQuality(sessionQuality);
+                    feedbackForm.setQualityOfMatch(qualityOfMatch);
+                    feedbackForm.setRecommendation(recommendation);
+                    feedbackForm.setActiveListeningRating(activeListeningRating);
+                    feedbackForm.setFeedbackRating(feedbackRating);
+                    feedbackForm.setTrustRating(trustRating);
+                    feedbackForm.setAchievedGoalsRating(achievedGoalsRating);
+                    feedbackForm.setDevelopingStrategiesRating(developingStrategiesRating);
+                    feedbackForm.setMotivationRating(motivationRating);
+                    feedbackForm.setWorkingLoadRating(workingLoadRating);
+                    feedbackForm.setProgrammeImprovements(programmeImprovements);
+                    feedbackForm.setTimeContributed(timeContributed);
+                    feedbackForm.setContinueRelationship(continueRelationship);
+                    feedbackForm.setTestimonial(testimonial);
+                    feedbackForm.setOtherComments(otherComments);
+                    feedbackForm.setTakeaways(takeaways);
+                    feedbackForm.setMatchId(matchId);
                     
-                    return fedbackForm;
+                    return feedbackForm;
                 } else {
                     return null;
                 }
