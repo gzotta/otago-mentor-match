@@ -56,15 +56,15 @@ public class MatchJdbcDAO {
 
 
     // method to get Match by mentee's id
-    public Match getMatchByMenteeId(Integer menteeId) {
-        String sql = "SELECT * FROM match WHERE mentee_id = ?";
+    public Match getMatchByMatchId(Integer matchId) {
+        String sql = "SELECT * FROM match WHERE match_id = ?";
 
         try (
             Connection dbCon = DbConnection.getConnection(databaseURI);
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the Match domain object into the SQL parameters.
-                stmt.setString(1, menteeId);
+                stmt.setString(1, matchId);
                 // execute the query.
                 ResultSet rs = stmt.executeQuery();
             
