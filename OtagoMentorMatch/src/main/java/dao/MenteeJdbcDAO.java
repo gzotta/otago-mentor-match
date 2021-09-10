@@ -17,8 +17,7 @@ public class MenteeJdbcDAO {
     private String databaseURI = DbConnection.getDefaultConnectionUri();
 
     // default constructor.
-    public MenteeJdbcDAO() {
-    }
+    public MenteeJdbcDAO() {}
 
     // constructor that intialises the URI.
     public MenteeJdbcDAO(String databaseURI) {
