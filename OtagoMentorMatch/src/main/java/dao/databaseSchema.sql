@@ -89,7 +89,7 @@ CREATE TABLE mentee_feedback_form (
     finding_omm varchar (50) NOT NULL,
     session_quality varchar(20) NOT NULL,
     quality_of_match varchar(20) NOT  NULL,
-    recommendation varchar(50) NOT NULL,
+    recommendation varchar(3) NOT NULL,
     active_listening_rating varchar(20) NOT NULL,
     feedback_rating varchar(20) NOT NULL,
     trust_rating varchar(20) NOT NULL,
@@ -107,6 +107,32 @@ CREATE TABLE mentee_feedback_form (
     CONSTRAINT mentee_feedback_form_PK PRIMARY KEY (mentee_feedback_form_id),
     CONSTRAINT mentee_feedback_form_match_table FOREIGN KEY (match_id) REFERENCES match_table(match_id)
 );
+
+CREATE TABLE mentor_feedback_form (
+    mentor_feedback_form_id int AUTO_INCREMENT,
+    finding_omm varchar(50) NOT NULL,
+    enough_time_to_establish_relationship varchar(20) NOT NULL,
+    describe_sessions varchar(100) NOT NULL,
+    active_listening_rating varchar(20) NOT NULL,
+    feedback_rating varchar(20) NOT NULL,
+    trust_rating varchar(20) NOT NULL,
+    achieved_goals_rating varchar(20) NOT NULL,
+    developing_strategies_rating varchar(20) NOT NULL,
+    motivation_rating varchar(20) NOT NULL,
+    working_goals_rating varchar(20) NOT NULL,
+    suitable_match varchar(20) NOT NULL, 
+    recommendation varchar(20) NOT NULL, 
+    potential_improvements varchar(100) NOT NULL,
+    time_contributed varchar(20) NOT NULL,
+    continue_relationship varchar(3) NOT NULL,
+    join_next_intake varchar(20) NOT NULL,
+    testimonial varchar(3) NOT NULL,
+    takeaways varchar(50) NOT NULL,
+    match_id int NOT NULL,
+    CONSTRAINT mentor_feedback_form_PK PRIMARY KEY (mentor_feedback_form_id),
+    CONSTRAINT mentor_feedback_form_match_table FOREIGN KEY (match_id) REFERENCES match_table(match_id)
+);
+
 
 CREATE TABLE Workshop (
     workshop_id int AUTO_INCREMENT,
