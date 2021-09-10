@@ -96,7 +96,7 @@ public class MentorJdbcDAO {
  
  // method to get Mentor by email.
     // support method only - used by validateCredentials() below.
-    public Mentee getMentorByEmail(String email) {
+    public Mentor getMentorByEmail(String email) {
         String sql = "SELECT * FROM mentor WHERE email = ?";
  
         try (
