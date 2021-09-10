@@ -51,10 +51,10 @@ public class MenteeFeedbackForm {
         this.takeaways = takeaways;
         this.matchId = matchId;
     }
- 
- 
- 
- 
+
+
+
+
     //getters and setters.
     public Integer getMenteeFeedbackFormId() {
         return this.menteeFeedbackFormId;
@@ -63,42 +63,40 @@ public class MenteeFeedbackForm {
     public void setMenteeFeedbackFormId(Integer menteeFeedbackFormId) {
         this.menteeFeedbackFormId = menteeFeedbackFormId;
     }
- 
+
     public String getCommunicationPlatform() {
         return this.communicationPlatform;
     }
- 
+
     public void setCommunicationPlatform(String communicationPlatform) {
         this.communicationPlatform = communicationPlatform;
     }
- 
+
     public String getFindingOMM() {
         return this.findingOMM;
     }
- 
+
     public void setFindingOMM(String findingOMM) {
         this.findingOMM = findingOMM;
     }
- 
+
     public String getSessionQuality() {
         return this.sessionQuality;
     }
- 
+
     public void setSessionQuality(String sessionQuality) {
         this.sessionQuality = sessionQuality;
     }
- 
+
     public String getQualityOfMatch() {
         return this.qualityOfMatch;
     }
- 
+
     public void setQualityOfMatch(String qualityOfMatch) {
         this.qualityOfMatch = qualityOfMatch;
     }
  
-    public boolean isRecommendation() {
-        return this.recommendation;
-    }
+
  
     public boolean getRecommendation() {
         return this.recommendation;
@@ -107,94 +105,88 @@ public class MenteeFeedbackForm {
     public void setRecommendation(boolean recommendation) {
         this.recommendation = recommendation;
     }
- 
+
     public String getActiveListeningRating() {
         return this.activeListeningRating;
     }
- 
+
     public void setActiveListeningRating(String activeListeningRating) {
         this.activeListeningRating = activeListeningRating;
     }
- 
+
     public String getFeedbackRating() {
         return this.feedbackRating;
     }
- 
+
     public void setFeedbackRating(String feedbackRating) {
         this.feedbackRating = feedbackRating;
     }
- 
+
     public String getTrustRating() {
         return this.trustRating;
     }
- 
+
     public void setTrustRating(String trustRating) {
         this.trustRating = trustRating;
     }
- 
+
     public String getAchievedGoalsRating() {
         return this.achievedGoalsRating;
     }
- 
+
     public void setAchievedGoalsRating(String achievedGoalsRating) {
         this.achievedGoalsRating = achievedGoalsRating;
     }
- 
+
     public String getDevelopingStrategiesRating() {
         return this.developingStrategiesRating;
     }
- 
+
     public void setDevelopingStrategiesRating(String developingStrategiesRating) {
         this.developingStrategiesRating = developingStrategiesRating;
     }
- 
+
     public String getMotivationRating() {
         return this.motivationRating;
     }
- 
+
     public void setMotivationRating(String motivationRating) {
         this.motivationRating = motivationRating;
     }
- 
+
     public String getWorkingLoadRating() {
         return this.workingLoadRating;
     }
- 
+
     public void setWorkingLoadRating(String workingLoadRating) {
         this.workingLoadRating = workingLoadRating;
     }
- 
+
     public String getProgrammeImprovements() {
         return this.programmeImprovements;
     }
- 
+
     public void setProgrammeImprovements(String programmeImprovements) {
         this.programmeImprovements = programmeImprovements;
     }
- 
+
     public String getTimeContributed() {
         return this.timeContributed;
     }
- 
+
     public void setTimeContributed(String timeContributed) {
         this.timeContributed = timeContributed;
     }
- 
-    public boolean isContinueRelationship() {
-        return this.continueRelationship;
-    }
- 
+
+
     public boolean getContinueRelationship() {
         return this.continueRelationship;
     }
- 
+
     public void setContinueRelationship(boolean continueRelationship) {
         this.continueRelationship = continueRelationship;
     }
  
-    public boolean isTestimonial() {
-        return this.testimonial;
-    }
  
     public boolean getTestimonial() {
         return this.testimonial;
@@ -203,11 +195,11 @@ public class MenteeFeedbackForm {
     public void setTestimonial(boolean testimonial) {
         this.testimonial = testimonial;
     }
- 
+
     public String getOtherComments() {
         return this.otherComments;
     }
- 
+
     public void setOtherComments(String otherComments) {
         this.otherComments = otherComments;
     }
@@ -227,11 +219,11 @@ public class MenteeFeedbackForm {
     public void setMatchId(Integer matchId) {
         this.matchId = matchId;
     }
- 
- 
- 
- 
- 
+
+
+
+
+
     //to string.
     @Override
     public String toString() {
@@ -258,7 +250,5 @@ public class MenteeFeedbackForm {
             ", matchId='" + matchId + "'" +
             "}";
     }
- 
- 
     
 }//end class
