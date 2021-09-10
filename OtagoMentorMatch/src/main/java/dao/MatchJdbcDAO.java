@@ -55,7 +55,7 @@ public class MatchJdbcDAO {
         }//end saveMatch method
 
 
-    // method to get Match by mentee's id
+    // method to get Match by match's id
     public Match getMatchByMatchId(Integer matchId) {
         String sql = "SELECT * FROM match WHERE match_id = ?";
 
