@@ -1,5 +1,5 @@
 package domain;
-
+ 
 public class MenteeFeedbackForm {
     private Integer menteeFeedbackFormId;
     private String communicationPlatform;
@@ -21,13 +21,13 @@ public class MenteeFeedbackForm {
     private String otherComments;
     private String takeaways;
     private Integer matchId;
-
-
+ 
+ 
     //empty constructor.
     public MenteeFeedbackForm() {
     }
-
-
+ 
+ 
     //constructor with all fields.
     public MenteeFeedbackForm(Integer menteeFeedbackFormId, String communicationPlatform, String findingOMM, String sessionQuality, String qualityOfMatch, boolean recommendation, String activeListeningRating, String feedbackRating, String trustRating, String achievedGoalsRating, String developingStrategiesRating, String motivationRating, String workingLoadRating, String programmeImprovements, String timeContributed, boolean continueRelationship, boolean testimonial, String otherComments, String takeaways, Integer matchId) {
         this.menteeFeedbackFormId = menteeFeedbackFormId;
@@ -59,7 +59,7 @@ public class MenteeFeedbackForm {
     public Integer getMenteeFeedbackFormId() {
         return this.menteeFeedbackFormId;
     }
-
+ 
     public void setMenteeFeedbackFormId(Integer menteeFeedbackFormId) {
         this.menteeFeedbackFormId = menteeFeedbackFormId;
     }
@@ -95,15 +95,13 @@ public class MenteeFeedbackForm {
     public void setQualityOfMatch(String qualityOfMatch) {
         this.qualityOfMatch = qualityOfMatch;
     }
+ 
 
-    public boolean isRecommendation() {
-        return this.recommendation;
-    }
-
+ 
     public boolean getRecommendation() {
         return this.recommendation;
     }
-
+ 
     public void setRecommendation(boolean recommendation) {
         this.recommendation = recommendation;
     }
@@ -180,9 +178,6 @@ public class MenteeFeedbackForm {
         this.timeContributed = timeContributed;
     }
 
-    public boolean isContinueRelationship() {
-        return this.continueRelationship;
-    }
 
     public boolean getContinueRelationship() {
         return this.continueRelationship;
@@ -191,15 +186,12 @@ public class MenteeFeedbackForm {
     public void setContinueRelationship(boolean continueRelationship) {
         this.continueRelationship = continueRelationship;
     }
-
-    public boolean isTestimonial() {
-        return this.testimonial;
-    }
-
+ 
+ 
     public boolean getTestimonial() {
         return this.testimonial;
     }
-
+ 
     public void setTestimonial(boolean testimonial) {
         this.testimonial = testimonial;
     }
@@ -211,19 +203,19 @@ public class MenteeFeedbackForm {
     public void setOtherComments(String otherComments) {
         this.otherComments = otherComments;
     }
-
+ 
     public String getTakeaways() {
         return this.takeaways;
     }
-
+ 
     public void setTakeaways(String takeaways) {
         this.takeaways = takeaways;
     }
-
+ 
     public Integer getMatchId() {
         return this.matchId;
     }
-
+ 
     public void setMatchId(Integer matchId) {
         this.matchId = matchId;
     }
@@ -258,7 +250,5 @@ public class MenteeFeedbackForm {
             ", matchId='" + matchId + "'" +
             "}";
     }
-
-
     
 }//end class
