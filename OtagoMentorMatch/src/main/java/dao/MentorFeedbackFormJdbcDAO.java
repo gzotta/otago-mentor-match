@@ -52,7 +52,7 @@ public class MentorFeedbackFormJdbcDAO {
                 stmt.setString(16, feedbackForm.getJoinNextIntake()));
                 stmt.setString(17, feedbackForm.getTestimonial());
                 stmt.setString(18, feedbackForm.getTakeaways());
-                stmt.setString(19, feedbackForm.matchId());
+                stmt.setString(19, feedbackForm.getMentorFeedbackFormId());
 	   
 	            stmt.executeUpdate(); // execute the statement.
             
@@ -75,7 +75,7 @@ public class MentorFeedbackFormJdbcDAO {
         }//end of method saveMentorFeedbackForm.
 
 
-    // method to get MentorFeeback by matchId.
+    // method to get MentorFeeback by formId.
     // support method only - used by validateCredentials() below.
     public MentorFeedbackForm getFormById(Integer formId) {
         String sql = "SELECT * FROM mentor_feedback_form WHERE mentor_feedback_form_id = ?";
