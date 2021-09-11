@@ -37,8 +37,8 @@ public class MentorJdbcDAO {
  
                 // copy the data from the Mentee domain object into the SQL parameters.
                 stmt.setString(1, mentor.getMentorPassword());
-                stmt.setString(2, mentor.getFname());
-                stmt.setString(3, mentor.getLname());
+                stmt.setString(2, mentor.getFName());
+                stmt.setString(3, mentor.getLName());
 	            stmt.setString(4, mentor.getEmail());
                 stmt.setString(5, mentor.getPhoneNumber());
 	            stmt.setString(6, mentor.getEthnicity());
@@ -61,7 +61,7 @@ public class MentorJdbcDAO {
                 stmt.setString(23, mentor.getHowFindOMM());
                 stmt.setString(24, mentor.getBio());
                 stmt.setString(25, mentor.getExtraInfo());
-                stmt.setString(26, mentor.getNewToMentory());
+                stmt.setBoolean(26, mentor.getNewToMentory());
 	   
 	            stmt.executeUpdate(); // execute the statement.           
  
@@ -112,13 +112,13 @@ public class MentorJdbcDAO {
                 if (rs.next()) {
                     // get the data out of the query.
                     //email not included; count should be 26 get's
-                    Integer menteeId = rs.getInt("mentor_id");
+                    Integer mentorId = rs.getInt("mentor_id");
                     String password = rs.getString("password");
                     String fname = rs.getString("fname");
                     String lname = rs.getString("lname");
                     String phone_number = rs.getString("phone_number");
                     String ethnicity = rs.getString("ethnicity");
-                    String iwi_afiiliation = rs.getString("iwi_afiliation");
+                    String iwi_afiliation = rs.getString("iwi_afiliation");
                     String company_name = rs.getString("company_name");
                     String employer_job_title = rs.getString("employer_job_title");
                     String job_title_department = rs.getString("job_title_department");
@@ -137,7 +137,7 @@ public class MentorJdbcDAO {
                     String how_find_omm = rs.getString("how_find_omm");
                     String bio = rs.getString("bio");
                     String extra_info = rs.getString("extra_info");
-                    String new_to_mentory = rs.getString("new_to_mentory");
+                    boolean new_to_mentory = rs.getBoolean("new_to_mentory");
                    
         
                     // use the data to create a Mentor object.
@@ -145,10 +145,10 @@ public class MentorJdbcDAO {
                     mentor.setMentorId(mentorId);
                     mentor.setMentorPassword(password);
                     mentor.setFName(fname);
-                    mentor.setLname(lname);
+                    mentor.setLName(lname);
                     mentor.setPhoneNumber(phone_number);
                     mentor.setEthnicity(ethnicity);
-                    mentor.setIwiAfiliation(iwi_afiliation)
+                    mentor.setIwiAfiliation(iwi_afiliation);
                     mentor.setCompanyName(company_name);
                     mentor.setEmployerJobTitle(employer_job_title);
                     mentor.setJobTitleDepartment(job_title_department);

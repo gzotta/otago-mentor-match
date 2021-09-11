@@ -27,7 +27,7 @@ public class MenteeFeedbackFormJdbcDAO {
 
     // method to save Feedback Form.
     public void saveMenteeFeedbackForm(MenteeFeedbackForm feedbackForm) {
-        String sql = "INSERT INTO mentee_feedback_form (communication_platform, finding_omm, session_quality, quality_of_match, recommendation, active_listening_rating, feedback_rating, trust_rating, achieved_goals_rating, developing_strategies_rating, motivation_rating, working_load_rating, programme_improvements, time_contributed, continue_relationship, testimonial, other_comments, takeaways, match_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO mentee_feedback_form (communication_platform, finding_omm, session_quality, quality_of_match, recommendation, active_listening_rating, feedback_rating, trust_rating, achieve_goal_rating, developing_strategies_rating, motivation_rating, working_load_rating, programme_improvements, time_contributed, continue_relationship, testimonial, other_comments, takeaways, match_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try (
                 // get connection to database.
@@ -40,21 +40,21 @@ public class MenteeFeedbackFormJdbcDAO {
                 stmt.setString(2, feedbackForm.getFindingOMM());
                 stmt.setString(3, feedbackForm.getSessionQuality());
                 stmt.setString(4, feedbackForm.getQualityOfMatch());
-	            stmt.setString(5, feedbackForm.getRecommendation());
-	            stmt.setString(6, feedbackForm.getAchieveGoalsRating());
+	            stmt.setBoolean(5, feedbackForm.getRecommendation());
+	            stmt.setString(6, feedbackForm.getAchieveGoalRating());
 	            stmt.setString(7, feedbackForm.getFeedbackRating());
 	            stmt.setString(8, feedbackForm.getTrustRating());
-	            stmt.setString(9, feedbackForm.getAchieveGoalsRating());
-	            stmt.setString(10, feedbackForm.getDevelopingStrategiiesRating());
+	            stmt.setString(9, feedbackForm.getAchieveGoalRating());
+	            stmt.setString(10, feedbackForm.getDevelopingStrategiesRating());
 	            stmt.setString(11, feedbackForm.getMotivationRating());
 	            stmt.setString(12, feedbackForm.getWorkingLoadRating());
 	            stmt.setString(13, feedbackForm.getProgrammeImprovements());
-                stmt.setString(14, feedbackForm.getTimeContributed()));
-                stmt.setString(15, feedbackForm.getContinueRelationship());
-                stmt.setString(16, feedbackForm.getTestimonial()));
+                stmt.setString(14, feedbackForm.getTimeContributed());
+                stmt.setBoolean(15, feedbackForm.getContinueRelationship());
+                stmt.setBoolean(16, feedbackForm.getTestimonial());
                 stmt.setString(17, feedbackForm.getOtherComments());
                 stmt.setString(18, feedbackForm.getTakeaways());
-                stmt.setString(19, feedbackForm.matchId());
+                stmt.setInt(19, feedbackForm.getMatchId());
 	   
 	            stmt.executeUpdate(); // execute the statement.
             
@@ -88,7 +88,7 @@ public class MenteeFeedbackFormJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the Mentee domain object into the SQL parameters.
-                stmt.setString(1, formId);
+                stmt.setInt(1, formId);
                 // execute the query.
                 ResultSet rs = stmt.executeQuery();
             
@@ -99,18 +99,18 @@ public class MenteeFeedbackFormJdbcDAO {
                     String findingOMM = rs.getString("finding_omm");
                     String sessionQuality = rs.getString("session_quality");
                     String qualityOfMatch = rs.getString("quality_of_match");
-                    String recommendation = rs.getString("recommendation");
+                    boolean recommendation = rs.getBoolean("recommendation");
                     String activeListeningRating  = rs.getString("active_listening_rating");
                     String feedbackRating = rs.getString("feedback_rating");
                     String trustRating = rs.getString("trust_rating");
-                    String achievedGoalsRating = rs.getString("achieved_goals_rating");
+                    String achieveGoalRating = rs.getString("achieve_goal_rating");
                     String developingStrategiesRating = rs.getString("developing_strategies_rating");
                     String motivationRating = rs.getString("motivation_rating");
                     String workingLoadRating = rs.getString("working_load_rating");
                     String programmeImprovements = rs.getString("programme_improvements");
                     String timeContributed = rs.getString("time_contributed");
-                    String continueRelationship = rs.getString("continue_relationship");
-                    String testimonial = rs.getString("testimonial");
+                    boolean continueRelationship = rs.getBoolean("continue_relationship");
+                    boolean testimonial = rs.getBoolean("testimonial");
                     String otherComments = rs.getString("other_comments");
                     String takeaways = rs.getString("takeaways");
                     Integer matchId = rs.getInt("match_id");
@@ -126,7 +126,7 @@ public class MenteeFeedbackFormJdbcDAO {
                     feedbackForm.setActiveListeningRating(activeListeningRating);
                     feedbackForm.setFeedbackRating(feedbackRating);
                     feedbackForm.setTrustRating(trustRating);
-                    feedbackForm.setAchievedGoalsRating(achievedGoalsRating);
+                    feedbackForm.setAchieveGoalRating(achieveGoalRating);
                     feedbackForm.setDevelopingStrategiesRating(developingStrategiesRating);
                     feedbackForm.setMotivationRating(motivationRating);
                     feedbackForm.setWorkingLoadRating(workingLoadRating);
@@ -160,7 +160,7 @@ public class MenteeFeedbackFormJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the Mentee domain object into the SQL parameters.
-                stmt.setString(1, feedbackForm.getMenteeFeedbackFormId());
+                stmt.setInt(1, feedbackForm.getMenteeFeedbackFormId());
                 stmt.executeUpdate(); // execute the statement
             
             } catch (SQLException ex) {  // we are forced to catch SQLException

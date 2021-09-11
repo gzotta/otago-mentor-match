@@ -26,7 +26,7 @@ public class MentorFeedbackFormJdbcDAO {
 
     // method to save Feedback Form.
     public void saveMentorFeedbackForm(MentorFeedbackForm feedbackForm) {
-        String sql = "INSERT INTO mentor_feedback_form (finding_omm, enough_time_to_establish_relationship, describe_sessions, active_listening_rating, feedback_rating, trust_rating, achieve_goal_rating, developing_strategies_rating, motivation_rating, working_goals_rating, suitable_match,  recommendation, potential_improvements, time_contributed,  continue_relationship, join_next_intake,  testimonial, takeaways,  matchId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+        String sql = "INSERT INTO mentor_feedback_form (finding_omm, enough_time_to_establish_relationship, describe_sessions, active_listening_rating, feedback_rating, trust_rating, achieve_goal_rating, developing_strategies_rating, motivation_rating, working_goals_rating, suitable_match,  recommendation, potential_improvements, time_contributed,  continue_relationship, join_next_intake,  testimonial, takeaways,  matchId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (
                 // get connection to database.
                 Connection dbCon = DbConnection.getConnection(databaseURI);
@@ -45,14 +45,14 @@ public class MentorFeedbackFormJdbcDAO {
 	            stmt.setString(9, feedbackForm.getMotivationRating());
 	            stmt.setString(10, feedbackForm.getWorkingGoalsRating());
 	            stmt.setString(11, feedbackForm.getSuitableMatch());
-	            stmt.setString(12, feedbackForm.getRecommendation());
+	            stmt.setBoolean(12, feedbackForm.getRecommendation());
 	            stmt.setString(13, feedbackForm.getPotentialImprovements());
-                stmt.setString(14, feedbackForm.getTimeContributed()));
-                stmt.setString(15, feedbackForm.getContinueRelationship());
-                stmt.setString(16, feedbackForm.getJoinNextIntake()));
-                stmt.setString(17, feedbackForm.getTestimonial());
+                stmt.setString(14, feedbackForm.getTimeContributed());
+                stmt.setBoolean(15, feedbackForm.getContinueRelationship());
+                stmt.setString(16, feedbackForm.getJoinNextIntake());
+                stmt.setBoolean(17, feedbackForm.getTestimonial());
                 stmt.setString(18, feedbackForm.getTakeaways());
-                stmt.setString(19, feedbackForm.getMentorFeedbackFormId());
+                stmt.setInt(19, feedbackForm.getMentorFeedbackFormId());
 	   
 	            stmt.executeUpdate(); // execute the statement.
             
@@ -86,7 +86,7 @@ public class MentorFeedbackFormJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the Mentor domain object into the SQL parameters.
-                stmt.setString(1, formId);
+                stmt.setInt(1, formId);
                 // execute the query.
                 ResultSet rs = stmt.executeQuery();
             
@@ -104,18 +104,18 @@ public class MentorFeedbackFormJdbcDAO {
                     String motivationRating = rs.getString("motivation_rating");
                     String workingGoalsRating = rs.getString("working_goals_rating");
                     String suitableMatch = rs.getString("suitable_match");
-                    boolean recommendation = rs.getString("recommendation");
+                    boolean recommendation = rs.getBoolean("recommendation");
                     String potentialImprovements = rs.getString("potential_improvements");
                     String timeContributed = rs.getString("time_contributed");
-                    boolean continueRelationship = rs.getString("continue_relationship");
+                    boolean continueRelationship = rs.getBoolean("continue_relationship");
                     String joinNextIntake = rs.getString("join_next_intake");
-                    boolean testimonial = rs.getString("testimonial");
+                    boolean testimonial = rs.getBoolean("testimonial");
                     String takeaways = rs.getString("takeaways");
                     Integer matchId = rs.getInt("match_id");
                     
                     // use the data to create a MentorFeedbackForm object.
                     MentorFeedbackForm feedbackForm = new MentorFeedbackForm();
-                    feedbackForm.setMentorFeedbackFormId(MentorFeedbackFormId);
+                    feedbackForm.setMentorFeedbackFormId(mentorFeedbackFormId);
                     feedbackForm.setFindingOMM(findingOMM);
                     feedbackForm.setEnoughTimeToEstablishRelationship(enoughTimeToEstablishRelationship);
                     feedbackForm.setDescribeSessions(describeSessions);
@@ -158,7 +158,7 @@ public class MentorFeedbackFormJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the Mentor domain object into the SQL parameters.
-                stmt.setString(1, feedbackForm.getMentorFeedbackFormId());
+                stmt.setInt(1, feedbackForm.getMentorFeedbackFormId());
                 stmt.executeUpdate(); // execute the statement
             
             } catch (SQLException ex) {  // we are forced to catch SQLException

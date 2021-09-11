@@ -3,6 +3,7 @@ package dao;
 import domain.Match;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,7 +32,7 @@ public class MatchJdbcDAO {
                 PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
 
                 // copy the data from the Match object into the SQL parameters.
-                stmt.setString(1, match.getDate());
+                stmt.setDate(1, (Date) match.getDate());
                 stmt.setInt(2, match.getMentorId());
                 stmt.setInt(3, match.getMenteeId());
 	   
@@ -64,19 +65,19 @@ public class MatchJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the Match domain object into the SQL parameters.
-                stmt.setString(1, matchId);
+                stmt.setInt(1, matchId);
                 // execute the query.
                 ResultSet rs = stmt.executeQuery();
             
                 if (rs.next()) {
                     // get the data out of the query.
-                    Integer matchId = rs.getInt("match_id");
-                    Date date = rs.getString("date");
+                    Integer match_id = rs.getInt("match_id");
+                    Date date = rs.getDate("date");
                     Integer mentorId = rs.getInt("mentor_id");
                     Integer menteeId = rs.getInt("mentee_id");
                     
                     // use the data to create a Match object.
-                    Match match = new Match(matchId, date, mentorId, menteeId);
+                    Match match = new Match(match_id, date, mentorId, menteeId);
                     return match;
                 } else {
                     return null;
@@ -96,7 +97,7 @@ public class MatchJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the Match object into the SQL parameters
-                stmt.setString(1, match.getMatchId());
+                stmt.setInt(1, match.getMatchId());
 
                 stmt.executeUpdate();
                 

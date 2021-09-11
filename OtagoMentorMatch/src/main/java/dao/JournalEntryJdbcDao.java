@@ -33,7 +33,7 @@ public class JournalEntryJdbcDAO {
                 // copy the data from the JE object into the SQL parameters.
 
                 //these methods dont exist until changes are made in domain class
-                stmt.setString(1, journalEntry.getTopicCovered());
+                stmt.setString(1, journalEntry.getTopicsCovered());
                 stmt.setString(2, journalEntry.getLengthOfSession());
                 stmt.setString(3, journalEntry.getNotes());
                 stmt.setInt(4, journalEntry.getMatchId());
@@ -67,20 +67,20 @@ public class JournalEntryJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the JE domain object into the SQL parameters.
-                stmt.setString(1, journalEntryId);
+                stmt.setInt(1, journalEntryId);
                 // execute the query.
                 ResultSet rs = stmt.executeQuery();
             
                 if (rs.next()) {
                     // get the data out of the query.
-                    Integer journalEntryId = rs.getInteger("journal_entry_id"); //getInteger ? getInt
+                    Integer entryId = rs.getInt("journal_entry_id"); //getInteger ? getInt
                     String topicsCovered = rs.getString("topics_covered");
                     String lengthOfSession = rs.getString("length_of_session");
                     String notes = rs.getString("notes");
                     Integer matchId = rs.getInt("match_id");
                     
                     // use the data to create a Journal Entry
-                    JournalEntry journalEntry = new JournalEntry(journalEntryId, topicsCovered, lengthOfSession, notes, matchId);
+                    JournalEntry journalEntry = new JournalEntry(entryId, topicsCovered, lengthOfSession, notes, matchId);
                     return journalEntry;
                 } else {
                     return null;
@@ -100,7 +100,7 @@ public class JournalEntryJdbcDAO {
             // create the statement.
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the JE object into the SQL parameters
-                stmt.setString(1, journalEntry.getJournalEntryId());
+                stmt.setInt(1, journalEntry.getJournalEntryId());
 
                 stmt.executeUpdate();
                 

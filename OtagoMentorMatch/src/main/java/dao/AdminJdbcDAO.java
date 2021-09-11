@@ -87,7 +87,7 @@ public class AdminJdbcDAO {
                     String fname = rs.getString("fname");
                     String lname = rs.getString("lname");
                     String phone_number = rs.getString("phone_number");
-                    String email = rs.getString("email");
+                    String adminEmail = rs.getString("email");
                     
                     
                     // use the data to create a Admin object.
@@ -98,7 +98,7 @@ public class AdminJdbcDAO {
                     admin.setFname(fname);
                     admin.setLname(lname);
                     admin.setPhoneNumber(phone_number);
-                    admin.setEmail(email)
+                    admin.setEmail(adminEmail);
                     
                     return admin;
                 } else {
@@ -115,7 +115,7 @@ public class AdminJdbcDAO {
     // accesses getAdminByemail() above.
     public boolean validateCredentials(String email, String password) {
         Admin admin = getAdminByEmail(email);
-       if ((admin != null) && (admin.getPassword().equals(password))) if ((admin != null) && (admin.getPassword().equals(password))) {
+       if ((admin != null) && (admin.getPassword().equals(password))) {
             return true;
         } else {
             return false;

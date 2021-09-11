@@ -3,6 +3,7 @@ package dao;
 import domain.Workshop;
  
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,11 +38,11 @@ public class WorkshopJdbcDAO {
  
                 // copy the data from the Workshop domain object into the SQL parameters.
                 stmt.setString(1, workshop.getTopic());
-                stmt.setString(2, workshop.getDate());
+                stmt.setDate(2, (Date) workshop.getDate());
                 stmt.setString(3, workshop.getLocation());
-                stmt.setString(4, workshop.getOnline());
-                stmt.setString(5, workshop.getMentor());
-                stmt.setString(6, workshop.getMentee());
+                stmt.setBoolean(4, workshop.getOnline());
+                stmt.setBoolean(5, workshop.getMentor());
+                stmt.setBoolean(6, workshop.getMentee());
 	            
  
 	   
