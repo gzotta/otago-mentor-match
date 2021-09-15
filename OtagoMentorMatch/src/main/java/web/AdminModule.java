@@ -16,7 +16,7 @@ public class AdminModule extends Jooby {
     public AdminModule(AdminJdbcDAO adminDao){
         
         // Save (POST) an Admin.
-        post("/api/Admins", (req, rsp) -> {
+        post("/api/admins", (req, rsp) -> {
             Admin admin = req.body().to(Admin.class);
             adminDao.saveAdmin(admin);
             rsp.status(Status.CREATED);
