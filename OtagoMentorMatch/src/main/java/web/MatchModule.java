@@ -13,15 +13,15 @@ public class MatchModule extends Jooby{
         
         // Save (POST) a Match.
         post("/api/matches", (req, rsp) -> {
-            Macth match = req.body().to(Match.class);
-            adminDao.saveMatch(match);
+            Match match = req.body().to(Match.class);
+            matchDao.saveMatch(match);
             rsp.status(Status.CREATED);
         });
         
         // DELETE a Match.
         delete("/api/matches/:id", (req, rsp) -> {
-            Integer id = req.param("id").value();
-            Macth match = matchDao.getMatchByMatchId(Integer.parseInt(id));
+            String id = req.param("id").value();
+            Match match = matchDao.getMatchByMatchId(Integer.parseInt(id));
             matchDao.removeMatch(match);
             rsp.status(Status.NO_CONTENT);
         });
