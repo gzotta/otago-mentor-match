@@ -26,7 +26,7 @@ public class AdminModule extends Jooby {
         delete("/api/admins/:email", (req, rsp) -> {
             String email = req.param("email").value();
             Admin admin = adminDao.getAdminByEmail(String.valueOf(email));
-            menteeDao.removeAdmin(admin);
+            adminDao.removeAdmin(admin);
             rsp.status(Status.NO_CONTENT);
         });
     }
