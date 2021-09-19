@@ -13,7 +13,7 @@ import org.jooby.Status;
  */
 public class WorkshopModule extends Jooby {
     
-    public WorkshopModule(WorshopJdbcDAO workshopDao){
+    public WorkshopModule(WorkshopJdbcDAO workshopDao){
         
         // Save (POST) a Workshop.
         post("/api/workshops", (req, rsp) -> {
