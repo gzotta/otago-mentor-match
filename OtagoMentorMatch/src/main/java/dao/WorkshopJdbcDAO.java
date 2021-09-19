@@ -81,7 +81,7 @@ public class WorkshopJdbcDAO {
             
                 if (rs.next()) {
                     // get the data out of the query.
-                    Integer workshopId = rs.getInt("workshop_id");
+                    Integer workshopId2 = rs.getInt("workshop_id");
                     String topic = rs.getString("topic");
                     Date date = rs.getDate("date");
                     String location = rs.getString("location");
@@ -91,7 +91,7 @@ public class WorkshopJdbcDAO {
 
                     
                     // use the data to create a Workshop object.
-                    Workshop workshop = new Workshop(workshopId, topic, date, location, online, mentor, mentee);
+                    Workshop workshop = new Workshop(workshopId2, topic, date, location, online, mentor, mentee);
                     return workshop;
                 } else {
                     return null;
