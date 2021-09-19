@@ -1,202 +1,195 @@
 package domain;
 
 public class MentorFeedbackForm {
-        private Integer mentor_feedback_id;
-        private String finding_omm;
-        private String enough_time_to_establish_relationship;
-        private String describe_sessions;
-        private String active_listening_rating;
-        private String feedback_rating;
-        private String trust_rating;
-        private String achieve_goals_rating;
-        private String developing_strategies_rating;
-        private String motivation_rating;
-        private String working_goals_rating;
-        private String suitable_match;
-        private String recommendation;
-        private String potential_improvements;
-        private String time_contributed;
-        private String stay_in_touch;
-        private String join_next_intake;
-        private String testimonial;
+        private Integer mentorFeedbackFormId;
+        private String findingOMM;
+        private String enoughTimeToEstablishRelationship;
+        private String describeSessions;
+        private String activeListeningRating;
+        private String feedbackRating;
+        private String trustRating;
+        private String achieveGoalRating;
+        private String developingStrategiesRating;
+        private String motivationRating;
+        private String workingGoalsRating;
+        private String suitableMatch;
+        private boolean recommendation;
+        private String potentialImprovements;
+        private String timeContributed;
+        private boolean continueRelationship;
+        private String joinNextIntake;
+        private boolean testimonial;
         private String takeaways;
         private Integer matchId;
 
-
-    //empty constructor.
-    public MentorFeedbackForm() {
-    }
-
+    public MentorFeedbackForm() {}
 
     //constructor with all fields.
-    public MentorFeedbackForm(Integer mentor_feedback_id, String finding_omm, String enough_time_to_establish_relationship, String describe_sessions, String active_listening_rating, String feedback_rating, String trust_rating, String achieve_goals_rating, String developing_strategies_rating, String motivation_rating, String working_goals_rating, String suitable_match, String recommendation, String potential_improvements, String time_contributed, String stay_in_touch, String join_next_intake, String testimonial, String takeaways, Integer matchId) {
-        this.mentor_feedback_id = mentor_feedback_id;
-        this.finding_omm = finding_omm;
-        this.enough_time_to_establish_relationship = enough_time_to_establish_relationship;
-        this.describe_sessions = describe_sessions;
-        this.active_listening_rating = active_listening_rating;
-        this.feedback_rating = feedback_rating;
-        this.trust_rating = trust_rating;
-        this.achieve_goals_rating = achieve_goals_rating;
-        this.developing_strategies_rating = developing_strategies_rating;
-        this.motivation_rating = motivation_rating;
-        this.working_goals_rating = working_goals_rating;
-        this.suitable_match = suitable_match;
+    public MentorFeedbackForm(Integer mentorFeedbackFormId, String findingOMM, String enoughTimeToEstablishRelationship, String describeSessions, String activeListeningRating, String feedbackRating, String trustRating, String achieveGoalRating, String developingStrategiesRating, String motivationRating, String workingGoalsRating, String suitableMatch, boolean recommendation, String potentialImprovements, String timeContributed, boolean continueRelationship, String joinNextIntake, boolean testimonial, String takeaways, Integer matchId) {
+        this.mentorFeedbackFormId = mentorFeedbackFormId;
+        this.findingOMM = findingOMM;
+        this.enoughTimeToEstablishRelationship = enoughTimeToEstablishRelationship;
+        this.describeSessions = describeSessions;
+        this.activeListeningRating = activeListeningRating;
+        this.feedbackRating = feedbackRating;
+        this.trustRating = trustRating;
+        this.achieveGoalRating = achieveGoalRating;
+        this.developingStrategiesRating = developingStrategiesRating;
+        this.motivationRating = motivationRating;
+        this.workingGoalsRating = workingGoalsRating;
+        this.suitableMatch = suitableMatch;
         this.recommendation = recommendation;
-        this.potential_improvements = potential_improvements;
-        this.time_contributed = time_contributed;
-        this.stay_in_touch = stay_in_touch;
-        this.join_next_intake = join_next_intake;
+        this.potentialImprovements = potentialImprovements;
+        this.timeContributed = timeContributed;
+        this.continueRelationship = continueRelationship;
+        this.joinNextIntake = joinNextIntake;
         this.testimonial = testimonial;
         this.takeaways = takeaways;
         this.matchId = matchId;
     }
 
-    
-    
-    
     //getters and setters.
-    public Integer getMentor_feedback_id() {
-        return this.mentor_feedback_id;
+    public Integer getMentorFeedbackFormId() {
+        return this.mentorFeedbackFormId;
     }
 
-    public void setMentor_feedback_id(Integer mentor_feedback_id) {
-        this.mentor_feedback_id = mentor_feedback_id;
+    public void setMentorFeedbackFormId(Integer mentorFeedbackFormId) {
+        this.mentorFeedbackFormId = mentorFeedbackFormId;
     }
 
-    public String getFinding_omm() {
-        return this.finding_omm;
+    public String getFindingOMM() {
+        return this.findingOMM;
     }
 
-    public void setFinding_omm(String finding_omm) {
-        this.finding_omm = finding_omm;
+    public void setFindingOMM(String findingOMM) {
+        this.findingOMM = findingOMM;
     }
 
-    public String getEnough_time_to_establish_relationship() {
-        return this.enough_time_to_establish_relationship;
+    public String getEnoughTimeToEstablishRelationship() {
+        return this.enoughTimeToEstablishRelationship;
     }
 
-    public void setEnough_time_to_establish_relationship(String enough_time_to_establish_relationship) {
-        this.enough_time_to_establish_relationship = enough_time_to_establish_relationship;
+    public void setEnoughTimeToEstablishRelationship(String enoughTimeToEstablishRelationship) {
+        this.enoughTimeToEstablishRelationship = enoughTimeToEstablishRelationship;
     }
 
-    public String getDescribe_sessions() {
-        return this.describe_sessions;
+    public String getDescribeSessions() {
+        return this.describeSessions;
     }
 
-    public void setDescribe_sessions(String describe_sessions) {
-        this.describe_sessions = describe_sessions;
+    public void setDescribeSessions(String describeSessions) {
+        this.describeSessions = describeSessions;
     }
 
-    public String getActive_listening_rating() {
-        return this.active_listening_rating;
+    public String getActiveListeningRating() {
+        return this.activeListeningRating;
     }
 
-    public void setActive_listening_rating(String active_listening_rating) {
-        this.active_listening_rating = active_listening_rating;
+    public void setActiveListeningRating(String activeListeningRating) {
+        this.activeListeningRating = activeListeningRating;
     }
 
-    public String getFeedback_rating() {
-        return this.feedback_rating;
+    public String getFeedbackRating() {
+        return this.feedbackRating;
     }
 
-    public void setFeedback_rating(String feedback_rating) {
-        this.feedback_rating = feedback_rating;
+    public void setFeedbackRating(String feedbackRating) {
+        this.feedbackRating = feedbackRating;
     }
 
-    public String getTrust_rating() {
-        return this.trust_rating;
+    public String getTrustRating() {
+        return this.trustRating;
     }
 
-    public void setTrust_rating(String trust_rating) {
-        this.trust_rating = trust_rating;
+    public void setTrustRating(String trustRating) {
+        this.trustRating = trustRating;
     }
 
-    public String getAchieve_goals_rating() {
-        return this.achieve_goals_rating;
+    public String getAchieveGoalRating() {
+        return this.achieveGoalRating;
     }
 
-    public void setAchieve_goals_rating(String achieve_goals_rating) {
-        this.achieve_goals_rating = achieve_goals_rating;
+    public void setAchieveGoalRating(String achieveGoalRating) {
+        this.achieveGoalRating = achieveGoalRating;
     }
 
-    public String getDeveloping_strategies_rating() {
-        return this.developing_strategies_rating;
+    public String getDevelopingStrategiesRating() {
+        return this.developingStrategiesRating;
     }
 
-    public void setDeveloping_strategies_rating(String developing_strategies_rating) {
-        this.developing_strategies_rating = developing_strategies_rating;
+    public void setDevelopingStrategiesRating(String developingStrategiesRating) {
+        this.developingStrategiesRating = developingStrategiesRating;
     }
 
-    public String getMotivation_rating() {
-        return this.motivation_rating;
+    public String getMotivationRating() {
+        return this.motivationRating;
     }
 
-    public void setMotivation_rating(String motivation_rating) {
-        this.motivation_rating = motivation_rating;
+    public void setMotivationRating(String motivationRating) {
+        this.motivationRating = motivationRating;
     }
 
-    public String getWorking_goals_rating() {
-        return this.working_goals_rating;
+    public String getWorkingGoalsRating() {
+        return this.workingGoalsRating;
     }
 
-    public void setWorking_goals_rating(String working_goals_rating) {
-        this.working_goals_rating = working_goals_rating;
+    public void setWorkingGoalsRating(String workingGoalsRating) {
+        this.workingGoalsRating = workingGoalsRating;
     }
 
-    public String getSuitable_match() {
-        return this.suitable_match;
+    public String getSuitableMatch() {
+        return this.suitableMatch;
     }
 
-    public void setSuitable_match(String suitable_match) {
-        this.suitable_match = suitable_match;
+    public void setSuitableMatch(String suitableMatch) {
+        this.suitableMatch = suitableMatch;
     }
 
-    public String getRecommendation() {
+    public boolean getRecommendation() {
         return this.recommendation;
     }
 
-    public void setRecommendation(String recommendation) {
+    public void setRecommendation(boolean recommendation) {
         this.recommendation = recommendation;
     }
 
-    public String getPotential_improvements() {
-        return this.potential_improvements;
+    public String getPotentialImprovements() {
+        return this.potentialImprovements;
     }
 
-    public void setPotential_improvements(String potential_improvements) {
-        this.potential_improvements = potential_improvements;
+    public void setPotentialImprovements(String potentialImprovements) {
+        this.potentialImprovements = potentialImprovements;
     }
 
-    public String getTime_contributed() {
-        return this.time_contributed;
+    public String getTimeContributed() {
+        return this.timeContributed;
     }
 
-    public void setTime_contributed(String time_contributed) {
-        this.time_contributed = time_contributed;
+    public void setTimeContributed(String timeContributed) {
+        this.timeContributed = timeContributed;
     }
 
-    public String getStay_in_touch() {
-        return this.stay_in_touch;
+    public boolean getContinueRelationship() {
+        return this.continueRelationship;
     }
 
-    public void setStay_in_touch(String stay_in_touch) {
-        this.stay_in_touch = stay_in_touch;
+    public void setContinueRelationship(boolean continueRelationship) {
+        this.continueRelationship = continueRelationship;
     }
 
-    public String getJoin_next_intake() {
-        return this.join_next_intake;
+    public String getJoinNextIntake() {
+        return this.joinNextIntake;
     }
 
-    public void setJoin_next_intake(String join_next_intake) {
-        this.join_next_intake = join_next_intake;
+    public void setJoinNextIntake(String joinNextIntake) {
+        this.joinNextIntake = joinNextIntake;
     }
 
-    public String getTestimonial() {
+    public boolean getTestimonial() {
         return this.testimonial;
     }
 
-    public void setTestimonial(String testimonial) {
+    public void setTestimonial(boolean testimonial) {
         this.testimonial = testimonial;
     }
 
@@ -216,32 +209,30 @@ public class MentorFeedbackForm {
         this.matchId = matchId;
     }
 
-
-    //to string.
     @Override
     public String toString() {
         return "{" +
-            " mentor_feedback_id='" + mentor_feedback_id + "'" +
-            ", finding_omm='" + finding_omm + "'" +
-            ", enough_time_to_establish_relationship='" + enough_time_to_establish_relationship + "'" +
-            ", describe_sessions='" + describe_sessions + "'" +
-            ", active_listening_rating='" + active_listening_rating + "'" +
-            ", feedback_rating='" + feedback_rating + "'" +
-            ", trust_rating='" + trust_rating + "'" +
-            ", achieve_goals_rating='" + achieve_goals_rating + "'" +
-            ", developing_strategies_rating='" + developing_strategies_rating + "'" +
-            ", motivation_rating='" + motivation_rating + "'" +
-            ", working_goals_rating='" + working_goals_rating + "'" +
-            ", suitable_match='" + suitable_match + "'" +
+            " mentorFeedbackFormId='" + mentorFeedbackFormId + "'" +
+            ", findingOMM='" + findingOMM + "'" +
+            ", enoughTimeToEstablishRelationship='" + enoughTimeToEstablishRelationship + "'" +
+            ", describeSessions='" + describeSessions + "'" +
+            ", activeListeningRating='" + activeListeningRating + "'" +
+            ", feedbackRating='" + feedbackRating + "'" +
+            ", trustRating='" + trustRating + "'" +
+            ", achieveGoalRating='" + achieveGoalRating + "'" +
+            ", developingStrategiesRating='" + developingStrategiesRating + "'" +
+            ", motivationRating='" + motivationRating + "'" +
+            ", workingGoalsRating='" + workingGoalsRating + "'" +
+            ", suitableMatch='" + suitableMatch + "'" +
             ", recommendation='" + recommendation + "'" +
-            ", potential_improvements='" + potential_improvements + "'" +
-            ", time_contributed='" + time_contributed + "'" +
-            ", stay_in_touch='" + stay_in_touch + "'" +
-            ", join_next_intake='" + join_next_intake + "'" +
+            ", potentialImprovements='" + potentialImprovements + "'" +
+            ", timeContributed='" + timeContributed + "'" +
+            ", continueRelationship='" + continueRelationship + "'" +
+            ", joinNextIntake='" + joinNextIntake + "'" +
             ", testimonial='" + testimonial + "'" +
             ", takeaways='" + takeaways + "'" +
             ", matchId='" + matchId + "'" +
             "}";
     }
    
-}
+} //end class
