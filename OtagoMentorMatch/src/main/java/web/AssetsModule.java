@@ -7,9 +7,9 @@ import org.jooby.Results;
  *
  * @author George Zotta
  */
-public class AssetModule extends Jooby {
+public class AssetsModule extends Jooby {
 
-    public AssetModule() {
+    public AssetsModule() {
         assets("/pages/*.html");
         assets("/css/*.css");
         assets("/js/*.js");
