@@ -28,7 +28,7 @@ public class Server extends Jooby{
     public Server() {
         
         //super("server");
-        port(8080);
+        port(8081);
         use(new Gzon());
         use(new AssetsModule());
         use(new AdminModule(adminDao));
