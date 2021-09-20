@@ -14,7 +14,7 @@ repositories {
 dependencies {
     
     //Jooby dependency
-    def joobyVer =  '1.6.8'
+    def joobyVer =  '1.6.9'
     /*Jooby does not provide its own web server so needs to be run on top of 
      *another server. In this case we are using Netty as the server. 
      *Netty provides a high-performance Java-based web server.
