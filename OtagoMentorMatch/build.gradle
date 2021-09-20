@@ -68,7 +68,7 @@ run {
 }
  
  
- 
+ // A couple of Gradle tasks that allows you to create missing source folders and remove unused source folders as needed.
  
 task createMissingSourceDirs {
     group = "Source Directories"
