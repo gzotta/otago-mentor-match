@@ -10,7 +10,7 @@ import org.jooby.Results;
 public class AssetsModule extends Jooby {
 
     public AssetsModule() {
-        assets("/pages/*.html");
+        assets("/*.html");
         assets("/css/*.css");
         assets("/js/*.js");
         assets("/img/*.png");
