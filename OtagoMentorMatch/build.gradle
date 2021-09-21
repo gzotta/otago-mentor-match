@@ -16,7 +16,7 @@ dependencies {
      *another server. In this case we are using Netty as the server. 
      *Netty provides a high-performance Java-based web server.
      */
-    testImplementation group: 'org.jooby', name: 'jooby-netty', version: '1.6.9'
+    implementation group: 'org.jooby', name: 'jooby-netty', version: '1.6.9'
     //The Gson dependency allows Jooby to convert domain objects to and from JSON.
     implementation group: 'org.jooby', name: 'jooby-gson', version: '1.6.9'
     
