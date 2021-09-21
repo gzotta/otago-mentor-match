@@ -1,11 +1,9 @@
-apply plugin: 'java'
-apply plugin: 'jacoco'
-apply plugin: 'application'
-apply plugin: 'java-library'
-
- 
- 
-mainClassName = 'web.Server'
+plugins {
+    id 'java'
+    id 'application'
+    id 'jacoco'
+    id 'java-library'
+}
  
 repositories {
    jcenter()
@@ -67,6 +65,9 @@ run {
     standardInput = System.in
 }
  
+
+mainClassName = 'web.Server'
+
  
  // A couple of Gradle tasks that allows you to create missing source folders and remove unused source folders as needed.
  
