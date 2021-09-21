@@ -2,3 +2,6 @@
 /OtagoMentorMatch/build/
 /OtagoMentorMatch/.vscode/
 /OtagoMentorMatch/bin/
+/OtagoMentorMatch/*.classpath
+/OtagoMentorMatch/*.properties
+/OtagoMentorMatch/*.project
