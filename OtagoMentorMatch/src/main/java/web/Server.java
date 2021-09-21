@@ -42,7 +42,7 @@ public class Server extends Jooby{
 
     }
     
-    public static void  main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         System.out.println("\nStarting Server.");
         
         Server server = new Server();
