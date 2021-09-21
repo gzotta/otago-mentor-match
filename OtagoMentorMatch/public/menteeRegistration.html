@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Mentee Registration</title>
+</head>
+
+<body>
+    
+
+
+
+    <div class="container">
+        <h2 class="center-align">Mentee Registration Form</h2>
+        <hr />
+        <br />
+        <div class="row">
+            <form class="col s12" id="menteeForm">
+                <!--Personal details-->
+                <h4>Personal Details</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="fname" type="text" class="validate" required>
+                        <label for="fname" data-error="Please enter your first name.">First Name</label>
+                        <span class="helper-text" data-error="Please enter your first name"></span>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="lname" type="text" class="validate" required>
+                        <label for="lname">Last Name</label>
+                        <span class="helper-text" data-error="Please enter your last name"></span>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="email" type="email" class="validate" required>
+                        <label for="email" data-error="wrong">Email Address</label>
+                        <span class="helper-text" data-error="Please enter a valid email address"></span>
+
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="phoneNumber" type="text" class="validate" required>
+                        <label for="phoneNumber">Phone Number</label>
+                        <span class="helper-text" data-error="Please enter your phone number"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="menteePassword" type="password" class="validate">
+                        <label for="menteePassword">Password</label>
+
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="passwordConfirm" type="password">
+                        <label id="lblPasswordConfirm" for="passwordConfirm" data-error="Password not match" data-success="Password Match">Password (Confirm)</label>
+
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year or Above</option>
+                        </select>
+                        <label>Current Year of Study</label>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="input-field col s6">
+                        <select multiple>
+                        <option value="" disabled selected>Choose your industry</option>
+                        <option value="1">Accounting</option>
+                        <option value="2">Health and Community Services</option>
+                        <option value="3">Mining and Construction</option>
+                        <option value="3">Agriculture / Hoticulture / Viticulture</option>
+                        <option value="4">Hospitality and Tourism</option>
+                        <option value="5">Retail Trade</option>
+                        <option value="6">Computing / IT / Communications</option>
+                        <option value="7">Legal Services</option>
+                        <option value="8">Science and Research</option>
+                        <option value="9">Cultural / Sport and Recreational Services</option>
+                        <option value="10">Local Government</option>
+                        <option value="11">Surveying / Mining and Construction</option>
+                        <option value="12">Education</option>
+                        <option value="13">Management and Consulting</option>
+                        <option value="14">Visual Arts and Design</option>
+                        <option value="15">Electricity / Gas and Water Supply</option>
+                        <option value="16">Manufacturing</option>
+                        <option value="17">Wholesale Trade</option>
+                        <option value="18">Environmental</option>
+                        <option value="19">Marketing</option>
+                        <option value="20">Wholesale / Retail Trade</option>
+                        <option value="21">Finance and Insurance</option>
+                        <option value="22">Media / Publising and Entertainment</option>
+                        <option value="23">Government and Defence</option>
+                    </select>
+                        <label>Industry of Interest</label>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="personalInterests" class="materialize-textarea"></textarea>
+                        <label for="personalInterests">Please identify some personal interests</label>
+                    </div>
+                    <!--short bio-->
+                    <div class="input-field col s12">
+                        <textarea id="bio" class="materialize-textarea"></textarea>
+                        <label for="bio">
+                        Please provide a short bio
+                    </label>
+                    </div>
+                    <!--motivation to join-->
+                    <div class="input-field col s12">
+                        <textarea id="motivationForJoiningOMM" class="materialize-textarea"></textarea>
+                        <label for="motivationForJoiningOMM">
+                            Please describe your motivation for joining Otago Mentor Match
+                        </label>
+                    </div>
+                </div>
+
+                <!--Perfered mode of interaction radio-->
+                <div class="row">
+
+                    <h4>Prefered mode of interaction during mentoring session</h4>
+                    <p>
+                        <label>
+                            <input name="learningMethod" type="radio" checked />
+                            <span>Skype</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="learningMethod" type="radio" />
+                            <span>WhatsApp</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="learningMethod" type="radio" />
+                            <span>Zoom</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="learningMethod" type="radio" />
+                            <span>Facebook, Messenger, Video Chat</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="learningMethod" type="radio" />
+                            <span>Phone Call and Text</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="learningMethod" type="radio" />
+                            <span>Face to Face</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="learningMethod" type="radio" disabled="disabled" />
+                            <span>Email</span>
+                        </label>
+                    </p>
+                </div>
+                <a button class="btn-large waves-effect waves-light" type="Submit" onclick="return submit();"> Submit</a>
+            </form>
+        </div>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('select').formSelect();
+                $('.modal').modal();
+                $('.tooltipped').tooltip();
+                $('.sidenav').sidenav();
+            });
+        </script>
+</body>
+
+</html>

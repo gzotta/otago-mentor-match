@@ -3,7 +3,7 @@ package web;
 import dao.MenteeJdbcDAO;
 import domain.Mentee;
 import org.jooby.Jooby;
-import org.jooby.Result;
+//import org.jooby.Result;
 import org.jooby.Status;
 
 /**
