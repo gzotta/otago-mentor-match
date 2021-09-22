@@ -6,7 +6,7 @@
  */
 var module = angular.module("MatchingApp", ["ngResource", "ngStorage"]);
 
-/////// Mentor Factories and Controller ///////
+///////Mentor Factories and Controller///////
 
 // Factory for the ngResource object that will get the all the Mentors from the web service.
 module.factory("mentorAPI", function($resource) {
