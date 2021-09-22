@@ -24,79 +24,79 @@
     <title>Mentor Registration</title>
 </head>
 
-<body>
-    <!--Navigation may not be neded in these forms-->
-    <nav class="nav-wrapper transparent">
+<body ng-controller="MentorController as mentorCtrl"></body>>
+<!--Navigation may not be neded in these forms-->
+<nav class="nav-wrapper transparent">
 
-        <div class="container">
-            <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
-            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
-                <i class="material-icons">menu</i>
-            </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="black-text text-darken-6" href="index.html">Home</a></li>
-                <li><a class="black-text text-darken-6" href="#faqs">FAQs</a></li>
-                <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
-                <li>
-                    <a href="https://www.instagram.com/" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-            </ul>
-            <ul class="sidenav grey lighten-2" id="mobile-menu" style="transform: translateX(-105%);">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">FAQs</a></li>
-            </ul>
-        </div>
-    </nav>
-    <!--Start of page excluding navigation-->
     <div class="container">
-
-
-
+        <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+            <li><a class="black-text text-darken-6" href="index.html">Home</a></li>
+            <li><a class="black-text text-darken-6" href="#faqs">FAQs</a></li>
+            <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
+            <li>
+                <a href="https://www.instagram.com/" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="sidenav grey lighten-2" id="mobile-menu" style="transform: translateX(-105%);">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Matches</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">FAQs</a></li>
+        </ul>
     </div>
-    <h2 class="center-align">Mentor Registration Form</h2>
-    <hr />
-    <br />
-    <div class="container">
-        <form action="#">
-        </form>
-        <div class="row">
-            <form class="col s12">
-                <!--Personal details-->
-                <h4>Personal Details</h4>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input id="fname" type="text" class="validate">
-                        <label for="fname">First Name</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="lname" type="text" class="validate">
-                        <label for="lname">Last Name</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="email" type="text" class="validate">
-                        <label for="email">Email Address</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="phone_number" type="text" class="validate">
-                        <label for="phoneNumber">Phone Number</label>
-                    </div>
-                    <div class="input-field col s4" id="ethnicity">
-                        <select multiple>
+</nav>
+<!--Start of page excluding navigation-->
+<div class="container">
+
+
+
+</div>
+<h2 class="center-align">Mentor Registration Form</h2>
+<hr />
+<br />
+<div class="container">
+    <form action="#">
+    </form>
+    <div class="row">
+        <form class="col s12">
+            <!--Personal details-->
+            <h4>Personal Details</h4>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="fname" type="text" class="validate">
+                    <label for="fname">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="lname" type="text" class="validate">
+                    <label for="lname">Last Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="email" type="text" class="validate">
+                    <label for="email">Email Address</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="phone_number" type="text" class="validate">
+                    <label for="phoneNumber">Phone Number</label>
+                </div>
+                <div class="input-field col s4" id="ethnicity">
+                    <select multiple>
                             <option value="" disabled selected>Choose your option</option>
                             <option value="1">New Zealand European</option>
                             <option value="2">English</option>
@@ -123,33 +123,33 @@
                             <option value="22">African</option>
                             <option value="23">Other</option>
                         </select>
-                        <label>Ethnicity</label>
-                    </div>
+                    <label>Ethnicity</label>
+                </div>
 
 
-                    <div class="input-field col s6">
+                <div class="input-field col s6">
 
-                        <input id="iwiAfiliation" type="text" class="validate">
-                        <label for="iwiAfiliation">Iwi/Afiliations</label>
-                    </div>
+                    <input id="iwiAfiliation" type="text" class="validate">
+                    <label for="iwiAfiliation">Iwi/Afiliations</label>
+                </div>
 
-                </div>
-                <!--Employer Details-->
-                <h4>Employer</h4>
-                <div class="input-field col s6">
-                    <input id="companyName" type="text" class="validate">
-                    <label for="companyName">Company/Organisation</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="employerJobTitle" type="text" class="validate">
-                    <label for="employerJobTitle">Job Title</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="jobTitleDepartment" type="text" class="validate">
-                    <label for="jobTitleDepartment">Department</label>
-                </div>
-                <div class="input-field col s6">
-                    <select multiple>
+            </div>
+            <!--Employer Details-->
+            <h4>Employer</h4>
+            <div class="input-field col s6">
+                <input id="companyName" type="text" class="validate">
+                <label for="companyName">Company/Organisation</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="employerJobTitle" type="text" class="validate">
+                <label for="employerJobTitle">Job Title</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="jobTitleDepartment" type="text" class="validate">
+                <label for="jobTitleDepartment">Department</label>
+            </div>
+            <div class="input-field col s6">
+                <select multiple>
                         <option value="" disabled selected>Choose your industry</option>
                         <option value="1">Accounting</option>
                         <option value="2">Health and Community Services</option>
@@ -176,215 +176,215 @@
                         <option value="22">Media / Publising and Entertainment</option>
                         <option value="23">Government and Defence</option>
                     </select>
-                    <label>Which industry do you primarily work in?</label>
+                <label>Which industry do you primarily work in?</label>
 
-                </div>
-                <div class="input-field col s12">
-                    <textarea id="briefCareerHistory" class="materialize-textarea"></textarea>
-                    <label for="briefCareerHistory">Please Provide brief career history e.g Senior Lecturer (Management) University of Otago 2008-2012</label>
-                </div>
-                <!--Perfered mode of interaction radio-->
-                <div class="row">
+            </div>
+            <div class="input-field col s12">
+                <textarea id="briefCareerHistory" class="materialize-textarea"></textarea>
+                <label for="briefCareerHistory">Please Provide brief career history e.g Senior Lecturer (Management) University of Otago 2008-2012</label>
+            </div>
+            <!--Perfered mode of interaction radio-->
+            <div class="row">
 
-                    <h4>Prefered mode of interaction during mentoring session</h4>
-                    <p>
-                        <label>
+                <h4>Prefered mode of interaction during mentoring session</h4>
+                <p>
+                    <label>
                             <input name="modeOfMentoringSessions" type="radio" checked />
                             <span>Skype</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
+                </p>
+                <p>
+                    <label>
                             <input name="modeOfMentoringSessions" type="radio" />
                             <span>WhatsApp</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
+                </p>
+                <p>
+                    <label>
                             <input class="with-gap" name="modeOfMentoringSessions" type="radio" />
                             <span>Zoom</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
+                </p>
+                <p>
+                    <label>
                             <input name="modeOfMentoringSessions" type="radio" />
                             <span>Facebook, Messenger, Video Chat</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
+                </p>
+                <p>
+                    <label>
                             <input name="modeOfMentoringSessions" type="radio" />
                             <span>Phone Call and Text</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
+                </p>
+                <p>
+                    <label>
                             <input class="with-gap" name="modeOfMentoringSessions" type="radio" />
                             <span>Face to Face</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
+                </p>
+                <p>
+                    <label>
                             <input name="modeOfMentoringSessions" type="radio"  />
                             <span>Email</span>
                         </label>
-                    </p>
-                </div>
-                <!--Academic background-->
-                <h4>Academic background (Undergraduate)</h4>
-                <div class="input-field col s6">
-                    <input id="undergraduate_course" type="text" class="validate">
-                    <label for="undergraduate_course">Undergraduate Course</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="undergraduate_institution" type="text" class="validate">
-                    <label for="undergraduate_institution">Undergraduate Institution</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="year_graduation" type="text" class="validate">
-                    <label for="year_graduation">Year of Graduation</label>
-                </div>
+                </p>
+            </div>
+            <!--Academic background-->
+            <h4>Academic background (Undergraduate)</h4>
+            <div class="input-field col s6">
+                <input id="undergraduate_course" type="text" class="validate">
+                <label for="undergraduate_course">Undergraduate Course</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="undergraduate_institution" type="text" class="validate">
+                <label for="undergraduate_institution">Undergraduate Institution</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="year_graduation" type="text" class="validate">
+                <label for="year_graduation">Year of Graduation</label>
+            </div>
+    </div>
+    <h4>Academic background (Postgraduate)</h4>
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="undergraduateCourse" type="text" class="validate">
+            <label for="undergraduateCourse">Undergraduate Course</label>
         </div>
-        <h4>Academic background (Postgraduate)</h4>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="undergraduateCourse" type="text" class="validate">
-                <label for="undergraduateCourse">Undergraduate Course</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="undergraduateInstitution" type="text" class="validate">
-                <label for="undergraduateInstitution">Undergraduate Institution</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="yearGraduation" type="text" class="validate">
-                <label for="yearGraduation">Year of Graduation</label>
-            </div>
+        <div class="input-field col s6">
+            <input id="undergraduateInstitution" type="text" class="validate">
+            <label for="undergraduateInstitution">Undergraduate Institution</label>
         </div>
-        <h4>Academic background (Postgraduate)</h4>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="postgraduateCourse" type="text" class="validate">
-                <label for="postgraduateCourse">Postgraduate Course</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="postgraduateInstitution" type="text" class="validate">
-                <label for="postgraduateInstitution">Postgraduate Institution</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="postgraduateYearOfGraduation" type="text" class="validate">
-                <label for="postgraduateYearOfGraduation">Year of Graduation</label>
-            </div>
+        <div class="input-field col s6">
+            <input id="yearGraduation" type="text" class="validate">
+            <label for="yearGraduation">Year of Graduation</label>
         </div>
-        <!--Mentoring preferences radio-->
-        <h4>Mentoring Preferences</h4>
-        <p>
-            <label>
+    </div>
+    <h4>Academic background (Postgraduate)</h4>
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="postgraduateCourse" type="text" class="validate">
+            <label for="postgraduateCourse">Postgraduate Course</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="postgraduateInstitution" type="text" class="validate">
+            <label for="postgraduateInstitution">Postgraduate Institution</label>
+        </div>
+        <div class="input-field col s6">
+            <input id="postgraduateYearOfGraduation" type="text" class="validate">
+            <label for="postgraduateYearOfGraduation">Year of Graduation</label>
+        </div>
+    </div>
+    <!--Mentoring preferences radio-->
+    <h4>Mentoring Preferences</h4>
+    <p>
+        <label>
                 <input name="mentoringPreference" type="radio" checked />
                 <span>CV checking</span>
             </label>
-        </p>
-        <p>
-            <label>
+    </p>
+    <p>
+        <label>
                 <input name="mentoringPreference" type="radio" />
                 <span>Interview Practice</span>
             </label>
-        </p>
-        <p>
-            <label>
+    </p>
+    <p>
+        <label>
                 <input class="with-gap" name="mentoringPreference" type="radio" />
                 <span>Referrals to contacts within professional network</span>
             </label>
-        </p>
-        <p>
-            <label>
+    </p>
+    <p>
+        <label>
                 <input name="group1" type="radio" />
                 <span>Job search information</span>
             </label>
-        </p>
-        <p>
-            <label>
+    </p>
+    <p>
+        <label>
                 <input name="mentoringPreference" type="radio" />
                 <span>Invitation to industry networking events</span>
             </label>
-        </p>
-        <!--Bio information-->
-        <div class="containter">
-            <div class="row">
-                <h5>Please enter a brief bio about yourself to be shared with potential mentee's. (max 150 words)</h5>
-                <div class="input-field col s12">
-                    <textarea id="bio" class="materialize-textarea"></textarea>
-                    <label for="bio">
+    </p>
+    <!--Bio information-->
+    <div class="containter">
+        <div class="row">
+            <h5>Please enter a brief bio about yourself to be shared with potential mentee's. (max 150 words)</h5>
+            <div class="input-field col s12">
+                <textarea id="bio" class="materialize-textarea"></textarea>
+                <label for="bio">
                     Bio
                 </label>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea id="extraInfo" class="materialize-textarea"></textarea>
-                        <label for="ExtraInfo">
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="extraInfo" class="materialize-textarea"></textarea>
+                    <label for="ExtraInfo">
                         Is there any other information you would like to provide us?
                     </label>
-                    </div>
-                    <!--New to mentoring? Needs ID-->
-                    <div class="input-field col s6">
-                        <select>
+                </div>
+                <!--New to mentoring? Needs ID-->
+                <div class="input-field col s6">
+                    <select>
                         <option value="" disabled selected>Choose your option</option>
                         <option value="1">First time</option>
                         <option value="2">Been a mentor with Otago Mentor Match before</option>
                         <option value="3">Been a mentor with a different mentoring programme</option>
                     </select>
-                        <label>Are you new to mentoring?</label>
-                    </div>
+                    <label>Are you new to mentoring?</label>
                 </div>
+            </div>
 
-                <div class="row">
-                    <h4>Mentors Agreement</h4>
+            <div class="row">
+                <h4>Mentors Agreement</h4>
 
-                    <p>
-                        By submitting this application you acknowledge and accept the following:
+                <p>
+                    By submitting this application you acknowledge and accept the following:
 
 
 
-                        <ul>
-                            <li>- You understand your role and responsibilities as a Mentor.</li>
-                            <li>- Your behaviour will be ethical, professional and responsible at all times. Specific details discussed will be kept confidential.</li>
+                    <ul>
+                        <li>- You understand your role and responsibilities as a Mentor.</li>
+                        <li>- Your behaviour will be ethical, professional and responsible at all times. Specific details discussed will be kept confidential.</li>
 
-                            <li>- You should contact the Mentoring Coordinator if you feel uncomfortable with your Mentee’s behaviour or are concerned about their safety.</li>
-                            <li>- Your name, phone number, email address and employment details will be made available to your Mentee. Mentees are asked to hold all information about you in strictest confidence.</li>
-                            <li>- In the event that you invite your Mentee to visit your workplace, you must advise him/her of relevant occupational health and safety procedures.</li>
-                            <li>- You must not offer or accept any monetary remuneration as a result of the Mentoring Partnership.</li>
-                            If an opportunity for work experience for your Mentee arises, you must notify the Programme Coordinator. You must also comply with relevant legal and operational employment policies and procedures.
-                            <li>- You may end the mentor-mentee relationship at any time. If the relationship has ended, you agree to inform the Programmes Coordinator.</li>
-                        </ul>
+                        <li>- You should contact the Mentoring Coordinator if you feel uncomfortable with your Mentee’s behaviour or are concerned about their safety.</li>
+                        <li>- Your name, phone number, email address and employment details will be made available to your Mentee. Mentees are asked to hold all information about you in strictest confidence.</li>
+                        <li>- In the event that you invite your Mentee to visit your workplace, you must advise him/her of relevant occupational health and safety procedures.</li>
+                        <li>- You must not offer or accept any monetary remuneration as a result of the Mentoring Partnership.</li>
+                        If an opportunity for work experience for your Mentee arises, you must notify the Programme Coordinator. You must also comply with relevant legal and operational employment policies and procedures.
+                        <li>- You may end the mentor-mentee relationship at any time. If the relationship has ended, you agree to inform the Programmes Coordinator.</li>
+                    </ul>
 
-                        The Programme Coordinator will contact you to inform you of the student whom you will be mentoring. If there is no appropriate match, we hold onto your information for the right student.
-                    </p>
-                    <p>
-                        <label>
+                    The Programme Coordinator will contact you to inform you of the student whom you will be mentoring. If there is no appropriate match, we hold onto your information for the right student.
+                </p>
+                <p>
+                    <label>
                         <input type="checkbox" class="filled-in" />
                         <span>Accept</span>
                     </label>
-                    </p>
-                </div>
-
-
-                <!--Submit button -> will need to have actions added to it when back end is implemented-->
-                <a href="#" class="btn-large waves-effect waves-light"> Submit</a>
-                </form>
+                </p>
             </div>
 
-        </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('select').formSelect();
-            $('.modal').modal();
-            $('.tooltipped').tooltip();
-            $('.sidenav').sidenav();
-        });
-    </script>
+            <!--Submit button -> will need to have actions added to it when back end is implemented-->
+            <a href="#" class="btn-large waves-effect waves-light"> Submit</a>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('select').formSelect();
+        $('.modal').modal();
+        $('.tooltipped').tooltip();
+        $('.sidenav').sidenav();
+    });
+</script>
 </body>
 
 </html>
