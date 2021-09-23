@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="MatchingApp" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -14,10 +14,16 @@
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--This loads all of the JavaScript files into the page, and in the correct order (dependencies of a script need
+    to appear before the script using that dependency).-->
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
     <title>Mentee Registration</title>
 </head>
 
-<body>
+<body ng-controller="MenteeController as menteeCtrl">
     
 
 
@@ -27,28 +33,28 @@
         <hr />
         <br />
         <div class="row">
-            <form class="col s12" id="menteeForm">
+            <form class="col s12" id="menteeForm" ng-submit="menteeCtrl.registerMentee(mentee)" onsubmit="if(document.getElementById('accept').checked) { return true; } else { alert('Please indicate that you have read and agree to the Mentors Agreement'); return false; }">
                 <!--Personal details-->
                 <h4>Personal Details</h4>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="fname" type="text" class="validate" required>
+                        <input ng-model="mentee.fname" id="fname" type="text" class="validate" required>
                         <label for="fname" data-error="Please enter your first name.">First Name</label>
                         <span class="helper-text" data-error="Please enter your first name"></span>
                     </div>
                     <div class="input-field col s6">
-                        <input id="lname" type="text" class="validate" required>
+                        <input ng-model="mentee.lname" id="lname" type="text" class="validate" required>
                         <label for="lname">Last Name</label>
                         <span class="helper-text" data-error="Please enter your last name"></span>
                     </div>
                     <div class="input-field col s6">
-                        <input id="email" type="email" class="validate" required>
+                        <input ng-model="mentee.email" id="email" type="email" class="validate" required>
                         <label for="email" data-error="wrong">Email Address</label>
                         <span class="helper-text" data-error="Please enter a valid email address"></span>
 
                     </div>
                     <div class="input-field col s6">
-                        <input id="phoneNumber" type="text" class="validate" required>
+                        <input ng-model="mentee.phoneNumber" id="phoneNumber" type="text" class="validate" required>
                         <label for="phoneNumber">Phone Number</label>
                         <span class="helper-text" data-error="Please enter your phone number"></span>
                     </div>
@@ -56,7 +62,7 @@
 
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="menteePassword" type="password" class="validate">
+                        <input ng-model="menteePassword" id="menteePassword" type="password" class="validate">
                         <label for="menteePassword">Password</label>
 
                     </div>
@@ -73,7 +79,7 @@
 
                 <div class="row">
                     <div class="input-field col s6">
-                        <select>
+                        <select ng-model="mentee.yearOfStudy">
                             <option value="" disabled selected>Choose your option</option>
                             <option value="1">1st Year</option>
                             <option value="2">2nd Year</option>
@@ -87,7 +93,7 @@
                 <div class="row">
 
                     <div class="input-field col s6">
-                        <select multiple>
+                        <select multiple ng-model="mentee.industryOfInterest">
                         <option value="" disabled selected>Choose your industry</option>
                         <option value="1">Accounting</option>
                         <option value="2">Health and Community Services</option>
@@ -120,19 +126,19 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="personalInterests" class="materialize-textarea"></textarea>
+                        <textarea ng-model="mentee.personalInterests"id="personalInterests" class="materialize-textarea"></textarea>
                         <label for="personalInterests">Please identify some personal interests</label>
                     </div>
                     <!--short bio-->
                     <div class="input-field col s12">
-                        <textarea id="bio" class="materialize-textarea"></textarea>
+                        <textarea ng-model="mentee.bio" id="bio" class="materialize-textarea"></textarea>
                         <label for="bio">
                         Please provide a short bio
                     </label>
                     </div>
                     <!--motivation to join-->
                     <div class="input-field col s12">
-                        <textarea id="motivationForJoiningOMM" class="materialize-textarea"></textarea>
+                        <textarea ng-model="mentee.motivationForJoiningOMM" id="motivationForJoiningOMM" class="materialize-textarea"></textarea>
                         <label for="motivationForJoiningOMM">
                             Please describe your motivation for joining Otago Mentor Match
                         </label>
