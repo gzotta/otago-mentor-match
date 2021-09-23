@@ -19,11 +19,25 @@ module.factory("mentorsAPI", function($resource) {
 });
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function(mentorAPI, mentorsAPI) {
-    //alert("in controller");
+module.controller(
+    "MentorController",
+    function(mentorAPI, mentorsAPI, $window) {
+        //alert("in controller");
 
-    this.registerMentor = function(mentor) {
-        alert("Register Mentor");
-        console.log(mentor);
-    };
-});
+        // Function to save a Mentor into the database.
+        this.registerMentor = function(mentor) {
+            mentorsAPI.save(
+                null,
+                mentor,
+                // Success calback
+                function() {
+                    $window.location = "index.html";
+                },
+                // Error callback
+                function(error) {
+                    console.log(error);
+                }
+            );
+        };
+    }
+);
