@@ -120,6 +120,18 @@
                         <label for="iwiAfiliation">Iwi/Afiliations</label>
                     </div>
                 </div>
+                <!--Password-->
+                <h4>Password</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input ng-model="mentor.mentorPaswword" id="mentorPaswword" type="password" class="validate" required>
+                        <label for="mentorPaswword">Password</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="" type="text" class="">
+                        <label for="">Confirm Password</label>
+                    </div>
+                </div>
                 <!--Employer Details-->
                 <div class="row">
                     <h4>Employer</h4>
@@ -172,64 +184,78 @@
                 <!--Perfered mode of interaction radio-->
                 <div class="row">
                     <h4>Prefered mode of interaction during mentoring session</h4>
-                    <p>
-                        <label>
-                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" checked />
+                    <div class="radio">
+                        <p>
+                            <label>
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-value="skype" class="with-gap" name="modeOfMentoringSessions" type="radio">
                             <span>Skype</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
+                        </p>
+                    </div>
+                    <div class="radio">
+                        <p>
+                            <label>
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-value="whatsapp" class="with-gap" name="modeOfMentoringSessions" type="radio">
                             <span>WhatsApp</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
+                        </p>
+                    </div>
+                    <div class="radio">
+                        <p>
+                            <label>
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-value="zoom" class="with-gap" name="modeOfMentoringSessions" type="radio">
                             <span>Zoom</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
+                        </p>
+                    </div>
+                    <div class="radio">
+                        <p>
+                            <label>
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-value="fb-msn-vc" class="with-gap" name="modeOfMentoringSessions" type="radio">
                             <span>Facebook, Messenger, Video Chat</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
+                        </p>
+                    </div>
+                    <div class="radio">
+                        <p>
+                            <label>
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-value="phone-call-text" class="with-gap" name="modeOfMentoringSessions" type="radio">
                             <span>Phone Call and Text</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
+                        </p>
+                    </div>
+                    <div class="radio">
+                        <p>
+                            <label>
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-value="face-to-face" class="with-gap" name="modeOfMentoringSessions" type="radio">
                             <span>Face to Face</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
+                        </p>
+                    </div>
+                    <div class="radio">
+                        <p>
+                            <label>
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-value="email" class="with-gap" name="modeOfMentoringSessions" type="radio">
                             <span>Email</span>
                         </label>
-                    </p>
+                        </p>
+                    </div>
                 </div>
-                <!--Academic background-->
-                <h4>Academic background (Undergraduate)</h4>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input ng-model="mentor.undergraduateCourse" id="undergraduate_course" type="text" class="validate" required>
-                        <label for="undergraduate_course">Undergraduate Course</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input ng-model="mentor.undergraduateInstitution" id="undergraduate_institution" type="text" class="validate" required>
-                        <label for="undergraduate_institution">Undergraduate Institution</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input ng-model="mentor.undergraduteYearOfGraduation" id="undergraduteYearOfGraduation" type="text" class="validate" required>
-                        <label for="undergraduteYearOfGraduation">Year of Graduation</label>
-                    </div>
+            </div>
+            <!--Academic background-->
+            <h4>Academic background (Undergraduate)</h4>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input ng-model="mentor.undergraduateCourse" id="undergraduate_course" type="text" class="validate" required>
+                    <label for="undergraduate_course">Undergraduate Course</label>
+                </div>
+                <div class="input-field col s6">
+                    <input ng-model="mentor.undergraduateInstitution" id="undergraduate_institution" type="text" class="validate" required>
+                    <label for="undergraduate_institution">Undergraduate Institution</label>
+                </div>
+                <div class="input-field col s6">
+                    <input ng-model="mentor.undergraduteYearOfGraduation" id="undergraduteYearOfGraduation" type="text" class="validate" required>
+                    <label for="undergraduteYearOfGraduation">Year of Graduation</label>
                 </div>
             </div>
             <h4>Academic background (Postgraduate)</h4>

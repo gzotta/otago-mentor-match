@@ -17,7 +17,7 @@ CREATE TABLE mentor (
     email varchar(50) NOT NULL,
     phone_number varchar(13) NOT NULL,
     ethnicity varchar (20) NOT NULL,
-    iwi_afilitation varchar (20) NOT NULL,
+    iwi_afiliation varchar (20) NOT NULL,
     company_name varchar (20) NOT NULL,
     employer_job_title varchar (20) NOT NULL,
     job_title_department varchar (20) NOT NULL,
