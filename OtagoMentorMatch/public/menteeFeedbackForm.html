@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="MatchingApp" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -15,46 +15,52 @@
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--This loads all of the JavaScript files into the page, and in the correct order (dependencies of a script need
+    to appear before the script using that dependency).-->
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
     <title>Mentee Feedback Form</title>
 </head>
 
-<body>
+<body ng-controller="MenteeFeedbackFormsController as menteeFeedbackCtrl">
 
     <h2 class="center-align">Mentee Feedback Form</h2>
     <hr />
     <br />
-<form>
+<form ng-submit="mentorCtrl.registerMentor(mentor)" onsubmit="if(document.getElementById('accept').checked) { return true; } else { alert('Please indicate that you have read and agree to the Mentors Agreement'); return false; }">
     <div class="container">
     <div class="row">
         <!--Radio of communication method-->
         <h5>What forms of communication have you used during your sessions</h5>
         <p>
             <label>
-                <input name="communicationPlatform" type="radio" />
+                <input name="communicationPlatform" type="radio" ng-model="menteeFeedbackCtrl.communicationPlatform" value="Face to Face"/>
                 <span>Face to Face</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="communicationPlatform" type="radio" />
+                <input name="communicationPlatform" type="radio"ng-model="menteeFeedbackCtrl.communicationPlatform" value="Skype" />
                 <span>Skype</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="communicationPlatform" type="radio" />
+                <input name="communicationPlatform" type="radio" ng-model="menteeFeedbackCtrl.communicationPlatform" value="Zoom"/>
                 <span>Zoom</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="communicationPlatform" type="radio" />
+                <input name="communicationPlatform" type="radio"ng-model="menteeFeedbackCtrl.communicationPlatform" value="Email" />
                 <span>Email</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="communicationPlatform" type="radio" />
+                <input name="communicationPlatform" type="radio" ng-model="menteeFeedbackCtrl.communicationPlatform" value="Phone" />
                 <span>Phone</span>
             </label>
         </p>
@@ -66,55 +72,55 @@
         <h5>How did you find out about the Otago Mentor Match programme?</h5>
         <p>
             <label>
-                <input name="findingOMM" type="radio" />
+                <input name="findingOMM" type="radio" ng-model="menteeFeedbackCtrl.findingOMM" value="Email" />
                 <span>Email</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="findingOMM" type="radio" />
+                <input name="findingOMM" type="radio" ng-model="menteeFeedbackCtrl.findingOMM" value="Lecture Presentations"/>
                 <span>Lecture Presentations</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="findingOMM" type="radio" />
+                <input name="findingOMM" type="radio" ng-model="menteeFeedbackCtrl.findingOMM" value="LinkedIn" />
                 <span>LinkedIn</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="findingOMM" type="radio" />
+                <input name="findingOMM" type="radio" ng-model="menteeFeedbackCtrl.findingOMM" value="Class Rep/ School Rep" />
                 <span>Class Rep/ School Rep</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="findingOMM" type="radio" />
+                <input name="findingOMM" type="radio" ng-model="menteeFeedbackCtrl.findingOMM" value="Via Career Development" />
                 <span>Via Career Development Office</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="findingOMM" type="radio" />
+                <input name="findingOMM" type="radio" ng-model="menteeFeedbackCtrl.findingOMM" value="Via the Alumni Office, Otago" />
                 <span>Via the Alumni Office, Otago</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="findingOMM" type="radio" />
+                <input name="findingOMM" type="radio" ng-model="menteeFeedbackCtrl.findingOMM" value="Departmental Administrator"/>
                 <span>Departmental Administrator</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="findingOMM" type="radio" />
+                <input name="findingOMM" type="radio" ng-model="menteeFeedbackCtrl.findingOMM" value="Directly from the Programme Coordinator" />
                 <span>Directly from the Programme Coordinator</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="findingOMM" type="radio" />
+                <input name="findingOMM" type="radio" ng-model="menteeFeedbackCtrl.findingOMM" value="Plasma screens accross the campus" />
                 <span>Plasma screens accross the campus</span>
             </label>
         </p>
@@ -126,26 +132,27 @@
         <h5>How would you describe your sessions with your alumni mentor so far?</h5>
         <p>
             <label>
-                <input name="group3" type="radio" />
+                <input name="sessionQuality" type="radio" ng-model="menteeFeedbackCtrl.sessionQuality" value="Very good and effective - my sessions have been informative and I would do this again or become a
+                mentor myself"/>
                 <span>Very good and effective - my sessions have been informative and I would do this again or become a
                     mentor myself</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="group3" type="radio" />
+                <input name="sessionQuality" type="radio" ng-model="menteeFeedbackCtrl.sessionQuality" value="Sufficient - there was enough time for us to go over everything that I wanted to discuss"/>
                 <span>Sufficient - there was enough time for us to go over everything that I wanted to discuss</span>
             </label>
         </p>
         <p>
             <label>
-                <input class="with-gap" name="group3" type="radio" />
+                <input class="with-gap" name="sessionQuality" type="radio"  ng-model="menteeFeedbackCtrl.sessionQuality" value="Reasonable - communication could have been better and more informative"/>
                 <span>Reasonable - communication could have been better and more informative</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="group3" type="radio" />
+                <input name="sessionQuality" type="radio"  ng-model="menteeFeedbackCtrl.sessionQuality" value="Poor - I did not find it helpful and did not gain any insight into the employment market"/>
                 <span>Poor - I did not find it helpful and did not gain any insight into the employment market</span>
             </label>
         </p>
@@ -158,32 +165,32 @@
         <h5>How would you rate the quality of your match</h5>
         <p>
             <label>
-                <input name="group4" type="radio" />
+                <input name="qualityOfMatch" type="radio" ng-model="menteeFeedbackCtrl.qualityOfMatch" value="Excellent" />
                 <span>Excellent</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="group4" type="radio" />
+                <input name="qualityOfMatch" type="radio" ng-model="menteeFeedbackCtrl.qualityOfMatch" value="Good" />
                 <span>Good</span>
             </label>
         </p>
         <p>
             <label>
-                <input class="with-gap" name="group4" type="radio" />
+                <input class="with-gap" name="qualityOfMatch" type="radio" ng-model="menteeFeedbackCtrl.qualityOfMatch" value="Poor"/>
                 <span>Poor</span>
             </label>
         </p>
         <h5>Would you reccommend Otago Mentor Match to your peers</h5>
         <p>
             <label>
-                <input name="group5" type="radio" />
+                <input name="recommendation" type="radio" ng-model="menteeFeedbackCtrl.recommendation" value="Yes" />
                 <span>Yes</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="group5" type="radio" />
+                <input name="recommendation" type="radio" ng-model="menteeFeedbackCtrl.recommendation" value="No" />
                 <span>No</span>
             </label>
         </p>
@@ -194,7 +201,7 @@
     <h5>Rate the effectiveness of the mentor relationship</h5>
     <div class="row">
         <div class="input-field col s6">
-            <select>
+            <select ng-model="menteeFeedbackCtrl.activeListeningRating">
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">Excellent</option>
                 <option value="2">Good</option>
@@ -204,7 +211,7 @@
             <label>Active Listening</label>
         </div>
         <div class="input-field col s6">
-            <select>
+            <select ng-model="menteeFeedbackCtrl.feedbackRating">
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">Excellent</option>
                 <option value="2">Good</option>
@@ -216,7 +223,7 @@
     </div>
     <div class="row">
         <div class="input-field col s6">
-            <select>
+            <select ng-model="menteeFeedbackCtrl.trustRating">
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">Excellent</option>
                 <option value="2">Good</option>
@@ -226,7 +233,7 @@
             <label>Establishing a relationship based on trust with you</label>
         </div>
         <div class="input-field col s6">
-            <select>
+            <select ng-model="menteeFeedbackCtrl.achieveGoalRating">
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">Excellent</option>
                 <option value="2">Good</option>
@@ -238,7 +245,7 @@
     </div>
     <div class="row">
         <div class="input-field col s6">
-            <select>
+            <select ng-model="menteeFeedbackCtrl.developingStrategiesRating">
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">Excellent</option>
                 <option value="2">Good</option>
@@ -248,7 +255,7 @@
             <label>Developing strategies to achieve goals together</label>
         </div>
         <div class="input-field col s6">
-            <select>
+            <select ng-model="menteeFeedbackCtrl.motivationRating>
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">Excellent</option>
                 <option value="2">Good</option>
@@ -260,7 +267,7 @@
     </div>
     <div class="row">
         <div class="input-field col s6">
-            <select>
+            <select ng-model="menteeFeedbackCtrl.workingLoadRating">
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1">Excellent</option>
                 <option value="2">Good</option>
@@ -274,7 +281,7 @@
     <!--Text area for improvements -->
     <div class="row">
         <div class="input-field col s12">
-            <textarea id="improvement" class="materialize-textarea"></textarea>
+            <textarea ng-model="menteeFeedbackCtrl.programeImprovements"id="improvement" class="materialize-textarea"></textarea>
             <label for="improvement">
                 Which aspects of the programme do you think could improve and which aspects did you enjoy most?
             </label>
@@ -283,25 +290,25 @@
         <h5>How many hours have you contributed towards your Otago Mentor Match Experience?</h5>
         <p>
             <label>
-                <input name="timeContributed" type="radio" />
+                <input name="timeContributed" type="radio" ng-model="menteeFeedbackCtrl.timeContributed" value="1-3 hours"/>
                 <span>1-3 hours</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="timeContributed" type="radio" />
+                <input name="timeContributed" type="radio" ng-model="menteeFeedbackCtrl.timeContributed" value="3-5 hours"/>
                 <span>3-5 hours</span>
             </label>
         </p>
         <p>
             <label>
-                <input class="with-gap" name="timeContributed" type="radio" />
+                <input class="with-gap" name="timeContributed" type="radio" ng-model="menteeFeedbackCtrl.timeContributed" value="5-10 hours" />
                 <span>5-10 hours</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="timeContributed" type="radio" />
+                <input name="timeContributed" type="radio" ng-model="menteeFeedbackCtrl.timeContributed" value="10+ hours" />
                 <span>10+ hours</span>
             </label>
         </p>
@@ -310,13 +317,13 @@
             own ways?</h5>
         <p>
             <label>
-                <input name="continueRelationship" type="radio" />
+                <input name="continueRelationship" type="radio" ng-model="menteeFeedbackCtrl.continueRelationship" value="Stay in touch" />
                 <span>Stay in touch</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="continueRelationship" type="radio" />
+                <input name="continueRelationship" type="radio" ng-model="menteeFeedbackCtrl.continueRelationship" value="End Connection" />
                 <span>End connection</span>
             </label>
         </p>
@@ -330,26 +337,26 @@
             contact you with more information!</h5>
         <p>
             <label>
-                <input name="testimonial" type="radio" />
+                <input name="testimonial" type="radio" ng-model="menteeFeedbackCtrl.testimonial" value="Yes" />
                 <span>Yes</span>
             </label>
         </p>
         <p>
             <label>
-                <input name="testimonial" type="radio" />
+                <input name="testimonial" type="radio" ng-model="menteeFeedbackCtrl.testimonial" value="No" />
                 <span>No</span>
             </label>
         </p>
         <!--Other comments text area-->
         <div class="input-field col s12">
-            <textarea id="otherComments" class="materialize-textarea"></textarea>
+            <textarea ng-model="menteeFeedbackCtrl.otherComments" id="otherComments" class="materialize-textarea"></textarea>
             <label for="otherComments">
                 Do you have any other comments you would like to leave?
             </label>
         </div>
         <!--Key takeaways text area-->
         <div class="input-field col s12">
-            <textarea id="takeaways" class="materialize-textarea"></textarea>
+            <textarea ng-model="menteeFeedbackCtrl.takeaways" id="takeaways" class="materialize-textarea"></textarea>
             <label for="takeaways">
                 Can you tell us something you have taken away from this experience?
             </label>
@@ -359,7 +366,7 @@
     <div align="right">
         <a button class="btn-large waves-effect waves-light red"> cancel</a>
 
-        <a button class="btn-large waves-effect waves-light" type="Submit"> Submit</a>
+        <button class="btn-large waves-effect waves-light" type="Submit"> Submit</button>
 
     </div>
     <br>
