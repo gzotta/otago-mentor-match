@@ -6,10 +6,10 @@
  */
 var module = angular.module("MatchingApp", ["ngResource", "ngStorage"]);
 
-///////Mentor Factories and Controller///////
+///////Mentor Factories///////
 
 // Factory for the ngResource object that will get the all the Mentors from the web service.
-module.factory("mentorAPI", function($resource) {
+module.factory("registerMentorAPI", function($resource) {
     return $resource("/api/mentors");
 });
 
@@ -18,15 +18,21 @@ module.factory("mentorsAPI", function($resource) {
     return $resource("/api/mentors/:email");
 });
 
-// Controller for managing Mentor resources.
-module.controller(
-    "MentorController",
-    function(mentorAPI, mentorsAPI, $window) {
-        //alert("in controller");
+///////////////////////////////////////////////
+// Controller for managing Mentor resources //
+/////////////////////////////////////////////
+module.controller("MentorController", function(registerMentorAPI, mentorsAPI, $window) {
 
-        this.registerMentor = function(mentor) {
-            alert("Register Mentor");
-            console.log(mentor);
-        };
-    }
-);
+    this.registerMentor = function(mentor) {
+        this.registerMentorAPI.save(null, mentor,
+            // success callback
+            function() {
+                $window.location = 'index.html';
+            },
+            // erro callback
+            function(error) {
+                console.log(error);
+            }
+        );
+    };
+});

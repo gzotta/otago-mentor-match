@@ -15,7 +15,7 @@ public class MentorModule extends Jooby {
     public MentorModule(MentorJdbcDAO mentorDao) {
 
         // Save (POST) a Mentor.
-        post("/api/mentors", (req, rsp) -> {
+        post("/api/registerMentor", (req, rsp) -> {
             Mentor mentor = req.body().to(Mentor.class);
             mentorDao.saveMentor(mentor);
             rsp.status(Status.CREATED);

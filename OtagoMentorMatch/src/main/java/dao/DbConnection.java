@@ -7,11 +7,7 @@ import org.mariadb.jdbc.MariaDbPoolDataSource;
 /*
  * Class to connect to the MySQL database server.
  * Add the following lines inside the "dependencies" section 
- * in the build.grade file: 
- * 
- * // Get MariaDB Java Driver.
- * implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
- *
+
  */
 public class DbConnection {
 
