@@ -19,13 +19,14 @@ module.factory("mentorsAPI", function($resource) {
 });
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function(mentorAPI, mentorsAPI, $window) {
-            //alert("in controller");
+module.controller(
+    "MentorController",
+    function(mentorAPI, mentorsAPI, $window) {
+        //alert("in controller");
 
-            this.registerMentor = function(mentor) {
-                alert("Register Mentor");
-                console.log(mentor);
-            };
-
-
-        );
+        this.registerMentor = function(mentor) {
+            alert("Register Mentor");
+            console.log(mentor);
+        };
+    }
+);
