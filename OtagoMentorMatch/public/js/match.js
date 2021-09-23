@@ -30,7 +30,7 @@ module.factory("menteesAPI", function($resource){
 
 // factory for th ngResource object that will get the all the Mentees from the web service.
 module.factory("registerMenteeFeedbackFormsAPI", function($resource){
-    return $resource("/api/menteefeedbackForms");
+    return $resource("/api/menteeFeedbackForms");
 });
 // Controller for managing Mentor resources.
 module.controller(
