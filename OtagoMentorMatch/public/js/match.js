@@ -28,6 +28,10 @@ module.factory("menteesAPI", function($resource){
     return $resource("/api/mentees/:email");
 });
 
+// factory for th ngResource object that will get the all the Mentees from the web service.
+module.factory("registerMenteeFeedbackFormsAPI", function($resource){
+    return $resource("/api/menteefeedbackForms");
+});
 // Controller for managing Mentor resources.
 module.controller(
     "MentorController",
@@ -55,7 +59,7 @@ module.controller(
 // Controller for managing Mentee Feedback forms.
 module.controller(
     "MenteeFeedbackFormsController",
-    function($window) {
+    function(registerMenteeFeedbackFormsAPI, $window) {
         alert("on controller");
         this.registerMenteeFeedbackForms = function(menteeFeedbackForms) {
             alert("fill in Mentee feedback form");
