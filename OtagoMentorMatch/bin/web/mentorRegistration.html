@@ -63,7 +63,7 @@
     <h2 class="center-align">Mentor Registration Form</h2>
     <hr />
     <br />
-    <form class="col s12" ng-submit="mentorCtrl.registerMentor(mentor)">
+    <form class="col s12" ng-submit="mentorCtrl.registerMentor(mentor)" onsubmit="if(document.getElementById('accept').checked) { return true; } else { alert('Please indicate that you have read and agree to the Mentors Agreement'); return false; }">
         <div class="container">
             <div class="row">
                 <!--Personal details-->
@@ -86,37 +86,37 @@
                         <label for="phoneNumber">Phone Number</label>
                     </div>
                     <div class="input-field col s4" id="ethnicity">
-                        <select multiple>
+                        <select ng-model="mentor.ethnicity" name="ethnicity" id="ethnicity" required>
                             <option value="" disabled selected>Choose your option</option>
-                            <option value="1">New Zealand European</option>
-                            <option value="2">English</option>
-                            <option value="3">Australian</option>
-                            <option value="3">Dutch</option>
-                            <option value="4">Other European</option>
-                            <option value="5">Maori</option>
-                            <option value="6">Samoan</option>
-                            <option value="7">Cook Islands Maori</option>
-                            <option value="8">Tongan</option>
-                            <option value="9">Niuean</option>
-                            <option value="10">Tokelauan</option>
+                            <option value="New Zealand European">New Zealand European</option>
+                            <option value="English">English</option>
+                            <option value="Australian">Australian</option>
+                            <option value="Dutch">Dutch</option>
+                            <option value="Other European">Other European</option>
+                            <option value="Maori">Maori</option>
+                            <option value="Samoan">Samoan</option>
+                            <option value="Cook Islands Maori">Cook Islands Maori</option>
+                            <option value="Tongan">Tongan</option>
+                            <option value="Niuean">Niuean</option>
+                            <option value="Tokelauan">Tokelauan</option>
                             <option value="11">Fijian</option>
-                            <option value="12">Other Pacific Peoples</option>
-                            <option value="13">Filipino</option>
-                            <option value="14">Chinese</option>
-                            <option value="15">Indian</option>
-                            <option value="16">Japanese</option>
-                            <option value="17">Korean</option>
-                            <option value="18">Cambodian</option>
-                            <option value="19">Other Asian</option>
-                            <option value="20">Middle Eastern</option>
-                            <option value="21">Latin American</option>
-                            <option value="22">African</option>
-                            <option value="23">Other</option>
+                            <option value="Other Pacific Peoples">Other Pacific Peoples</option>
+                            <option value="Filipino">Filipino</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="Indian">Indian</option>
+                            <option value="Japanese">Japanese</option>
+                            <option value="Korean">Korean</option>
+                            <option value="Cambodian">Cambodian</option>
+                            <option value="Other Asian">Other Asian</option>
+                            <option value="Middle Eastern">Middle Eastern</option>
+                            <option value="Latin American">Latin American</option>
+                            <option value="African">African</option>
+                            <option value="Other">Other</option>
                         </select>
-                        <label>Ethnicity</label>
+                        <label for="ethnicity">Ethnicity</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="iwiAfiliation" type="text" class="validate">
+                        <input ng-model="mentor.iwiAfiliation" id="iwiAfiliation" type="text" class="validate">
                         <label for="iwiAfiliation">Iwi/Afiliations</label>
                     </div>
                 </div>
@@ -124,49 +124,48 @@
                 <div class="row">
                     <h4>Employer</h4>
                     <div class="input-field col s6">
-                        <input id="companyName" type="text" class="validate">
+                        <input ng-model="mentor.companyName" id="companyName" type="text" class="validate" required>
                         <label for="companyName">Company/Organisation</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="employerJobTitle" type="text" class="validate">
+                        <input ng-model="mentor.employerJobTitle" id="employerJobTitle" type="text" class="validate" required>
                         <label for="employerJobTitle">Job Title</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="jobTitleDepartment" type="text" class="validate">
+                        <input ng-model="mentor.jobTitleDepartment" id="jobTitleDepartment" type="text" class="validate" required>
                         <label for="jobTitleDepartment">Department</label>
                     </div>
-                    <div class="input-field col s6">
-                        <select multiple>
-                        <option value="" disabled selected>Choose your industry</option>
-                        <option value="1">Accounting</option>
-                        <option value="2">Health and Community Services</option>
-                        <option value="3">Mining and Construction</option>
-                        <option value="3">Agriculture / Hoticulture / Viticulture</option>
-                        <option value="4">Hospitality and Tourism</option>
-                        <option value="5">Retail Trade</option>
-                        <option value="6">Computing / IT / Communications</option>
-                        <option value="7">Legal Services</option>
-                        <option value="8">Science and Research</option>
-                        <option value="9">Cultural / Sport and Recreational Services</option>
-                        <option value="10">Local Government</option>
-                        <option value="11">Surveying / Mining and Construction</option>
-                        <option value="12">Education</option>
-                        <option value="13">Management and Consulting</option>
-                        <option value="14">Visual Arts and Design</option>
-                        <option value="15">Electricity / Gas and Water Supply</option>
-                        <option value="16">Manufacturing</option>
-                        <option value="17">Wholesale Trade</option>
-                        <option value="18">Environmental</option>
-                        <option value="19">Marketing</option>
-                        <option value="20">Wholesale / Retail Trade</option>
-                        <option value="21">Finance and Insurance</option>
-                        <option value="22">Media / Publising and Entertainment</option>
-                        <option value="23">Government and Defence</option>
-                    </select>
-                        <label>Which industry do you primarily work in?</label>
+                    <div class="input-field col s6" id="primaryWorkingIndustry">
+                        <select ng-model="mentor.primaryWorkingIndustry" name="primaryWorkingIndustry" id="primaryWorkingIndustry" required>
+                            <option value="" disabled selected>Choose your industry</option><option value="Accounting">Accounting</option>
+                            <option value="Health and Community Services">Health and Community Services</option>
+                            <option value="Mining and Construction">Mining and Construction</option>
+                            <option value="Agriculture / Hoticulture / Viticulture">Agriculture / Hoticulture / Viticulture</option>
+                            <option value="Hospitality and Tourism">Hospitality and Tourism</option>
+                            <option value="Retail Trade">Retail Trade</option>
+                            <option value="Computing / IT / Communications">Computing / IT / Communications</option>
+                            <option value="Legal Services">Legal Services</option>
+                            <option value="Science and Research">Science and Research</option>
+                            <option value="Cultural / Sport and Recreational Services">Cultural / Sport and Recreational Services</option>
+                            <option value="Local Government">Local Government</option>
+                            <option value="Surveying / Mining and Construction">Surveying / Mining and Construction</option>
+                            <option value="Education">Education</option>
+                            <option value="Management and Consulting">Management and Consulting</option>
+                            <option value="Visual Arts and Design">Visual Arts and Design</option>
+                            <option value="Electricity / Gas and Water Supply">Electricity / Gas and Water Supply</option>
+                            <option value="Manufacturing">Manufacturing</option>
+                            <option value="Wholesale Trade">Wholesale Trade</option>
+                            <option value="Environmental">Environmental</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Wholesale / Retail Trade">Wholesale / Retail Trade</option>
+                            <option value="Finance and Insurance">Finance and Insurance</option>
+                            <option value="Media / Publising and Entertainment">Media / Publising and Entertainment</option>
+                            <option value="Government and Defence">Government and Defence</option>
+                        </select>
+                        <label for="primaryWorkingIndustry">Which industry do you primarily work in?</label>
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="briefCareerHistory" class="materialize-textarea"></textarea>
+                        <textarea ng-model="mentor.briefCareerHistory" id="briefCareerHistory" class="materialize-textarea" required></textarea>
                         <label for="briefCareerHistory">Please Provide brief career history e.g Senior Lecturer (Management) University of Otago 2008-2012</label>
                     </div>
                 </div>
@@ -175,43 +174,43 @@
                     <h4>Prefered mode of interaction during mentoring session</h4>
                     <p>
                         <label>
-                            <input name="modeOfMentoringSessions" type="radio" checked />
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" checked />
                             <span>Skype</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="modeOfMentoringSessions" type="radio" />
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
                             <span>WhatsApp</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input class="with-gap" name="modeOfMentoringSessions" type="radio" />
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
                             <span>Zoom</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="modeOfMentoringSessions" type="radio" />
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
                             <span>Facebook, Messenger, Video Chat</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="modeOfMentoringSessions" type="radio" />
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
                             <span>Phone Call and Text</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input class="with-gap" name="modeOfMentoringSessions" type="radio" />
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
                             <span>Face to Face</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="modeOfMentoringSessions" type="radio"  />
+                            <input ng-model="mentor.modeOfMentoringSessions" ng-checked="radio" class="with-gap" name="modeOfMentoringSessions" type="radio" />
                             <span>Email</span>
                         </label>
                     </p>
@@ -220,90 +219,134 @@
                 <h4>Academic background (Undergraduate)</h4>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="undergraduate_course" type="text" class="validate">
+                        <input ng-model="mentor.undergraduateCourse" id="undergraduate_course" type="text" class="validate" required>
                         <label for="undergraduate_course">Undergraduate Course</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="undergraduate_institution" type="text" class="validate">
+                        <input ng-model="mentor.undergraduateInstitution" id="undergraduate_institution" type="text" class="validate" required>
                         <label for="undergraduate_institution">Undergraduate Institution</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="year_graduation" type="text" class="validate">
-                        <label for="year_graduation">Year of Graduation</label>
+                        <input ng-model="mentor.undergraduteYearOfGraduation" id="undergraduteYearOfGraduation" type="text" class="validate" required>
+                        <label for="undergraduteYearOfGraduation">Year of Graduation</label>
                     </div>
                 </div>
             </div>
             <h4>Academic background (Postgraduate)</h4>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="undergraduateCourse" type="text" class="validate">
-                    <label for="undergraduateCourse">Undergraduate Course</label>
+                    <input ng-model="mentor.postgraduateCourse" id="postgraduateCourse" type="text" class="validate">
+                    <label for="postgraduateCourse">Postgraduate Course</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="undergraduateInstitution" type="text" class="validate">
-                    <label for="undergraduateInstitution">Undergraduate Institution</label>
+                    <input id="mentor.postgraduateInstitution" id="postgraduateInstitution" type="text" class="validate">
+                    <label for="postgraduateInstitution">Postgraduate Institution</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="yearGraduation" type="text" class="validate">
-                    <label for="yearGraduation">Year of Graduation</label>
+                    <input ng-model="mentor.postgraduareYearOfGraduation" id="postgraduareYearOfGraduation" type="text" class="validate">
+                    <label for="postgraduareYearOfGraduation">Year of Graduation</label>
                 </div>
             </div>
-            <!--Mentoring preferences radio-->
-            <h4>Mentoring Preferences</h4>
+            <!--Current work and living country-->
+            <h4>Current work and living country. Eg. Melbourne, Australia or Auckland, New Zealand. This helps the student plan the right time to communicate with mentors who are internationally placed.</h4>
             <div class="row">
+                <div class="input-field col s6">
+                    <input ng-model="mentor.currentWorkAndLivingCountry" id="currentWorkAndLivingCountry" type="text" required>
+                    <label for="currentWorkAndLivingCountry">In which country do you currently work?</label>
+                </div>
+            </div>
+
+            <!--Mentoring preferences radio-->
+            <div class="row">
+                <h4>Mentoring Preferences</h4>
                 <p>
                     <label>
-                <input name="mentoringPreference" type="radio" checked />
-                <span>CV checking</span>
-            </label>
+                        <input ng-model="mentor.mentoringPreference" class="with-gap" name="mentoringPreference" type="radio" checked />
+                        <span>CV checking</span>
+                    </label>
                 </p>
                 <p>
                     <label>
-                <input name="mentoringPreference" type="radio" />
-                <span>Interview Practice</span>
-            </label>
+                        <input ng-model="mentor.mentoringPreference" class="with-gap" name="mentoringPreference" type="radio" />
+                        <span>Interview Practice</span>
+                    </label>
                 </p>
                 <p>
                     <label>
-                <input class="with-gap" name="mentoringPreference" type="radio" />
-                <span>Referrals to contacts within professional network</span>
-            </label>
+                        <input ng-model="mentor.mentoringPreference" class="with-gap" name="mentoringPreference" type="radio" />
+                        <span>Referrals to contacts within professional network</span>
+                    </label>
                 </p>
                 <p>
                     <label>
-                <input name="group1" type="radio" />
-                <span>Job search information</span>
-            </label>
+                        <input ng-model="mentor.mentoringPreference" class="with-gap" name="mentoringPreference" type="radio" />
+                        <span>Job search information</span>
+                    </label>
                 </p>
                 <p>
                     <label>
-                <input name="mentoringPreference" type="radio" />
-                <span>Invitation to industry networking events</span>
-            </label>
+                        <input ng-model="mentor.mentoringPreference" class="with-gap" name="mentoringPreference" type="radio" />
+                        <span>Invitation to industry networking events</span>
+                    </label>
                 </p>
             </div>
+            <!--How did you find about OMM radio-->
+            <div class="row">
+                <h4>How did you find about Otago Mentor Match?</h4>
+                <p>
+                    <label>
+                        <input ng-model="mentor.howFindOMM" class="with-gap" name="howFindOMM" type="radio" checked />
+                        <span>Alumni Office, University of Otago</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input ng-model="mentor.howFindOMM" class="with-gap" name="howFindOMM" type="radio" />
+                        <span>Word of Mouth</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input ng-model="mentor.howFindOMM" class="with-gap" name="howFindOMM" type="radio" />
+                        <span>Email</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input ng-model="mentor.howFindOMM" class="with-gap" name="howFindOMM" type="radio" />
+                        <span>Facebook</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input ng-model="mentor.howFindOMM" class="with-gap" name="howFindOMM" type="radio" />
+                        <span>Career Development Centre</span>
+                    </label>
+                </p>
+            </div>
+
             <!--Bio information-->
             <div class="containter">
                 <div class="row">
                     <h5>Please enter a brief bio about yourself to be shared with potential mentee's. (max 150 words)</h5>
                     <div class="input-field col s12">
-                        <textarea id="bio" class="materialize-textarea"></textarea>
+                        <textarea ng-model="mentor.bio" id="bio" class="materialize-textarea"></textarea>
                         <label for="bio">Bio</label>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="extraInfo" class="materialize-textarea"></textarea>
+                            <textarea ng-model="mentor.extranInfo" id="extraInfo" class="materialize-textarea"></textarea>
                             <label for="ExtraInfo">Is there any other information you would like to provide us?</label>
                         </div>
                         <!--New to mentoring? Needs ID-->
                         <div class="input-field col s6">
-                            <select>
+                            <select ng-model="mentor.newToMentory" name="newToMentory" id="newToMentory">
                             <option value="" disabled selected>Choose your option</option>
-                            <option value="1">First time</option>
-                            <option value="2">Been a mentor with Otago Mentor Match before</option>
-                            <option value="3">Been a mentor with a different mentoring programme</option>
+                            <option value="First time">First time</option>
+                            <option value="Been a mentor with Otago Mentor Match before">Been a mentor with Otago Mentor Match before</option>
+                            <option value="Been a mentor with a different mentoring programme">Been a mentor with a different mentoring programme</option>
                         </select>
-                            <label>Are you new to mentoring?</label>
+                            <label for="newToMentory">Are you new to mentoring?</label>
                         </div>
                     </div>
                     <!--Mentor's Agreement-->
@@ -325,9 +368,9 @@
                         </p>
                         <p>
                             <label>
-                        <input type="checkbox" class="filled-in" />
-                        <span>Accept</span>
-                    </label>
+                                <input type="checkbox" class="filled-in" id="accept" />
+                                <span>Accept</span>
+                            </label>
                         </p>
                     </div>
                 </div>
