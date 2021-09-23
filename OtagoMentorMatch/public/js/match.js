@@ -20,5 +20,10 @@ module.factory("mentorsAPI", function($resource) {
 
 // Controller for managing Mentor resources.
 module.controller("MentorController", function(mentorAPI, mentorsAPI) {
-    alert("in controller");
+    //alert("in controller");
+
+    this.registerMentor = function(mentor) {
+        alert("Register Mentor");
+        console.log(mentor);
+    };
 });
