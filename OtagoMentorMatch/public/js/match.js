@@ -19,7 +19,7 @@ module.factory("mentorsAPI", function($resource) {
 });
 
 // factory for th ngResource object that will get the all the Mentees from the web service.
-module.factory("menteeAPI", function($resource){
+module.factory("registerMenteeAPI", function($resource){
     return $resource("/api/mentees");
 });
 
@@ -44,9 +44,8 @@ module.controller(
 // Controller for managing Mentee resources.
 module.controller(
     "MenteeController",
-    function(menteeAPI, menteesAPI, $window) {
-        //alert("in controller");
-
+    function(registerMenteeAPI, menteesAPI, $window) {
+        alert("on controller");
         this.registerMentee = function(mentee) {
             alert("Register Mentee");
             console.log(mentee);
