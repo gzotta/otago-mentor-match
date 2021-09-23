@@ -52,3 +52,14 @@ module.controller(
         };
     }
 );
+// Controller for managing Mentee Feedback forms.
+module.controller(
+    "MenteeFeedbackFormsController",
+    function($window) {
+        alert("on controller");
+        this.registerMenteeFeedbackForms = function(menteeFeedbackForms) {
+            alert("fill in Mentee feedback form");
+            console.log(menteeFeedbackForms);
+        };
+    }
+);
