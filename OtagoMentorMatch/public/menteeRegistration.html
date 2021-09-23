@@ -77,7 +77,7 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <select ng-model="mentee.yearOfStudy">
+                    <select id="yearOfStudy" ng-model="mentee.yearOfStudy">
                         <option value="" disabled selected>Choose your option</option>
                         <option value="1st Year">1st Year</option>
                         <option value="2nd Year">2nd Year</option>
@@ -91,7 +91,7 @@
             <div class="row">
 
                 <div class="input-field col s6">
-                    <select multiple ng-model="mentee.industryOfInterest">
+                    <select id="industryOfInterest" multiple ng-model="mentee.industryOfInterest">
                         <option value="" disabled selected>Choose your industry</option>
                         <option value="Accounting">Accounting</option>
                         <option value="Health and Community Services">Health and Community Services</option>
@@ -151,43 +151,43 @@
                 <h4>Prefered mode of interaction during mentoring session</h4>
                 <p>
                     <label>
-                        <input name="learningMethod" type="radio" checked ng-model="mentee.interaction" />
+                        <input id="learningMethod"name="learningMethod" type="radio" checked ng-model="mentee.learningMethod" value="Skype" />
                         <span>Skype</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                        <input name="learningMethod" type="radio" />
+                        <input name="learningMethod" type="radio" ng-model="mentee.learningMethod" value="WhatsApp"/>
                         <span>WhatsApp</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                        <input class="with-gap" name="learningMethod" type="radio" />
+                        <input class="with-gap" name="learningMethod" type="radio" ng-model="mentee.learningMethod" value="Zoom"/>
                         <span>Zoom</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                        <input name="learningMethod" type="radio" />
+                        <input name="learningMethod" type="radio" ng-model="mentee.learningMethod" value="Facebook, Messenger, Video Chat"/>
                         <span>Facebook, Messenger, Video Chat</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                        <input name="learningMethod" type="radio" />
+                        <input name="learningMethod" type="radio" ng-model="mentee.learningMethod" value="Phone Call and Text"/>
                         <span>Phone Call and Text</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                        <input class="with-gap" name="learningMethod" type="radio" />
+                        <input class="with-gap" name="learningMethod" type="radio" ng-model="mentee.learningMethod" value="Face to Face"/>
                         <span>Face to Face</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                        <input name="learningMethod" type="radio" disabled="disabled" />
+                        <input name="learningMethod" type="radio" ng-model="mentee.learningMethod" value="Email" />
                         <span>Email</span>
                     </label>
                 </p>
