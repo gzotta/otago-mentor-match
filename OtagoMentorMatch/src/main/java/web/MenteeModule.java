@@ -15,7 +15,7 @@ public class MenteeModule extends Jooby {
     public MenteeModule(MenteeJdbcDAO menteeDao) {
 
         // Save (POST) a Mentee.
-        post("/api/mentees", (req, rsp) -> {
+        post("/api/registerMentee", (req, rsp) -> {
             Mentee mentee = req.body().to(Mentee.class);
             menteeDao.saveMentee(mentee);
             rsp.status(Status.CREATED);

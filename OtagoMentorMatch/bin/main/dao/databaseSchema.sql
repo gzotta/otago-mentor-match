@@ -1,4 +1,3 @@
-
 CREATE TABLE admin (
     admin_id int AUTO_INCREMENT,
     password varchar(16) NOT NULL,
@@ -44,13 +43,13 @@ CREATE TABLE mentor (
 CREATE TABLE mentee (
     mentee_id int AUTO_INCREMENT,
     password varchar(16) NOT NULL,
-    fname varchar(15) NOT NULL,
-    lname varchar (15) NOT NULL,
+    fname varchar(50) NOT NULL,
+    lname varchar (50) NOT NULL,
     phone_number varchar(13) NOT NULL,
     email varchar(50) NOT NULL,
-    year_of_study varchar(4) NOT NULL,
+    year_of_study varchar(50) NOT NULL,
     motivation_for_joining_omm varchar(100) NOT NULL,
-    industry_of_interest varchar(20) NOT NULL,
+    industry_of_interest varchar(50) NOT NULL,
     learning_method varchar(20) NOT NULL,
     personal_interests varchar(50) NOT NULL,
     how_find_omm varchar(50) NOT NULL,
