@@ -1,37 +1,37 @@
 package dao;
-
+ 
 import domain.JournalEntry;
-
+ 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+ 
 /**
  * @author James Pettitt
  */
 public class JournalEntryJdbcDAO {
     private String databaseURI = DbConnection.getDefaultConnectionUri();
-
+ 
     public JournalEntryJdbcDAO() {}
-
+ 
     // constructor that intialises the URI.
     public JournalEntryJdbcDAO(String databaseURI) {
         this.databaseURI = databaseURI;
     }
-
+ 
     // method to save Entry.
     public void saveEntry(JournalEntry journalEntry) {
         String sql = "INSERT INTO journal_entry (topics_covered, length_of_session, notes, match_id) VALUES (?, ?, ?, ?)";
-
+ 
         try (
                 Connection dbCon = DbConnection.getConnection(databaseURI);
                 // create the statement.
                 PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
-
+ 
                 // copy the data from the JE object into the SQL parameters.
-
+ 
                 //these methods dont exist until changes are made in domain class
                 stmt.setString(1, journalEntry.getTopicsCovered());
                 stmt.setString(2, journalEntry.getLengthOfSession());
@@ -48,7 +48,7 @@ public class JournalEntryJdbcDAO {
                 } else {
                     throw new DAOException("Problem getting generated Entry ID");
                 }
-
+ 
                 journalEntry.setJournalEntryId(id);
             
             } catch (SQLException ex) {  // we are forced to catch SQLException.
@@ -56,12 +56,12 @@ public class JournalEntryJdbcDAO {
                 throw new DAOException(ex.getMessage(), ex);
             }
         }//end saveEntry method
-
-
+ 
+ 
     // method to get JE by journal_entry_id
     public JournalEntry getEntryById(Integer journalEntryId) {
         String sql = "SELECT * FROM journal_entry WHERE journal_entry_id = ?";
-
+ 
         try (
             Connection dbCon = DbConnection.getConnection(databaseURI);
             // create the statement.
@@ -90,7 +90,7 @@ public class JournalEntryJdbcDAO {
                 throw new DAOException(ex.getMessage(), ex);
             }
         }//end getEntryById method
-
+ 
     // method to delete JE
     public void removeEntry(JournalEntry journalEntry) {
         String sql = "DELETE FROM journal_entry WHERE journal_entry_id = ?";
@@ -101,7 +101,7 @@ public class JournalEntryJdbcDAO {
             PreparedStatement stmt = dbCon.prepareStatement(sql);) {
                 // copy the data from the JE object into the SQL parameters
                 stmt.setInt(1, journalEntry.getJournalEntryId());
-
+ 
                 stmt.executeUpdate();
                 
             } catch (SQLException ex){ 
@@ -109,5 +109,5 @@ public class JournalEntryJdbcDAO {
                 throw new DAOException(ex.getMessage(), ex);
             }
         }//end removeEntry method
-
+ 
 }//end class
