@@ -42,6 +42,16 @@ module.factory("journalEntriesAPI", function($resource){
     return $resource("/api/journalEntries");
 });
 
+///////////MENTOR'S FEEDBACK FACTORY
+// factory for th ngResource object that will get the all the Mentees from the web service.
+module.factory("registerMentorFeedbackFormsAPI", function($resource){
+    return $resource("/api/mentorFeedbackForms");
+});
+// factory for th ngResource object that will get the all the mentor feedback forms by id.
+module.factory("mentorFeedbackFormsAPI", function($resource){
+    return $resource("/api/mentorFeedbackForms/:id");
+});
+
 // Controller for managing Mentor resources.
 module.controller(
     "MentorController",
@@ -85,6 +95,17 @@ module.controller(
         this.registerJE = function(journalEntry) {
             alert("fill in Journal Entry");
             console.log(journalEntry);
+        };
+    }
+);
+// Controller for managing Mentor Feedback forms.
+module.controller(
+    "MentorFeedbackFormsController",
+    function(registerMentorFeedbackFormsAPI, $window) {
+        alert("on controller");
+        this.registerMentorFeedbackForms = function(mentorFeedbackForm) {
+            alert("fill in Mentor feedback form");
+            console.log(mentorFeedbackForm);
         };
     }
 );
