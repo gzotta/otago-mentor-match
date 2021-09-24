@@ -82,7 +82,7 @@ module.controller(
     "JournalEntriesController",
     function(journalEntriesAPI, $window) {
         alert("on controller");
-        this.registerMenteeFeedbackForms = function(journalEntry) {
+        this.registerJE = function(journalEntry) {
             alert("fill in Journal Entry");
             console.log(journalEntry);
         };
