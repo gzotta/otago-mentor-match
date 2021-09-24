@@ -24,7 +24,15 @@ module.factory("mentorsAPI", function($resource) {
 module.controller("MentorController", function(registerMentorAPI, mentorsAPI, $window) {
     alert("on controller")
     this.registerMentor = function(mentor) {
-        alert("Register Mentor");
-        console.log(mentor);
+        registerMentorAPI.save(null, mentor,
+            // success callback
+            function() {
+                $window.location = 'index.html';
+            },
+            // erro callback
+            function(error) {
+                console.log(error);
+            }
+        );
     };
 });

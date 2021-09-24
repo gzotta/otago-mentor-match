@@ -12,7 +12,7 @@ public class Mentor {
     private String companyName;
     private String employerJobTitle;
     private String jobTitleDepartment;
-    // private String industry;
+    private String industry;
     private String primaryWorkingIndustry;
     private String briefCareerHistory;
     private String modeOfMentoringSessions;
