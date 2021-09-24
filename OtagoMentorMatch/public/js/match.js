@@ -32,6 +32,10 @@ module.factory("menteesAPI", function($resource){
 module.factory("registerMenteeFeedbackFormsAPI", function($resource){
     return $resource("/api/menteeFeedbackForms");
 });
+// factory for th ngResource object that will get the allthe mentee feedback forms by id.
+module.factory("menteeFeedbackFormsAPI", function($resource){
+    return $resource("/api/menteeFeedbackForms/:id");
+});
 // Controller for managing Mentor resources.
 module.controller(
     "MentorController",
@@ -59,11 +63,11 @@ module.controller(
 // Controller for managing Mentee Feedback forms.
 module.controller(
     "MenteeFeedbackFormsController",
-    function(registerMenteeFeedbackFormsAPI, $window) {
+    function(registerMenteeFeedbackFormsAPI, menteeFeedbackFormsAPI, $window) {
         alert("on controller");
-        this.registerMenteeFeedbackForms = function(menteeFeedbackForms) {
+        this.registerMenteeFeedbackForms = function(menteeFeedbackForm) {
             alert("fill in Mentee feedback form");
-            console.log(menteeFeedbackForms);
+            console.log(menteeFeedbackForm);
         };
     }
 );
