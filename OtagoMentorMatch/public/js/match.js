@@ -17,7 +17,7 @@ module.factory("mentorAPI", function($resource) {
 module.factory("mentorsAPI", function($resource) {
     return $resource("/api/mentors/:email");
 });
-
+//////////MENTEES factory
 // factory for th ngResource object that will get the all the Mentees from the web service.
 module.factory("registerMenteeAPI", function($resource){
     return $resource("/api/mentees");
@@ -27,15 +27,21 @@ module.factory("registerMenteeAPI", function($resource){
 module.factory("menteesAPI", function($resource){
     return $resource("/api/mentees/:email");
 });
-
+///////////MENTEE'S FEEDBACK FACTORY
 // factory for th ngResource object that will get the all the Mentees from the web service.
 module.factory("registerMenteeFeedbackFormsAPI", function($resource){
     return $resource("/api/menteeFeedbackForms");
 });
-// factory for th ngResource object that will get the allthe mentee feedback forms by id.
+// factory for th ngResource object that will get the all the mentee feedback forms by id.
 module.factory("menteeFeedbackFormsAPI", function($resource){
     return $resource("/api/menteeFeedbackForms/:id");
 });
+///////////JOURNAL ENTRY FACTORY
+// factory for th ngResource object that will get the all the Journal Entries from the web service.
+module.factory("journalEntriesAPI", function($resource){
+    return $resource("/api/journalEntries");
+});
+
 // Controller for managing Mentor resources.
 module.controller(
     "MentorController",
@@ -68,6 +74,17 @@ module.controller(
         this.registerMenteeFeedbackForms = function(menteeFeedbackForm) {
             alert("fill in Mentee feedback form");
             console.log(menteeFeedbackForm);
+        };
+    }
+);
+// Controller for managing Journal Entry forms.
+module.controller(
+    "JournalEntriesController",
+    function(journalEntriesAPI, $window) {
+        alert("on controller");
+        this.registerMenteeFeedbackForms = function(journalEntry) {
+            alert("fill in Journal Entry");
+            console.log(journalEntry);
         };
     }
 );
