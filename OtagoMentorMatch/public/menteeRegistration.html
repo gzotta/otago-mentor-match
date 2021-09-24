@@ -58,7 +58,7 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input ng-model="mentee.Password" id="menteePassword" type="password" class="validate">
+                    <input ng-model="mentee.menteePassword" id="menteePassword" type="password" class="validate">
                     <label for="menteePassword">Password</label>
 
                 </div>
@@ -190,7 +190,57 @@
                         <span>Email</span>
                     </label>
                 </p>
+             <!-- How find OMM-->
+                <div class="row">
+                    <h4>How did you find about Otago Mentor Match?</h4>
+                    <p>
+                        <label>
+                            <input ng-model="mentee.howFindOMM" value="Alumni Office, University of Otago" class="with-gap" name="howFindOMM" type="radio" checked />
+                            <span>Alumni Office, University of Otago</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input ng-model="mentee.howFindOMM" value="Word of mouth" class="with-gap" name="howFindOMM" type="radio" />
+                            <span>Word of Mouth</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input ng-model="mentee.howFindOMM" value="Email" class="with-gap" name="howFindOMM" type="radio" />
+                            <span>Email</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input ng-model="mentee.howFindOMM" value="Facebook" class="with-gap" name="howFindOMM" type="radio" />
+                            <span>Facebook</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input ng-model="mentee.howFindOMM" value="Career Development Centre" class="with-gap" name="howFindOMM" type="radio" />
+                            <span>Career Development Centre</span>
+                        </label>
+                    </p>
+                </div>
+<!--Random matching?-->
+                <div class="row">
+                    <h4>Are you interest in random matching?</h4>
+                    <p>
+                        <label>
+                            <input ng-model="mentee.randomMatching" value="Yes" class="with-gap" name="randomMatching" type="radio"  />
+                            <span>Yes</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input ng-model="mentee.randomMatching" value="No" class="with-gap" name="randomMatching" type="radio" checked />
+                            <span>No</span>
+                        </label>
+                    </p>
             </div>
+
             <button type="submit" class="btn-large waves-effect waves-light"> Submit</button>
         </div>
 
