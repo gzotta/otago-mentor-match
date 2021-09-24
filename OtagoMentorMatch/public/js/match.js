@@ -71,8 +71,16 @@ module.controller(
     function(registerMenteeAPI, menteesAPI, $window) {
         alert("on controller");
         this.registerMentee = function(mentee) {
-            alert("Register Mentee");
-            console.log(mentee);
+            registerMenteeAPI.save(null, mentee,
+                // success callback
+                function() {
+                    $window.location = 'index.html';
+                },
+                // erro callback
+                function(error) {
+                    console.log(error);
+                }
+            );
         };
     }
 );
