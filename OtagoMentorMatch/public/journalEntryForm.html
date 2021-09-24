@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="MatchingApp" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
@@ -15,18 +15,17 @@
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
     <title>Mentoring Session Worksheet</title>
 </head>
-
-
-    <div class="container">
-
-
-
-    </div>
+<body ng-controller="JournalEntriesController as jeCtrl">
     <h2 class="center-align">Mentoring Session Worksheet</h2>
     <hr />
     <br />
+    <form ng-submit="jeCtrl.registerJE(journalEntry)">
     <div class="container">
         <div class="row">
       
@@ -35,31 +34,31 @@
                     <h5>What were some of the topics you and your mentor covered during this session?</h5>
                     <p>
                         <label>
-                            <input name="topicsCovered" type="radio" />
+                            <input name="topicsCovered" type="radio" ng-model="journalEntry.topicsCovered" value="CV and Cover Letter" />
                             <span>CV and Cover Letter</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="topicsCovered" type="radio" />
+                            <input name="topicsCovered" type="radio"ng-model="journalEntry.topicsCovered" value="Job Search" />
                             <span>Job Search</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input class="with-gap" name="topicsCovered" type="radio" />
+                            <input class="with-gap" name="topicsCovered" type="radio" ng-model="journalEntry.topicsCovered" value="Career specific advice" />
                             <span>Career specific advice</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="topicsCovered" type="radio" />
+                            <input name="topicsCovered" type="radio" ng-model="journalEntry.topicsCovered" value="Education or postgraduate specific advice" />
                             <span>Education or postgraduate specific advice</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="topicsCovered" type="radio" />
+                            <input name="topicsCovered" type="radio"ng-model="journalEntry.topicsCovered" value="Interviewing advice"/>
                             <span>Interviewing advice</span>
                         </label>
                     </p>
@@ -67,31 +66,31 @@
                      <h5>How long was this mentoring session for?</h5>
                      <p>
                          <label>
-                             <input name="lengthOfSession" type="radio" />
+                             <input name="lengthOfSession" type="radio" ng-model="journalEntry.lengthOfSession" value="10-20 minutes" />
                              <span>10-20 minutes</span>
                          </label>
                      </p>
                      <p>
                          <label>
-                             <input name="lengthOfSession" type="radio" />
+                             <input name="lengthOfSession" type="radio" ng-model="journalEntry.lengthOfSession" value="20-30 minutes" />
                              <span>20-30 minutes</span>
                          </label>
                      </p>
                      <p>
                         <label>
-                            <input name="lengthOfSession" type="radio" />
+                            <input name="lengthOfSession" type="radio" ng-model="journalEntry.lengthOfSession" value="30-40 minutes" />
                             <span>30-40 minutes</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="lengthOfSession" type="radio" />
+                            <input name="lengthOfSession" type="radio" ng-model="journalEntry.lengthOfSession" value="40-50 minutes" />
                             <span>40-50 minutes</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="lengthOfSession" type="radio" />
+                            <input name="lengthOfSession" type="radio" ng-model="journalEntry.lengthOfSession" value="60+ minutes"  />
                             <span>60+ minutes</span>
                         </label>
                     </p>
@@ -103,7 +102,7 @@
                         <!--Note Entry-->
                         <h5>Do you have any other comments you would like to leave?</h5>
                 <div class="input-field col s12">
-                    <textarea id="notes" class="materialize-textarea"></textarea>
+                    <textarea ng-model="journalEntry.notes"id="notes" class="materialize-textarea"></textarea>
                     <label for="notes">
                        Write down any notes you want to remember or keep track of your mentoring sessions.
                     </label>
@@ -113,17 +112,17 @@
             <div align="right">
                 <a button class="btn-large waves-effect waves-light red"> cancel</a>
                 
-            <a button class="btn-large waves-effect waves-light" type="Submit"> Submit</a>
+            <button class="btn-large waves-effect waves-light" type="submit"> Submit</button>
            
             </div>
             <br>
         </div>
-        
-        </form>
-
-
-
     </div>
+    </form>
+
+
+
+   
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
