@@ -1,4 +1,3 @@
-
 CREATE TABLE admin (
     admin_id int AUTO_INCREMENT,
     password varchar(16) NOT NULL,
