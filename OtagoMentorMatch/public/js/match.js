@@ -97,12 +97,16 @@ module.factory("getMenteeFeedbackFormAPI", function($resource) {
     return $resource("/api/menteeFeedbackForms/:id");
 });
 
+module.factory("signInAPI", function ($resource) {
+    return $resource("/api/mentees/:email");
+ });
+
 ///////////////////////////
 //---Mentee Controler---//
 /////////////////////////
 
 // Controller for managing Mentee resources.
-module.controller("MenteeController", function(registerMenteeAPI, menteesAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $window) {
+module.controller("MenteeController", function(signInAPI, registerMenteeAPI, menteesAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $sessionStorage, $window) {
     alert("on controller");
 
     // Function to save (Register) a Mentee.
@@ -118,8 +122,32 @@ module.controller("MenteeController", function(registerMenteeAPI, menteesAPI, sa
             }
         );
     };
+// ali
 
+this.signIn = function (email, password) {
+    
+   // get Mentee from database
+   signInAPI.get({'email': email},
+      // success callback
+      function (mentee) {
+        alert("fill in Mentee feedback form");
+         // also store the retrieved mentee
+         $sessionStorage.mentee = mentee;
 
+         // redirect to home
+         $window.location = 'home.html';
+      },
+      // fail callback
+      function () {
+         ctrl.signInMessage = 'Sign in failed. Please try again.';
+      }
+   );
+};
+//Signout Mentee
+this.signOut = function() {
+    $sessionStorage.$reset();
+     $window.location.href = 'index.html';
+};
     // Function to save a MenteeFeedbackForm.
     this.saveMenteeFeedbackForm = function(menteeFeedbackForm) {
         alert("fill in Mentee feedback form");
