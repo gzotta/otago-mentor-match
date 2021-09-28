@@ -26,6 +26,9 @@ module.factory("mentorsAPI", function($resource) {
     return $resource("/api/mentors/:email");
 });
 
+module.factory("allMentorsAPI", function($resource) {
+    return $resource("/api/mentors");
+});
 // Factory for the ngResource object that will post a MentorFeedbackForm to the web service.
 module.factory("saveMentorFeedbackFormAPI", function($resource) {
     return $resource("/api/mentorFeedbackForms");
@@ -194,10 +197,25 @@ module.controller("JournalEntriesController", function(journalEntriesAPI, $windo
 ///////////////////////////////Match Resources Section///////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 
+
+module.factory("mentorByIndustryAPI", function ($resource) {
+    return $resource("/api/mentors/:industry");
+});
+
 //////////////////////////////////
 //-------Macth Factories-------//
 ////////////////////////////////
-
+module.controller("MatchController", function (allMentorsAPI, mentorByIndustryAPI) {
+    // load the products
+    this.mentors = allMentorsAPI.query();
+    // load the categories
+   // this.mentorByIndusty = mentorByIndustryAPI.query();
+    
+    // click handler for the category filter buttons
+   // this.selectIndusty = function (selectedIndustry) {
+    //   this.mentors = categoryAPI.query({"industy": selectedIndustry});
+   // };
+});
 //////////////////////////////////
 //-------Macth Controler-------//
 ////////////////////////////////
