@@ -21,7 +21,7 @@ public class MentorModule extends Jooby {
             rsp.status(Status.CREATED);
         });
 
-        // Get a Mentee.
+        // Get a Mentee by email.
         get("/api/mentors/:email", (req) -> {
             String email = req.param("email").value();
 
@@ -30,9 +30,7 @@ public class MentorModule extends Jooby {
             } else {
                 return mentorDao.getMentorByEmail(email);
             }
-        }
-
-        );
+        });
 
         // DELETE a Mentor.
         delete("/api/mentors/:email", (req, rsp) -> {
