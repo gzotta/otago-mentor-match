@@ -97,17 +97,22 @@ module.factory("getMenteeFeedbackFormAPI", function($resource) {
     return $resource("/api/menteeFeedbackForms/:id");
 });
 
-module.factory("signInAPI", function ($resource) {
+// Factory for the ngResource object that will get a Mentee by email and then sign it in. 
+module.factory("signInAPI", function($resource) {
     return $resource("/api/mentees/:email");
- });
+});
 
 ///////////////////////////
 //---Mentee Controler---//
 /////////////////////////
 
 // Controller for managing Mentee resources.
-module.controller("MenteeController", function(signInAPI, registerMenteeAPI, menteesAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $sessionStorage, $window) {
-    alert("on controller");
+module.controller("MenteeController", function(signInAPI, registerMenteeAPI, menteesAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $sessionStorage, $window, $http) {
+    //Message for users (this message is called and changed within this.signIn method when Sign In fails).
+    this.signInMessage = "Please login to continue.";
+    // Alias 'this' so that we can access it inside callback functions.
+    let ctrl = this;
+
 
     // Function to save (Register) a Mentee.
     this.registerMentee = function(mentee) {
@@ -116,38 +121,47 @@ module.controller("MenteeController", function(signInAPI, registerMenteeAPI, men
             function() {
                 $window.location = 'index.html';
             },
-            // erro callback
+            // Error callback
             function(error) {
                 console.log(error);
             }
         );
     };
-// ali
 
-this.signIn = function (email, password) {
-    
-   // get Mentee from database
-   signInAPI.get({'email': email},
-      // success callback
-      function (mentee) {
-        alert("fill in Mentee feedback form");
-         // also store the retrieved mentee
-         $sessionStorage.mentee = mentee;
+    // Function to Sign In Mentee
+    this.signIn = function(email, password) {
+        // generate authentication token
+        let authToken = $window.btoa(email + ":" + password);
+        // store token
+        $sessionStorage.authToken = authToken;
+        // add token to the HTTP request headers
+        $http.defaults.headers.common.Authorization = 'Basic ' + authToken;
 
-         // redirect to home
-         $window.location = 'home.html';
-      },
-      // fail callback
-      function () {
-         ctrl.signInMessage = 'Sign in failed. Please try again.';
-      }
-   );
-};
-//Signout Mentee
-this.signOut = function() {
-    $sessionStorage.$reset();
-     $window.location.href = 'index.html';
-};
+        // get Mentee from database
+        signInAPI.get({ 'email': email },
+            // success callback
+            function(mentee) {
+                // also store the retrieved mentee
+                $sessionStorage.mentee = mentee;
+                // redirect to home
+                $window.location = 'home.html';
+            },
+            // fail callback
+            function() {
+                ctrl.signInMessage = 'Login failed. Please try again.';
+            }
+        );
+
+    };
+
+
+    // Function to Sign out for Mentee
+    this.signOut = function() {
+        $sessionStorage.$reset();
+        $window.location = 'index.html';
+    };
+
+
     // Function to save a MenteeFeedbackForm.
     this.saveMenteeFeedbackForm = function(menteeFeedbackForm) {
         alert("fill in Mentee feedback form");
