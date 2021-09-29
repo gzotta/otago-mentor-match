@@ -1,43 +1,61 @@
 <!DOCTYPE html>
+ <!-- navbar -->
 <html lang="en" dir="ltr">
-  <head>
+  
+<head>
     <meta charset="utf-8">
-    <title>Otago Mentor Match</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <!-- nav-styles link -->
     <link rel="stylesheet" href="/OtagoMentorMatch/public/css/nav-styles.css">
+   
+    <!-- home-styles link -->
+    <link rel="stylesheet" href="/OtagoMentorMatch/public/css/home-styles.css">
+
+   
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    
+    <!-- online source for nav -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
+    <title>Otago Mentor Match</title>
 </head>
 
   <body>
-    <nav>
+    <nav class="nav-wrapper transparent">
     <!-- side navigation bar  -->
       <input type="checkbox" id="check">
       <label for="check" class="checkbtn">
         <i class="fas fa-bars"></i>
       </label>
+      
       <label class="logo">Otago Mentor Match</label>
+      
       <ul>
-        <li><a class="active" href="#">Home</a></li>
-        <li><a href="#">FAQs</a></li>
-        <li><a href="#">Matches</a></li>
-        <li><a href="#">My Profile</a></li>
-        <li><a href="#">Settings</a></li>
+        <li><a class="active" href="#home.html">Home</a></li>
+        <li><a href="#matches.html">Matches</a></li>
+        <li><a href="#calendar.html">Calendar</a></li>
+        <li><a href="#profile.html">Profile</a></li>
+        <li><a href="#faqs.html">FAQs</a></li>
+        <li><a href="#contact.html">Contact</a></li>
 
         <!-- social media links  -->
-        <a class="icon">
-            <i class="fa fa-linkedin"></i>
-            <i class="fa fa-facebook"></i>
+        <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
+            <i class="fab fa-facebook"></i>
         </a>
-
+        <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
       </ul>
     </nav>
-    <section></section>
+    <section>
+
+    </section>
   </body>
 </html>
