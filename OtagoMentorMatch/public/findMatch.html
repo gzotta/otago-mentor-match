@@ -15,7 +15,7 @@
   <script src="js/ngStorage.js"></script>
   <script src="js/match.js"></script>
 </head>
-<header>
+<header class="white">
   <nav class="nav-wrapper transparent">
       <div class="container">
           <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
@@ -23,7 +23,7 @@
               <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
-              <li><a class="black-text text-darken-6" href="#home">Home</a></li>
+              <li><a class="black-text text-darken-6" href="home.html">Home</a></li>
               <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
               <li><a class="black-text text-darken-6" href="#calendar">Calendar</a></li>
               <li><a class="black-text text-darken-6" href="#profile">Profile</a></li>
@@ -50,12 +50,13 @@
       </div>
   </nav>
 </header>
-<body ng-controller="MatchController as matchCtrl">
-  <div class="row" id="industry">
+<body class="body" ng-controller="MatchController as matchCtrl">
+  <h2 class="center">Find A Mentor</h2>
+  <div  class="row" id="industry">
     <div class="col s12 m8 offset-m2 l6 offset-l3">
     <!--<button onClick="window.location.reload();">All</button>-->
   <h5>Filter by Industry:</h5>
-    <button class="industry"  ng-click="matchCtrl.selectIndustry(mentee.industry)">All</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry(mentee.industry)" waves-effect waves-teal>All</button>
     <button class="industry"  ng-click="matchCtrl.selectIndustry('Accounting')">Accounting</button>
     <button class="industry"  ng-click="matchCtrl.selectIndustry('Health and Community Services')">Health and Community Services</button>
     <button class="industry"  ng-click="matchCtrl.selectIndustry('Mining and Construction')">Mining and Construction</button>
@@ -86,7 +87,8 @@
 
 <br>
 <br>
-  <div class="container" data-ng-repeat="mentor in matchCtrl.mentorByIndustry">
+
+  <div class="card-panel blue lighten-4" class="container" data-ng-repeat="mentor in matchCtrl.mentorByIndustry">
     
     <div class="col s12 m8 offset-m2 l6 offset-l3">
       <div class="card-panel grey lighten-5 z-depth-1">
@@ -154,6 +156,20 @@
 <br>
 <br>
 </body>
+<style>
+     .body {
+        background-image: url(../img/otago1.jpg);
+        padding: 0px;
+        margin: 0px;
+        background-size: cover;
+     }
+      .center {
+  text-align: center;
+  border: 3px solid black;
+  color: white;
+}
+    
+</style>
 <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
 <script type="IN/Share" data-url="https://www.linkedin.com"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
