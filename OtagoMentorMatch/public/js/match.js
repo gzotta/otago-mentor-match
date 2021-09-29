@@ -26,6 +26,7 @@ module.factory("mentorsAPI", function($resource) {
     return $resource("/api/mentors/:email");
 });
 
+
 // Factory for the ngResource object that will post a MentorFeedbackForm to the web service.
 module.factory("saveMentorFeedbackFormAPI", function($resource) {
     return $resource("/api/mentorFeedbackForms");
@@ -263,14 +264,40 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
 ///////////////////////////////Match Resources Section///////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 
+
 //////////////////////////////////
 //-------Macth Factories-------//
 ////////////////////////////////
 
+// Factory for the ngResource object that will get all Mentors by industry from the web service.
+module.factory("mentorByIndustryAPI", function($resource) {
+    return $resource("/api/mentors/:industry");
+});
+
+// Factory for the ngResource object that will get all Mentors from the web service.
+module.factory("allMentorsAPI", function($resource) {
+    return $resource("/api/mentors");
+});
+
 //////////////////////////////////
 //-------Macth Controler-------//
 ////////////////////////////////
+module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI) {
+    // load Mentors.
+    this.mentors = allMentorsAPI.query();
+    // load Mentors by industry.
+    this.mentorByIndustry = mentorByIndustryAPI.query();
 
+    // Click handler for the industry filter buttons.
+    this.selectIndustry = function(selectedIndustry) {
+        this.mentorByIndustry = mentorByIndustryAPI.query({ "industry": selectedIndustry });
+    };
+
+    // Function to select all Mentors.
+    this.selectAll = function() {
+        this.mentors = allMentorsAPI.query();
+    };
+});
 
 
 

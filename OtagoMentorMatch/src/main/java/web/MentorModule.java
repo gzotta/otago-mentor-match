@@ -39,6 +39,15 @@ public class MentorModule extends Jooby {
             mentorDao.removeMentor(mentor);
             rsp.status(Status.NO_CONTENT);
         });
+
+        // GET all Mentors.
+        get("/api/mentors", () -> mentorDao.getMentors());
+
+        // GET Mentors by industry.
+        get("/api/mentors/:industry", (req) -> {
+            String primaryWorkingIndustry = req.param("industry").value();
+            return mentorDao.getMentorByIndustry(primaryWorkingIndustry);
+        });
     }
 
 }

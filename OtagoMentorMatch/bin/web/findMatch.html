@@ -1,36 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MatchingApp">
 
 <head>
-  
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
 </head>
+<header>
+    <nav class="nav-wrapper transparent">
+        <div class="container">
+            <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="black-text text-darken-6" href="#home">Home</a></li>
+                <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
+                <li><a class="black-text text-darken-6" href="#calendar">Calendar</a></li>
+                <li><a class="black-text text-darken-6" href="#profile">Profile</a></li>
+                <li><a class="black-text text-darken-6" href="#faqs">FAQs</a></li>
+                <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
+                <li><a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a></li>
+                <li>
+                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+            </ul>
 
-<body>
-  <div class="container">
-    <div class="col s12 m8 offset-m2 l6 offset-l3">
-      <div class="card-panel grey lighten-5 z-depth-1">
-        <div class="row valign-wrapper">
-          <div class="col s2">
-            <img src="http://www.american.edu/uploads/profiles/large/chris_palmer_profile_11.jpg" alt="" class="circle responsive-img">
-            <!-- notice the "circle" class -->
-          </div>
-          <div class="col s10">
-            <span class="black-text">
-                This is a square image. Add the "circle" class to it to make it appear circular.
-              </span>
-          </div>
         </div>
-      </div>
+    </nav>
+</header>
+
+<body ng-controller="MatchController as matchCtrl">
+    <div class="row" id="industry">
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <!--<button onClick="window.location.reload();">All</button>-->
+            <h5>Filter by Industry:</h5>
+            <button class="industry" ng-click="matchCtrl.selectIndustry(mentee.industry)">All</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Accounting')">Accounting</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Health and Community Services')">Health and Community Services</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Mining and Construction')">Mining and Construction</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Agriculture / Hoticulture / Viticulture')">Agriculture / Hoticulture / Viticulture</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Hospitality and Tourism')">Hospitality and Tourism</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Retail Trade')">Retail Trade</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Computing / IT / Communications')">Computing / IT / Communications</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Legal Services')">Legal Services</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Science and Research')">Science and Research</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Cultural / Sport and Recreational Services')">Cultural / Sport and Recreational Services</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Local Government')">Local Government</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Surveying / Mining and Construction')">Surveying / Mining and Construction</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Education')">Education</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Management and Consulting')">Management and Consulting</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Visual Arts and Design')">Visual Arts and Design</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Electricity / Gas and Water Supply')">Electricity / Gas and Water Supply</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Manufacturing')">Manufacturing</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Wholesale Trade')">Wholesale Trade</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Environmental')">Environmental</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Marketing')">Marketing</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Finance and Insurance')">Finance and Insurance</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Marketing')">Media / Publising and Entertainment</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Government and Defence')">Government and Defence</button>
+            <!--<button class="industry" ng-repeat="mentor in matchCtrl.mentorByIndustry" ng-click="matchCtrl.selectIndustry(mentor.primaryWorkingIndustry)">{{mentor.primaryWorkingIndustry}}</button>-->
+
+        </div>
     </div>
-  </div>
-  <iframe src="https://www.linkedin.com" title="Embedded Page Title" width=”” height=””></iframe>
-  <iframe width="560" height="315" src="https://www.linkedin.com/in/trbayly/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <div class="taggbox-container" style="width:100%;height:100%;overflow: auto;"><div class="taggbox-socialwall" data-wall-id="70862" view-url="https://widget.taggbox.com/70862"></div><script src="https://widget.taggbox.com/embed.min.js" type="text/javascript"></script></div>
+
+    <br>
+    <br>
+    <div class="container" data-ng-repeat="mentor in matchCtrl.mentorByIndustry">
+
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+            <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row valign-wrapper">
+                    <div class="col s2">
+                        <img src="/img/profile.jpg" alt="" class="circle responsive-img">
+                        <!-- notice the "circle" class -->
+                    </div>
+
+                    <div class="col s8">
+                        <span class="black-text">
+                First Name:
+                {{mentor.fname}}
+                
+              </span>
+                        <br>
+                        <span class="black-text">
+               
+                Industy:
+                {{mentor.primaryWorkingIndustry}}
+              </span>
+                        <br>
+                        <span class="black-text">
+                bio:
+                {{mentor.bio}}
+                
+              </span>
+
+                    </div>
+                    <div class="col s8">
+                        <span class="black-text">
+              Undergraduate Degree: 
+            {{mentor.undergraduateCourse}}
+              
+            </span>
+                        <br>
+                        <span class="black-text">
+              Postgraduate Degree: 
+            {{mentor.postgraduateCourse}}
+              
+            </span>
+                        <br>
+                        <span class="black-text">
+              Job Title: 
+            {{mentor.employerJobTitle}}
+              
+            </span>
+                    </div>
+                    <button class="btn-large" align="right">Match</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <br>
+
+    <br>
+    <br>
+
+    <br>
+    <br>
+
+    <br>
+    <br>
 </body>
-<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+<script src="https://platform.linkedin.com/in.js" type="text/javascript">
+    lang: en_US
+</script>
 <script type="IN/Share" data-url="https://www.linkedin.com"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('select').formSelect();
+        $('.modal').modal();
+        $('.tooltipped').tooltip();
+        $('.sidenav').sidenav();
+    });
+</script>
+
 </html>
