@@ -25,8 +25,8 @@
             <img src="http://www.american.edu/uploads/profiles/large/chris_palmer_profile_11.jpg" alt="" class="circle responsive-img">
             <!-- notice the "circle" class -->
           </div>
-          <div>{{mentor.fname}}</div>
-          <div class="col s10">
+         
+          <div class="col s8">
             <span class="black-text">
                 First Name:
                 {{mentor.fname}}
@@ -34,19 +34,40 @@
               </span>
               <br>
               <span class="black-text">
+               
+                Industy:
+                {{mentor.primaryWorkingIndustry}}
+              </span>
+              <br>
+              <span class="black-text">
                 bio:
                 {{mentor.bio}}
                 
               </span>
-              <br>
-              <span class="black-text">
-                Industy:
-                {{mentor.primaryWorkingIndustry}}
-                
-              </span>
               
           </div>
+          <div class="col s8">
+            <span class="black-text">
+              Undergraduate Degree: 
+            {{mentor.undergraduateCourse}}
+              
+            </span>
+            <br>
+            <span class="black-text">
+              Postgraduate Degree: 
+            {{mentor.postgraduateCourse}}
+              
+            </span>
+            <br>
+            <span class="black-text">
+              Job Title: 
+            {{mentor.employerJobTitle}}
+              
+            </span>
+          </div>
           <button class="btn-large" align="right">Match</button>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -54,8 +75,9 @@
   
   <div id="industry">
     <button class="industry" ng-click="matchCtrl.selectAll()">All</button>
-    <button class="industry" ng-repeat="industry in matchCtrl.industry" ng-click="matchCtrl.selectIndustry(industry)">{{industry}}</button>
+    <button class="industry" ng-repeat="mentor in matchCtrl.mentorByIndustry" ng-click="matchCtrl.selectIndustry(mentor.primaryWorkingIndustry)">{{mentor.primaryWorkingIndustry}}</button>
 </div>
+
   <div id="mentor-table">
     <table id="mentor-details">
         <thead>
@@ -68,7 +90,7 @@
             </tr>
         </thead>
     <tbody>
-        <tr data-ng-repeat="mentor in matchCtrl.mentors">
+        <tr data-ng-repeat="mentor in matchCtrl.mentorByIndustry">
           <td>{{mentor.fname}}</td>
           <td>{{mentor.lname}}</td>
           <td>${{mentor.email}}</td>
@@ -78,7 +100,22 @@
     </tbody>
 </table>
 </div>
+<br>
+<br>
+
+<br>
+<br>
 </body>
 <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
 <script type="IN/Share" data-url="https://www.linkedin.com"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('select').formSelect();
+            $('.modal').modal();
+            $('.tooltipped').tooltip();
+            $('.sidenav').sidenav();
+        });
+    </script>
 </html>

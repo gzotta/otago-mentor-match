@@ -198,28 +198,31 @@ module.controller("JournalEntriesController", function(journalEntriesAPI, $windo
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
-module.factory("mentorByIndustryAPI", function ($resource) {
-    return $resource("/api/mentors/:industry");
-});
+
 
 //////////////////////////////////
 //-------Macth Factories-------//
+////////////////////////////////
+module.factory("mentorByIndustryAPI", function ($resource) {
+    return $resource("/api/mentors/:industry");
+});
+//////////////////////////////////
+//-------Macth Controler-------//
 ////////////////////////////////
 module.controller("MatchController", function (allMentorsAPI, mentorByIndustryAPI) {
     // load the products
     this.mentors = allMentorsAPI.query();
     // load the categories
-   // this.mentorByIndusty = mentorByIndustryAPI.query();
+    this.mentorByIndustry = mentorByIndustryAPI.query();
     
     // click handler for the category filter buttons
-   // this.selectIndusty = function (selectedIndustry) {
-    //   this.mentors = categoryAPI.query({"industy": selectedIndustry});
-   // };
-});
-//////////////////////////////////
-//-------Macth Controler-------//
-////////////////////////////////
-
+   this.selectIndustry = function (selectedIndustry) {
+      this.mentorByIndustry = mentorByIndustryAPI.query({"industry": selectedIndustry});
+    };
+    this.selectAll = function(){
+        this.mentors = allMentorsAPI.query();
+    };
+   });
 
 
 

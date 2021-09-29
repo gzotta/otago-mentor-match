@@ -33,8 +33,8 @@ public class MentorModule extends Jooby {
 //Get A MENTOR by industry
 
         get("/api/mentors/:industry", (req) -> {
-            String industry = req.param("primary_working_industry").value();
-        return mentorDao.getMentorByIndustry(industry);
+            String primaryWorkingIndustry = req.param("industry").value();
+        return mentorDao.getMentorByIndustry(primaryWorkingIndustry);
         });
     }
 
