@@ -21,7 +21,7 @@ public class MentorModule extends Jooby {
             rsp.status(Status.CREATED);
         });
 
-        // Get a Mentee by email.
+        // Get a Mentor by email.
         get("/api/mentors/:email", (req) -> {
             String email = req.param("email").value();
 
