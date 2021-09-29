@@ -26,9 +26,7 @@ module.factory("mentorsAPI", function($resource) {
     return $resource("/api/mentors/:email");
 });
 
-module.factory("allMentorsAPI", function($resource) {
-    return $resource("/api/mentors");
-});
+
 // Factory for the ngResource object that will post a MentorFeedbackForm to the web service.
 module.factory("saveMentorFeedbackFormAPI", function($resource) {
     return $resource("/api/mentorFeedbackForms");
@@ -100,9 +98,9 @@ module.factory("getMenteeFeedbackFormAPI", function($resource) {
     return $resource("/api/menteeFeedbackForms/:id");
 });
 
-module.factory("signInAPI", function ($resource) {
+module.factory("signInAPI", function($resource) {
     return $resource("/api/mentees/:email");
- });
+});
 
 ///////////////////////////
 //---Mentee Controler---//
@@ -125,32 +123,32 @@ module.controller("MenteeController", function(signInAPI, registerMenteeAPI, men
             }
         );
     };
-// ali
+    // ali
 
-this.signIn = function (email, password) {
-    
-   // get Mentee from database
-   signInAPI.get({'email': email},
-      // success callback
-      function (mentee) {
-        alert("fill in Mentee feedback form");
-         // also store the retrieved mentee
-         $sessionStorage.mentee = mentee;
+    this.signIn = function(email, password) {
 
-         // redirect to home
-         $window.location = 'home.html';
-      },
-      // fail callback
-      function () {
-         ctrl.signInMessage = 'Sign in failed. Please try again.';
-      }
-   );
-};
-//Signout Mentee
-this.signOut = function() {
-    $sessionStorage.$reset();
-     $window.location.href = 'index.html';
-};
+        // get Mentee from database
+        signInAPI.get({ 'email': email },
+            // success callback
+            function(mentee) {
+                alert("fill in Mentee feedback form");
+                // also store the retrieved mentee
+                $sessionStorage.mentee = mentee;
+
+                // redirect to home
+                $window.location = 'home.html';
+            },
+            // fail callback
+            function() {
+                ctrl.signInMessage = 'Sign in failed. Please try again.';
+            }
+        );
+    };
+    //Signout Mentee
+    this.signOut = function() {
+        $sessionStorage.$reset();
+        $window.location.href = 'index.html';
+    };
     // Function to save a MenteeFeedbackForm.
     this.saveMenteeFeedbackForm = function(menteeFeedbackForm) {
         alert("fill in Mentee feedback form");
@@ -198,31 +196,39 @@ module.controller("JournalEntriesController", function(journalEntriesAPI, $windo
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
 //////////////////////////////////
 //-------Macth Factories-------//
 ////////////////////////////////
-module.factory("mentorByIndustryAPI", function ($resource) {
+
+// Factory for the ngResource object that will get all Mentors by industry from the web service.
+module.factory("mentorByIndustryAPI", function($resource) {
     return $resource("/api/mentors/:industry");
 });
+
+// Factory for the ngResource object that will get all Mentors from the web service.
+module.factory("allMentorsAPI", function($resource) {
+    return $resource("/api/mentors");
+});
+
 //////////////////////////////////
 //-------Macth Controler-------//
 ////////////////////////////////
-module.controller("MatchController", function (allMentorsAPI, mentorByIndustryAPI) {
-    // load the products
+module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI) {
+    // load Mentors.
     this.mentors = allMentorsAPI.query();
-    // load the categories
+    // load Mentors by industry.
     this.mentorByIndustry = mentorByIndustryAPI.query();
-    
-    // click handler for the category filter buttons
-   this.selectIndustry = function (selectedIndustry) {
-      this.mentorByIndustry = mentorByIndustryAPI.query({"industry": selectedIndustry});
+
+    // Click handler for the industry filter buttons.
+    this.selectIndustry = function(selectedIndustry) {
+        this.mentorByIndustry = mentorByIndustryAPI.query({ "industry": selectedIndustry });
     };
-    this.selectAll = function(){
+
+    // Function to select all Mentors.
+    this.selectAll = function() {
         this.mentors = allMentorsAPI.query();
     };
-   });
+});
 
 
 
