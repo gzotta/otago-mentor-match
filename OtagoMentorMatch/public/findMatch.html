@@ -15,14 +15,84 @@
   <script src="js/ngStorage.js"></script>
   <script src="js/match.js"></script>
 </head>
-
+<header>
+  <nav class="nav-wrapper transparent">
+      <div class="container">
+          <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
+          <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+              <i class="material-icons">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+              <li><a class="black-text text-darken-6" href="#home">Home</a></li>
+              <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
+              <li><a class="black-text text-darken-6" href="#calendar">Calendar</a></li>
+              <li><a class="black-text text-darken-6" href="#profile">Profile</a></li>
+              <li><a class="black-text text-darken-6" href="#faqs">FAQs</a></li>
+              <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
+              <li><a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a></li>
+              <li>
+                  <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+              </li>
+              <li>
+                  <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
+                      <i class="fab fa-facebook"></i>
+                  </a>
+              </li>
+              <li>
+                  <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+              </li>
+          </ul>
+         
+      </div>
+  </nav>
+</header>
 <body ng-controller="MatchController as matchCtrl">
-  <div class="container" data-ng-repeat="mentor in matchCtrl.mentors">
+  <div class="row" id="industry">
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+    <!--<button onClick="window.location.reload();">All</button>-->
+  <h5>Filter by Industry:</h5>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry(mentee.industry)">All</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Accounting')">Accounting</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Health and Community Services')">Health and Community Services</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Mining and Construction')">Mining and Construction</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Agriculture / Hoticulture / Viticulture')">Agriculture / Hoticulture / Viticulture</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Hospitality and Tourism')">Hospitality and Tourism</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Retail Trade')">Retail Trade</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Computing / IT / Communications')">Computing / IT / Communications</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Legal Services')">Legal Services</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Science and Research')">Science and Research</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Cultural / Sport and Recreational Services')">Cultural / Sport and Recreational Services</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Local Government')">Local Government</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Surveying / Mining and Construction')">Surveying / Mining and Construction</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Education')">Education</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Management and Consulting')">Management and Consulting</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Visual Arts and Design')">Visual Arts and Design</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Electricity / Gas and Water Supply')">Electricity / Gas and Water Supply</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Manufacturing')">Manufacturing</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Wholesale Trade')">Wholesale Trade</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Environmental')">Environmental</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Marketing')">Marketing</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Finance and Insurance')">Finance and Insurance</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Marketing')">Media / Publising and Entertainment</button>
+    <button class="industry"  ng-click="matchCtrl.selectIndustry('Government and Defence')">Government and Defence</button>
+    <!--<button class="industry" ng-repeat="mentor in matchCtrl.mentorByIndustry" ng-click="matchCtrl.selectIndustry(mentor.primaryWorkingIndustry)">{{mentor.primaryWorkingIndustry}}</button>-->
+
+  </div>
+</div>
+
+<br>
+<br>
+  <div class="container" data-ng-repeat="mentor in matchCtrl.mentorByIndustry">
+    
     <div class="col s12 m8 offset-m2 l6 offset-l3">
       <div class="card-panel grey lighten-5 z-depth-1">
         <div class="row valign-wrapper">
           <div class="col s2">
-            <img src="http://www.american.edu/uploads/profiles/large/chris_palmer_profile_11.jpg" alt="" class="circle responsive-img">
+            <img src="/img/profile.jpg" alt="" class="circle responsive-img">
             <!-- notice the "circle" class -->
           </div>
          
@@ -72,34 +142,12 @@
       </div>
     </div>
   </div>
+  <br>
+  <br>
   
-  <div id="industry">
-    <button class="industry" ng-click="matchCtrl.selectAll()">All</button>
-    <button class="industry" ng-repeat="mentor in matchCtrl.mentorByIndustry" ng-click="matchCtrl.selectIndustry(mentor.primaryWorkingIndustry)">{{mentor.primaryWorkingIndustry}}</button>
-</div>
-
-  <div id="mentor-table">
-    <table id="mentor-details">
-        <thead>
-            <tr>
-              <th>fname</th>
-              <th>lname</th>
-              <th>email</th>
-              <th>bio</th>
-              <th></th>
-            </tr>
-        </thead>
-    <tbody>
-        <tr data-ng-repeat="mentor in matchCtrl.mentorByIndustry">
-          <td>{{mentor.fname}}</td>
-          <td>{{mentor.lname}}</td>
-          <td>${{mentor.email}}</td>
-          <td>{{mentor.bio}}</td>
-          <td><button id="buy" type ="button">Match</button></td>
-        </tr>
-    </tbody>
-</table>
-</div>
+<br>
+<br>
+  
 <br>
 <br>
 
