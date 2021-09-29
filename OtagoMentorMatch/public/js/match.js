@@ -42,8 +42,7 @@ module.factory("getMentorFeedbackFormAPI", function($resource) {
 /////////////////////////
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function(registerMentorAPI, mentorsAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, $window) {
-    alert("on controller")
+module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, $window) {
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function(mentor) {
@@ -57,6 +56,13 @@ module.controller("MentorController", function(registerMentorAPI, mentorsAPI, sa
                 console.log(error);
             }
         );
+    };
+
+
+    // Function to Sign out for Mentee
+    this.signOut = function() {
+        $sessionStorage.$reset();
+        $window.location = 'index.html';
     };
 
 
@@ -98,17 +104,12 @@ module.factory("getMenteeFeedbackFormAPI", function($resource) {
     return $resource("/api/menteeFeedbackForms/:id");
 });
 
-module.factory("signInAPI", function($resource) {
-    return $resource("/api/mentees/:email");
-});
-
 ///////////////////////////
 //---Mentee Controler---//
 /////////////////////////
 
 // Controller for managing Mentee resources.
-module.controller("MenteeController", function(signInAPI, registerMenteeAPI, menteesAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $sessionStorage, $window) {
-    alert("on controller");
+module.controller("MenteeController", function(registerMenteeAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $sessionStorage, $window) {
 
     // Function to save (Register) a Mentee.
     this.registerMentee = function(mentee) {
@@ -117,38 +118,21 @@ module.controller("MenteeController", function(signInAPI, registerMenteeAPI, men
             function() {
                 $window.location = 'index.html';
             },
-            // erro callback
+            // Error callback
             function(error) {
                 console.log(error);
             }
         );
     };
-    // ali
 
-    this.signIn = function(email, password) {
 
-        // get Mentee from database
-        signInAPI.get({ 'email': email },
-            // success callback
-            function(mentee) {
-                alert("fill in Mentee feedback form");
-                // also store the retrieved mentee
-                $sessionStorage.mentee = mentee;
-
-                // redirect to home
-                $window.location = 'home.html';
-            },
-            // fail callback
-            function() {
-                ctrl.signInMessage = 'Sign in failed. Please try again.';
-            }
-        );
-    };
-    //Signout Mentee
+    // Function to Sign Out for Mentee
     this.signOut = function() {
         $sessionStorage.$reset();
-        $window.location.href = 'index.html';
+        $window.location = 'index.html';
     };
+
+
     // Function to save a MenteeFeedbackForm.
     this.saveMenteeFeedbackForm = function(menteeFeedbackForm) {
         alert("fill in Mentee feedback form");
@@ -189,6 +173,91 @@ module.controller("JournalEntriesController", function(journalEntriesAPI, $windo
         console.log(journalEntry);
     };
 });
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////Login (Sign Up) Resources Section///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////
+//-------Login Factories-------//
+////////////////////////////////
+
+// Factory for the ngResource object that will get a Mentor by email and then sign it in (Login). 
+module.factory("mentorSignInAPI", function($resource) {
+    return $resource("/api/mentors/:email");
+});
+
+// Factory for the ngResource object that will get a Mentee by email and then sign it in (Login). 
+module.factory("menteeSignInAPI", function($resource) {
+    return $resource("/api/mentees/:email");
+});
+
+//////////////////////////////////
+//-------Login Controler-------//
+////////////////////////////////
+
+// Controller for managing Login (Sign Up) resources.
+module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, $window, $http, $sessionStorage) {
+    //Message for users (this message is called and changed within this.signIn method when Sign In fails).
+    this.signInMessage = "Please login to continue.";
+    // Alias 'this' so that we can access it inside callback functions.
+    let ctrl = this;
+
+
+
+    // Function to Sign In (Login) Mentor.
+    this.loginUser = function(user) {
+        if (user.type == "mentor") {
+            // generate authentication token
+            let authToken = $window.btoa(user.email + ":" + user.password);
+            // store token
+            $sessionStorage.authToken = authToken;
+            // add token to the HTTP request headers
+            $http.defaults.headers.common.Authorization = 'Basic ' + authToken;
+            // get Mentee from database
+            mentorSignInAPI.get({ 'email': user.email },
+                // success callback
+                function(user) {
+                    // also store the retrieved mentee
+                    $sessionStorage.mentor = user;
+                    // redirect to home
+                    $window.location = 'home.html';
+                },
+                // fail callback
+                function() {
+                    ctrl.signInMessage = 'Login failed. Please try again.';
+                }
+            );
+        } else {
+            // generate authentication token
+            let authToken = $window.btoa(user.email + ":" + user.password);
+            // store token
+            $sessionStorage.authToken = authToken;
+            // add token to the HTTP request headers
+            $http.defaults.headers.common.Authorization = 'Basic ' + authToken;
+
+            // get Mentee from database
+            menteeSignInAPI.get({ 'email': user.email },
+                // success callback
+                function(user) {
+                    // also store the retrieved mentee
+                    $sessionStorage.mentee = user;
+                    // redirect to home
+                    $window.location = 'home.html';
+                },
+                // fail callback
+                function() {
+                    ctrl.signInMessage = 'Login failed. Please try again.';
+                }
+            );
+        }
+    };
+
+
+});
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////

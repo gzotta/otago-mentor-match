@@ -3,7 +3,7 @@ package web;
 import dao.MentorJdbcDAO;
 import domain.Mentor;
 import org.jooby.Jooby;
-//import org.jooby.Result;
+import org.jooby.Result;
 import org.jooby.Status;
 
 /**
@@ -19,6 +19,17 @@ public class MentorModule extends Jooby {
             Mentor mentor = req.body().to(Mentor.class);
             mentorDao.saveMentor(mentor);
             rsp.status(Status.CREATED);
+        });
+
+        // Get a Mentor by email.
+        get("/api/mentors/:email", (req) -> {
+            String email = req.param("email").value();
+
+            if (mentorDao.getMentorByEmail(email) == null) {
+                return new Result().status(Status.NOT_FOUND);
+            } else {
+                return mentorDao.getMentorByEmail(email);
+            }
         });
 
         // DELETE a Mentor.
