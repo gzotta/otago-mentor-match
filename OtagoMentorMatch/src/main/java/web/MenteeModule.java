@@ -3,10 +3,8 @@ package web;
 import dao.MenteeJdbcDAO;
 import domain.Mentee;
 import org.jooby.Jooby;
-//import org.jooby.Result;
 import org.jooby.Status;
 import org.jooby.Result;
-
 
 /**
  *
@@ -23,16 +21,18 @@ public class MenteeModule extends Jooby {
             rsp.status(Status.CREATED);
 
         });
-        //Get a Mentee.
+
+        // Get a Mentee by email.
         get("/api/mentees/:email", (req) -> {
             String email = req.param("email").value();
-            
-            if(menteeDao.getMenteeByEmail(email) == null){
-                return new Result().status(Status.NOT_FOUND);
-            }else{
-            return menteeDao.getMenteeByEmail(email);} }
 
-        );
+            if (menteeDao.getMenteeByEmail(email) == null) {
+                return new Result().status(Status.NOT_FOUND);
+            } else {
+                return menteeDao.getMenteeByEmail(email);
+            }
+        });
+
         // DELETE a Mentee.
         delete("/api/mentees/:email", (req, rsp) -> {
             String email = req.param("email").value();

@@ -3,7 +3,7 @@ package web;
 import dao.MentorJdbcDAO;
 import domain.Mentor;
 import org.jooby.Jooby;
-//import org.jooby.Result;
+import org.jooby.Result;
 import org.jooby.Status;
 
 /**
@@ -21,6 +21,17 @@ public class MentorModule extends Jooby {
             rsp.status(Status.CREATED);
         });
 
+        // Get a Mentor by email.
+        get("/api/mentors/:email", (req) -> {
+            String email = req.param("email").value();
+
+            if (mentorDao.getMentorByEmail(email) == null) {
+                return new Result().status(Status.NOT_FOUND);
+            } else {
+                return mentorDao.getMentorByEmail(email);
+            }
+        });
+
         // DELETE a Mentor.
         delete("/api/mentors/:email", (req, rsp) -> {
             String email = req.param("email").value();
@@ -28,13 +39,14 @@ public class MentorModule extends Jooby {
             mentorDao.removeMentor(mentor);
             rsp.status(Status.NO_CONTENT);
         });
-//Get a mentor
-        get("/api/mentors", () -> mentorDao.getMentors());
-//Get A MENTOR by industry
 
+        // GET all Mentors.
+        get("/api/mentors", () -> mentorDao.getMentors());
+
+        // GET Mentors by industry.
         get("/api/mentors/:industry", (req) -> {
             String primaryWorkingIndustry = req.param("industry").value();
-        return mentorDao.getMentorByIndustry(primaryWorkingIndustry);
+            return mentorDao.getMentorByIndustry(primaryWorkingIndustry);
         });
     }
 
