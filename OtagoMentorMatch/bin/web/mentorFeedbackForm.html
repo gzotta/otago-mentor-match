@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html ng-app="MatchingApp" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+    <title>Mentor Feedback Form</title>
+</head>
+
+<body ng-controller="MentorFeedbackFormsController as mentorFeedbackCtrl">
+    <h2 class="center-align">Mentor Feedback Form</h2>
+    <hr />
+    <br />
+    <form ng-submit="mentorFeedbackCtrl.registerMentorFeedbackForms(mentorFeedbackForm)">
+        <div class="container">
+            <div class="row">
+                <!--Radio of communication method-->
+                <h5>What forms of communication have you used during your sessions</h5>
+                <p>
+                    <label>
+                        <input name="communicationPlatform" type="radio"
+                            ng-model="mentorFeedbackForm.communicationPlatform" value="Face to Face" />
+                        <span>Video Calling</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="communicationPlatform" type="radio"
+                            ng-model="mentorFeedbackForm.communicationPlatform" value="Email" />
+                        <span>Email</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="communicationPlatform" type="radio"
+                            ng-model="mentorFeedbackForm.communicationPlatform" value="Phone Calling/Text messaging" />
+                        <span>Phone Calling/Text messaging</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="communicationPlatform" type="radio"
+                            ng-model="mentorFeedbackForm.communicationPlatform" value="WhatsApp" />
+                        <span>WhasApp</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="communicationPlatform" type="radio"
+                            ng-model="mentorFeedbackForm.communicationPlatform" value="LinkedIn" />
+                        <span>LinkedIn</span>
+                    </label>
+                </p>
+            </div>
+
+            <div class="row">
+
+                <!--Radio of how students found out about OMM-->
+                <h5>How did you find out about the Otago Mentor Match programme?</h5>
+                <p>
+                    <label>
+                        <input name="findingOMM" type="radio" ng-model="mentorFeedbackForm.findingOMM" value="Email" />
+                        <span>Email</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="findingOMM" type="radio" ng-model="mentorFeedbackForm.findingOMM"
+                            value="Lecture Presentations" />
+                        <span>Lecture Presentations</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="findingOMM" type="radio" ng-model="mentorFeedbackForm.findingOMM"
+                            value="LinkedIn" />
+                        <span>LinkedIn</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="findingOMM" type="radio" ng-model="mentorFeedbackForm.findingOMM"
+                            value="Class Rep/School Rep" />
+                        <span>Class Rep/ School Rep</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="findingOMM" type="radio" ng-model="mentorFeedbackForm.findingOMM"
+                            value="Via Career Development Office" />
+                        <span>Via Career Development Office</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="findingOMM" type="radio" ng-model="mentorFeedbackForm.findingOMM"
+                            value="Via the Alumni Office, Otago" />
+                        <span>Via the Alumni Office, Otago</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="findingOMM" type="radio" ng-model="mentorFeedbackForm.findingOMM"
+                            value="Departmental Administrator" />
+                        <span>Departmental Administrator</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="findingOMM" type="radio" ng-model="mentorFeedbackForm.findingOMM"
+                            value="Directly from the Programme Coordinator" />
+                        <span>Directly from the Programme Coordinator</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="findingOMM" type="radio" ng-model="mentorFeedbackForm.findingOMM"
+                            value="Plasma screens accross the campus" />
+                        <span>Plasma screens accross the campus</span>
+                    </label>
+                </p>
+            </div>
+
+            <div class="row">
+
+                <!--Description of Mentoring sessions radio-->
+                <h5>How would you best describe your sessions with your student mentee</h5>
+                <p>
+                    <label>
+                        <input name="describeSessions" type="radio" 
+                            ng-model="mentorFeedbackForm.describeSessions"
+                            value="Very good and effective - my sessions have been informative and I would do this again or become a mentor myself"/>
+                        <span>Very good and effective - my sessions have been informative and I would do this again or
+                            become a mentor myself</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="describeSessions" type="radio" ng-model="mentorFeedbackForm.describeSessions"
+                            value="Sufficient - there was enough time for us to go over everything that I wanted to discuss" />
+                        <span>Sufficient - there was enough time for us to go over everything that I wanted to
+                            discuss</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input class="with-gap" name="describeSessions" type="radio"
+                            ng-model="mentorFeedbackForm.describeSessions"
+                            value="Reasonable - communication could have been better and more informative" />
+                        <span>Reasonable - communication could have been better and more informative</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="describeSessions" type="radio" ng-model="mentorFeedbackForm.describeSessions"
+                            value="Poor - I did not find it helpful and did not gain any insight into the employment marke" />
+                        <span>Poor - I did not find it helpful and did not gain any insight into the employment
+                            market</span>
+                    </label>
+                </p>
+            </div>
+
+            <!--is three months long enough-->
+            <div class="row">
+                <h5>Is three months a long enough period to establish a relationship for the program</h5>
+                <p>
+                    <label>
+                        <input name="enoughTimeToEstablishRelationship" type="radio"
+                            ng-model="mentorFeedbackForm.enoughTimeToEstablishRelationship"
+                            value="Three months is a good amount of time" />
+                        <span>Three months is a good amount of time</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="enoughTimeToEstablishRelationship" type="radio"
+                            ng-model="mentorFeedbackForm.enoughTimeToEstablishRelationship"
+                            value="Yes, but a longer length program 6-12 months would be better" />
+                        <span>Yes, but a longer length program 6-12 months would be better</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input class="with-gap" name="enoughTimeToEstablishRelationship" type="radio"
+                            ng-model="mentorFeedbackForm.enoughTimeToEstablishRelationship"
+                            value="No, it was too long" />
+                        <span>No, it was too long</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input class="with-gap" name="enoughTimeToEstablishRelationship" type="radio"
+                            ng-model="mentorFeedbackForm.enoughTimeToEstablishRelationship"
+                            value="No, it was too short" />
+                        <span>No, it was too short</span>
+                    </label>
+                </p>
+                <h5>Do you feel that your match was suitable and that you were able to gain and/or give advice?</h5>
+                <p>
+                    <label>
+                        <input name="suitableMatch" type="radio" ng-model="mentorFeedbackForm.suitableMatch"
+                            value="Excellent" />
+                        <span>Excellent</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="suitableMatch" type="radio" ng-model="mentorFeedbackForm.suitableMatch"
+                            value="Good" />
+                        <span>Good</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input class="with-gap" name="suitableMatch" type="radio"
+                            ng-model="mentorFeedbackForm.suitableMatch" value="Poor" />
+                        <span>Poor</span>
+                    </label>
+                </p>
+                <h5>Would you reccommend Otago Mentor Match to your peers</h5>
+                <p>
+                    <label>
+                        <input name="recommendation" type="radio" ng-model="mentorFeedbackForm.recommendation"
+                            value="Yes" />
+                        <span>Yes</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="recommendation" type="radio" ng-model="mentorFeedbackForm.recommendation"
+                            value="No" />
+                        <span>No</span>
+                    </label>
+                </p>
+
+            </div>
+
+            <!--Effective with course and mentor relationship select-->
+            <h5>Rate the effectiveness of the mentor relationship</h5>
+            <div class="row">
+                <div class="input-field col s6">
+                    <select ng-model="mentorFeedbackForm.activeListeningRating">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Poor">Poor</option>
+                        <option value="Not at this point">Not at this point</option>
+                    </select>
+                    <label>Active Listening</label>
+                </div>
+                <div class="input-field col s6">
+                    <select ng-model="mentorFeedbackForm.feedbackRating">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Poor">Poor</option>
+                        <option value="Not at this point">Not at this point</option>
+                    </select>
+                    <label>Constructive feedback/ proactive approach</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <select ng-model="mentorFeedbackForm.trustRating">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Poor">Poor</option>
+                        <option value="Not at this point">Not at this point</option>
+                    </select>
+                    <label>Establishing a relationship based on trust with you</label>
+                </div>
+                <div class="input-field col s6">
+                    <select ng-model="mentorFeedbackForm.achieveGoalRating">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Poor">Poor</option>
+                        <option value="Not at this point">Not at this point</option>
+                    </select>
+                    <label>Helping you develop strategies to achieve your goals</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <select ng-model="mentorFeedbackForm.developingStrategiesRating">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Poor">Poor</option>
+                        <option value="Not at this point">Not at this point</option>
+                    </select>
+                    <label>Developing strategies to achieve goals together</label>
+                </div>
+                <div class="input-field col s6">
+                    <select ng-model="mentorFeedbackForm.motivationRating">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Poor">Poor</option>
+                        <option value="Not at this point">Not at this point</option>
+                    </select>
+                    <label>Motivated and responsive throughout the experience</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <select ng-model="mentorFeedbackForm.workingGoalsRating">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Poor">Poor</option>
+                        <option value="Not at this point">Not at this point</option>
+                    </select>
+                    <label>Working with you to set goals</label>
+                </div>
+
+            </div>
+            <!--Text area for improvements -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea ng-model="mentorFeedbackForm.potentialImprovements" id="potentialImprovements" class="materialize-textarea"></textarea>
+                    <label for="potentialImprovements">
+                        Which aspects of the programme do you think could improve and which aspects did you enjoy most?
+                    </label>
+                </div>
+                <!--Hours of contibution radio-->
+                <h5>How many hours have you contributed towards your Otago Mentor Match Experience?</h5>
+                <p>
+                    <label>
+                        <input name="timeContributed" type="radio" ng-model="mentorFeedbackForm.timeContributed" value="1-3 hours" />
+                        <span>1-3 hours</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="timeContributed" type="radio" ng-model="mentorFeedbackForm.timeContributed" value="3-5 hours" />
+                        <span>3-5 hours</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input class="with-gap" name="timeContributed" type="radio" ng-model="mentorFeedbackForm.timeContributed" value="5-10 hours" />
+                        <span>5-10 hours</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="timeContributed" type="radio" ng-model="mentorFeedbackForm.timeContributed" value="10+ hours" />
+                        <span>10+ hours</span>
+                    </label>
+                </p>
+                <!--Will you stay in touch with mentor radio-->
+                <h5>Have you decided to stay in touch with your mentee after the programme or have you both decided to
+                    go your own ways?</h5>
+                <p>
+                    <label>
+                        <input name="continueRelationship" type="radio" ng-model="mentorFeedbackForm.continueRelationship" value="Stay in touch"/>
+                        <span>Stay in touch</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="continueRelationship" type="radio" ng-model="mentorFeedbackForm.continueRelationship" value="End connection" />
+                        <span>End connection</span>
+                    </label>
+                </p>
+
+
+
+            </div>
+            <!-- testimonial radio-->
+            <div class="row">
+                <h5>Would you be keen to share your experience through a testimonial? Please indicate yes or no and we
+                    will contact you with more information!</h5>
+                <p>
+                    <label>
+                        <input name="testimonial" type="radio" ng-model="mentorFeedbackForm.testimonial" value="Yes"/>
+                        <span>Yes</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="testimonial" type="radio"ng-model="mentorFeedbackForm.testimonial" value="No" />
+                        <span>No</span>
+                    </label>
+                </p>
+                <!--Other comments text area-->
+                <div class="input-field col s12">
+                    <textarea ng-model="mentorFeedbackForm.otherComments" id="otherComments" class="materialize-textarea"></textarea>
+                    <label for="otherComments">
+                        Do you have any other comments you would like to leave?
+                    </label>
+                </div>
+                <!--Key takeaways text area-->
+                <div class="input-field col s12">
+                    <textarea ng-model="mentorFeedbackForm.takeaways" id="takeaways" class="materialize-textarea"></textarea>
+                    <label for="takeaways">
+                        Can you tell us something you have taken away from this experience?
+                    </label>
+                </div>
+            </div>
+            <!--Submit and cancel button-->
+            <div align="right">
+                <a button class="btn-large waves-effect waves-light red"> cancel</a>
+
+                <button class="btn-large waves-effect waves-light" type="submit"> Submit</button>
+
+            </div>
+            <br>
+        </div>
+
+
+    </form>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+            $('.modal').modal();
+            $('.tooltipped').tooltip();
+            $('.sidenav').sidenav();
+        });
+    </script>
+
+</body>
+
+</html>

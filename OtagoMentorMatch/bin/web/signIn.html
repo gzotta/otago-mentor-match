@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <title>Sign In</title>
+</head>
+<body class="body">
+
+    <div class="row login" align-center>
+        <div class="col s6 2 offset-2">
+            <!--Black card that apppears on the page-->
+            <div class="card" align-center>
+
+
+                <div class="card-action black white-text">
+                    <h3>Sign In</h3>
+                </div>
+                <div class="card-content">
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email">
+                    </div><br>
+                    <div class="form-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password">
+                    </div><br>
+
+                    <button class="btn-large">Login</button>
+
+                    
+
+                    <a href="#create" class="btn-large green modal-trigger"> Create Account </a>
+                    <div class="modal" id="create">
+                        <div class=modal-content>
+                            <h5>Please choose whether you are a signing up to be a Mentor or Mentee (Student)</h5>
+                            <div class="modal-footer">
+                                <a href="mentorRegistration.html" class="modal-close btn-large green lighten-2">Mentor</a>
+                                <a href="menteeRegistration.html" class="modal-close btn-large">Mentee</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    .body {
+        background-image: url(../img/otago1.jpg);
+        padding: 0px;
+        margin: 0px;
+        background-size: cover;
+        color: #fff;
+    }
+
+    .login {
+        margin-top: 100px;
+
+
+    }
+
+    .login .card {
+        background: rgba(0, 0, 0, .4);
+    }
+
+    .login label {
+        font-size: 16px;
+        color: #ccc;
+
+    }
+
+    .login input {
+        font-size: 20px;
+        color: #fff;
+    }
+    .modal {
+        color: black;
+    }
+    .label{
+        color: white;
+    }
+</style>
+<!-- Compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.parallax').parallax();
+        $('.modal').modal();
+    });
+</script>
+
