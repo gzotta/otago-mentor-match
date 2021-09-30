@@ -42,7 +42,7 @@ module.factory("getMentorFeedbackFormAPI", function($resource) {
 /////////////////////////
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, $window) {
+module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, $window, $sessionStorage) {
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function(mentor) {
