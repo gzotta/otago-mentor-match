@@ -21,12 +21,6 @@ module.factory("registerMentorAPI", function($resource) {
     return $resource("/api/registerMentor");
 });
 
-// Factory for the ngResource object that will get a Mentor by email from the web service.
-module.factory("mentorsAPI", function($resource) {
-    return $resource("/api/mentors/:email");
-});
-
-
 // Factory for the ngResource object that will post a MentorFeedbackForm to the web service.
 module.factory("saveMentorFeedbackFormAPI", function($resource) {
     return $resource("/api/mentorFeedbackForms");
@@ -186,7 +180,7 @@ module.controller("JournalEntriesController", function(journalEntriesAPI, $windo
 
 // Factory for the ngResource object that will get a Mentor by email and then sign it in (Login). 
 module.factory("mentorSignInAPI", function($resource) {
-    return $resource("/api/mentors/:email");
+    return $resource("/api/mentors/mentor/:email");
 });
 
 // Factory for the ngResource object that will get a Mentee by email and then sign it in (Login). 
