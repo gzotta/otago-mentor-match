@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -92,6 +95,88 @@ public class MentorJdbcDAO {
         }
     }// end of method to sign users in.
 
+    // Method to GET all Mentors.
+    public Collection<Mentor> getMentors() {
+
+        String sql = "select * from Mentor";
+        try (
+                // get connection to database.
+                Connection dbCon = DbConnection.getConnection(databaseURI);
+                // create the statement.
+                PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
+            ResultSet rs = stmt.executeQuery(); // execute the query
+
+            List<Mentor> mentors = new ArrayList<>(); // using list to preserve data order
+
+            // iterate through query results
+            while (rs.next()) {
+
+                Integer mentorId = rs.getInt("mentor_id");
+                String password = rs.getString("mentor_password");
+                String fname = rs.getString("fname");
+                String lname = rs.getString("lname");
+                String email = rs.getString("email");
+                String phone_number = rs.getString("phone_number");
+                String ethnicity = rs.getString("ethnicity");
+                String iwi_afiliation = rs.getString("iwi_afiliation");
+                String company_name = rs.getString("company_name");
+                String employer_job_title = rs.getString("employer_job_title");
+                String job_title_department = rs.getString("job_title_department");
+                String primary_working_industry = rs.getString("primary_working_industry");
+                String brief_career_history = rs.getString("brief_career_history");
+                String mode_of_mentoring_sessions = rs.getString("mode_of_mentoring_sessions");
+                String undergraduate_course = rs.getString("undergraduate_course");
+                String undergraduate_institution = rs.getString("undergraduate_institution");
+                String undergraduate_year_of_graduation = rs.getString("undergraduate_year_of_graduation");
+                String postgraduate_course = rs.getString("postgraduate_course");
+                String postgraduate_institution = rs.getString("postgraduate_institution");
+                String postgraduate_year_of_graduation = rs.getString("postgraduate_year_of_graduation");
+                String current_working_and_living_country = rs.getString("current_working_and_living_country");
+                String mentoring_preference = rs.getString("mentoring_preference");
+                String how_find_omm = rs.getString("how_find_omm");
+                String bio = rs.getString("bio");
+                String extra_info = rs.getString("extra_info");
+                boolean new_to_mentory = rs.getBoolean("new_to_mentory");
+
+                // use the data to create a Mentor object.
+                Mentor mentor = new Mentor();
+                mentor.setMentorId(mentorId);
+                mentor.setMentorPassword(password);
+                mentor.setFName(fname);
+                mentor.setLName(lname);
+                mentor.setEmail(email);
+                mentor.setPhoneNumber(phone_number);
+                mentor.setEthnicity(ethnicity);
+                mentor.setIwiAfiliation(iwi_afiliation);
+                mentor.setCompanyName(company_name);
+                mentor.setEmployerJobTitle(employer_job_title);
+                mentor.setJobTitleDepartment(job_title_department);
+                mentor.setPrimaryWorkingIndustry(primary_working_industry);
+                mentor.setBriefCareerHistory(brief_career_history);
+                mentor.setModeOfMentoringSessions(mode_of_mentoring_sessions);
+                mentor.setUndergraduateCourse(undergraduate_course);
+                mentor.setUndergraduateInstitution(undergraduate_institution);
+                mentor.setUndergraduateYearOfGraduation(undergraduate_year_of_graduation);
+                mentor.setPostgraduateCourse(postgraduate_course);
+                mentor.setPostgraduateInstitution(postgraduate_institution);
+                mentor.setPostgraduateYearOfGraduation(postgraduate_year_of_graduation);
+                mentor.setCurrentWorkAndLivingCountry(current_working_and_living_country);
+                mentor.setMentoringPreference(mentoring_preference);
+                mentor.setHowFindOMM(how_find_omm);
+                mentor.setBio(bio);
+                mentor.setExtraInfo(extra_info);
+                mentor.setNewToMentory(new_to_mentory);
+
+                mentors.add(mentor); // put it in the collection
+            }
+
+            return mentors;
+
+        } catch (SQLException ex) {
+            throw new DAOException(ex.getMessage(), ex);
+        }
+    }
+
     // method to get Mentor by email.
     // support method only - used by validateCredentials() below.
     public Mentor getMentorByEmail(String email) {
@@ -111,7 +196,7 @@ public class MentorJdbcDAO {
                 // get the data out of the query.
                 // email not included; count should be 26 get's
                 Integer mentorId = rs.getInt("mentor_id");
-                String password = rs.getString("password");
+                String password = rs.getString("mentor_password");
                 String fname = rs.getString("fname");
                 String lname = rs.getString("lname");
                 String phone_number = rs.getString("phone_number");
@@ -192,5 +277,93 @@ public class MentorJdbcDAO {
             throw new DAOException(ex.getMessage(), ex);
         }
     }// end of method to delete Mentor.
+
+    // method to GET Mentor by industry.
+    public Collection<Mentor> getMentorByIndustry(String primaryWorkingIndustry) {
+
+        String sql = "SELECT * FROM mentor WHERE primary_working_industry = ?";
+        try (
+                // get connection to database.
+                Connection dbCon = DbConnection.getConnection(databaseURI);
+                // create the statement.
+                PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+        ) {
+
+            stmt.setString(1, primaryWorkingIndustry);
+            ResultSet rs = stmt.executeQuery(); // execute the query
+            // copy the data from the Mentee domain object into the SQL parameters.
+
+            List<Mentor> mentors = new ArrayList<>(); // using list to preserve data order
+
+            // iterate through query results
+            while (rs.next()) {
+
+                Integer mentorId = rs.getInt("mentor_id");
+                String password = rs.getString("mentor_password");
+                String fname = rs.getString("fname");
+                String lname = rs.getString("lname");
+                String email = rs.getString("email");
+                String phone_number = rs.getString("phone_number");
+                String ethnicity = rs.getString("ethnicity");
+                String iwi_afiliation = rs.getString("iwi_afiliation");
+                String company_name = rs.getString("company_name");
+                String employer_job_title = rs.getString("employer_job_title");
+                String job_title_department = rs.getString("job_title_department");
+
+                String brief_career_history = rs.getString("brief_career_history");
+                String mode_of_mentoring_sessions = rs.getString("mode_of_mentoring_sessions");
+                String undergraduate_course = rs.getString("undergraduate_course");
+                String undergraduate_institution = rs.getString("undergraduate_institution");
+                String undergraduate_year_of_graduation = rs.getString("undergraduate_year_of_graduation");
+                String postgraduate_course = rs.getString("postgraduate_course");
+                String postgraduate_institution = rs.getString("postgraduate_institution");
+                String postgraduate_year_of_graduation = rs.getString("postgraduate_year_of_graduation");
+                String current_working_and_living_country = rs.getString("current_working_and_living_country");
+                String mentoring_preference = rs.getString("mentoring_preference");
+                String how_find_omm = rs.getString("how_find_omm");
+                String bio = rs.getString("bio");
+                String extra_info = rs.getString("extra_info");
+                boolean new_to_mentory = rs.getBoolean("new_to_mentory");
+
+                // use the data to create a Mentor object.
+                Mentor mentor = new Mentor();
+                mentor.setMentorId(mentorId);
+                mentor.setMentorPassword(password);
+                mentor.setFName(fname);
+                mentor.setLName(lname);
+                mentor.setEmail(email);
+                mentor.setPhoneNumber(phone_number);
+                mentor.setEthnicity(ethnicity);
+                mentor.setIwiAfiliation(iwi_afiliation);
+                mentor.setCompanyName(company_name);
+                mentor.setEmployerJobTitle(employer_job_title);
+                mentor.setJobTitleDepartment(job_title_department);
+                // mentor.setPrimaryWorkingIndustry(primary_working_industry);
+
+                mentor.setBriefCareerHistory(brief_career_history);
+                mentor.setModeOfMentoringSessions(mode_of_mentoring_sessions);
+                mentor.setUndergraduateCourse(undergraduate_course);
+                mentor.setUndergraduateInstitution(undergraduate_institution);
+                mentor.setUndergraduateYearOfGraduation(undergraduate_year_of_graduation);
+                mentor.setPostgraduateCourse(postgraduate_course);
+                mentor.setPostgraduateInstitution(postgraduate_institution);
+                mentor.setPostgraduateYearOfGraduation(postgraduate_year_of_graduation);
+                mentor.setCurrentWorkAndLivingCountry(current_working_and_living_country);
+                mentor.setMentoringPreference(mentoring_preference);
+                mentor.setHowFindOMM(how_find_omm);
+                mentor.setBio(bio);
+                mentor.setExtraInfo(extra_info);
+                mentor.setNewToMentory(new_to_mentory);
+
+                mentors.add(mentor); // put it in the collection
+            }
+
+            return mentors;
+
+        } catch (SQLException ex) {
+            throw new DAOException(ex.getMessage(), ex);
+        }
+    }
 
 }// end of MentorJdbcDAO class.
