@@ -1,0 +1,45 @@
+header {
+    background: url(/OtagoMentorMatch/public/img/otago1.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 1000px;
+}
+
+@media screen and (max-width: 670px) {
+    header {
+        min-height: 500px;
+    }
+}
+
+.featurebox_blue {
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+    border-top: 4px solid #f9c000;
+    border-radius: 3px;
+    max-width: 650px;
+    padding: 21px 28px;
+}
+
+.blockquote {
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+    border-top: 4px solid #f9c000;
+    border-radius: 3px;
+    max-width: 650px;
+    padding: 21px 28px;
+}
+
+.quote-author strong {
+    color: #1f4a8c;
+    font-family: 'Amsi Pro Condbold';
+    font-size: 20px;
+    font-style: normal;
+    letter-spacing: 0.01em;
+}
+
+.quote-author {
+    color: #777777;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 35px;
+}
