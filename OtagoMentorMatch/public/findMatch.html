@@ -2,8 +2,7 @@
 <html ng-app="MatchingApp">
 
 <head>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" />
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
     <!--Import Google Icon Font-->
@@ -16,7 +15,7 @@
     <script src="js/match.js"></script>
 
     <style>
-        .body {
+    .body {
             background-image: url(../img/otago1.jpg);
             padding: 0px;
             margin: 0px;
@@ -28,10 +27,21 @@
             border: 3px solid black;
             color: white;
         }
+        
+        .findbtn {
+            background-color: #5E35B1;
+        }
+        
+        .cards-container {
+            break-inside: avoid-column;
+        }
+        
+        .card {
+            display: inline-block;
+            overflow: visible;
+        }
+    }
     </style>
-
-
-
 </head>
 <header class="white">
     <nav class="nav-wrapper transparent">
@@ -42,12 +52,22 @@
             </a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="black-text text-darken-6" href="home.html">Home</a></li>
-                <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
-                <li><a class="black-text text-darken-6" href="#calendar">Calendar</a></li>
-                <li><a class="black-text text-darken-6" href="#profile">Profile</a></li>
+                <li>
+                    <a class="black-text text-darken-6" href="#matches">Matches</a>
+                </li>
+                <li>
+                    <a class="black-text text-darken-6" href="#calendar">Calendar</a>
+                </li>
+                <li>
+                    <a class="black-text text-darken-6" href="#profile">Profile</a>
+                </li>
                 <li><a class="black-text text-darken-6" href="#faqs">FAQs</a></li>
-                <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
-                <li><a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a></li>
+                <li>
+                    <a class="black-text text-darken-6" href="#contact">Contact</a>
+                </li>
+                <li>
+                    <a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a>
+                </li>
                 <li>
                     <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
                         <i class="fab fa-instagram"></i>
@@ -64,7 +84,6 @@
                     </a>
                 </li>
             </ul>
-
         </div>
     </nav>
 </header>
@@ -75,104 +94,120 @@
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--<button onClick="window.location.reload();">All</button>-->
             <h5>Filter by Industry:</h5>
-            <button class="industry" ng-click="matchCtrl.selectIndustry(mentee.industry)" waves-effect waves-teal>All</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Accounting')">Accounting</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Health and Community Services')">Health and Community Services</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Mining and Construction')">Mining and Construction</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Agriculture / Hoticulture / Viticulture')">Agriculture / Hoticulture / Viticulture</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Hospitality and Tourism')">Hospitality and Tourism</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Retail Trade')">Retail Trade</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Computing / IT / Communications')">Computing / IT / Communications</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Legal Services')">Legal Services</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Science and Research')">Science and Research</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Cultural / Sport and Recreational Services')">Cultural / Sport and Recreational Services</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Local Government')">Local Government</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Surveying / Mining and Construction')">Surveying / Mining and Construction</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Education')">Education</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Management and Consulting')">Management and Consulting</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Visual Arts and Design')">Visual Arts and Design</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Electricity / Gas and Water Supply')">Electricity / Gas and Water Supply</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Manufacturing')">Manufacturing</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Wholesale Trade')">Wholesale Trade</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Environmental')">Environmental</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Marketing')">Marketing</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Finance and Insurance')">Finance and Insurance</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Marketing')">Media / Publising and Entertainment</button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Government and Defence')">Government and Defence</button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry(mentee.industry)" waves-effect waves-teal>
+                All
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Accounting')">
+                Accounting
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Health and Community Services')">
+                Health and Community Services
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Mining and Construction')">
+                Mining and Construction
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Agriculture / Hoticulture / Viticulture')">
+                Agriculture / Hoticulture / Viticulture
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Hospitality and Tourism')">
+                Hospitality and Tourism
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Retail Trade')">
+                Retail Trade
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Computing / IT / Communications')">
+                Computing / IT / Communications
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Legal Services')">
+                Legal Services
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Science and Research')">
+                Science and Research
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Cultural / Sport and Recreational Services')">
+                Cultural / Sport and Recreational Services
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Local Government')">
+                Local Government
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Surveying / Mining and Construction')">
+                Surveying / Mining and Construction
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Education')">
+                Education
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Management and Consulting')">
+                Management and Consulting
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Visual Arts and Design')">
+                Visual Arts and Design
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Electricity / Gas and Water Supply')">
+                Electricity / Gas and Water Supply
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Manufacturing')">
+                Manufacturing
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Wholesale Trade')">
+                Wholesale Trade
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Environmental')">
+                Environmental
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Marketing')">
+                Marketing
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Finance and Insurance')">
+                Finance and Insurance
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Marketing')">
+                Media / Publising and Entertainment
+            </button>
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Government and Defence')">
+                Government and Defence
+            </button>
             <!--<button class="industry" ng-repeat="mentor in matchCtrl.mentorByIndustry" ng-click="matchCtrl.selectIndustry(mentor.primaryWorkingIndustry)">{{mentor.primaryWorkingIndustry}}</button>-->
-
         </div>
     </div>
 
-    <br>
-    <br>
-
-    <div class="card-panel  blue-grey darken-3" class="container" data-ng-repeat="mentor in matchCtrl.mentorByIndustry">
-
-        <div class="col s12 m8 offset-m2 l6 offset-l3">
-            <div class="card-panel grey lighten-5 z-depth-1">
-                <div class="row valign-wrapper">
-                    <div class="col s2">
-                        <img src="/img/profile.jpg" alt="" class="circle responsive-img">
-                        <!-- notice the "circle" class -->
+    <br />
+    <br />
+    <!--Card for Mentor-->
+    <div class="container">
+        <div class="row">
+            <div class=" col m5 cards-container">
+                <div class="card" data-ng-repeat="mentor in matchCtrl.mentorByIndustry">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="/img/profile.jpg" alt="" class="circle responsive-img">
                     </div>
-
-                    <div class="col s8">
-                        <span class="black-text">
-                First Name:
-                {{mentor.fname}}
-                
-              </span>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">{{mentor.fname}}<i class="material-icons right">more_vert</i></span>
+                        <p>Industy: {{mentor.primaryWorkingIndustry}}</p>
+                        <p>Undergraduate Degree: {{mentor.undergraduateCourse}}</p>
+                        <p>Postgraduate Degree: {{mentor.postgraduateCourse}}</p>
                         <br>
-                        <span class="black-text">
-               
-                Industy:
-                {{mentor.primaryWorkingIndustry}}
-              </span>
-                        <br>
-                        <span class="black-text">
-                bio:
-                {{mentor.bio}}
-                
-              </span>
-
+                        <a class="waves-effect waves-red btn findbtn">Match</a>
                     </div>
-                    <div class="col s8">
-                        <span class="black-text">
-              Undergraduate Degree: 
-            {{mentor.undergraduateCourse}}
-              
-            </span>
-                        <br>
-                        <span class="black-text">
-              Postgraduate Degree: 
-            {{mentor.postgraduateCourse}}
-              
-            </span>
-                        <br>
-                        <span class="black-text">
-              Job Title: 
-            {{mentor.employerJobTitle}}
-              
-            </span>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">{{mentor.fname}}<i class="material-icons right">close</i></span>
+                        <p>bio: {{mentor.bio}} </p>
                     </div>
-                    <button class="btn-large" align="right">Match</button>
                 </div>
-
             </div>
         </div>
     </div>
-    <br>
-    <br>
 
-    <br>
-    <br>
+    <br />
+    <br />
 
-    <br>
-    <br>
+    <br />
+    <br />
 
-    <br>
-    <br>
+    <br />
+    <br />
+
+    <br />
+    <br />
 </body>
 <script src="https://platform.linkedin.com/in.js" type="text/javascript">
     lang: en_US
@@ -182,10 +217,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('select').formSelect();
-        $('.modal').modal();
-        $('.tooltipped').tooltip();
-        $('.sidenav').sidenav();
+        $("select").formSelect();
+        $(".modal").modal();
+        $(".tooltipped").tooltip();
+        $(".sidenav").sidenav();
     });
 </script>
 
