@@ -16,7 +16,7 @@
 
     <style>
         .body {
-            background-image: url(../img/sublimeLight.jpg);
+            background-image: url(../img/mango.jpg);
             padding: 0px;
             margin: 0px;
             background-size: auto;
@@ -39,6 +39,10 @@
         .card {
             display: inline-block;
             overflow: visible;
+        }
+        
+        #findMentorTitle {
+            border: none;
         }
     </style>
 </head>
@@ -88,7 +92,7 @@
 </header>
 
 <body class="body" ng-controller="MatchController as matchCtrl">
-    <h2 class="center">Find A Mentor</h2>
+    <h2 class="center" id="findMentorTitle">Find A Mentor</h2>
     <div class="row" id="industry">
         <div class="col s12 m8 offset-m2 l6 offset-l3">
             <!--<button onClick="window.location.reload();">All</button>-->
