@@ -218,8 +218,10 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
             mentorSignInAPI.get({ 'email': user.email },
                 // success callback
                 function(user) {
-                    // also store the retrieved mentee
+                    // also store the retrieved mentor
                     $sessionStorage.mentor = user;
+                    // set user type for content hiding
+                    $sessionStorage.user1 = "mentor";
                     // redirect to home
                     $window.location = 'home.html';
                 },
@@ -242,6 +244,8 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
                 function(user) {
                     // also store the retrieved mentee
                     $sessionStorage.mentee = user;
+                    // set user type for content hiding
+                    $sessionStorage.user1 = "mentee";
                     // redirect to home
                     $window.location = 'home.html';
                 },
@@ -258,12 +262,14 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
             // add token to the HTTP request headers
             $http.defaults.headers.common.Authorization = 'Basic ' + authToken;
 
-            // get Mentee from database
+            // get admin from database
             adminSignInAPI.get({ 'email': user.email },
                 // success callback
                 function(user) {
                     // also store the retrieved admin
                     $sessionStorage.admin = user;
+                    // set user type for content hiding
+                    $sessionStorage.user1 = "admin";
                     // redirect to home
                     $window.location = 'home.html';
                 },
