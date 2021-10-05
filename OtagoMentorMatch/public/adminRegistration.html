@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html ng-app="MatchingApp" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--This loads all of the JavaScript files into the page, and in the correct order (dependencies of a script need
+    to appear before the script using that dependency).-->
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+    <title>Mentee Registration</title>
+</head>
+
+<body ng-controller="AdminController as adminCtrl">
+    <h2 class="center-align">Mentee Registration Form</h2>
+    <hr />
+    <br />
+    <form class="col s12" id="menteeForm" ng-submit="adminCtrl.registerAdmin(admin)">
+        <div class="container">
+            <!--Account details-->
+            <h4>Account Details</h4>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input ng-model="admin.fname" id="fname" type="text" class="validate" required>
+                    <label for="fname" data-error="Please enter your first name.">First Name</label>
+                    <span class="helper-text" data-error="Please enter your first name"></span>
+                </div>
+                <div class="input-field col s6">
+                    <input ng-model="admin.lname" id="lname" type="text" class="validate" required>
+                    <label for="lname">Last Name</label>
+                    <span class="helper-text" data-error="Please enter your last name"></span>
+                </div>
+             
+                <div class="input-field col s6">
+                    <input ng-model="admin.phoneNumber" id="phoneNumber" type="text" class="validate" required>
+                    <label for="phoneNumber">Phone Number</label>
+                    <span class="helper-text" data-error="Please enter your phone number"></span>
+                </div>
+                <div class="input-field col s6">
+                    <input ng-model="admin.email" id="email" type="email" class="validate" required>
+                    <label for="email" data-error="wrong">Email Address</label>
+                    <span class="helper-text" data-error="Please enter a valid email address"></span>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input ng-model="admin.password" id="adminPassword" type="password" class="validate">
+                    <label for="adminPassword">Password</label>
+
+                </div>
+                <div class="input-field col s6">
+                    <input id="lblpasswordConfirm" type="password">
+                    <label id="lblPasswordConfirm" for="passwordConfirm" data-error="Password not match"
+                        data-success="Password Match">Password (Confirm)</label>
+
+
+
+                </div>
+            </div>
+
+            <button type="submit" class="btn-large waves-effect waves-light"> Submit</button>
+        </div>
+
+    </form>
+
+<!--test-->
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+            $('.modal').modal();
+            $('.tooltipped').tooltip();
+            $('.sidenav').sidenav();
+        });
+    </script>
+</body>
+
+</html>

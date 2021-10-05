@@ -310,7 +310,7 @@ public class MentorJdbcDAO {
                 String company_name = rs.getString("company_name");
                 String employer_job_title = rs.getString("employer_job_title");
                 String job_title_department = rs.getString("job_title_department");
-
+                String primaryworking_industry = rs.getString("primary_working_industry");
                 String brief_career_history = rs.getString("brief_career_history");
                 String mode_of_mentoring_sessions = rs.getString("mode_of_mentoring_sessions");
                 String undergraduate_course = rs.getString("undergraduate_course");
@@ -339,7 +339,7 @@ public class MentorJdbcDAO {
                 mentor.setCompanyName(company_name);
                 mentor.setEmployerJobTitle(employer_job_title);
                 mentor.setJobTitleDepartment(job_title_department);
-                // mentor.setPrimaryWorkingIndustry(primary_working_industry);
+                mentor.setPrimaryWorkingIndustry(primaryworking_industry);
 
                 mentor.setBriefCareerHistory(brief_career_history);
                 mentor.setModeOfMentoringSessions(mode_of_mentoring_sessions);

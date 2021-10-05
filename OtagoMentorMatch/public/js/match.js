@@ -14,6 +14,7 @@ var module = angular.module("MatchingApp", ["ngResource", "ngStorage"]);
 
 ///////////////////////////
 //---Mentor Factories---//
+//
 /////////////////////////
 
 // Factory for the ngResource object that will post a Mentor to the web service. 
@@ -187,13 +188,16 @@ module.factory("mentorSignInAPI", function($resource) {
 module.factory("menteeSignInAPI", function($resource) {
     return $resource("/api/mentees/:email");
 });
-
+// Factory for the ngResource object that will get a Mentee by email and then sign it in (Login). 
+module.factory("adminSignInAPI", function($resource) {
+    return $resource("/api/admins/:email");
+});
 //////////////////////////////////
 //-------Login Controler-------//
 ////////////////////////////////
 
 // Controller for managing Login (Sign Up) resources.
-module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, $window, $http, $sessionStorage) {
+module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, adminSignInAPI, $window, $http, $sessionStorage) {
     //Message for users (this message is called and changed within this.signIn method when Sign In fails).
     this.signInMessage = "Please login to continue.";
     // Alias 'this' so that we can access it inside callback functions.
@@ -214,8 +218,10 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
             mentorSignInAPI.get({ 'email': user.email },
                 // success callback
                 function(user) {
-                    // also store the retrieved mentee
+                    // also store the retrieved mentor
                     $sessionStorage.mentor = user;
+                    // set user type for content hiding
+                    $sessionStorage.user1 = "mentor";
                     // redirect to home
                     $window.location = 'home.html';
                 },
@@ -224,7 +230,7 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
                     ctrl.signInMessage = 'Login failed. Please try again.';
                 }
             );
-        } else {
+        } else if(user.type == "mentee"){
             // generate authentication token
             let authToken = $window.btoa(user.email + ":" + user.password);
             // store token
@@ -238,6 +244,32 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
                 function(user) {
                     // also store the retrieved mentee
                     $sessionStorage.mentee = user;
+                    // set user type for content hiding
+                    $sessionStorage.user1 = "mentee";
+                    // redirect to home
+                    $window.location = 'home.html';
+                },
+                // fail callback
+                function() {
+                    ctrl.signInMessage = 'Login failed. Please try again.';
+                }
+            );
+        }else {
+            // generate authentication token
+            let authToken = $window.btoa(user.email + ":" + user.password);
+            // store token
+            $sessionStorage.authToken = authToken;
+            // add token to the HTTP request headers
+            $http.defaults.headers.common.Authorization = 'Basic ' + authToken;
+
+            // get admin from database
+            adminSignInAPI.get({ 'email': user.email },
+                // success callback
+                function(user) {
+                    // also store the retrieved admin
+                    $sessionStorage.admin = user;
+                    // set user type for content hiding
+                    $sessionStorage.user1 = "admin";
                     // redirect to home
                     $window.location = 'home.html';
                 },
@@ -308,3 +340,35 @@ module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI
 //////////////////////////////////
 //----Workshop Controler-------//
 ////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////Admin Resources Section///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////
+//-----Admin Factories------//
+////////////////////////////////
+// Factory for the ngResource object that will post an Admin to the web service. 
+module.factory("registerAdminAPI", function($resource) {
+    return $resource("/api/admins");
+});
+//////////////////////////////////
+//----Admin Controler-------//
+////////////////////////////////
+// Controller for managing Mentee resources.
+module.controller("AdminController", function(registerAdminAPI, $sessionStorage, $window) {
+
+    // Function to save (Register) a Admin.
+    this.registerAdmin = function(admin) {
+        registerAdminAPI.save(null, admin,
+            // success callback
+            function() {
+                $window.location = 'index.html';
+            },
+            // Error callback
+            function(error) {
+                console.log(error);
+            }
+        );
+    };
+});
