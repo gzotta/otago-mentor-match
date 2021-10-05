@@ -55,22 +55,13 @@
             </a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="black-text text-darken-6" href="home.html">Home</a></li>
-                <li>
-                    <a class="black-text text-darken-6" href="#matches">Matches</a>
-                </li>
-                <li>
-                    <a class="black-text text-darken-6" href="#calendar">Calendar</a>
-                </li>
-                <li>
-                    <a class="black-text text-darken-6" href="#profile">Profile</a>
-                </li>
-                <li><a class="black-text text-darken-6" href="#faqs">FAQs</a></li>
-                <li>
-                    <a class="black-text text-darken-6" href="#contact">Contact</a>
-                </li>
-                <li>
-                    <a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a>
-                </li>
+                <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
+                <li><a class="black-text text-darken-6" href="#profile">Profile</a></li>
+                <li><a class="black-text text-darken-6" href="journalEntryForm.html">Journal Entry Form</a></li>
+                
+                <li><a class="black-text text-darken-6" href="menteeFeedbackForm.html">Feedback Form</a></li>
+                <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
+                <li><a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a></li>
                 <li>
                     <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
                         <i class="fab fa-instagram"></i>
@@ -220,10 +211,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 <script>
     $(document).ready(function() {
-        $("select").formSelect();
-        $(".modal").modal();
-        $(".tooltipped").tooltip();
-        $(".sidenav").sidenav();
+        $('select').formSelect();
+        $('.modal').modal();
+        $('.tooltipped').tooltip();
+        $('.sidenav').sidenav();
+        $('.carousel').carousel();
     });
 </script>
 
