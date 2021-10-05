@@ -124,12 +124,13 @@
                 <h4>Password</h4>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input ng-model="mentor.mentorPassword" id="mentorPassword" type="password" class="validate" required>
-                        <label for="mentorPassword">Password</label>
+                        <input ng-model="mentor.mentorPassword" name="password" id="password" type="password" required>
+                        <label for="password">Password</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="" type="text" class="">
-                        <label for="">Confirm Password</label>
+                        <input name="confirm_password" type="password" id="confirm_password" required>
+                        <label for="confirm_password">Confirm Password</label>
+                        <span id="message"></span>
                     </div>
                 </div>
                 <!--Employer Details-->
@@ -418,6 +419,15 @@
             $('.modal').modal();
             $('.tooltipped').tooltip();
             $('.sidenav').sidenav();
+        });
+    </script>
+    <!--Function to check (confirm) password-->
+    <script>
+        $('#password, #confirm_password').on('keyup', function() {
+            if ($('#password').val() == $('#confirm_password').val()) {
+                $('#message').html('Matching').css('color', 'green');
+            } else
+                $('#message').html('Not Matching').css('color', 'red');
         });
     </script>
 </body>
