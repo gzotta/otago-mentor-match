@@ -1,7 +1,7 @@
 package dao;
 
 import domain.Mentor;
-
+import auth.CredentialsValidator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Taine Bayly
  */
-public class MentorJdbcDAO {
+public class MentorJdbcDAO implements CredentialsValidator {
 
     private String databaseURI = DbConnection.getDefaultConnectionUri();
 

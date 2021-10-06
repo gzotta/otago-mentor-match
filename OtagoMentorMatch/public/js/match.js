@@ -7,6 +7,28 @@
 var module = angular.module("MatchingApp", ["ngResource", "ngStorage"]);
 
 
+/*
+ * This is to ensure that the authentication token has been added to 
+ * Authorization header for every HTTP request.
+ */
+module.config(function($sessionStorageProvider, $httpProvider) {
+    // get the auth token from the session storage
+    let authToken = $sessionStorageProvider.get('authToken');
+
+    // does the auth token actually exist?
+    if (authToken) {
+        // add the token to all HTTP requests
+        $httpProvider.defaults.headers.common.Authorization = 'Basic' + authToken;
+    }
+});
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////Mentor Resources Section///////////////////////////////////////
@@ -14,7 +36,6 @@ var module = angular.module("MatchingApp", ["ngResource", "ngStorage"]);
 
 ///////////////////////////
 //---Mentor Factories---//
-//
 /////////////////////////
 
 // Factory for the ngResource object that will post a Mentor to the web service. 

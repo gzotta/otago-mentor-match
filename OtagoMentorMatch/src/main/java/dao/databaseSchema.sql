@@ -3,7 +3,7 @@ CREATE TABLE admin (
     password varchar(16) NOT NULL,
     fname varchar(50) NOT NULL,
     lname varchar (50) NOT NULL,
-    email varchar (50) NOT NULL,
+    email varchar (50) NOT NULL UNIQUE,
     phone_number varchar(20) NOT NULL,
     CONSTRAINT admin_PK PRIMARY KEY (admin_id)
 );
@@ -14,7 +14,7 @@ CREATE TABLE mentor (
     mentor_password varchar(16) NOT NULL,
     fname varchar(20) NOT NULL,
     lname varchar (20) NOT NULL,
-    email varchar(50) NOT NULL,
+    email varchar(50) NOT NULL UNIQUE,
     phone_number varchar(20) NOT NULL,
     ethnicity varchar (50) NOT NULL,
     iwi_afiliation varchar (50) NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE mentee (
     fname varchar(50) NOT NULL,
     lname varchar (50) NOT NULL,
     phone_number varchar(13) NOT NULL,
-    email varchar(50) NOT NULL,
+    email varchar(50) NOT NULL UNIQUE,
     year_of_study varchar(50) NOT NULL,
     motivation_for_joining_omm varchar(100) NOT NULL,
     industry_of_interest varchar(50) NOT NULL,
