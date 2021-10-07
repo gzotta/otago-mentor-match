@@ -25,7 +25,7 @@ public class MatchJdbcDAO {
 
     // method to save Match.
     public void saveMatch(Match match) {
-        String sql = "INSERT INTO match (date,  mentor_id,  mentee_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO match_table (date,  mentor_id,  mentee_id) VALUES (?, ?, ?)";
 
         try (Connection dbCon = DbConnection.getConnection(databaseURI);
                 // create the statement.

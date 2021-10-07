@@ -305,7 +305,7 @@ module.factory("allMentorsAPI", function($resource) {
     return $resource("/api/mentors");
 });
 
-// save a match
+// Factory for the ngResource object that will POST a Match to the web service.
 module.factory("saveMatchAPI", function($resource) {
     return $resource("/api/matches");
 })
@@ -313,145 +313,120 @@ module.factory("saveMatchAPI", function($resource) {
 //////////////////////////////////
 //-------Macth Controler-------//
 ////////////////////////////////
-module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, $sessionStorage) {
-    // load Mentors.
-    this.mentors = allMentorsAPI.query();
-    // load Mentors by industry.
-    this.mentorByIndustry = mentorByIndustryAPI.query();
+module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, $sessionStorage, $window) {
+            // load Mentors.
+            this.mentors = allMentorsAPI.query();
+            // load Mentors by industry.
+            this.mentorByIndustry = mentorByIndustryAPI.query();
 
-    // Click handler for the industry filter buttons.
-    this.selectIndustry = function(selectedIndustry) {
-        this.mentorByIndustry = mentorByIndustryAPI.query({ "industry": selectedIndustry });
-    };
+            // Click handler for the industry filter buttons.
+            this.selectIndustry = function(selectedIndustry) {
+                this.mentorByIndustry = mentorByIndustryAPI.query({ "industry": selectedIndustry });
+            };
 
-    // Function to select all Mentors.
-    this.selectAll = function() {
-        this.mentors = allMentorsAPI.query();
-    };
+            // Function to select all Mentors.
+            this.selectAll = function() {
+                this.mentors = allMentorsAPI.query();
+            };
 
-    // Method to save Match.
-    this.storeMatch = function() {
+            // Method to store MentorId in session storage
+            this.storeMentorId = function(mentor) {
+                console.log("storeMentorId called");
+                $sessionStorage.mentorId = mentor.mentorId;
 
-        let mentorId = $sessionStorage.mentorId;
-        let menteeId = $sessionStorage.mentee.menteeId;
-        let currentDate = new Date();
-        let date = new Date().toISOString().substring(0, 10);
-        console.log(typeof date);
-        console.log(date);
+            };
+
+            // Method to save (POST) a Match to the database.
+            this.storeMatch = function() {
+
+                let mentorId = $sessionStorage.mentorId;
+                let menteeId = $sessionStorage.mentee.menteeId;
+                let date = new Date().toISOString().substring(0, 10);
+                let match = new Match(mentorId, menteeId, date);
+
+                // save (POST) match into the database
+                saveMatchAPI.save(null, match,
+                    // success callback
+                    function() {
+                        $window.location = 'home.html';
+                        console.log(match);
+                    },
+                    // Error callback
+                    function(error) {
+                        console.log(error);
+                        console.log(match);
+                    }
+                );
+            };
 
 
 
 
 
 
-        let match = new Match(mentorId, menteeId, date);
 
-        saveMatchAPI.save(null, match,
-            // success callback
-            function() {
-                $window.location = 'home.html';
-                console.log(match);
-            },
-            // Error callback
-            function(error) {
-                console.log(error);
-                console.log(match);
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////Admin Resources Section//////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////
+            //-----Admin Factories------//
+            ////////////////////////////////
+            // Factory for the ngResource object that will post an Admin to the web service. 
+            module.factory("registerAdminAPI", function($resource) {
+                return $resource("/api/admins");
+            });
+            //////////////////////////////////
+            //----Admin Controler-------//
+            ////////////////////////////////
+            // Controller for managing Admin resources.
+            module.controller("AdminController", function(registerAdminAPI, $sessionStorage, $window) {
+
+                // Function to save (Register) an Admin.
+                this.registerAdmin = function(admin) {
+                    registerAdminAPI.save(null, admin,
+                        // success callback
+                        function() {
+                            $window.location = 'index.html';
+                        },
+                        // Error callback
+                        function(error) {
+                            console.log(error);
+                        }
+                    );
+                };
+            });
+
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////Workshop Resources Section///////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////
+
+            //////////////////////////////////
+            //-----Workshop Factories------//
+            ////////////////////////////////
+
+            //////////////////////////////////
+            //----Workshop Controler-------//
+            ////////////////////////////////
+
+
+
+
+
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////JavaScript Support Classes///////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            class Match {
+
+                constructor(mentorId, menteeId, date) {
+                    this.mentorId = mentorId;
+                    this.menteeId = menteeId;
+                    this.date = date;
+                }
             }
-        );
-    };
-
-
-    // Method to store MentorId in session storage
-    this.storeMentorId = function(mentor) {
-        console.log("storeMentorId called");
-        $sessionStorage.mentorId = mentor.mentorId;
-
-    };
-
-
-
-
-    // Function to save (Register) a Mentee.
-    this.registerMentee = function(mentee) {
-        registerMenteeAPI.save(null, mentee,
-            // success callback
-            function() {
-                $window.location = 'index.html';
-            },
-            // Error callback
-            function(error) {
-                console.log(error);
-            }
-        );
-    };
-
-
-});
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////Admin Resources Section//////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////
-//-----Admin Factories------//
-////////////////////////////////
-// Factory for the ngResource object that will post an Admin to the web service. 
-module.factory("registerAdminAPI", function($resource) {
-    return $resource("/api/admins");
-});
-//////////////////////////////////
-//----Admin Controler-------//
-////////////////////////////////
-// Controller for managing Admin resources.
-module.controller("AdminController", function(registerAdminAPI, $sessionStorage, $window) {
-
-    // Function to save (Register) an Admin.
-    this.registerAdmin = function(admin) {
-        registerAdminAPI.save(null, admin,
-            // success callback
-            function() {
-                $window.location = 'index.html';
-            },
-            // Error callback
-            function(error) {
-                console.log(error);
-            }
-        );
-    };
-});
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////Workshop Resources Section///////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////
-//-----Workshop Factories------//
-////////////////////////////////
-
-//////////////////////////////////
-//----Workshop Controler-------//
-////////////////////////////////
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////JavaScript Support Classes///////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////
-
-
-class Match {
-
-    constructor(mentorId, menteeId, date) {
-        this.mentorId = mentorId;
-        this.menteeId = menteeId;
-        this.date = date;
-    }
-}
