@@ -84,10 +84,10 @@ CREATE TABLE journal_entry (
 
 CREATE TABLE mentee_feedback_form (
     mentee_feedback_form_id int AUTO_INCREMENT,
-    communication_platform varchar(20) NOT NULL,
-    finding_omm varchar (50) NOT NULL,
-    session_quality varchar(20) NOT NULL,
-    quality_of_match varchar(20) NOT  NULL,
+    communication_platform varchar(120) NOT NULL,
+    finding_omm varchar (150) NOT NULL,
+    session_quality varchar(250) NOT NULL,
+    quality_of_match varchar(150) NOT  NULL,
     recommendation boolean NOT NULL,
     active_listening_rating varchar(20) NOT NULL,
     feedback_rating varchar(20) NOT NULL,
@@ -102,9 +102,9 @@ CREATE TABLE mentee_feedback_form (
     testimonial boolean NOT NULL,
     other_comments varchar(150) NOT NULL,
     takeaways varchar(150) NOT NULL,
-    match_id int NOT NULL,
+    mentee_id int NOT NULL,
     CONSTRAINT mentee_feedback_form_PK PRIMARY KEY (mentee_feedback_form_id),
-    CONSTRAINT mentee_feedback_form_match_table FOREIGN KEY (match_id) REFERENCES match_table(match_id)
+    CONSTRAINT mentee FOREIGN KEY (mentee_id) REFERENCES mentee(mentee_id)
 );
 
 CREATE TABLE mentor_feedback_form (

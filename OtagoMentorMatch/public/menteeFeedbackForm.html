@@ -24,12 +24,12 @@
     <title>Mentee Feedback Form</title>
 </head>
 
-<body ng-controller="MenteeFeedbackFormsController as menteeFeedbackCtrl">
+<body ng-controller="MenteeController as menteeFeedbackCtrl">
 
     <h2 class="center-align">Mentee Feedback Form</h2>
     <hr />
     <br />
-<form ng-submit="menteeFeedbackCtrl.registerMenteeFeedbackForms(menteeFeedbackForm)">
+<form ng-submit="menteeFeedbackCtrl.saveMenteeFeedbackForm(menteeFeedbackForm)">
     <div class="container">
     <div class="row">
         <!--Radio of communication method-->
@@ -281,7 +281,7 @@
     <!--Text area for improvements -->
     <div class="row">
         <div class="input-field col s12">
-            <textarea ng-model="menteeFeedbackForm.programeImprovements"id="improvement" class="materialize-textarea"></textarea>
+            <textarea ng-model="menteeFeedbackForm.programmeImprovements"id="improvement" class="materialize-textarea"></textarea>
             <label for="improvement">
                 Which aspects of the programme do you think could improve and which aspects did you enjoy most?
             </label>

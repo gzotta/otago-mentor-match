@@ -98,6 +98,10 @@ module.factory("saveMenteeFeedbackFormAPI", function($resource) {
 module.factory("getMenteeFeedbackFormAPI", function($resource) {
     return $resource("/api/menteeFeedbackForms/:id");
 });
+// Factory for the ngResource object that will GeT a Match by ID.
+module.factory("getMatchAPI", function($resource) {
+    return $resource("/api/matches:id");
+})
 
 ///////////////////////////
 //---Mentee Controler---//
@@ -130,7 +134,21 @@ module.controller("MenteeController", function(registerMenteeAPI, saveMenteeFeed
 
     // Function to save a MenteeFeedbackForm.
     this.saveMenteeFeedbackForm = function(menteeFeedbackForm) {
-        alert("fill in Mentee feedback form");
+         menteeFeedbackForm.menteeId = $sessionStorage.mentee.menteeId;
+        saveMenteeFeedbackFormAPI.save(null, menteeFeedbackForm,
+           
+            // success callback
+            function() {
+                $window.location = 'home.html';
+                alert("Your Feedback was submitted");
+            },
+            // Error callback
+            function(error) {
+                console.log(error);
+                alert("fill in Mentee feedback form");
+            }
+        );
+        //Remove this log if needed
         console.log(menteeFeedbackForm);
     };
 
