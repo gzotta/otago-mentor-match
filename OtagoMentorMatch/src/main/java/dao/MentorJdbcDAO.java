@@ -110,14 +110,14 @@ public class MentorJdbcDAO implements CredentialsValidator {
                 // check that the password matches the hash
                 return ScryptHelper.check(hash, password);
             } else {
-                // no matching username
+                // no matching email
                 return false;
             }
 
         } catch (SQLException ex) {
             throw new DAOException(ex.getMessage(), ex);
         }
-    }// end of method to sign users in.
+    }// end of method to validate Mentors.
 
     // Method to GET all Mentors.
     public Collection<Mentor> getMentors() {

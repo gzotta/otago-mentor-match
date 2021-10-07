@@ -1,6 +1,7 @@
 package dao;
 
 import domain.Mentee;
+import helpers.ScryptHelper;
 import auth.CredentialsValidator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,6 +30,8 @@ public class MenteeJdbcDAO implements CredentialsValidator {
     public void saveMentee(Mentee mentee) {
         String sql = "INSERT INTO mentee (password, fname, lname, phone_number, email, year_of_study, motivation_for_joining_omm, industry_of_interest, learning_method, personal_interests, how_find_omm, random_matching, bio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
+        String hash = ScryptHelper.hash(mentee.getMenteePassword()).toString();
+
         try (
                 // get connection to database.
                 Connection dbCon = DbConnection.getConnection(databaseURI);
@@ -36,7 +39,7 @@ public class MenteeJdbcDAO implements CredentialsValidator {
                 PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
 
             // copy the data from the Mentee domain object into the SQL parameters.
-            stmt.setString(1, mentee.getMenteePassword());
+            stmt.setString(1, hash);
             stmt.setString(2, mentee.getFname());
             stmt.setString(3, mentee.getLname());
             stmt.setString(4, mentee.getPhoneNumber());
@@ -126,16 +129,36 @@ public class MenteeJdbcDAO implements CredentialsValidator {
         }
     }// end of method to get Mentee by first name.
 
-    // method to sign users in.
-    // accesses getMenteeByemail() above.
+    // Method to validate credentials for Mentees.
+    @Override
     public Boolean validateCredentials(String email, String password) {
-        Mentee mentee = getMenteeByEmail(email);
-        if ((mentee != null) && (mentee.getMenteePassword().equals(password))) {
-            return true;
-        } else {
-            return false;
+
+        try (
+
+                // get connection to database.
+                Connection dbCon = DbConnection.getConnection(databaseURI);
+                // create the statement.
+                PreparedStatement stmt = dbCon.prepareStatement("select password from mentee where email = ?");) {
+
+            // copy the data from the Mentee domain object into the SQL parameters.
+            stmt.setString(1, email);
+
+            ResultSet rs = stmt.executeQuery(); // execute query.
+
+            if (rs.next()) {
+                String hash = rs.getString("password");
+
+                // check that the password matches the hash
+                return ScryptHelper.check(hash, password);
+            } else {
+                // no matching email
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            throw new DAOException(ex.getMessage(), ex);
         }
-    }// end of method to sign users in.
+    }// end of method to validate Mentees.
 
     // method to delete Mentee.
     public void removeMentee(Mentee mentee) {
