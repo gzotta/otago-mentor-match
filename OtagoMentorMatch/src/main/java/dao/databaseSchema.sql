@@ -63,7 +63,7 @@ CREATE TABLE mentee (
 
 CREATE TABLE match_table (
     match_id int AUTO_INCREMENT,
-    date datetime NOT NULL,
+    date date NOT NULL,
     mentor_id int NOT NULL,
     mentee_id int NOT NULL,
     CONSTRAINT match_table_PK PRIMARY KEY (match_id),

@@ -4,24 +4,23 @@ import java.util.Date;
 
 public class Match {
     private Integer matchId;
-    private Date date;
+    private String date;
     private Integer mentorId;
     private Integer menteeId;
 
     // Empty Constructor
-    public Match() {}
+    public Match() {
+    }
 
     // Constructor with all fields
-    public Match(Integer matchId, Date date, Integer mentorId, Integer menteeId) {
+    public Match(Integer matchId, String date, Integer mentorId, Integer menteeId) {
         this.matchId = matchId;
         this.date = date;
         this.mentorId = mentorId;
         this.menteeId = menteeId;
     }
 
-    
-
-    //getters and setters
+    // getters and setters
 
     public Integer getMatchId() {
         return this.matchId;
@@ -31,11 +30,11 @@ public class Match {
         this.matchId = matchId;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return this.date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -55,17 +54,11 @@ public class Match {
         this.menteeId = menteeId;
     }
 
-
     // To string method
     @Override
     public String toString() {
-        return "{" +
-            " matchId='" + matchId + "'" +
-            ", date='" + date + "'" +
-            ", mentorId='" + mentorId + "'" +
-            ", menteeId='" + menteeId + "'" +
-            "}";
+        return "{" + " matchId='" + matchId + "'" + ", date='" + date + "'" + ", mentorId='" + mentorId + "'"
+                + ", menteeId='" + menteeId + "'" + "}";
     }
 
-    
-}//end class
+}// end class

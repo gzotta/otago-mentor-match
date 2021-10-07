@@ -305,10 +305,15 @@ module.factory("allMentorsAPI", function($resource) {
     return $resource("/api/mentors");
 });
 
+// save a match
+module.factory("saveMatchAPI", function($resource) {
+    return $resource("/api/matches");
+})
+
 //////////////////////////////////
 //-------Macth Controler-------//
 ////////////////////////////////
-module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI) {
+module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, $sessionStorage) {
     // load Mentors.
     this.mentors = allMentorsAPI.query();
     // load Mentors by industry.
@@ -323,6 +328,64 @@ module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI
     this.selectAll = function() {
         this.mentors = allMentorsAPI.query();
     };
+
+    // Method to save Match.
+    this.storeMatch = function() {
+
+        let mentorId = $sessionStorage.mentorId;
+        let menteeId = $sessionStorage.mentee.menteeId;
+        let currentDate = new Date();
+        let date = new Date().toISOString().substring(0, 10);
+        console.log(typeof date);
+        console.log(date);
+
+
+
+
+
+
+        let match = new Match(mentorId, menteeId, date);
+
+        saveMatchAPI.save(null, match,
+            // success callback
+            function() {
+                $window.location = 'home.html';
+                console.log(match);
+            },
+            // Error callback
+            function(error) {
+                console.log(error);
+                console.log(match);
+            }
+        );
+    };
+
+
+    // Method to store MentorId in session storage
+    this.storeMentorId = function(mentor) {
+        console.log("storeMentorId called");
+        $sessionStorage.mentorId = mentor.mentorId;
+
+    };
+
+
+
+
+    // Function to save (Register) a Mentee.
+    this.registerMentee = function(mentee) {
+        registerMenteeAPI.save(null, mentee,
+            // success callback
+            function() {
+                $window.location = 'index.html';
+            },
+            // Error callback
+            function(error) {
+                console.log(error);
+            }
+        );
+    };
+
+
 });
 
 
@@ -372,3 +435,23 @@ module.controller("AdminController", function(registerAdminAPI, $sessionStorage,
 //////////////////////////////////
 //----Workshop Controler-------//
 ////////////////////////////////
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////JavaScript Support Classes///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+class Match {
+
+    constructor(mentorId, menteeId, date) {
+        this.mentorId = mentorId;
+        this.menteeId = menteeId;
+        this.date = date;
+    }
+}
