@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.Date;
-
 public class Match {
     private Integer matchId;
     private String date;
