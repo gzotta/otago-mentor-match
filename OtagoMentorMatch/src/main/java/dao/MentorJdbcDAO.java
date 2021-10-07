@@ -1,6 +1,7 @@
 package dao;
 
 import domain.Mentor;
+import helpers.ScryptHelper;
 import auth.CredentialsValidator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,6 +33,8 @@ public class MentorJdbcDAO implements CredentialsValidator {
     public void saveMentor(Mentor mentor) {
         String sql = "INSERT INTO mentor (mentor_password, fname, lname, email, phone_number, ethnicity, iwi_afiliation, company_name, employer_job_title, job_title_department, primary_working_industry, brief_career_history, mode_of_mentoring_sessions, undergraduate_course, undergraduate_institution, undergraduate_year_of_graduation, postgraduate_course, postgraduate_institution, postgraduate_year_of_graduation, current_working_and_living_country, mentoring_preference, how_find_omm, bio, extra_info, new_to_mentory) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
+        String hash = ScryptHelper.hash(mentor.getMentorPassword()).toString();
+
         try (
                 // get connection to database.
                 Connection dbCon = DbConnection.getConnection(databaseURI);
@@ -39,7 +42,7 @@ public class MentorJdbcDAO implements CredentialsValidator {
                 PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
 
             // copy the data from the Mentee domain object into the SQL parameters.
-            stmt.setString(1, mentor.getMentorPassword());
+            stmt.setString(1, hash);
             stmt.setString(2, mentor.getFName());
             stmt.setString(3, mentor.getLName());
             stmt.setString(4, mentor.getEmail());
@@ -84,14 +87,35 @@ public class MentorJdbcDAO implements CredentialsValidator {
         }
     }// end of method to save Mentor
 
-    // method to sign users in.
-    // accesses getMentorByEmail() above.
+    // Method to validate credentials for Mentors.
+    @Override
     public Boolean validateCredentials(String email, String password) {
-        Mentor mentor = getMentorByEmail(email);
-        if ((mentor != null) && (mentor.getMentorPassword().equals(password))) {
-            return true;
-        } else {
-            return false;
+
+        try (
+
+                // get connection to database.
+                Connection dbCon = DbConnection.getConnection(databaseURI);
+                // create the statement.
+                PreparedStatement stmt = dbCon
+                        .prepareStatement("select mentor_password from mentor where email = ?");) {
+
+            // copy the data from the Mentee domain object into the SQL parameters.
+            stmt.setString(1, email);
+
+            ResultSet rs = stmt.executeQuery(); // execute query.
+
+            if (rs.next()) {
+                String hash = rs.getString("mentor_password");
+
+                // check that the password matches the hash
+                return ScryptHelper.check(hash, password);
+            } else {
+                // no matching username
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            throw new DAOException(ex.getMessage(), ex);
         }
     }// end of method to sign users in.
 

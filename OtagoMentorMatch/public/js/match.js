@@ -18,9 +18,10 @@ module.config(function($sessionStorageProvider, $httpProvider) {
     // does the auth token actually exist?
     if (authToken) {
         // add the token to all HTTP requests
-        $httpProvider.defaults.headers.common.Authorization = 'Basic' + authToken;
+        $httpProvider.defaults.headers.common.Authorization = 'Basic ' + authToken;
     }
 });
+
 
 
 
