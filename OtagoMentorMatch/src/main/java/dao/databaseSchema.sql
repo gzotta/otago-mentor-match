@@ -109,8 +109,8 @@ CREATE TABLE mentee_feedback_form (
 
 CREATE TABLE mentor_feedback_form (
     mentor_feedback_form_id int AUTO_INCREMENT,
-    finding_omm varchar(50) NOT NULL,
-    enough_time_to_establish_relationship varchar(20) NOT NULL,
+    finding_omm varchar(150) NOT NULL,
+    enough_time_to_establish_relationship varchar(120) NOT NULL,
     describe_sessions varchar(150) NOT NULL,
     active_listening_rating varchar(20) NOT NULL,
     feedback_rating varchar(20) NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE mentor_feedback_form (
     developing_strategies_rating varchar(20) NOT NULL,
     motivation_rating varchar(20) NOT NULL,
     working_goals_rating varchar(20) NOT NULL,
-    suitable_match varchar(20) NOT NULL, 
+    suitable_match varchar(120) NOT NULL, 
     recommendation boolean NOT NULL, 
     potential_improvements varchar(150) NOT NULL,
     time_contributed varchar(20) NOT NULL,
@@ -127,9 +127,9 @@ CREATE TABLE mentor_feedback_form (
     join_next_intake varchar(20) NOT NULL,
     testimonial boolean NOT NULL,
     takeaways varchar(150) NOT NULL,
-    match_id int NOT NULL,
+    mentor_id int NOT NULL,
     CONSTRAINT mentor_feedback_form_PK PRIMARY KEY (mentor_feedback_form_id),
-    CONSTRAINT mentor_feedback_form_match_table FOREIGN KEY (match_id) REFERENCES match_table(match_id)
+    CONSTRAINT mentor FOREIGN KEY (mentor_id) REFERENCES mentor(mentor_id)
 );
 
 

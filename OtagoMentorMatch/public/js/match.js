@@ -64,9 +64,23 @@ module.controller("MentorController", function(registerMentorAPI, saveMentorFeed
     // Function to save a MentorFeedbackForm.
     this.saveMentorFeedbackForm = function(mentorFeedbackForm) {
         alert("fill in Mentor feedback form");
+        mentorFeedbackForm.mentorId = $sessionStorage.mentor.mentorId;
+   saveMentorFeedbackFormAPI.save(null, mentorFeedbackForm,
+      
+       // success callback
+       function() {
+           $window.location = 'home.html';
+           alert("Your Feedback was submitted");
+       },
+       // Error callback
+       function(error) {
+           console.log(error);
+           alert("fill in Mentee feedback form");
+       }
+   );
         console.log(mentorFeedbackForm);
     }
-
+ 
 
 });
 
