@@ -329,14 +329,14 @@ module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI
         this.mentors = allMentorsAPI.query();
     };
 
-    // Method to store MentorId in session storage
+    // Function to store MentorId in session storage
     this.storeMentorId = function(mentor) {
         console.log("storeMentorId called");
         $sessionStorage.mentorId = mentor.mentorId;
 
     };
 
-    // Method to save (POST) a Match to the database.
+    // Function to save (POST) a Match to the database.
     this.storeMatch = function() {
 
         let mentorId = $sessionStorage.mentorId;
@@ -349,12 +349,10 @@ module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI
             // success callback
             function() {
                 $window.location = 'home.html';
-                console.log(match);
             },
             // Error callback
             function(error) {
                 console.log(error);
-                console.log(match);
             }
         );
     };
