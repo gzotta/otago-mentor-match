@@ -37,9 +37,9 @@ public class Server extends Jooby {
         List<String> noAuthAdmin = Arrays.asList("/api/admins");
         List<String> noAuthMentor = Arrays.asList("/api/registerMentor");
         List<String> noAuthMentee = Arrays.asList("/api/registerMentee");
-        use(new BasicHttpAuthenticator(adminDao, noAuthAdmin));
+        // use(new BasicHttpAuthenticator(adminDao, noAuthAdmin));
         use(new BasicHttpAuthenticator(mentorDao, noAuthMentor));
-        use(new BasicHttpAuthenticator(menteeDao, noAuthMentee));
+        // use(new BasicHttpAuthenticator(menteeDao, noAuthMentee));
         use(new AdminModule(adminDao));
         use(new JournalEntryModule(journalEntryDao));
         use(new MatchModule(matchDao));
