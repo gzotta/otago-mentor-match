@@ -8,14 +8,14 @@ import dao.MenteeJdbcDAO;
 import dao.MentorFeedbackFormJdbcDAO;
 import dao.MentorJdbcDAO;
 import dao.WorkshopJdbcDAO;
-
+import auth.AdminAuthenticator;
+import auth.MentorAuthenticator;
+import auth.MenteeAuthenticator;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import org.jooby.Jooby;
 import org.jooby.json.Gzon;
-
-import auth.BasicHttpAuthenticator;
 
 public class Server extends Jooby {
 
@@ -35,9 +35,9 @@ public class Server extends Jooby {
         use(new Gzon());
         use(new AssetsModule());
         List<String> noAuth = Arrays.asList("/api/admins", "/api/registerMentor", "/api/registerMentee");
-        // use(new BasicHttpAuthenticator(adminDao, noAuth));
-        use(new BasicHttpAuthenticator(mentorDao, noAuth));
-        /// use(new BasicHttpAuthenticator(menteeDao, noAuth));
+        // use(new AdminAuthenticator(adminDao, noAuth));
+        use(new MentorAuthenticator(mentorDao, noAuth));
+        // use(new MenteeAuthenticator(menteeDao, noAuth));
         use(new AdminModule(adminDao));
         use(new JournalEntryModule(journalEntryDao));
         use(new MatchModule(matchDao));
