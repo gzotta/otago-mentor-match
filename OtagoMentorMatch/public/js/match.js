@@ -236,6 +236,11 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
             $sessionStorage.authToken = authToken;
             // add token to the HTTP request headers
             $http.defaults.headers.common.Authorization = 'Basic ' + authToken;
+            // Create header for type of user
+            var userHeader = new Headers(); // Currently empty
+            userHeader.append('Content-Type', 'mentor');
+
+
             // get Mentee from database
             mentorSignInAPI.get({ 'email': user.email },
                 // success callback
@@ -259,6 +264,7 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
             $sessionStorage.authToken = authToken;
             // add token to the HTTP request headers
             $http.defaults.headers.common.Authorization = 'Basic ' + authToken;
+
 
             // get Mentee from database
             menteeSignInAPI.get({ 'email': user.email },
