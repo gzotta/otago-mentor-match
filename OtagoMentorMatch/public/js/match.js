@@ -76,7 +76,7 @@ module.controller("MentorController", function(registerMentorAPI, saveMentorFeed
     };
 
 
-    // Function to Sign out for Mentee
+    // Function to Sign out for Mentor.
     this.signOut = function() {
         $sessionStorage.$reset();
         $window.location = 'index.html';

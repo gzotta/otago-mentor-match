@@ -35,9 +35,9 @@ public class Server extends Jooby {
         use(new Gzon());
         use(new AssetsModule());
         List<String> noAuth = Arrays.asList("/api/admins", "/api/registerMentor", "/api/registerMentee");
-        // use(new AdminAuthenticator(adminDao, noAuth));
+        use(new AdminAuthenticator(adminDao, noAuth));
         use(new MentorAuthenticator(mentorDao, noAuth));
-        // use(new MenteeAuthenticator(menteeDao, noAuth));
+        use(new MenteeAuthenticator(menteeDao, noAuth));
         use(new AdminModule(adminDao));
         use(new JournalEntryModule(journalEntryDao));
         use(new MatchModule(matchDao));
