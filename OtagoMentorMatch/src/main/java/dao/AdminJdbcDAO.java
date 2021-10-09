@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,40 +30,86 @@ public class AdminJdbcDAO implements CredentialsValidator {
 
     // method to save Admin.
     public void saveAdmin(Admin admin) {
-        String sql = "INSERT INTO admin (password, fname, lname, email, phone_number) VALUES (?,?,?,?,?)";
 
+        // get connection to database.
+        Connection dbCon = DbConnection.getConnection(databaseURI);
+        // SQL query to insert admin object into admin table.
+        String saveAdminSql = "INSERT INTO admin (password, fname, lname, email, phone_number) VALUES (?,?,?,?,?)";
+        // SQL queery to insert email and password into user table.
+        String saveUserSql = "INSERT INTO user (user_password, user_email) VALUES (?,?)";
+        // This line converts the password into a hash.
         String hash = ScryptHelper.hash(admin.getPassword()).toString();
 
-        try (
-                // get connection to database.
-                Connection dbCon = DbConnection.getConnection(databaseURI);
-                // create the statement.
-                PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
+        try {
+            try (
 
-            // copy the data from the amdmin domain object into the SQL parameters.
-            stmt.setString(1, hash);
-            stmt.setString(2, admin.getFname());
-            stmt.setString(3, admin.getLname());
-            stmt.setString(4, admin.getEmail());
-            stmt.setString(5, admin.getPhoneNumber());
+                    // Create the statement to save Admin.
+                    PreparedStatement saveAdminStmt = dbCon.prepareStatement(saveAdminSql,
+                            Statement.RETURN_GENERATED_KEYS);
+                    // Create the statement to save user.
+                    PreparedStatement saveUserStmt = dbCon.prepareStatement(saveUserSql,
+                            Statement.RETURN_GENERATED_KEYS);) {
 
-            stmt.executeUpdate(); // execute the statement.
+                /*
+                 * Since saving an Admin involves multiple statements across multiple tables we
+                 * need to control the transaction ourselves to ensure the DB remains
+                 * consistent. Turning off auto-commit effectively starts a new transaction.
+                 */
+                dbCon.setAutoCommit(false);
 
-            // getting generated keys and adding it to domain.
-            Integer id = null;
-            ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                id = rs.getInt(1);
-            } else {
-                throw new DAOException("Problem getting generated Admin ID");
+                //// ### Save the Admin ### ////
+
+                // Copy the data from the amdmin domain object into the SQL parameters.
+                saveAdminStmt.setString(1, hash);
+                saveAdminStmt.setString(2, admin.getFname());
+                saveAdminStmt.setString(3, admin.getLname());
+                saveAdminStmt.setString(4, admin.getEmail());
+                saveAdminStmt.setString(5, admin.getPhoneNumber());
+
+                saveAdminStmt.executeUpdate(); // execute the statement.
+
+                // getting generated keys and adding it to domain.
+                Integer id = null;
+                ResultSet rs = saveAdminStmt.getGeneratedKeys();
+                if (rs.next()) {
+                    id = rs.getInt(1);
+                } else {
+                    throw new DAOException("Problem getting generated Admin ID");
+                }
+
+                admin.setAdminId(id);
+
+                //// ### Save the User ### ///
+
+                // Copy the data from the amdmin domain object into the SQL parameters.
+                saveUserStmt.setString(1, hash);
+                saveUserStmt.setString(2, admin.getEmail());
+
+                saveUserStmt.executeUpdate(); // execute the statement.
+
+                // Commit the transacion
+                dbCon.setAutoCommit(true);
+
             }
-
-            admin.setAdminId(id);
-
         } catch (SQLException ex) { // we are forced to catch SQLException.
-            // don't let the SQLException leak from our DAO encapsulation.
-            throw new DAOException(ex.getMessage(), ex);
+            try {
+                // Something went wrong so rollback.
+                dbCon.rollback();
+                // Turn auto-commit back on.
+                dbCon.setAutoCommit(true);
+                // And throw an exception to tell the user something bad happened.
+                throw new DAOException(ex.getMessage(), ex);
+            } catch (SQLException ex1) {
+                throw new DAOException(ex1.getMessage(), ex1);
+            }
+        } finally {
+            try {
+                dbCon.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminJdbcDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
     }// end of method to save Admin
 
     // method to get Admin by email.

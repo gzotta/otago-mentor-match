@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,47 +30,91 @@ public class MenteeJdbcDAO implements CredentialsValidator {
 
     // method to save Mentee.
     public void saveMentee(Mentee mentee) {
-        String sql = "INSERT INTO mentee (password, fname, lname, phone_number, email, year_of_study, motivation_for_joining_omm, industry_of_interest, learning_method, personal_interests, how_find_omm, random_matching, bio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
+        // get connection to database.
+        Connection dbCon = DbConnection.getConnection(databaseURI);
+        // SQL query to insert Mentee object into mentee table.
+        String saveMenteeSql = "INSERT INTO mentee (password, fname, lname, phone_number, email, year_of_study, motivation_for_joining_omm, industry_of_interest, learning_method, personal_interests, how_find_omm, random_matching, bio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        // SQL queery to insert email and password into user table.
+        String saveUserSql = "INSERT INTO user (user_password, user_email) VALUES (?,?)";
+        // This line converts the password into a hash.
         String hash = ScryptHelper.hash(mentee.getMenteePassword()).toString();
 
-        try (
-                // get connection to database.
-                Connection dbCon = DbConnection.getConnection(databaseURI);
-                // create the statement.
-                PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
+        try {
+            try (
 
-            // copy the data from the Mentee domain object into the SQL parameters.
-            stmt.setString(1, hash);
-            stmt.setString(2, mentee.getFname());
-            stmt.setString(3, mentee.getLname());
-            stmt.setString(4, mentee.getPhoneNumber());
-            stmt.setString(5, mentee.getEmail());
-            stmt.setString(6, mentee.getYearOfStudy());
-            stmt.setString(7, mentee.getMotivationForJoiningOMM());
-            stmt.setString(8, mentee.getIndustryOfInterest());
-            stmt.setString(9, mentee.getLearningMethod());
-            stmt.setString(10, mentee.getPersonalInterests());
-            stmt.setString(11, mentee.getHowFindOMM());
-            stmt.setString(12, mentee.getRandomMatching());
-            stmt.setString(13, mentee.getBio());
+                    // Create the statement to save Mentee.
+                    PreparedStatement saveMenteeStmt = dbCon.prepareStatement(saveMenteeSql,
+                            Statement.RETURN_GENERATED_KEYS);
+                    // Create the statement to save user.
+                    PreparedStatement saveUserStmt = dbCon.prepareStatement(saveUserSql,
+                            Statement.RETURN_GENERATED_KEYS);) {
 
-            stmt.executeUpdate(); // execute the statement.
+                /*
+                 * Since saving an Admin involves multiple statements across multiple tables we
+                 * need to control the transaction ourselves to ensure the DB remains
+                 * consistent. Turning off auto-commit effectively starts a new transaction.
+                 */
+                dbCon.setAutoCommit(false);
 
-            // getting generated keys and adding it to domain.
-            Integer id = null;
-            ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                id = rs.getInt(1);
-            } else {
-                throw new DAOException("Problem getting generated Mentee ID");
+                //// ### Save the Mentee ### ////
+
+                // copy the data from the Mentee domain object into the SQL parameters.
+                saveMenteeStmt.setString(1, hash);
+                saveMenteeStmt.setString(2, mentee.getFname());
+                saveMenteeStmt.setString(3, mentee.getLname());
+                saveMenteeStmt.setString(4, mentee.getPhoneNumber());
+                saveMenteeStmt.setString(5, mentee.getEmail());
+                saveMenteeStmt.setString(6, mentee.getYearOfStudy());
+                saveMenteeStmt.setString(7, mentee.getMotivationForJoiningOMM());
+                saveMenteeStmt.setString(8, mentee.getIndustryOfInterest());
+                saveMenteeStmt.setString(9, mentee.getLearningMethod());
+                saveMenteeStmt.setString(10, mentee.getPersonalInterests());
+                saveMenteeStmt.setString(11, mentee.getHowFindOMM());
+                saveMenteeStmt.setString(12, mentee.getRandomMatching());
+                saveMenteeStmt.setString(13, mentee.getBio());
+
+                saveMenteeStmt.executeUpdate(); // execute the statement.
+
+                // getting generated keys and adding it to domain.
+                Integer id = null;
+                ResultSet rs = saveMenteeStmt.getGeneratedKeys();
+                if (rs.next()) {
+                    id = rs.getInt(1);
+                } else {
+                    throw new DAOException("Problem getting generated Mentee ID");
+                }
+
+                mentee.setMenteeId(id);
+
+                //// ### Save the User ### ///
+
+                // Copy the data from the amdmin domain object into the SQL parameters.
+                saveUserStmt.setString(1, hash);
+                saveUserStmt.setString(2, mentee.getEmail());
+
+                saveUserStmt.executeUpdate(); // execute the statement.
+
+                // Commit the transacion
+                dbCon.setAutoCommit(true);
+
             }
-
-            mentee.setMenteeId(id);
-
         } catch (SQLException ex) { // we are forced to catch SQLException.
-            // don't let the SQLException leak from our DAO encapsulation.
-            throw new DAOException(ex.getMessage(), ex);
+            try {
+                // Something went wrong so rollback.
+                dbCon.rollback();
+                // Turn auto-commit back on.
+                dbCon.setAutoCommit(true);
+                // And throw an exception to tell the user something bad happened.
+                throw new DAOException(ex.getMessage(), ex);
+            } catch (SQLException ex1) {
+                throw new DAOException(ex1.getMessage(), ex1);
+            }
+        } finally {
+            try {
+                dbCon.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MenteeJdbcDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }// end of method to save Mentee
 

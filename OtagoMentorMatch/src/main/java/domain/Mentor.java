@@ -27,7 +27,7 @@ public class Mentor {
     private String howFindOMM;
     private String bio;
     private String extraInfo;
-    private Boolean newToMentory;
+    private String newToMentory;
 
     public Mentor() {
     }
@@ -39,7 +39,7 @@ public class Mentor {
             String modeOfMentoringSessions, String undergraduateCourse, String undergraduateInstitution,
             String undergraduateYearOfGraduation, String postgraduateCourse, String postgraduateInstitution,
             String postgraduateYearOfGraduation, String currentWorkAndLivingCountry, String mentoringPreference,
-            String howFindOMM, String bio, String extraInfo, Boolean newToMentory) {
+            String howFindOMM, String bio, String extraInfo, String newToMentory) {
         this.mentorId = mentorId;
         this.mentorPassword = mentorPassword;
         this.fname = fname;
@@ -278,15 +278,15 @@ public class Mentor {
         this.extraInfo = extraInfo;
     }
 
-    public Boolean isNewToMentory() {
+    public String isNewToMentory() {
         return this.newToMentory;
     }
 
-    public Boolean getNewToMentory() {
+    public String getNewToMentory() {
         return this.newToMentory;
     }
 
-    public void setNewToMentory(Boolean newToMentory) {
+    public void setNewToMentory(String newToMentory) {
         this.newToMentory = newToMentory;
     }
 

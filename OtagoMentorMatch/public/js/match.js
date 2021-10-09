@@ -310,6 +310,12 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
     };
 
 
+    // Function to Sign Out for users.
+    this.signOut = function() {
+        $sessionStorage.$reset();
+        $window.location = 'index.html';
+    };
+
 });
 
 
