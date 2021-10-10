@@ -357,6 +357,7 @@ module.controller("AdminController", function(registerAdminAPI, $sessionStorage,
             }
         );
     };
+
 });
 
 
