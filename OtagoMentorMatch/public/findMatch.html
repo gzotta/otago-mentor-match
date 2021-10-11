@@ -46,7 +46,7 @@
         }
     </style>
 </head>
-<header class="white">
+<header class="white" ng-controller="LoginController as loginCtrl">
     <nav class="nav-wrapper transparent">
         <div class="container">
             <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
@@ -58,10 +58,10 @@
                 <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
                 <li><a class="black-text text-darken-6" href="#profile">Profile</a></li>
                 <li><a class="black-text text-darken-6" href="journalEntryForm.html">Journal Entry Form</a></li>
-                
+
                 <li><a class="black-text text-darken-6" href="menteeFeedbackForm.html">Feedback Form</a></li>
                 <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
-                <li><a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a></li>
+                <li><a ng-click="loginCtrl.signOut()" class="black-text text-darken-6" href="">Sign Out</a></li>
                 <li>
                     <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
                         <i class="fab fa-instagram"></i>
@@ -180,7 +180,7 @@
                         <p>Undergraduate Degree: {{mentor.undergraduateCourse}}</p>
                         <p>Postgraduate Degree: {{mentor.postgraduateCourse}}</p>
                         <br>
-                        <a class="waves-effect waves-red btn findbtn">Match</a>
+                        <a class="waves-effect waves-red btn findbtn" ng-click="matchCtrl.storeMentorId(mentor); matchCtrl.storeMatch()">Match</a>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">{{mentor.fname}}<i class="material-icons right">close</i></span>

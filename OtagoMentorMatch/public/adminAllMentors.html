@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="MatchingApp">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--Style sheet excel-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- Compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+
+</head>
+<style>
+    #mentors-details {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #mentors-details td,
+    #tblStocks th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #mentors-details tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #mentors-details tr:hover {
+        background-color: #ddd;
+    }
+
+    #mentors-details th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left:12px;
+        padding-right:12px;
+        text-align: left;
+        background-color: #294c67;
+        ;
+        color: white;
+    }
+</style>
+<!--Add Navigation Here-->
+
+<body>
+    <H1>List of All Mentors</H1>
+    <!--Mentors table -->
+        <div id="mentors-table">
+            <table id="mentors-details">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Ethnicity</th>
+                        <th>Iwi Afiliation</th>
+                        <th>Company Name</th>
+                        <th>Job Title</th>
+                        <th>Job Title Department</th>
+                        <th>Primary Working Industry</th>
+                        <th>Career History</th>
+                        <th>Mode of Mentoring</th>
+                        <th>Undergraduate Course</th>
+                        <th>Undergraduate Institution</th>
+                        <th>Undergraduate Year of Graduation</th>
+                        <th>Postgraduate Course</th>
+                        <th>Postgraduate Institution</th>
+                        <th>Postgraduate Year of Graduation</th>
+                        <th>Current Country</th>
+                        <th>Mentoring Preference</th>
+                        <th>How Find OMM</th>
+                        <th>Bio</th>
+                        <th>Extra Info</th>
+                        <th>New to Mentory</th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody ng-controller="MatchController as matchCtrl">
+                    <tr data-ng-repeat="mentor in matchCtrl.mentors">
+                        <td>{{mentor.fname}}</td>
+                        <td>{{mentor.lname}}</td>
+                        <td>{{mentor.email}}</td>
+                        <td>{{mentor.phoneNumber}}</td>
+                        <td>{{mentor.ethnicity}}</td>
+                        <td>{{mentor.iwiAfiliation}}</td>
+                        <td>{{mentor.companyName}}</td>
+                        <td>{{mentor.employerJobTitle}}</td>
+                        <td>{{mentor.jobTitleDepartment}}</td>
+                        <td>{{mentor.primaryWorkingIndustry}}</td>
+                        <td>{{mentor.briefCareerHistory}}</td>
+                        <td>{{mentor.modeOfMentoringSessions}}</td>
+                        <td>{{mentor.undergraduateCourse}}</td>
+                        <td>{{mentor.undergraduateInstitution}}</td>
+                        <td>{{mentor.undergraduateYearOfGraduation}}</td>
+                        <td>{{mentor.postgraduateCourse}}</td>
+                        <td>{{mentor.postgraduateInstitution}}</td>
+                        <td>{{mentor.postgraduateYearOfGraduation}}</td>
+                        <td>{{mentor.currentWorkAndLivingCountry}}</td>
+                        <td>{{mentor.mentoringPreference}}</td>
+                        <td>{{mentor.howFindOMM}}</td>
+                        <td>{{mentor.bio}}</td>
+                        <td>{{mentor.extraInfo}}</td>
+                        <td>{{mentor.newToMentory}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+</body>
+
+</html>
