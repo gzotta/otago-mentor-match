@@ -27,12 +27,19 @@ public class Mentor {
     private String howFindOMM;
     private String bio;
     private String extraInfo;
-    private Boolean newToMentory;
+    private String newToMentory;
 
-    public Mentor() {}
+    public Mentor() {
+    }
 
     // Constructor with all fields
-    public Mentor(Integer mentorId, String mentorPassword, String fname, String lname, String email, String phoneNumber, String ethnicity, String iwiAfiliation, String companyName, String employerJobTitle, String jobTitleDepartment, String industry, String primaryWorkingIndustry, String briefCareerHistory, String modeOfMentoringSessions, String undergraduateCourse, String undergraduateInstitution, String undergraduateYearOfGraduation, String postgraduateCourse, String postgraduateInstitution, String postgraduateYearOfGraduation, String currentWorkAndLivingCountry, String mentoringPreference, String howFindOMM, String bio, String extraInfo, Boolean newToMentory) {
+    public Mentor(Integer mentorId, String mentorPassword, String fname, String lname, String email, String phoneNumber,
+            String ethnicity, String iwiAfiliation, String companyName, String employerJobTitle,
+            String jobTitleDepartment, String industry, String primaryWorkingIndustry, String briefCareerHistory,
+            String modeOfMentoringSessions, String undergraduateCourse, String undergraduateInstitution,
+            String undergraduateYearOfGraduation, String postgraduateCourse, String postgraduateInstitution,
+            String postgraduateYearOfGraduation, String currentWorkAndLivingCountry, String mentoringPreference,
+            String howFindOMM, String bio, String extraInfo, String newToMentory) {
         this.mentorId = mentorId;
         this.mentorPassword = mentorPassword;
         this.fname = fname;
@@ -271,50 +278,37 @@ public class Mentor {
         this.extraInfo = extraInfo;
     }
 
-    public Boolean isNewToMentory() {
+    public String isNewToMentory() {
         return this.newToMentory;
     }
 
-    public Boolean getNewToMentory() {
+    public String getNewToMentory() {
         return this.newToMentory;
     }
 
-    public void setNewToMentory(Boolean newToMentory) {
+    public void setNewToMentory(String newToMentory) {
         this.newToMentory = newToMentory;
     }
 
     // To string
     @Override
     public String toString() {
-        return "{" +
-            " mentorId='" + this.mentorId + "'" +
-            ", mentorPassword='" + this.mentorPassword + "'" +
-            ", fName='" + this.fname + "'" +
-            ", lName='" + this.lname + "'" +
-            ", email='" + this.email + "'" +
-            ", phoneNumber='" + this.phoneNumber + "'" +
-            ", ethnicity='" + this.ethnicity + "'" +
-            ", iwiAfiliation='" + this.iwiAfiliation + "'" +
-            ", companyName='" + this.companyName + "'" +
-            ", employerJobTitle='" + this.employerJobTitle + "'" +
-            ", jobTitleDepartment='" + this.jobTitleDepartment + "'" +
-            ", industry='" + this.industry + "'" +
-            ", primaryWorkingIndustry='" + this.primaryWorkingIndustry + "'" +
-            ", briefCareerHistory='" + this.briefCareerHistory + "'" +
-            ", modeOfMentoringSessions='" + this.modeOfMentoringSessions + "'" +
-            ", undergraduateCourse='" + this.undergraduateCourse + "'" +
-            ", undergraduateInstitution='" + this.undergraduateInstitution + "'" +
-            ", undergraduateYearOfGraduation='" + this.undergraduateYearOfGraduation + "'" +
-            ", postgraduateCourse='" + this.postgraduateCourse + "'" +
-            ", postgraduateInstitution='" + this.postgraduateInstitution + "'" +
-            ", postgraduateYearOfGraduation='" + this.postgraduateYearOfGraduation + "'" +
-            ", currentWorkAndLivingCountry='" + this.currentWorkAndLivingCountry + "'" +
-            ", mentoringPreference='" + this.mentoringPreference + "'" +
-            ", howFindOMM='" + this.howFindOMM + "'" +
-            ", bio='" + this.bio + "'" +
-            ", extraInfo='" + this.extraInfo + "'" +
-            ", newToMentory='" + this.newToMentory + "'" +
-            "}";
+        return "{" + " mentorId='" + this.mentorId + "'" + ", mentorPassword='" + this.mentorPassword + "'"
+                + ", fName='" + this.fname + "'" + ", lName='" + this.lname + "'" + ", email='" + this.email + "'"
+                + ", phoneNumber='" + this.phoneNumber + "'" + ", ethnicity='" + this.ethnicity + "'"
+                + ", iwiAfiliation='" + this.iwiAfiliation + "'" + ", companyName='" + this.companyName + "'"
+                + ", employerJobTitle='" + this.employerJobTitle + "'" + ", jobTitleDepartment='"
+                + this.jobTitleDepartment + "'" + ", industry='" + this.industry + "'" + ", primaryWorkingIndustry='"
+                + this.primaryWorkingIndustry + "'" + ", briefCareerHistory='" + this.briefCareerHistory + "'"
+                + ", modeOfMentoringSessions='" + this.modeOfMentoringSessions + "'" + ", undergraduateCourse='"
+                + this.undergraduateCourse + "'" + ", undergraduateInstitution='" + this.undergraduateInstitution + "'"
+                + ", undergraduateYearOfGraduation='" + this.undergraduateYearOfGraduation + "'"
+                + ", postgraduateCourse='" + this.postgraduateCourse + "'" + ", postgraduateInstitution='"
+                + this.postgraduateInstitution + "'" + ", postgraduateYearOfGraduation='"
+                + this.postgraduateYearOfGraduation + "'" + ", currentWorkAndLivingCountry='"
+                + this.currentWorkAndLivingCountry + "'" + ", mentoringPreference='" + this.mentoringPreference + "'"
+                + ", howFindOMM='" + this.howFindOMM + "'" + ", bio='" + this.bio + "'" + ", extraInfo='"
+                + this.extraInfo + "'" + ", newToMentory='" + this.newToMentory + "'" + "}";
     }
 
-}//end class
+}// end class

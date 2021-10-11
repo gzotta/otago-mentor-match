@@ -1,23 +1,27 @@
-<!-- index is the intial log in/sign up page option -->
-<html lang="en">
+<html ng-app="MatchingApp" lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="/OtagoMentorMatch/public/css/index-styles.css">
+    <link type="text/css" rel="stylesheet" href="/css/index-styles.css">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
     <title>Otago Mentor Match</title>
     <style>
 
     </style>
 </head>
 
-<body>
+<body ng-controller="LoginController as loginCtrl">
     <!-- navbar -->
     <header>
         <nav class="nav-wrapper transparent">
@@ -51,51 +55,71 @@
     <!-- SIGN UP MODAL -->
     <div id="modal-signup" class="modal">
         <div class="modal-content">
-            <h4>Sign up</h4>
+            <h4>Create an Account</h4>
+            <br>
+            <h5>
+                Please choose whether you are a signing up to be a Mentor or <br> Mentee (Student).
+            </h5>
             <br />
-            <form id="signup-form">
-                <div class="input-field">
-                    <input type="email" id="signup-email" required />
-                    <label for="signup-email">Email address</label>
-                </div>
-                <div class="input-field">
-                    <input type="password" id="signup-password" required />
-                    <label for="signup-password">Choose password</label>
-                </div>
-                <div class="input-field">
-                    <input type="text" id="signup-bio" required />
-                    <label for="signup-bio">One Line Bio</label>
-                </div>
-                <button class="btn yellow darken-2 z-depth-0">Sign up</button>
-            </form>
+            <div class="modal-footer">
+                <a href="mentorRegistration.html" class="modal-close btn-large green lighten-1">Mentor</a
+                >
+                <a
+                  href="menteeRegistration.html"
+                  class="modal-close btn-large"
+                  >Mentee</a
+                >
+              </div>
         </div>
     </div>
-
+ 
     <!-- LOGIN MODAL -->
     <div id="modal-login" class="modal">
         <div class="modal-content">
             <h4>Login</h4>
-            <br />
-            <form id="login-form">
+            <p>{{loginCtrl.signInMessage}}</p>
+            <form ng-submit="loginCtrl.loginUser(user)" id="login-form">
+                <!--User selection radio button-->
+                <div class="row">
+                    <h4>Select type of user</h4>
+                    <p>
+                        <label>
+                            <input ng-model="user.type" value="mentor" class="with-gap" name="mentor-user" type="radio" checked />
+                            <span>Mentor</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input ng-model="user.type" value="mentee" class="with-gap" name="mentee-user" type="radio" />
+                            <span>Mentee</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input ng-model="user.type" value="admin" class="with-gap" name="admin-user" type="radio" />
+                            <span>Admin</span>
+                        </label>
+                    </p>
+                </div>
                 <div class="input-field">
-                    <input type="email" id="login-email" required />
+                    <input ng-model="user.email" type="email" id="login-email" required />
                     <label for="login-email">Email address</label>
                 </div>
                 <div class="input-field">
-                    <input type="password" id="login-password" required />
+                    <input ng-model="user.password" type="password" id="login-password" required />
                     <label for="login-password">Your password</label>
                 </div>
-                <button class="btn yellow darken-2 z-depth-0">Login</button>
+                <button type="submit" class="btn yellow darken-2 z-depth-0">Login</button>
             </form>
         </div>
     </div>
-
-
+ 
+ 
     <!-- photo / grid -->
     <section class="container section scrollSpy" id="photos">
         <div class="row">
             <div class="col s12 l4">
-                <img src="/OtagoMentorMatch/public/img/otago3.jpg" alt="" class="responsive-img materialboxed" />
+                <img src="/img/otago3.jpg" alt="" class="responsive-img materialboxed" />
             </div>
             <div class="col s12 l6 offset-l1">
                 <h2 class="indigo-text text-darken-4">Otago Mentor Match programme</h2>
@@ -116,7 +140,7 @@
         </div>
         <div class="row">
             <div class="col s12 l4 offset-l1 push-l7">
-                <img src="/OtagoMentorMatch/public/img/mentor2.png" alt="" class="responsive-img materialboxed" />
+                <img src="/img/mentor2.png" alt="" class="responsive-img materialboxed" />
             </div>
             <div class="col s12 l6 offset-l1 pull-l5 right-align">
                 <h2 class="indigo-text text-darken-4">How it works</h2>
@@ -134,7 +158,7 @@
         </div>
         <div class="row">
             <div class="col s12 l4">
-                <img src="/OtagoMentorMatch/public/img/mentor1.jpeg" alt="" class="responsive-img materialboxed" />
+                <img src="/img/mentor1.jpeg" alt="" class="responsive-img materialboxed" />
             </div>
             <div class="col s12 l6 offset-l1">
                 <h2 class="indigo-text text-darken-4">Mentors</h2>
@@ -160,8 +184,8 @@
                 <p>You will receive an email to confirm receipt of your registration. At the start of the semester, students will be recruited. Mentors and mentees will then be matched up, and you will be sent email confirmation of the student you are mentoring.</p>
                 <p>Mentors will able to catch up with the Career Development Centre team prior to starting the mentoring programme</p>
                 <p>The advice and support you offer will be invaluable to a young graduate faced with making the same transition you did. Pay it forward and join us in sharing.</p>
-                <p><a href="#" class="btn indigo waves-effect waves-light">Register now and be part of Otago Mentor Match</a></p>
-                <button class="btn yellow darken-2 z-depth-0 waves-effect waves-light">Register now and be part of Otago Mentor Match</button>
+                <p><a href="mentorRegistration.html" class="btn indigo waves-effect waves-light">Register now and be part of Otago Mentor Match</a></p>
+
 
             </div>
             <div class="col s12 l6 offset-l1">
@@ -189,47 +213,47 @@
                 <p>You will receive an email to confirm receipt of your registration. Once you are matched, you will be invited to a mentee training/information session. This session will allow you to discuss what your expectations are and discuss tips on
                     how to maximize the productivity of the mentoring programme.</p>
                 <p>The advice and support you receive from your mentor can help give you the confidence, career development skills, and job-readiness needed to stand out in the employment market.</p>
-                <p><a href="#" class="btn indigo waves-effect waves-light">Register now to make the most of the Otago Mentor Match</a></p>
-                <button class="btn yellow darken-2 z-depth-0 waves-effect waves-light">Register now to make the most of the Otago Mentor Match</button>
+                <p><a href="menteeRegistration.html" class="btn indigo waves-effect waves-light">Register now to make the most of the Otago Mentor Match</a></p>
             </div>
         </div>
-    </section>
+        </section>
 
-    <!--featurebox-->
-    <div class="container">
-        <div class="featurebox_blue col s12 l6 offset-l6">
-            <h2>Intakes for 2021</h2>
-            <p>Programme dates:&nbsp;<strong> </strong></p>
-            <p><strong>March&ndash;September</strong><br /><strong>April&ndash;October </strong></p>
-            <p>Target programmes: <strong>Physical Education, Sport and Exercise Sciences, Languages and Culture, Marketing, Human Nutrition, HR Management, History, Physics, Toursim and Pharmacology and Toxicology</strong></p>
-            <h3 class="blue-text text-darken-2">Target programmes</h3>
-            <p>Students enrolled in other programmes are welcome to apply. However, preference will be given to those in our current target programmes. If you are a head of department/school and would like to know more about and how your programme can become
-                one of our future target programmes, contact the programme co-ordinator.</p>
-        </div>
-    </div>
-
-
-    <!-- services / tabs -->
-
-    <!-- parallax -->
-    <div class="parallax-container">
-        <div class="parallax">
-            <img src="/OtagoMentorMatch/public/img/otago7.jpg" alt="" class="responsive-img" />
-        </div>
-    </div>
-
-
-
-    <!-- contact form -->
-    <section class="section container scrollspy" id="contact">
-        <div class="row">
-            <div class="col s12 l5">
-                <h2 class="indigo-text text-darken-4">Contact</h2>
-                <p>Mena Taripo <br /> Programme Co-ordinator <br /> Tel <a href="tel:+6434798372" target="">+64 3 479 8372</a><br /> Email <a href="mailto:mentor@otago.ac.nz " target="">mentor@otago.ac.nz </a></p>
+        <!--featurebox-->
+        <div class="container">
+            <div class="featurebox_blue col s12 l6 offset-l6">
+                <h2>Intakes for 2021</h2>
+                <p>Programme dates:&nbsp;<strong> </strong></p>
+                <p><strong>March&ndash;September</strong><br /><strong>April&ndash;October </strong></p>
+                <p>Target programmes: <strong>Physical Education, Sport and Exercise Sciences, Languages and Culture, Marketing, Human Nutrition, HR Management, History, Physics, Toursim and Pharmacology and Toxicology</strong></p>
+                <h3 class="blue-text text-darken-2">Target programmes</h3>
+                <p>Students enrolled in other programmes are welcome to apply. However, preference will be given to those in our current target programmes. If you are a head of department/school and would like to know more about and how your programme can
+                    become one of our future target programmes, contact the programme co-ordinator.</p>
             </div>
         </div>
 
-        <!-- footer -->
+
+        <!-- services / tabs -->
+
+        <!-- parallax -->
+        <div class="parallax-container">
+            <div class="parallax">
+                <img src="/img/otago7.jpg" alt="" class="responsive-img" />
+            </div>
+        </div>
+
+
+
+        <!-- contact form -->
+        <section class="section container scrollspy" id="contact">
+            <div class="row">
+                <div class="col s12 l5">
+                    <h2 class="indigo-text text-darken-4">Contact</h2>
+                    <p>Mena Taripo <br /> Programme Co-ordinator <br /> Tel <a href="tel:+6434798372" target="">+64 3 479 8372</a><br /> Email <a href="mailto:mentor@otago.ac.nz " target="">mentor@otago.ac.nz </a></p>
+                </div>
+            </div>
+        </section>
+
+
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

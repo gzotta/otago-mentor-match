@@ -26,7 +26,7 @@ public class MentorFeedbackFormJdbcDAO {
 
     // method to save Feedback Form.
     public void saveMentorFeedbackForm(MentorFeedbackForm feedbackForm) {
-        String sql = "INSERT INTO mentor_feedback_form (finding_omm, enough_time_to_establish_relationship, describe_sessions, active_listening_rating, feedback_rating, trust_rating, achieve_goal_rating, developing_strategies_rating, motivation_rating, working_goals_rating, suitable_match,  recommendation, potential_improvements, time_contributed,  continue_relationship, join_next_intake,  testimonial, takeaways,  matchId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO mentor_feedback_form (finding_omm, enough_time_to_establish_relationship, describe_sessions, active_listening_rating, feedback_rating, trust_rating, achieve_goal_rating, developing_strategies_rating, motivation_rating, working_goals_rating, suitable_match,  recommendation, potential_improvements, time_contributed,  continue_relationship, join_next_intake,  testimonial, takeaways, mentor_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (
                 // get connection to database.
                 Connection dbCon = DbConnection.getConnection(databaseURI);
@@ -52,8 +52,8 @@ public class MentorFeedbackFormJdbcDAO {
                 stmt.setString(16, feedbackForm.getJoinNextIntake());
                 stmt.setBoolean(17, feedbackForm.getTestimonial());
                 stmt.setString(18, feedbackForm.getTakeaways());
-                stmt.setInt(19, feedbackForm.getMentorFeedbackFormId());
-	   
+                
+	            stmt.setInt(19, feedbackForm.getMentorId());
 	            stmt.executeUpdate(); // execute the statement.
             
 
@@ -111,7 +111,7 @@ public class MentorFeedbackFormJdbcDAO {
                     String joinNextIntake = rs.getString("join_next_intake");
                     boolean testimonial = rs.getBoolean("testimonial");
                     String takeaways = rs.getString("takeaways");
-                    Integer matchId = rs.getInt("match_id");
+                    Integer mentorId = rs.getInt("mentor_id");
                     
                     // use the data to create a MentorFeedbackForm object.
                     MentorFeedbackForm feedbackForm = new MentorFeedbackForm();
@@ -134,7 +134,7 @@ public class MentorFeedbackFormJdbcDAO {
                     feedbackForm.setJoinNextIntake(joinNextIntake);
                     feedbackForm.setTestimonial(testimonial);
                     feedbackForm.setTakeaways(takeaways);
-                    feedbackForm.setMatchId(matchId);
+                    feedbackForm.setMentorId(mentorId);
                     
                     return feedbackForm;
                 } else {
