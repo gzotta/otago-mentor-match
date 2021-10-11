@@ -138,13 +138,18 @@ module.factory("getMenteeFeedbackFormAPI", function($resource) {
 module.factory("getMatchAPI", function($resource) {
     return $resource("/api/matches:id");
 })
+ 
+  // Factory for the ngResource object that will get all Mentors from the web service.
+module.factory("allMenteesAPI", function($resource) {
+  return $resource("/api/mentees");
+});
 
 ///////////////////////////
 //---Mentee Controler---//
 /////////////////////////
 
 // Controller for managing Mentee resources.
-module.controller("MenteeController", function(registerMenteeAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $sessionStorage, $window) {
+module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $sessionStorage, $window) {
 
     // Function to save (Register) a Mentee.
     this.registerMentee = function(mentee) {
@@ -159,7 +164,8 @@ module.controller("MenteeController", function(registerMenteeAPI, saveMenteeFeed
             }
         );
     };
-
+ // load Mentees.
+ this.mentees = allMenteesAPI.query();
 
     // Function to Sign Out for Mentee
     this.signOut = function() {

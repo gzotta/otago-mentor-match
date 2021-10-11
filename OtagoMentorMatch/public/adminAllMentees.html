@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="MatchingApp">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--Style sheet excel-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- Compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+
+</head>
+<style>
+    #mentees-details {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #mentees-details td,
+    #tblStocks th {
+        border: 1px solid #ddd;
+        padding: 7px;
+        text-align: left;
+    }
+
+    #mentees-details tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #mentees-details tr:hover {
+        background-color: #ddd;
+    }
+
+    #mentees-details th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left:12px;
+        padding-right:12px;
+        text-align: left;
+        background-color: #294c67;
+        ;
+        color: white;
+    }
+</style>
+<!--Add Navigation Here-->
+
+<body>
+    <H1>List of All Mentees</H1>
+    <!--Mentors table -->
+        <div id="mentees-table">
+            <table id="mentees-details">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Year Of Study</th>
+                        <th>Motivation for Joining</th>
+                        <th>Industry of Interest</th>
+                        <th>Preferred Learning Method</th>
+                        <th>Personal Interests</th>
+                        <th>How Find OMM</th>
+                        <th>Random Matching</th>
+                        <th>Bio</th>
+                    
+                    </tr>
+                </thead>
+                <tbody ng-controller="MenteeController as menteeCtrl">
+                    <tr data-ng-repeat="mentee in menteeCtrl.mentees">
+                        <td>{{mentee.fname}}</td>
+                        <td>{{mentee.lname}}</td>
+                        <td>{{mentee.email}}</td>
+                        <td>{{mentee.phoneNumber}}</td>
+                        <td>{{mentee.yearOfStudy}}</td>
+                        <td>{{mentee.motivationForJoiningOMM}}</td>
+                        <td>{{mentee.industryOfInterest}}</td>
+                        <td>{{mentee.learningMethod}}</td>
+                        <td>{{mentee.personalInterests}}</td>
+                        <td>{{mentee.howFindOMM}}</td>
+                        <td>{{mentee.randomMatching}}</td>
+                        <td>{{mentee.bio}}</td>
+                   
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+</body>
+
+</html>
