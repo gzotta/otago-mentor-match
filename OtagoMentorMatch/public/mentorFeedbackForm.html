@@ -22,11 +22,11 @@
     <title>Mentor Feedback Form</title>
 </head>
 
-<body ng-controller="MentorFeedbackFormsController as mentorFeedbackCtrl">
+<body ng-controller="MentorController as mentorFeedbackCtrl">
     <h2 class="center-align">Mentor Feedback Form</h2>
     <hr />
     <br />
-    <form ng-submit="mentorFeedbackCtrl.registerMentorFeedbackForms(mentorFeedbackForm)">
+    <form ng-submit="mentorFeedbackCtrl.saveMentorFeedbackForm(mentorFeedbackForm)">
         <div class="container">
             <div class="row">
                 <!--Radio of communication method-->
@@ -414,6 +414,19 @@
                         Can you tell us something you have taken away from this experience?
                     </label>
                 </div>
+                <h5>Would you be keen to join thhe next intake?</h5>
+                <p>
+                    <label>
+                        <input name="intake" type="radio" ng-model="mentorFeedbackForm.joinNextIntake" value="Yes"/>
+                        <span>Yes</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="intake" type="radio"ng-model="mentorFeedbackForm.joinNextIntake" value="No" />
+                        <span>No</span>
+                    </label>
+                </p>
             </div>
             <!--Submit and cancel button-->
             <div align="right">

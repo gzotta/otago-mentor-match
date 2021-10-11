@@ -20,12 +20,12 @@ public class MentorFeedbackForm {
         private String joinNextIntake;
         private boolean testimonial;
         private String takeaways;
-        private Integer matchId;
+        private Integer mentorId;
 
     public MentorFeedbackForm() {}
 
     //constructor with all fields.
-    public MentorFeedbackForm(Integer mentorFeedbackFormId, String findingOMM, String enoughTimeToEstablishRelationship, String describeSessions, String activeListeningRating, String feedbackRating, String trustRating, String achieveGoalRating, String developingStrategiesRating, String motivationRating, String workingGoalsRating, String suitableMatch, boolean recommendation, String potentialImprovements, String timeContributed, boolean continueRelationship, String joinNextIntake, boolean testimonial, String takeaways, Integer matchId) {
+    public MentorFeedbackForm(Integer mentorFeedbackFormId, String findingOMM, String enoughTimeToEstablishRelationship, String describeSessions, String activeListeningRating, String feedbackRating, String trustRating, String achieveGoalRating, String developingStrategiesRating, String motivationRating, String workingGoalsRating, String suitableMatch, boolean recommendation, String potentialImprovements, String timeContributed, boolean continueRelationship, String joinNextIntake, boolean testimonial, String takeaways, Integer mentorId) {
         this.mentorFeedbackFormId = mentorFeedbackFormId;
         this.findingOMM = findingOMM;
         this.enoughTimeToEstablishRelationship = enoughTimeToEstablishRelationship;
@@ -45,7 +45,7 @@ public class MentorFeedbackForm {
         this.joinNextIntake = joinNextIntake;
         this.testimonial = testimonial;
         this.takeaways = takeaways;
-        this.matchId = matchId;
+        this.mentorId = mentorId;
     }
 
     //getters and setters.
@@ -201,12 +201,12 @@ public class MentorFeedbackForm {
         this.takeaways = takeaways;
     }
 
-    public Integer getMatchId() {
-        return this.matchId;
+    public Integer getMentorId() {
+        return this.mentorId;
     }
 
-    public void setMatchId(Integer matchId) {
-        this.matchId = matchId;
+    public void setMentorId(Integer mentorId) {
+        this.mentorId = mentorId;
     }
 
     @Override
@@ -231,7 +231,7 @@ public class MentorFeedbackForm {
             ", joinNextIntake='" + joinNextIntake + "'" +
             ", testimonial='" + testimonial + "'" +
             ", takeaways='" + takeaways + "'" +
-            ", matchId='" + matchId + "'" +
+            ", mentorId='" + mentorId + "'" +
             "}";
     }
    

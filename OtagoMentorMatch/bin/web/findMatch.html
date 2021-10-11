@@ -180,7 +180,7 @@
                         <p>Undergraduate Degree: {{mentor.undergraduateCourse}}</p>
                         <p>Postgraduate Degree: {{mentor.postgraduateCourse}}</p>
                         <br>
-                        <a class="waves-effect waves-red btn findbtn">Match</a>
+                        <a class="waves-effect waves-red btn findbtn" ng-click="matchCtrl.storeMentorId(mentor); matchCtrl.storeMatch()">Match</a>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">{{mentor.fname}}<i class="material-icons right">close</i></span>

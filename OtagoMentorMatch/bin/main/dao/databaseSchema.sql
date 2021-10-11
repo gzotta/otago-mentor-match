@@ -63,7 +63,7 @@ CREATE TABLE mentee (
 
 CREATE TABLE match_table (
     match_id int AUTO_INCREMENT,
-    date datetime NOT NULL,
+    date varchar(50) NOT NULL,
     mentor_id int NOT NULL,
     mentee_id int NOT NULL,
     CONSTRAINT match_table_PK PRIMARY KEY (match_id),
@@ -102,9 +102,9 @@ CREATE TABLE mentee_feedback_form (
     testimonial varchar(20) NOT NULL,
     other_comments varchar(150),
     takeaways varchar(150),
-    match_id int NOT NULL,
+    mentee_id int NOT NULL,
     CONSTRAINT mentee_feedback_form_PK PRIMARY KEY (mentee_feedback_form_id),
-    CONSTRAINT mentee_feedback_form_match_table FOREIGN KEY (match_id) REFERENCES match_table(match_id)
+    CONSTRAINT mentee FOREIGN KEY (mentee_id) REFERENCES mentee(mentee_id)
 );
 
 CREATE TABLE mentor_feedback_form (
@@ -127,9 +127,9 @@ CREATE TABLE mentor_feedback_form (
     join_next_intake varchar(20) NOT NULL,
     testimonial varchar(20) NOT NULL,
     takeaways varchar(150),
-    match_id int NOT NULL,
+    mentor_id int NOT NULL,
     CONSTRAINT mentor_feedback_form_PK PRIMARY KEY (mentor_feedback_form_id),
-    CONSTRAINT mentor_feedback_form_match_table FOREIGN KEY (match_id) REFERENCES match_table(match_id)
+    CONSTRAINT mentor FOREIGN KEY (mentor_id) REFERENCES mentor(mentor_id)
 );
 
 
