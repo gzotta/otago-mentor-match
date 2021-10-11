@@ -20,7 +20,7 @@ public class MenteeFeedbackForm {
     private boolean testimonial;
     private String otherComments;
     private String takeaways;
-    private Integer matchId;
+    private Integer menteeId;
  
  
     //empty constructor.
@@ -29,7 +29,7 @@ public class MenteeFeedbackForm {
  
  
     //constructor with all fields.
-    public MenteeFeedbackForm(Integer menteeFeedbackFormId, String communicationPlatform, String findingOMM, String sessionQuality, String qualityOfMatch, boolean recommendation, String activeListeningRating, String feedbackRating, String trustRating, String achieveGoalRating, String developingStrategiesRating, String motivationRating, String workingLoadRating, String programmeImprovements, String timeContributed, boolean continueRelationship, boolean testimonial, String otherComments, String takeaways, Integer matchId) {
+    public MenteeFeedbackForm(Integer menteeFeedbackFormId, String communicationPlatform, String findingOMM, String sessionQuality, String qualityOfMatch, boolean recommendation, String activeListeningRating, String feedbackRating, String trustRating, String achieveGoalRating, String developingStrategiesRating, String motivationRating, String workingLoadRating, String programmeImprovements, String timeContributed, boolean continueRelationship, boolean testimonial, String otherComments, String takeaways, Integer menteeId) {
         this.menteeFeedbackFormId = menteeFeedbackFormId;
         this.communicationPlatform = communicationPlatform;
         this.findingOMM = findingOMM;
@@ -49,7 +49,7 @@ public class MenteeFeedbackForm {
         this.testimonial = testimonial;
         this.otherComments = otherComments;
         this.takeaways = takeaways;
-        this.matchId = matchId;
+        this.menteeId = menteeId;
     }
 
 
@@ -220,12 +220,12 @@ public class MenteeFeedbackForm {
         this.takeaways = takeaways;
     }
 
-    public Integer getMatchId() {
-        return this.matchId;
+    public Integer getMenteeId() {
+        return this.menteeId;
     }
 
-    public void setMatchId(Integer matchId) {
-        this.matchId = matchId;
+    public void setMenteeId(Integer menteeId) {
+        this.menteeId = menteeId;
     }
    
 
@@ -255,7 +255,7 @@ public class MenteeFeedbackForm {
             ", testimonial='" + testimonial + "'" +
             ", otherComments='" + otherComments + "'" +
             ", takeaways='" + takeaways + "'" +
-            ", matchId='" + matchId + "'" +
+            ", menteeId='" + menteeId + "'" +
             "}";
     }
     

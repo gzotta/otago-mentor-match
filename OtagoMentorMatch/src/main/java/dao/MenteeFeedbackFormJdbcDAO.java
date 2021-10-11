@@ -27,7 +27,7 @@ public class MenteeFeedbackFormJdbcDAO {
 
     // method to save Feedback Form.
     public void saveMenteeFeedbackForm(MenteeFeedbackForm feedbackForm) {
-        String sql = "INSERT INTO mentee_feedback_form (communication_platform, finding_omm, session_quality, quality_of_match, recommendation, active_listening_rating, feedback_rating, trust_rating, achieve_goal_rating, developing_strategies_rating, motivation_rating, working_load_rating, programme_improvements, time_contributed, continue_relationship, testimonial, other_comments, takeaways, match_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO mentee_feedback_form (communication_platform, finding_omm, session_quality, quality_of_match, recommendation, active_listening_rating, feedback_rating, trust_rating, achieve_goal_rating, developing_strategies_rating, motivation_rating, working_load_rating, programme_improvements, time_contributed, continue_relationship, testimonial, other_comments, takeaways, mentee_Id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try (
                 // get connection to database.
@@ -54,13 +54,15 @@ public class MenteeFeedbackFormJdbcDAO {
                 stmt.setBoolean(16, feedbackForm.getTestimonial());
                 stmt.setString(17, feedbackForm.getOtherComments());
                 stmt.setString(18, feedbackForm.getTakeaways());
-                stmt.setInt(19, feedbackForm.getMatchId());
+                stmt.setInt(19, feedbackForm.getMenteeId());
+               
 	   
 	            stmt.executeUpdate(); // execute the statement.
             
 
 	            // getting generated keys and adding it to domain.
                 Integer id = null;
+            
                 ResultSet rs = stmt.getGeneratedKeys();
                 if (rs.next()) {
                     id = rs.getInt(1);
@@ -113,7 +115,7 @@ public class MenteeFeedbackFormJdbcDAO {
                     boolean testimonial = rs.getBoolean("testimonial");
                     String otherComments = rs.getString("other_comments");
                     String takeaways = rs.getString("takeaways");
-                    Integer matchId = rs.getInt("match_id");
+                    Integer menteeId = rs.getInt("mentee_Id");
                     
                     // use the data to create a MenteeFeedbackForm object.
                     MenteeFeedbackForm feedbackForm = new MenteeFeedbackForm();
@@ -136,7 +138,7 @@ public class MenteeFeedbackFormJdbcDAO {
                     feedbackForm.setTestimonial(testimonial);
                     feedbackForm.setOtherComments(otherComments);
                     feedbackForm.setTakeaways(takeaways);
-                    feedbackForm.setMatchId(matchId);
+                    feedbackForm.setMenteeId(menteeId);
                     
                     return feedbackForm;
                 } else {
