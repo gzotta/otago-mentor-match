@@ -87,22 +87,22 @@ module.controller("MentorController", function(registerMentorAPI, saveMentorFeed
     this.saveMentorFeedbackForm = function(mentorFeedbackForm) {
         alert("fill in Mentor feedback form");
         mentorFeedbackForm.mentorId = $sessionStorage.mentor.mentorId;
-   saveMentorFeedbackFormAPI.save(null, mentorFeedbackForm,
-      
-       // success callback
-       function() {
-           $window.location = 'home.html';
-           alert("Your Feedback was submitted");
-       },
-       // Error callback
-       function(error) {
-           console.log(error);
-           alert("fill in Mentee feedback form");
-       }
-   );
+        saveMentorFeedbackFormAPI.save(null, mentorFeedbackForm,
+
+            // success callback
+            function() {
+                $window.location = 'home.html';
+                alert("Your Feedback was submitted");
+            },
+            // Error callback
+            function(error) {
+                console.log(error);
+                alert("fill in Mentee feedback form");
+            }
+        );
         console.log(mentorFeedbackForm);
     }
- 
+
 
 });
 
@@ -170,9 +170,9 @@ module.controller("MenteeController", function(registerMenteeAPI, saveMenteeFeed
 
     // Function to save a MenteeFeedbackForm.
     this.saveMenteeFeedbackForm = function(menteeFeedbackForm) {
-         menteeFeedbackForm.menteeId = $sessionStorage.mentee.menteeId;
+        menteeFeedbackForm.menteeId = $sessionStorage.mentee.menteeId;
         saveMenteeFeedbackFormAPI.save(null, menteeFeedbackForm,
-           
+
             // success callback
             function() {
                 $window.location = 'home.html';
