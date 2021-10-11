@@ -8,8 +8,7 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -56,23 +55,19 @@
                 </div>
             </div>
 
+            <!--Password-->
+            <h4>Password</h4>
             <div class="row">
                 <div class="input-field col s6">
-                    <input ng-model="mentee.menteePassword" id="menteePassword" type="password" class="validate">
-                    <label for="menteePassword">Password</label>
-
+                    <input ng-model="mentee.menteePassword" name="password" id="password" type="password" required>
+                    <label for="password">Password</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="lblpasswordConfirm" type="password">
-                    <label id="lblPasswordConfirm" for="passwordConfirm" data-error="Password not match"
-                        data-success="Password Match">Password (Confirm)</label>
-
-
-
+                    <input name="confirm_password" type="password" id="confirm_password" required>
+                    <label for="confirm_password">Confirm Password</label>
+                    <span id="message"></span>
                 </div>
             </div>
-
-
 
             <div class="row">
                 <div class="input-field col s6">
@@ -123,8 +118,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea ng-model="mentee.personalInterests" id="personalInterests"
-                        class="materialize-textarea"></textarea>
+                    <textarea ng-model="mentee.personalInterests" id="personalInterests" class="materialize-textarea"></textarea>
                     <label for="personalInterests">Please identify some personal interests</label>
                 </div>
                 <!--short bio-->
@@ -136,8 +130,7 @@
                 </div>
                 <!--motivation to join-->
                 <div class="input-field col s12">
-                    <textarea ng-model="mentee.motivationForJoiningOMM" id="motivationForJoiningOMM"
-                        class="materialize-textarea"></textarea>
+                    <textarea ng-model="mentee.motivationForJoiningOMM" id="motivationForJoiningOMM" class="materialize-textarea"></textarea>
                     <label for="motivationForJoiningOMM">
                         Please describe your motivation for joining Otago Mentor Match
                     </label>
@@ -190,7 +183,7 @@
                         <span>Email</span>
                     </label>
                 </p>
-             <!-- How find OMM-->
+                <!-- How find OMM-->
                 <div class="row">
                     <h4>How did you find about Otago Mentor Match?</h4>
                     <p>
@@ -224,7 +217,7 @@
                         </label>
                     </p>
                 </div>
-<!--Random matching?-->
+                <!--Random matching?-->
                 <div class="row">
                     <h4>Are you interest in random matching?</h4>
                     <p>
@@ -239,14 +232,14 @@
                             <span>No</span>
                         </label>
                     </p>
-            </div>
+                </div>
 
-            <button type="submit" class="btn-large waves-effect waves-light"> Submit</button>
-        </div>
+                <button type="submit" class="btn-large waves-effect waves-light"> Submit</button>
+            </div>
 
     </form>
 
-<!--test-->
+    <!--test-->
 
 
 
@@ -255,11 +248,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('select').formSelect();
             $('.modal').modal();
             $('.tooltipped').tooltip();
             $('.sidenav').sidenav();
+        });
+    </script>
+    <!--Function to check (confirm) password-->
+    <script>
+        $('#password, #confirm_password').on('keyup', function() {
+            if ($('#password').val() == $('#confirm_password').val()) {
+                $('#message').html('Matching').css('color', 'green');
+            } else
+                $('#message').html('Not Matching').css('color', 'red');
         });
     </script>
 </body>

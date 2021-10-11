@@ -230,7 +230,7 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
                     ctrl.signInMessage = 'Login failed. Please try again.';
                 }
             );
-        } else if(user.type == "mentee"){
+        } else if (user.type == "mentee") {
             // generate authentication token
             let authToken = $window.btoa(user.email + ":" + user.password);
             // store token
@@ -254,7 +254,7 @@ module.controller("LoginController", function(mentorSignInAPI, menteeSignInAPI, 
                     ctrl.signInMessage = 'Login failed. Please try again.';
                 }
             );
-        }else {
+        } else {
             // generate authentication token
             let authToken = $window.btoa(user.email + ":" + user.password);
             // store token
@@ -327,22 +327,8 @@ module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI
 
 
 
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////Workshop Resources Section///////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////
-//-----Workshop Factories------//
-////////////////////////////////
-
-//////////////////////////////////
-//----Workshop Controler-------//
-////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////Admin Resources Section///////////////////////////////////////
+////////////////////////////Admin Resources Section//////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////
@@ -355,10 +341,10 @@ module.factory("registerAdminAPI", function($resource) {
 //////////////////////////////////
 //----Admin Controler-------//
 ////////////////////////////////
-// Controller for managing Mentee resources.
+// Controller for managing Admin resources.
 module.controller("AdminController", function(registerAdminAPI, $sessionStorage, $window) {
 
-    // Function to save (Register) a Admin.
+    // Function to save (Register) an Admin.
     this.registerAdmin = function(admin) {
         registerAdminAPI.save(null, admin,
             // success callback
@@ -372,3 +358,17 @@ module.controller("AdminController", function(registerAdminAPI, $sessionStorage,
         );
     };
 });
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////Workshop Resources Section///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////
+//-----Workshop Factories------//
+////////////////////////////////
+
+//////////////////////////////////
+//----Workshop Controler-------//
+////////////////////////////////
