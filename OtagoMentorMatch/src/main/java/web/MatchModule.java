@@ -24,5 +24,15 @@ public class MatchModule extends Jooby {
             matchDao.removeMatch(match);
             rsp.status(Status.NO_CONTENT);
         });
+
+        // GET all Matches.
+        get("api/matches", () -> matchDao.getAllMatches());
+
+        // Get Matches by ID.
+        get("/api/matches/:id", (req) -> {
+            String id = req.param("id").value();
+            return matchDao.getMatchByMatchId(Integer.parseInt(id));
+        });
+
     }
 }

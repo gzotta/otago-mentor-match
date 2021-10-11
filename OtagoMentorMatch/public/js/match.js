@@ -204,7 +204,7 @@ module.controller("MenteeController", function(registerMenteeAPI, saveMenteeFeed
 ////////////////////////////////
 
 // factory for the ngResource object that will post a Journal entry to the web service.
-module.factory("journalEntriesAPI", function($resource) {
+module.factory("saveJournalEntryAPI", function($resource) {
     return $resource("/api/journalEntries");
 });
 
@@ -213,14 +213,31 @@ module.factory("journalEntriesAPI", function($resource) {
 /////////////////////////////////
 
 // Controller for managing Journal Entry forms.
-module.controller("JournalEntriesController", function(journalEntriesAPI, $window) {
-    alert("on controller");
+module.controller("JournalEntriesController", function(saveJournalEntryAPI, $window) {
+
 
     // Function to save (Post) a Journal Entry.
     this.saveJournalEntry = function(journalEntry) {
-        alert("fill in Journal Entry");
-        console.log(journalEntry);
+        saveJournalEntryAPI.matchId = $sessionStorage.mentee.menteeId;
+        journalEntryAPI.save(null, menteeFeedbackForm,
+
+            // success callback
+            function() {
+                $window.location = 'home.html';
+                alert("Your Feedback was submitted");
+            },
+            // Error callback
+            function(error) {
+                console.log(error);
+                alert("fill in Mentee feedback form");
+            }
+        );
+        //Remove this log if needed
+        console.log(menteeFeedbackForm);
     };
+
+
+
 });
 
 
@@ -374,16 +391,25 @@ module.factory("allMentorsAPI", function($resource) {
 // Factory for the ngResource object that will POST a Match to the web service.
 module.factory("saveMatchAPI", function($resource) {
     return $resource("/api/matches");
-})
+});
+
+// Factory for the ngResource object that will GET all the Matches from the web service.
+module.factory("getAllMatchesAPI", function($resource) {
+    return $resource("/api/matches");
+});
+
+
 
 //////////////////////////////////
 //-------Macth Controler-------//
 ////////////////////////////////
-module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, $sessionStorage, $window) {
+module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, getAllMatchesAPI, $sessionStorage, $window) {
     // load Mentors.
     this.mentors = allMentorsAPI.query();
     // load Mentors by industry.
     this.mentorByIndustry = mentorByIndustryAPI.query();
+    // Get all mentors.
+    this.matches = getAllMatchesAPI.query();
 
     // Click handler for the industry filter buttons.
     this.selectIndustry = function(selectedIndustry) {
@@ -422,6 +448,9 @@ module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI
             }
         );
     };
+
+
+
 
 });
 

@@ -1,5 +1,5 @@
 CREATE TABLE admin (
-    admin_id int AUTO_INCREMENT,
+    admin_id int AUTO_INCREMENT UNIQUE,
     password varchar(200) NOT NULL,
     fname varchar(50) NOT NULL,
     lname varchar (50) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE admin (
 
 
 CREATE TABLE mentor (
-    mentor_id int AUTO_INCREMENT,
+    mentor_id int AUTO_INCREMENT UNIQUE,
     mentor_password varchar(200) NOT NULL,
     fname varchar(50) NOT NULL,
     lname varchar (50) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE mentor (
 
 
 CREATE TABLE mentee (
-    mentee_id int AUTO_INCREMENT,
+    mentee_id int AUTO_INCREMENT UNIQUE,
     password varchar(200) NOT NULL,
     fname varchar(50) NOT NULL,
     lname varchar (50) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE mentee (
 
 
 CREATE TABLE match_table (
-    match_id int AUTO_INCREMENT,
+    match_id int AUTO_INCREMENT UNIQUE,
     date varchar(50) NOT NULL,
     mentor_id int NOT NULL,
     mentee_id int NOT NULL,
