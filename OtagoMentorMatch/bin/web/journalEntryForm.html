@@ -27,9 +27,27 @@
     <br />
     <form ng-submit="jeCtrl.saveJournalEntry(journalEntry)">
         <div class="container">
+
+            <!--Match ID field  -->
+            <h5>Match ID</h5>
+            <ul class="collection" ng-controller="MatchController as matchCtrl">
+                <li class="collection-item avatar" data-ng-repeat="match in matchCtrl.menteeMatches">
+                    <img src="/img/profile.jpg" class="circle">
+                    <span class="title ">Match ID: {{match.match_id}}</span>
+                    <p>First Name: {{match.mentorFname}} <br> Last Name: {{match.mentorLname}}
+                    </p>
+                </li>
+            </ul>
+            <!--Input field for Match ID-->
+            <div>
+                <p>
+                    <div class="input-field col s12 ">
+                        <input placeholder="Please enter match ID" ng-model="journalEntry.matchId " type="text " id="match_id " class="validate " required>
+                        <label for="match_id "></label>
+                    </div>
+                </p>
+            </div>
             <div class="row">
-
-
                 <!--Hours of contibution radio-->
                 <h5>What were some of the topics you and your mentor covered during this session?</h5>
                 <p>
@@ -116,7 +134,6 @@
 
             </div>
             <br>
-        </div>
         </div>
     </form>
 

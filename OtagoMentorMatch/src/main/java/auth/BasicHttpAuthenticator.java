@@ -54,20 +54,20 @@ public class BasicHttpAuthenticator implements Jooby.Module {
 
 				String authDetails = new String(decoder.decode(stripped));
 
-				// split the decoded string into username and password
-				Matcher matcher = Pattern.compile("(?<username>.+?):(?<password>.*)").matcher(authDetails);
+				// split the decoded string into email and password
+				Matcher matcher = Pattern.compile("(?<email>.+?):(?<password>.*)").matcher(authDetails);
 
 				if (!matcher.matches()) {
 					// token is not in the expected format so is likely invalid
 					rsp.send(new Result().header("WWW-Authenticate", "None").status(Status.UNAUTHORIZED));
 				}
 
-				String username = matcher.group("username");
+				String email = matcher.group("email");
 				String password = matcher.group("password");
 
-				if (validator.validateCredentials(username, password)) {
-					// add username to request
-					req.set("username", username);
+				if (validator.validateCredentials(email, password)) {
+					// add email to request
+					req.set("email", email);
 					chain.next(req, rsp);
 				} else {
 					// bad credentials

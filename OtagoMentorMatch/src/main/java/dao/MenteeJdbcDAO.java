@@ -10,7 +10,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 /**
  *
  * @author George Zotta
@@ -174,6 +176,70 @@ public class MenteeJdbcDAO implements CredentialsValidator {
             throw new DAOException(ex.getMessage(), ex);
         }
     }// end of method to get Mentee by first name.
+
+// Method to GET all Mentors.
+public Collection<Mentee> getMentees() {
+
+    String sql = "select * from Mentee";
+    try (
+            // get connection to database.
+            Connection dbCon = DbConnection.getConnection(databaseURI);
+            // create the statement.
+            PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
+        ResultSet rs = stmt.executeQuery(); // execute the query
+
+        List<Mentee> mentees = new ArrayList<>(); // using list to preserve data order
+
+        // iterate through query results
+        while (rs.next()) {
+
+             // get the data out of the query.
+             Integer menteeId = rs.getInt("mentee_id");
+             String password = rs.getString("password");
+             String fname = rs.getString("fname");
+             String lname = rs.getString("lname");
+             String phone_number = rs.getString("phone_number");
+             String year_of_study = rs.getString("year_of_study");
+             String motivation_for_joining_omm = rs.getString("motivation_for_joining_omm");
+             String industry_of_interest = rs.getString("industry_of_interest");
+             String learning_method = rs.getString("learning_method");
+             String personal_interests = rs.getString("personal_interests");
+             String how_find_omm = rs.getString("how_find_omm");
+             String random_matching = rs.getString("random_matching");
+             String bio = rs.getString("bio");
+             String email = rs.getString("email");
+
+             // use the data to create a Mentee object.
+             Mentee mentee = new Mentee();
+             mentee.setMenteeId(menteeId);
+             mentee.setMenteePassword(password);
+             mentee.setFname(fname);
+             mentee.setLname(lname);
+             mentee.setEmail(email);
+             mentee.setPhoneNumber(phone_number);
+             mentee.setYearOfStudy(year_of_study);
+             mentee.setMotivationForJoiningOMM(motivation_for_joining_omm);
+             mentee.setIndustryOfInterest(industry_of_interest);
+             mentee.setLearningMethod(learning_method);
+             mentee.setPersonalInterests(personal_interests);
+             mentee.setHowFindOMM(how_find_omm);
+             mentee.setRandomMatching(random_matching);
+             mentee.setBio(bio);
+
+          
+
+            mentees.add(mentee); // put it in the collection
+        }
+
+        return mentees;
+
+    } catch (SQLException ex) {
+        throw new DAOException(ex.getMessage(), ex);
+    }
+}
+
+
+
 
     // Method to validate credentials for Mentees.
     @Override
