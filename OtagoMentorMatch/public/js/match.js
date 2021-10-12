@@ -97,7 +97,7 @@ module.controller("MentorController", function (registerMentorAPI, saveMentorFee
             // Error callback
             function (error) {
                 console.log(error);
-                alert("fill in Mentee feedback form");
+                alert("fill in Mentor feedback form");
             }
         );
         console.log(mentorFeedbackForm);
@@ -497,11 +497,14 @@ module.factory("registerAdminAPI", function ($resource) {
 module.factory("getAllMenteeFeedbackFormsAPI", function ($resource) {
     return $resource("/api/menteeFeedbackForms");
 });
+module.factory("getAllMentorFeedbackFormsAPI", function ($resource) {
+    return $resource("/api/mentorFeedbackForms");
+});
 //////////////////////////////////
 //----Admin Controler-------//
 ////////////////////////////////
 // Controller for managing Admin resources.
-module.controller("AdminController", function (getAllMatchesAPI,getAllMenteeFeedbackFormsAPI , getAllJournalEntriesAPI, allMentorsAPI, registerAdminAPI, $sessionStorage, $window) {
+module.controller("AdminController", function (getAllMatchesAPI,getAllMenteeFeedbackFormsAPI,getAllMentorFeedbackFormsAPI, getAllJournalEntriesAPI, allMentorsAPI, registerAdminAPI, $sessionStorage, $window) {
     // Get all mentors.
     this.matches = getAllMatchesAPI.query();
     // load Mentors.
@@ -510,6 +513,8 @@ module.controller("AdminController", function (getAllMatchesAPI,getAllMenteeFeed
     this.journalEntries = getAllJournalEntriesAPI.query();
 // Get all mentee feedback forms
     this.menteeFeedback = getAllMenteeFeedbackFormsAPI.query();
+    // Get all mentor feedback forms
+    this.mentorFeedback = getAllMentorFeedbackFormsAPI.query();
     // Function to save (Register) an Admin.
     
     this.registerAdmin = function (admin) {

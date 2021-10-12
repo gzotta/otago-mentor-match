@@ -20,7 +20,8 @@ public class MentorFeedbackFormModule extends Jooby {
             mentorFeedbackFormDao.saveMentorFeedbackForm(mentorFeedbackForm);
             rsp.status(Status.CREATED);
         });
-
+        // GET all Mentor feedback forms.
+        get("/api/mentorFeedbackForms", () -> mentorFeedbackFormDao.getMentorFeedbackForms());
         // DELETE a MentorFeedbackForm.
         delete("/api/mentorFeedbackForms/:id", (req, rsp) -> {
             String id = req.param("id").value();
