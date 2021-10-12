@@ -319,6 +319,7 @@ public class MentorJdbcDAO implements CredentialsValidator {
                 mentor.setBio(bio);
                 mentor.setExtraInfo(extra_info);
                 mentor.setNewToMentory(new_to_mentory);
+                mentor.setEmail(email);
 
                 return mentor;
             } else {
