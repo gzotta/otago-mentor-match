@@ -54,6 +54,9 @@
 
 <body>
     <H1>List of All Matches</H1>
+    <button onclick="exportTableToExcel('matches-details','matches')" type="button" class="btn waves-effect waves-light">Export Data to Excel</button>
+    <br>
+    <br>
     <!--Mentors table -->
         <div id="matches-table">
             <table id="matches-details">
@@ -87,5 +90,32 @@
         </div>
     
 </body>
+<script>
+    function exportTableToExcel(tableID, filename = '') {
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
 
+        filenmae = filename ? filename + '.xls' : 'exel_data.xls';
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+</script>
 </html>

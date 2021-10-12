@@ -32,6 +32,7 @@ public class MenteeModule extends Jooby {
                 return menteeDao.getMenteeByEmail(email);
             }
         });
+        
         // GET all Mentees.
         get("/api/mentees", () -> menteeDao.getMentees());
         
