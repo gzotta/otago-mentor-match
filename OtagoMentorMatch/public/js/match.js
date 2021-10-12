@@ -54,12 +54,17 @@ module.factory("getMentorFeedbackFormAPI", function($resource) {
     return $resource("/api/mentorFeedbackForms/:id");
 });
 
+module.factory("deleteMentorAccountAPI", function($resource) {
+    return $resource("/api/mentors/mentor/:email");
+});
+
 ///////////////////////////
 //---Mentor Controler---//
 /////////////////////////
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, $window, $sessionStorage) {
+module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, deleteMentorAccountAPI, $window, $sessionStorage) {
+    this.mentorEmail = $sessionStorage.mentor.email;
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function(mentor) {
@@ -82,6 +87,20 @@ module.controller("MentorController", function(registerMentorAPI, saveMentorFeed
         $window.location = 'index.html';
     };
 
+    //function for deleting mentor account
+    this.deleteMentorAccount = function() {
+
+        deleteMentorAccountAPI.delete(null, $sessionStorage.mentor.email,
+            function() {
+                console.log("success");
+                $window.location = 'index.html';
+            },
+            // error callback
+            function(error) {
+                console.log(error);
+            }
+        );
+    };
 
     // Function to save a MentorFeedbackForm.
     this.saveMentorFeedbackForm = function(mentorFeedbackForm) {
@@ -102,6 +121,8 @@ module.controller("MentorController", function(registerMentorAPI, saveMentorFeed
         );
         console.log(mentorFeedbackForm);
     }
+
+    
 
 
 });
