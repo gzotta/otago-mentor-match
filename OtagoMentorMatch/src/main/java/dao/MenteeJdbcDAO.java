@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 /**
  *
  * @author George Zotta
@@ -239,6 +238,7 @@ public class MenteeJdbcDAO implements CredentialsValidator {
         }
     }// end of method to get Mentee by first name.
 
+    
     // Method to validate credentials for Mentees.
     @Override
     public Boolean validateCredentials(String email, String password) {

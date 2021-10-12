@@ -100,31 +100,35 @@ public class MatchJdbcDAO {
 
     }
 
-    // method to get Match by match's id
-    public Match getMatchByMatchId(Integer matchId) {
-        String sql = "SELECT * FROM match WHERE match_id = ?";
+    // method to get Match by Mentee's ID.
+    public List<MatchDisplay> getMatchByMenteeId(Integer menteeId) {
+        String sql = "SELECT match_table.match_id, match_table.mentor_id, mentor.fname, mentor.lname FROM match_table INNER JOIN mentee ON match_table.mentee_id=mentee.mentee_id INNER JOIN mentor On match_table.mentor_id=mentor.mentor_id WHERE match_table.mentee_id = ?";
 
         try (Connection dbCon = DbConnection.getConnection(databaseURI);
                 // create the statement.
                 PreparedStatement stmt = dbCon.prepareStatement(sql);) {
             // copy the data from the Match domain object into the SQL parameters.
-            stmt.setInt(1, matchId);
+            stmt.setInt(1, menteeId);
             // execute the query.
             ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
+            // use the data to create a Match object.
+            List<MatchDisplay> matches = new ArrayList<>();
+            while (rs.next()) {
                 // get the data out of the query.
                 Integer match_id = rs.getInt("match_id");
-                String date = rs.getString("date");
-                Integer mentorId = rs.getInt("mentor_id");
-                Integer menteeId = rs.getInt("mentee_id");
+                String mentorFname = rs.getString("mentor.fname");
+                String mentorLname = rs.getString("mentor.lname");
 
-                // use the data to create a Match object.
-                Match match = new Match(match_id, date, mentorId, menteeId);
-                return match;
-            } else {
-                return null;
+                MatchDisplay match = new MatchDisplay();
+                match.setMatch_id(match_id);
+                match.setMentorFname(mentorFname);
+                match.setMentorLname(mentorLname);
+
+                matches.add(match);
             }
+            return matches;
+
         } catch (SQLException ex) {
             // don't let the SQLException leak from our DAO encapsulation.
             throw new DAOException(ex.getMessage(), ex);
