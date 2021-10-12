@@ -92,7 +92,7 @@
         </nav>
     </header>
 
-    <body>
+    <body ng-controller="MentorController as mentorCtrl">
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
                 <!-- right column -->
@@ -106,7 +106,11 @@
                             </div>
 
                     <br>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button modal-trigger" data-target="modal-remove" type="button">Remove Account</button></div>
+                    <div class="mt-5 text-center">
+                        <form ng-submit="mentorCtrl.deleteMentorAccount()">
+                            <button class="btn btn-primary profile-button" type="submit">Remove Account</button>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- delete account modal here -->
