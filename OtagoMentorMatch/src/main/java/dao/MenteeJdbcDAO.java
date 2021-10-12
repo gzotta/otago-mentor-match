@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 /**
  *
  * @author George Zotta
@@ -120,7 +121,7 @@ public class MenteeJdbcDAO implements CredentialsValidator {
         }
     }// end of method to save Mentee
 
-    //get all mentees method
+    // get all mentees method
     public Collection<Mentee> getMentees() {
 
         String sql = "SELECT * FROM mentee";
@@ -150,26 +151,23 @@ public class MenteeJdbcDAO implements CredentialsValidator {
                 String how_find_omm = rs.getString("how_find_omm");
                 String random_matching = rs.getString("random_matching");
                 String bio = rs.getString("bio");
-              
 
-              // use the data to create a Mentee object.
-              Mentee mentee = new Mentee();
-              mentee.setMenteeId(menteeId);
-              mentee.setMenteePassword(password);
-              mentee.setFname(fname);
-              mentee.setLname(lname);
-              mentee.setEmail(email);
-              mentee.setPhoneNumber(phone_number);
-              mentee.setYearOfStudy(year_of_study);
-              mentee.setMotivationForJoiningOMM(motivation_for_joining_omm);
-              mentee.setIndustryOfInterest(industry_of_interest);
-              mentee.setLearningMethod(learning_method);
-              mentee.setPersonalInterests(personal_interests);
-              mentee.setHowFindOMM(how_find_omm);
-              mentee.setRandomMatching(random_matching);
-              mentee.setBio(bio);
-
-              
+                // use the data to create a Mentee object.
+                Mentee mentee = new Mentee();
+                mentee.setMenteeId(menteeId);
+                mentee.setMenteePassword(password);
+                mentee.setFname(fname);
+                mentee.setLname(lname);
+                mentee.setEmail(email);
+                mentee.setPhoneNumber(phone_number);
+                mentee.setYearOfStudy(year_of_study);
+                mentee.setMotivationForJoiningOMM(motivation_for_joining_omm);
+                mentee.setIndustryOfInterest(industry_of_interest);
+                mentee.setLearningMethod(learning_method);
+                mentee.setPersonalInterests(personal_interests);
+                mentee.setHowFindOMM(how_find_omm);
+                mentee.setRandomMatching(random_matching);
+                mentee.setBio(bio);
 
                 mentees.add(mentee); // put it in the collection
             }
@@ -227,6 +225,7 @@ public class MenteeJdbcDAO implements CredentialsValidator {
                 mentee.setHowFindOMM(how_find_omm);
                 mentee.setRandomMatching(random_matching);
                 mentee.setBio(bio);
+                mentee.setEmail(email);
 
                 return mentee;
             } else {
@@ -238,7 +237,6 @@ public class MenteeJdbcDAO implements CredentialsValidator {
         }
     }// end of method to get Mentee by first name.
 
-    
     // Method to validate credentials for Mentees.
     @Override
     public Boolean validateCredentials(String email, String password) {

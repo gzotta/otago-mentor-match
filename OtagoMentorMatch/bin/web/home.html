@@ -24,12 +24,12 @@
 <body ng-controller="MenteeController as menteeCtrl">
     <!-- navbar -->
     <header>
-       
-        <div id="mentee" ng-include="'menteeNavigation.html'" ></div>
-        <div id="mentor" ng-include="'mentorNavigation.html'" ></div>
-        <div id="admin" ng-include="'adminNavigation.html'" ></div>
+
+        <div id="mentee" ng-include="'menteeNavigation.html'"></div>
+        <div id="mentor" ng-include="'mentorNavigation.html'"></div>
+        <div id="admin" ng-include="'adminNavigation.html'"></div>
     </header>
-<div class="mentee" id="mentee">Mentee</div>
+
     <!-- photo / grid -->
 
 
@@ -125,32 +125,33 @@
 
 <script>
     //Scipt to block content from specific user groups
-         var mode = sessionStorage.getItem('ngStorage-user1');
-         var x = document.getElementById("mentee");
-         if(String(mode) == '"mentee"')
-         {console.log("true");
-         document.getElementById("mentee").style.display = "show";
-         document.getElementById("mentor").style.display = "none";
-         document.getElementById("admin").style.display = "none";
-       //  x.style.display = "show";
-     }else if (String(mode) =='"mentor"'){
-         console.log("mentor check");
-         //x.style.display = "none";
-         document.getElementById("mentee").style.display = "none";
-         document.getElementById("mentor").style.display = "show";
-         document.getElementById("admin").style.display = "none";
-     }
-     else if (String(mode) =='"admin"'){
-         console.log("admin check");
-         //x.style.display = "none";
-         document.getElementById("mentee").style.display = "none";
-         document.getElementById("mentor").style.display = "none";
-         document.getElementById("admin").style.display = "show";
-     }
-         else{console.log("false");}
+    var mode = sessionStorage.getItem('ngStorage-user1');
+    var x = document.getElementById("mentee");
+    if (String(mode) == '"mentee"') {
+        console.log("true");
+        document.getElementById("mentee").style.display = "show";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "none";
+        //  x.style.display = "show";
+    } else if (String(mode) == '"mentor"') {
+        console.log("mentor check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "show";
+        document.getElementById("admin").style.display = "none";
+    } else if (String(mode) == '"admin"') {
+        console.log("admin check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "show";
+    } else {
+        console.log("false");
+    }
 
 
- 
- console.log(String(mode)); // 'dark'
-    </script>
-    </html>
+
+    console.log(String(mode)); // 'dark'
+</script>
+
+</html>

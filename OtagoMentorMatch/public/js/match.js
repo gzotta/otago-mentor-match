@@ -136,9 +136,9 @@ module.factory("getMenteeFeedbackFormAPI", function($resource) {
 });
 // Factory for the ngResource object that will GeT a Match by ID.
 module.factory("getMatchAPI", function($resource) {
-    return $resource("/api/matches:id");
-})
-// Factory for the ngResource object that will get all Mentors from the web service.
+        return $resource("/api/matches:id");
+    })
+    // Factory for the ngResource object that will get all Mentees from the web service.
 module.factory("allMenteesAPI", function($resource) {
     return $resource("/api/mentees");
 });
@@ -162,10 +162,10 @@ module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI,
                 console.log(error);
             }
         );
-       
+
     };
- // load Mentees.
- this.mentees = allMenteesAPI.query();
+    // load Mentees.
+    this.mentees = allMenteesAPI.query();
 
     // Function to Sign Out for Mentee
     this.signOut = function() {
