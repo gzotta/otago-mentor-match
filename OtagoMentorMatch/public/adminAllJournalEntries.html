@@ -19,27 +19,27 @@
 
 </head>
 <style>
-    #matches-details {
+    #je-details {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
     }
 
-    #matches-details td,
+    #je-details td,
     #tblStocks th {
         border: 1px solid #ddd;
         padding: 8px;
     }
 
-    #matches-details tr:nth-child(even) {
+    #je-details tr:nth-child(even) {
         background-color: #f2f2f2;
     }
 
-    #matches-details tr:hover {
+    #je-details tr:hover {
         background-color: #ddd;
     }
 
-    #matches-details th {
+    #je-details th {
         padding-top: 12px;
         padding-bottom: 12px;
         padding-left:12px;
@@ -59,13 +59,13 @@
         <div id="mentor" ng-include="'mentorNavigation.html'" ></div>
         <div id="admin" ng-include="'adminNavigation.html'" ></div>
     </header>
-    <H1>List of All Matches</H1>
-    <button onclick="exportTableToExcel('matches-details','matches')" type="button" class="btn waves-effect waves-light">Export Data to Excel</button>
+    <H1>List of All Journal Entries</H1>
+    <button onclick="exportTableToExcel('je-details','Journal Entry data')" type="button" class="btn waves-effect waves-light">Export Data to Excel</button>
     <br>
     <br>
     <!--Mentors table -->
-        <div id="matches-table">
-            <table id="matches-details">
+        <div id="je-table">
+            <table id="je-details">
                 <thead>
                     <tr>
                         <th>Journal Entry ID</th>
