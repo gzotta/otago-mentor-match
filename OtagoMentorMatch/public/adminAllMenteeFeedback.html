@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html ng-app="MatchingApp">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--Style sheet excel-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- Compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+
+</head>
+<style>
+    #feedback-details {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #feedback-details td,
+    #tblStocks th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #feedback-details tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #feedback-details tr:hover {
+        background-color: #ddd;
+    }
+
+    #feedback-details th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left:12px;
+        padding-right:12px;
+        text-align: left;
+        background-color: #294c67;
+        ;
+        color: white;
+    }
+</style>
+<!--Add Navigation Here-->
+
+<body>
+    <header>
+       
+        <div id="mentee" ng-include="'menteeNavigation.html'" ></div>
+        <div id="mentor" ng-include="'mentorNavigation.html'" ></div>
+        <div id="admin" ng-include="'adminNavigation.html'" ></div>
+    </header>
+    <H1>List of All Mentee Feedback Forms</H1>
+    <button onclick="exportTableToExcel('feedback-details','mentee Feedback')" type="button" class="btn waves-effect waves-light">Export Data to Excel</button>
+    <br>
+    <br>
+    <!--Mentors table -->
+        <div id="feedback-table">
+            <table id="feedback-details">
+                <thead>
+                    <tr>
+                        <th>Feedback Form ID</th>
+                        <th>Communication Platform</th>
+                        <th>How Find OMM</th>
+                        <th>Quality of sessions</th>
+                        <th>Quality of Match</th>
+                        <th>Will provide reccommendation of OMM?</th>
+                        <th>Active Listening Rating</th>
+                        <th>Feedback Rating</th>
+                        <th>Trust Rating</th>
+                        <th>Achieve Goals Rating</th>
+                        <th>Development of Strategies Rating</th>
+                        <th>Motivation Rating</th>
+                        <th>Work Load Rating</th>
+                        <th>Programme Improvements</th>
+                        <th>Time Contributed</th>
+                        <th>Continue Relationship?</th>
+                        <th>Provide Testimonial?</th>
+                        <th>Other Comments</th>
+                        <th>Takeaways</th>
+                        <th>Mentee ID</th>
+
+                        
+                    </tr>
+                </thead>
+                <tbody ng-controller="AdminController as adminCtrl">
+                    <tr data-ng-repeat="feedback in adminCtrl.menteeFeedback">
+                        <td>{{feedback.menteeFeedbackFormId}}</td>
+                        <td>{{feedback.communicationPlatform}}</td>
+                        <td>{{feedback.findingOMM}}</td>
+                        <td>{{feedback.sessionQuality}}</td>
+                        <td>{{feedback.qualityOfMatch}}</td>
+                        <td>{{feedback.recommendation}}</td>
+                        <td>{{feedback.activeListeningRating}}</td>
+                        <td>{{feedback.feedbackRating}}</td>
+                        <td>{{feedback.trustRating}}</td>
+                        <td>{{feedback.achieveGoalRating}}</td>
+                        <td>{{feedback.developingStrategiesRating}}</td>
+                        <td>{{feedback.motivationRating}}</td>
+                        <td>{{feedback.workingLoadRating}}</td>
+                        <td>{{feedback.programmeImprovements}}</td>
+                        <td>{{feedback.timeContributed}}</td>
+                        <td>{{feedback.continueRelationship}}</td>
+                        <td>{{feedback.testimonial}}</td>
+                        <td>{{feedback.otherComments}}</td>
+                        <td>{{feedback.takeaways}}</td>
+                        <td>{{feedback.menteeId}}</td>
+                        
+                        
+                        
+                     
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+</body>
+<script>
+    function exportTableToExcel(tableID, filename = '') {
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+        filenmae = filename ? filename + '.xls' : 'exel_data.xls';
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+</script>
+<script>
+    //Scipt to block content from specific user groups
+         var mode = sessionStorage.getItem('ngStorage-user1');
+         var x = document.getElementById("mentee");
+         if(String(mode) == '"mentee"')
+         {console.log("mentee check");
+         document.getElementById("mentee").style.display = "show";
+         document.getElementById("mentor").style.display = "none";
+         document.getElementById("admin").style.display = "none";
+       //  x.style.display = "show";
+     }else if (String(mode) =='"mentor"'){
+         console.log("mentor check");
+         //x.style.display = "none";
+         document.getElementById("mentee").style.display = "none";
+         document.getElementById("mentor").style.display = "show";
+         document.getElementById("admin").style.display = "none";
+     }
+     else if (String(mode) =='"admin"'){
+         console.log("admin check");
+         //x.style.display = "none";
+         document.getElementById("mentee").style.display = "none";
+         document.getElementById("mentor").style.display = "none";
+         document.getElementById("admin").style.display = "show";
+     }
+         else{console.log("false");}
+
+
+    </script>
+</html>

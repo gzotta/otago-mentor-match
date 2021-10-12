@@ -494,19 +494,24 @@ module.controller("MatchController", function (allMentorsAPI, mentorByIndustryAP
 module.factory("registerAdminAPI", function ($resource) {
     return $resource("/api/admins");
 });
+module.factory("getAllMenteeFeedbackFormsAPI", function ($resource) {
+    return $resource("/api/menteeFeedbackForms");
+});
 //////////////////////////////////
 //----Admin Controler-------//
 ////////////////////////////////
 // Controller for managing Admin resources.
-module.controller("AdminController", function (getAllMatchesAPI, getAllJournalEntriesAPI, allMentorsAPI, registerAdminAPI, $sessionStorage, $window) {
+module.controller("AdminController", function (getAllMatchesAPI,getAllMenteeFeedbackFormsAPI , getAllJournalEntriesAPI, allMentorsAPI, registerAdminAPI, $sessionStorage, $window) {
     // Get all mentors.
     this.matches = getAllMatchesAPI.query();
     // load Mentors.
     this.mentors = allMentorsAPI.query();
     // Get all journal entires
     this.journalEntries = getAllJournalEntriesAPI.query();
+// Get all mentee feedback forms
+    this.menteeFeedback = getAllMenteeFeedbackFormsAPI.query();
     // Function to save (Register) an Admin.
-   
+    
     this.registerAdmin = function (admin) {
         registerAdminAPI.save(null, admin,
             // success callback

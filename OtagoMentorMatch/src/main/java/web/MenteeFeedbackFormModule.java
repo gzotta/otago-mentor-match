@@ -20,7 +20,8 @@ public class MenteeFeedbackFormModule extends Jooby {
             menteeFeedbackFormDao.saveMenteeFeedbackForm(menteeFeedbackForm);
             rsp.status(Status.CREATED);
         });
-
+        // GET all Mentee feedback forms.
+        get("/api/menteeFeedbackForms", () -> menteeFeedbackFormDao.getMenteeFeedbackForms());
         // DELETE a MenteeFeedbackForm.
         delete("/api/menteeFeedbackForms/:id", (req, rsp) -> {
             String id = req.param("id").value();
