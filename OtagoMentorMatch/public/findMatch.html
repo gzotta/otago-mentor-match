@@ -46,40 +46,8 @@
         }
     </style>
 </head>
-<header class="white" ng-controller="LoginController as loginCtrl">
-    <nav class="nav-wrapper transparent">
-        <div class="container">
-            <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
-            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
-                <i class="material-icons">menu</i>
-            </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="black-text text-darken-6" href="home.html">Home</a></li>
-                <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
-                <li><a class="black-text text-darken-6" href="#profile">Profile</a></li>
-                <li><a class="black-text text-darken-6" href="journalEntryForm.html">Journal Entry Form</a></li>
-
-                <li><a class="black-text text-darken-6" href="menteeFeedbackForm.html">Feedback Form</a></li>
-                <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
-                <li><a ng-click="loginCtrl.signOut()" class="black-text text-darken-6" href="">Sign Out</a></li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<header>
+    <div id="nav1" ng-include="'navigation.html'" ></div>
 </header>
 
 <body class="body" ng-controller="MatchController as matchCtrl">

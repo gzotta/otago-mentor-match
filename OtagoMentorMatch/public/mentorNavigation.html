@@ -1,0 +1,61 @@
+<html ng-app="MatchingApp" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<header>
+    <div class="mentee" id="mentee">
+    <nav class="nav-wrapper transparent">
+        <div class="container">
+            <a href="#" class="brand-logo black-text left">Otago Mentor Match</a></div>
+            
+            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="black-text text-darken-6" href="home.html">Home</a></li>
+                <li><a class="black-text text-darken-6" href="mentorProfile.html">Profile</a></li>
+                <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
+                <li><a class="black-text text-darken-6" href="#Resources">Resources</a></li>
+                <li><a class="black-text text-darken-6" href="#Contact">Contact</a></li>
+                <li><a class="black-text text-darken-6" href="mentorFeedbackForm.html">Feedback</a></li>
+                <li><a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a></li>
+                <li>
+                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+            </ul>
+       
+        
+    </nav>
+    </div>
+   
+</header>
