@@ -20,9 +20,19 @@ public class MatchModule extends Jooby {
         // DELETE a Match.
         delete("/api/matches/:id", (req, rsp) -> {
             String id = req.param("id").value();
-            Match match = matchDao.getMatchByMatchId(Integer.parseInt(id));
+            Match match = (Match) matchDao.getMatchByMenteeId(Integer.parseInt(id));
             matchDao.removeMatch(match);
             rsp.status(Status.NO_CONTENT);
         });
+
+        // GET all Matches.
+        get("api/matches", () -> matchDao.getAllMatches());
+
+        // Get Matches by Mentee ID.
+        get("/api/matches/mentee/:id", (req) -> {
+            String id = req.param("id").value();
+            return matchDao.getMatchByMenteeId(Integer.parseInt(id));
+        });
+
     }
 }

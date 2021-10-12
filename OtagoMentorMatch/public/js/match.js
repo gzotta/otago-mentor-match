@@ -87,22 +87,22 @@ module.controller("MentorController", function(registerMentorAPI, saveMentorFeed
     this.saveMentorFeedbackForm = function(mentorFeedbackForm) {
         alert("fill in Mentor feedback form");
         mentorFeedbackForm.mentorId = $sessionStorage.mentor.mentorId;
-   saveMentorFeedbackFormAPI.save(null, mentorFeedbackForm,
-      
-       // success callback
-       function() {
-           $window.location = 'home.html';
-           alert("Your Feedback was submitted");
-       },
-       // Error callback
-       function(error) {
-           console.log(error);
-           alert("fill in Mentee feedback form");
-       }
-   );
+        saveMentorFeedbackFormAPI.save(null, mentorFeedbackForm,
+
+            // success callback
+            function() {
+                $window.location = 'home.html';
+                alert("Your Feedback was submitted");
+            },
+            // Error callback
+            function(error) {
+                console.log(error);
+                alert("fill in Mentee feedback form");
+            }
+        );
         console.log(mentorFeedbackForm);
     }
- 
+
 
 });
 
@@ -176,9 +176,9 @@ module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI,
 
     // Function to save a MenteeFeedbackForm.
     this.saveMenteeFeedbackForm = function(menteeFeedbackForm) {
-         menteeFeedbackForm.menteeId = $sessionStorage.mentee.menteeId;
+        menteeFeedbackForm.menteeId = $sessionStorage.mentee.menteeId;
         saveMenteeFeedbackFormAPI.save(null, menteeFeedbackForm,
-           
+
             // success callback
             function() {
                 $window.location = 'home.html';
@@ -210,7 +210,7 @@ module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI,
 ////////////////////////////////
 
 // factory for the ngResource object that will post a Journal entry to the web service.
-module.factory("journalEntriesAPI", function($resource) {
+module.factory("saveJournalEntryAPI", function($resource) {
     return $resource("/api/journalEntries");
 });
 
@@ -219,14 +219,29 @@ module.factory("journalEntriesAPI", function($resource) {
 /////////////////////////////////
 
 // Controller for managing Journal Entry forms.
-module.controller("JournalEntriesController", function(journalEntriesAPI, $window) {
-    alert("on controller");
+module.controller("JournalEntriesController", function(saveJournalEntryAPI, $sessionStorage, $window) {
+
 
     // Function to save (Post) a Journal Entry.
     this.saveJournalEntry = function(journalEntry) {
-        alert("fill in Journal Entry");
-        console.log(journalEntry);
+        saveJournalEntryAPI.save(null, journalEntry,
+
+            // success callback
+            function() {
+                $window.location = 'home.html';
+                alert("Your Feedback was submitted");
+            },
+            // Error callback
+            function(error) {
+                console.log(error);
+                alert("fill in Mentee feedback form");
+            }
+        );
+
     };
+
+
+
 });
 
 
@@ -380,16 +395,33 @@ module.factory("allMentorsAPI", function($resource) {
 // Factory for the ngResource object that will POST a Match to the web service.
 module.factory("saveMatchAPI", function($resource) {
     return $resource("/api/matches");
-})
+});
+
+// Factory for the ngResource object that will GET all the Matches from the web service.
+module.factory("getAllMatchesAPI", function($resource) {
+    return $resource("/api/matches");
+});
+
+// Factory for the ngResource object that will GET all the Matches by Mentee ID from the web service.
+module.factory("getMatchesByIdAPI", function($resource) {
+    return $resource("/api/matches/mentee/:id");
+});
+
+
 
 //////////////////////////////////
 //-------Macth Controler-------//
 ////////////////////////////////
-module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, $sessionStorage, $window) {
+module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, getAllMatchesAPI, getMatchesByIdAPI, $sessionStorage, $window) {
     // load Mentors.
     this.mentors = allMentorsAPI.query();
     // load Mentors by industry.
     this.mentorByIndustry = mentorByIndustryAPI.query();
+    // Get all mentors.
+    this.matches = getAllMatchesAPI.query();
+    // Get Matches by Mentee ID
+    this.menteeMatches = getMatchesByIdAPI.query({ "id": $sessionStorage.mentee.menteeId });
+
 
     // Click handler for the industry filter buttons.
     this.selectIndustry = function(selectedIndustry) {
@@ -403,10 +435,21 @@ module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI
 
     // Function to store MentorId in session storage
     this.storeMentorId = function(mentor) {
-        console.log("storeMentorId called");
         $sessionStorage.mentorId = mentor.mentorId;
 
     };
+
+
+    // // Function to get matches by Mentee ID
+    // this.menteeId = $sessionStorage.mentee.menteeId;
+    // this.getMenteeMatches = function(menteeId) {
+    //     //alert('getMenteeMatches called');
+    //     this.menteeMatches = getMatchesByIdAPI.query({ "id": menteeId });
+
+
+    // };
+
+
 
     // Function to save (POST) a Match to the database.
     this.storeMatch = function() {
@@ -429,7 +472,8 @@ module.controller("MatchController", function(allMentorsAPI, mentorByIndustryAPI
         );
     };
 
-});
+
+}); // End of MatchController.
 
 
 
