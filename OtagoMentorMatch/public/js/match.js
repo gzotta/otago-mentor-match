@@ -496,8 +496,11 @@ module.factory("registerAdminAPI", function($resource) {
 //----Admin Controler-------//
 ////////////////////////////////
 // Controller for managing Admin resources.
-module.controller("AdminController", function(registerAdminAPI, $sessionStorage, $window) {
-
+module.controller("AdminController", function(getAllMatchesAPI,allMentorsAPI,registerAdminAPI, $sessionStorage, $window) {
+// Get all mentors.
+this.matches = getAllMatchesAPI.query();
+    // load Mentors.
+    this.mentors = allMentorsAPI.query();
     // Function to save (Register) an Admin.
     this.registerAdmin = function(admin) {
         registerAdminAPI.save(null, admin,
