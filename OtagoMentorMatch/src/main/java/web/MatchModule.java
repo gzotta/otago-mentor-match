@@ -33,6 +33,10 @@ public class MatchModule extends Jooby {
             String id = req.param("id").value();
             return matchDao.getMatchByMenteeId(Integer.parseInt(id));
         });
+        get("/api/mymatches/mentee/:id", (req) -> {
+            String id = req.param("id").value();
+            return matchDao.getMyMatchByMenteeId(Integer.parseInt(id));
+        });
 
     }
 }

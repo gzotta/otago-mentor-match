@@ -409,21 +409,26 @@ module.factory("getMatchesByIdAPI", function ($resource) {
     return $resource("/api/matches/mentee/:id");
 });
 
-
+// Factory for the ngResource object that will GET all the Matches from the web service related to the user.
+module.factory("getMyMatchesByIdAPI", function ($resource) {
+    return $resource("/api/mymatches/mentee/:id");
+});
 
 //////////////////////////////////
 //-------Macth Controler-------//
 ////////////////////////////////
-module.controller("MatchController", function (allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, getAllMatchesAPI, getMatchesByIdAPI, $sessionStorage, $window) {
+module.controller("MatchController", function (getMyMatchesByIdAPI,allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, getAllMatchesAPI, getMatchesByIdAPI, $sessionStorage, $window) {
     // load Mentors.
     this.mentors = allMentorsAPI.query();
     // load Mentors by industry.
     this.mentorByIndustry = mentorByIndustryAPI.query();
-    // Get all mentors.
+    // Get all matches.
     this.matches = getAllMatchesAPI.query();
+   
     // Get Matches by Mentee ID
     this.menteeMatches = getMatchesByIdAPI.query({ "id": $sessionStorage.mentee.menteeId });
-
+ // Get Matches by Mentee ID
+ this.myMenteeMatches = getMyMatchesByIdAPI.query({ "id": $sessionStorage.mentee.menteeId });
 
     // Click handler for the industry filter buttons.
     this.selectIndustry = function (selectedIndustry) {
