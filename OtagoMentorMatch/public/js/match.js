@@ -72,9 +72,11 @@ module.factory("getMentorByEmailAPI", function($resource) {
 // Controller for managing Mentor resources.
 module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorByEmailAPI, $window, $sessionStorage) {
 
-    // Get Mentor by Email
-    this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
-    //console.log(this.displayMentor);
+    if (!$sessionStorage.mentor == null) {
+        // Get Mentor by Email
+        this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
+        //console.log(this.displayMentor);
+    }
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function(mentor) {
