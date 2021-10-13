@@ -200,7 +200,73 @@ public class MatchJdbcDAO {
         }
     }// end getMatchByMenteeId method
   
+    //Get match by Mentor Id
+    public List<MatchDisplay> getMyMatchByMentorId(Integer mentorId) {
+        String sql = "SELECT match_table.match_id, match_table.mentor_id, mentor.fname, mentor.lname, mentor.email, mentor.phone_number, mentor.bio, mentor.employer_job_title,mentor.job_title_department,mentor.company_name, match_table.mentee_id, mentee.fname, mentee.lname, mentee.email, mentee.phone_number, mentee.bio, mentee.personal_interests FROM match_table INNER JOIN mentee ON match_table.mentee_id=mentee.mentee_id INNER JOIN mentor On match_table.mentor_id=mentor.mentor_id WHERE match_table.mentor_id = ?";
 
+        try (Connection dbCon = DbConnection.getConnection(databaseURI);
+                // create the statement.
+                PreparedStatement stmt = dbCon.prepareStatement(sql);) {
+            // copy the data from the Match domain object into the SQL parameters.
+            stmt.setInt(1, mentorId);
+            // execute the query.
+            ResultSet rs = stmt.executeQuery();
+
+            // use the data to create a Match object.
+            List<MatchDisplay> matches = new ArrayList<>();
+            while (rs.next()) {
+                // get the data out of the query.
+                Integer match_id = rs.getInt("match_id");
+                Integer menteeId = rs.getInt("mentee_id");
+                String mentorFname = rs.getString("mentor.fname");
+                String mentorLname = rs.getString("mentor.lname");
+                String mentorEmail = rs.getString("mentor.email");
+                String mentorPhoneNumber = rs.getString("mentor.phone_number");
+                String mentorBio = rs.getString("mentor.bio");
+                String mentorEmployerJobTitle = rs.getString("mentor.employer_job_title");
+                String mentorJobTitleDepartment = rs.getString("mentor.job_title_department");
+                String mentorCompanyName = rs.getString("mentor.company_name");
+                
+               
+                String menteeFname = rs.getString("mentee.fname");
+                String menteeLname = rs.getString("mentee.lname");
+                String menteeEmail = rs.getString("mentee.email");
+                String menteePhoneNumber = rs.getString("mentee.phone_number");
+                String menteeBio = rs.getString("mentee.bio");
+                String menteePersonalInterest = rs.getString("mentee.personal_interests");
+               
+               
+                MatchDisplay match = new MatchDisplay();
+                match.setMatch_id(match_id);
+            
+                match.setMentorId(mentorId);
+                match.setMentorFname(mentorFname);
+                match.setMentorLname(mentorLname);
+                match.setMentorEmail(mentorEmail);
+                match.setMentorPhoneNumber(mentorPhoneNumber);
+                match.setMentorBio(mentorBio);
+                match.setMentorEmployerJobTitle(mentorEmployerJobTitle);
+                match.setMentorJobTitleDepartment(mentorJobTitleDepartment);
+                match.setMentorCompanyName(mentorCompanyName);
+    
+                match.setMenteeFname(menteeFname);
+                match.setMenteeLname(menteeLname);
+                match.setMenteeId(menteeId);
+                match.setMenteeEmail(menteeEmail);
+                match.setMenteePhoneNumber(menteePhoneNumber);
+                match.setMenteeBio(menteeBio);
+                match.setMenteePersonalInterest(menteePersonalInterest);
+
+                matches.add(match);
+            }
+            return matches;
+
+        } catch (SQLException ex) {
+            // don't let the SQLException leak from our DAO encapsulation.
+            throw new DAOException(ex.getMessage(), ex);
+        }
+    }// end getMatchByMenteeId method
+  
     // method to delete Match.
     public void removeMatch(Match match) {
         String sql = "DELETE FROM match WHERE match_id = ?";
