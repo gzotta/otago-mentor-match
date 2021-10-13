@@ -64,7 +64,6 @@ module.factory("deleteMentorAccountAPI", function($resource) {
 
 // Controller for managing Mentor resources.
 module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, deleteMentorAccountAPI, $window, $sessionStorage) {
-    this.mentorEmail = $sessionStorage.mentor.email;
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function(mentor) {
@@ -89,14 +88,16 @@ module.controller("MentorController", function(registerMentorAPI, saveMentorFeed
 
     //function for deleting mentor account
     this.deleteMentorAccount = function() {
-
-        deleteMentorAccountAPI.delete(null, $sessionStorage.mentor.email,
+        console.log($sessionStorage.mentor);
+        deleteMentorAccountAPI.remove(null, $sessionStorage.mentor,
             function() {
                 console.log("success");
+                $sessionStorage.reset();
                 $window.location = 'index.html';
             },
             // error callback
             function(error) {
+                console.log("hello");
                 console.log(error);
             }
         );
