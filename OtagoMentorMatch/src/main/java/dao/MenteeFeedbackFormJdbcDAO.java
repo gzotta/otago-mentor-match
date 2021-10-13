@@ -7,7 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 /**
  *
  * @author George Zotta
@@ -150,7 +152,76 @@ public class MenteeFeedbackFormJdbcDAO {
             }
         }// end of method getFormById.
         
+// get all Feedback Forms method
+public Collection<MenteeFeedbackForm> getMenteeFeedbackForms() {
 
+    String sql = "SELECT * FROM mentee_feedback_form";
+    try (
+            // get connection to database.
+            Connection dbCon = DbConnection.getConnection(databaseURI);
+            // create the statement.
+            PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
+        ResultSet rs = stmt.executeQuery(); // execute the query
+
+        List<MenteeFeedbackForm> feedbackForms = new ArrayList<>(); // using list to preserve data order
+
+        // iterate through query results
+        while (rs.next()) {
+
+            Integer menteeFeedbackFormId = rs.getInt("mentee_feedback_form_id");
+            String communicationPlatform = rs.getString("communication_platform");
+            String findingOMM = rs.getString("finding_omm");
+            String sessionQuality = rs.getString("session_quality");
+            String qualityOfMatch = rs.getString("quality_of_match");
+            boolean recommendation = rs.getBoolean("recommendation");
+            String activeListeningRating  = rs.getString("active_listening_rating");
+            String feedbackRating = rs.getString("feedback_rating");
+            String trustRating = rs.getString("trust_rating");
+            String achieveGoalRating = rs.getString("achieve_goal_rating");
+            String developingStrategiesRating = rs.getString("developing_strategies_rating");
+            String motivationRating = rs.getString("motivation_rating");
+            String workingLoadRating = rs.getString("working_load_rating");
+            String programmeImprovements = rs.getString("programme_improvements");
+            String timeContributed = rs.getString("time_contributed");
+            boolean continueRelationship = rs.getBoolean("continue_relationship");
+            boolean testimonial = rs.getBoolean("testimonial");
+            String otherComments = rs.getString("other_comments");
+            String takeaways = rs.getString("takeaways");
+            Integer menteeId = rs.getInt("mentee_Id");
+            
+            // use the data to create a MenteeFeedbackForm object.
+            MenteeFeedbackForm feedbackForm = new MenteeFeedbackForm();
+            feedbackForm.setMenteeFeedbackFormId(menteeFeedbackFormId);
+            feedbackForm.setCommunicationPlatform(communicationPlatform);
+            feedbackForm.setFindingOMM(findingOMM);
+            feedbackForm.setSessionQuality(sessionQuality);
+            feedbackForm.setQualityOfMatch(qualityOfMatch);
+            feedbackForm.setRecommendation(recommendation);
+            feedbackForm.setActiveListeningRating(activeListeningRating);
+            feedbackForm.setFeedbackRating(feedbackRating);
+            feedbackForm.setTrustRating(trustRating);
+            feedbackForm.setAchieveGoalRating(achieveGoalRating);
+            feedbackForm.setDevelopingStrategiesRating(developingStrategiesRating);
+            feedbackForm.setMotivationRating(motivationRating);
+            feedbackForm.setWorkingLoadRating(workingLoadRating);
+            feedbackForm.setProgrammeImprovements(programmeImprovements);
+            feedbackForm.setTimeContributed(timeContributed);
+            feedbackForm.setContinueRelationship(continueRelationship);
+            feedbackForm.setTestimonial(testimonial);
+            feedbackForm.setOtherComments(otherComments);
+            feedbackForm.setTakeaways(takeaways);
+            feedbackForm.setMenteeId(menteeId);
+            
+
+            feedbackForms.add(feedbackForm); // put it in the collection
+        }
+
+        return feedbackForms;
+
+    } catch (SQLException ex) {
+        throw new DAOException(ex.getMessage(), ex);
+    }
+}
     
     // method to delete MenteeFeedbackForm.
     public void removeMenteeFeedbackForm(MenteeFeedbackForm feedbackForm) {

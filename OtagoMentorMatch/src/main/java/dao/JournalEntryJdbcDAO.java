@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author James Pettitt
@@ -89,6 +92,45 @@ public class JournalEntryJdbcDAO {
         }
     }// end getEntryById method
 
+// get all JE method
+public Collection<JournalEntry> getJournalEntries() {
+
+    String sql = "SELECT * FROM journal_entry";
+    try (
+            // get connection to database.
+            Connection dbCon = DbConnection.getConnection(databaseURI);
+            // create the statement.
+            PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
+        ResultSet rs = stmt.executeQuery(); // execute the query
+
+        List<JournalEntry> journalEntries = new ArrayList<>(); // using list to preserve data order
+
+        // iterate through query results
+        while (rs.next()) {
+
+            Integer entryId = rs.getInt("journal_entry_id"); // getInteger ? getInt
+            String topicsCovered = rs.getString("topics_covered");
+            String lengthOfSession = rs.getString("length_of_session");
+            String notes = rs.getString("notes");
+            Integer matchId = rs.getInt("match_id");
+            // use the data to create a Mentee object.
+            JournalEntry journalEntry = new JournalEntry();
+            journalEntry.setJournalEntryId(entryId);
+            journalEntry.settopicsCovered(topicsCovered);
+            journalEntry.setLengthOfSession(lengthOfSession);
+            journalEntry.setNotes(notes);;
+            journalEntry.setMatchId(matchId);;
+            
+
+            journalEntries.add(journalEntry); // put it in the collection
+        }
+
+        return journalEntries;
+
+    } catch (SQLException ex) {
+        throw new DAOException(ex.getMessage(), ex);
+    }
+}
     // method to delete JE
     public void removeEntry(JournalEntry journalEntry) {
         String sql = "DELETE FROM journal_entry WHERE journal_entry_id = ?";
