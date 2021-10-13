@@ -54,12 +54,27 @@ module.factory("getMentorFeedbackFormAPI", function($resource) {
     return $resource("/api/mentorFeedbackForms/:id");
 });
 
+// Factory for the ngResource object that will get a Mentor by email.
+module.factory("getMentorByEmailAPI", function($resource) {
+    return $resource("/api/mentors/mentor/:email", {}, {
+        fetchAllStateCodes: {
+            method: 'GET',
+            isArray: false, // Response is an array of objects
+        }
+    });
+});
+
+
 ///////////////////////////
 //---Mentor Controler---//
 /////////////////////////
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, $window, $sessionStorage) {
+module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorByEmailAPI, $window, $sessionStorage) {
+
+    // Get Mentor by Email
+    this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
+    console.log(this.displayMentor);
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function(mentor) {
