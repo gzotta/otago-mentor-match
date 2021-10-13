@@ -59,7 +59,7 @@ module.factory("getMentorFeedbackFormAPI", function ($resource) {
 /////////////////////////
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function (registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, $window, $sessionStorage) {
+module.controller("MentorController", function (getMyMatchesByIdMentorAPI,registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, $window, $sessionStorage) {
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function (mentor) {
@@ -82,7 +82,8 @@ module.controller("MentorController", function (registerMentorAPI, saveMentorFee
         $window.location = 'index.html';
     };
 
-
+ // Get my Matches by Mentor ID
+ this.myMentorMatches = getMyMatchesByIdMentorAPI.query({ "id": $sessionStorage.mentor.mentorId });
     // Function to save a MentorFeedbackForm.
     this.saveMentorFeedbackForm = function (mentorFeedbackForm) {
         alert("fill in Mentor feedback form");
@@ -409,21 +410,31 @@ module.factory("getMatchesByIdAPI", function ($resource) {
     return $resource("/api/matches/mentee/:id");
 });
 
-
+// Factory for the ngResource object that will GET all the Matches from the web service related to the user.
+module.factory("getMyMatchesByIdAPI", function ($resource) {
+    return $resource("/api/mymatches/mentee/:id");
+});
+// Factory for the ngResource object that will GET all the Matches from the web service related to the user.
+module.factory("getMyMatchesByIdMentorAPI", function ($resource) {
+    return $resource("/api/mymatches/mentor/:id");
+});
 
 //////////////////////////////////
 //-------Macth Controler-------//
 ////////////////////////////////
-module.controller("MatchController", function (allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, getAllMatchesAPI, getMatchesByIdAPI, $sessionStorage, $window) {
+module.controller("MatchController", function (getMyMatchesByIdAPI,allMentorsAPI, mentorByIndustryAPI, saveMatchAPI, getAllMatchesAPI, getMatchesByIdAPI, $sessionStorage, $window) {
     // load Mentors.
     this.mentors = allMentorsAPI.query();
     // load Mentors by industry.
     this.mentorByIndustry = mentorByIndustryAPI.query();
-    // Get all mentors.
+    // Get all matches.
     this.matches = getAllMatchesAPI.query();
+   
     // Get Matches by Mentee ID
     this.menteeMatches = getMatchesByIdAPI.query({ "id": $sessionStorage.mentee.menteeId });
-
+ // Get my Matches by Mentee ID
+ this.myMenteeMatches = getMyMatchesByIdAPI.query({ "id": $sessionStorage.mentee.menteeId });
+ 
 
     // Click handler for the industry filter buttons.
     this.selectIndustry = function (selectedIndustry) {
