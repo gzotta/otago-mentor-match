@@ -65,8 +65,10 @@
             <!-- right column -->
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                    <span class="font-weight-bold">{{displayCtrl.displayMentee.fname}} {{displayCtrl.displayMentee.fname}}</span>
-                    <span class="text-black-50">{{displayCtrl.displayMentee.fname}}</span><span> </span>
+                    <span class="font-weight-bold">{{displayCtrl.displayMentee.fname}} {{displayCtrl.displayMentee.lname}}</span>
+                    <span class="text-black-50">Phone Number: {{displayCtrl.displayMentee.phoneNumber}}</span>
+                    <span class="text-black-50">Email: {{displayCtrl.displayMentee.email}}</span>
+                    <div class="mt-5 text-center"><button class="btn btn-primary remove-button" type="button">Edit My Profile</button></div>
                 </div>
                 <!--<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Delete Account</button></div>-->
             </div>
@@ -100,16 +102,12 @@
                     <div class="row mt-3">
                         <table class="table table-bordered">
                             <tr>
-                                <th width="30%">Degree:</th>
-                                <td width="70%">{{displayCtrl.displayMentee.yearOfStudy}}</td>
-                            </tr>
-                            <tr>
                                 <th width="70%">Year Of Study:</th>
                                 <td width="30%">{{displayCtrl.displayMentee.yearOfStudy}}</td>
                             </tr>
                             <tr>
-                                <th width="40%">Industry of Interest:</th>
-                                <td width="60%">{{displayCtrl.displayMentee.industryOfInterest}}</td>
+                                <th width="30%">Industry of Interest:</th>
+                                <td width="70%">{{displayCtrl.displayMentee.industryOfInterest}}</td>
                             </tr>
                             <tr>
                                 <th width="40%">Learning Methods:</th>
@@ -144,7 +142,7 @@
                                     <option>3</option>
                         </select>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary remove-button" type="button">Edit My Profile</button></div>
+                
             </div>
         -->
 
