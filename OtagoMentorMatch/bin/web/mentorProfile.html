@@ -59,14 +59,14 @@
     <div id="admin" ng-include="'adminNavigation.html'"></div>
 </header>
 
-<body ng-controller="MentorController as mentorCtrl">
+<body ng-controller="DisplayMentorController as displayCtrl">
     <div class="container rounded bg-white mt-5 mb-5">
-        <div class="row" data-ng="mentorCtrl.displayMentor">
+        <div class="row" data-ng="displayCtrl.displayMentor">
             <!-- right column -->
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                    <span class="font-weight-bold">{{mentorCtrl.displayMentor.fname}}</span>
-                    <span class="text-black-50">{{mentorCtrl.displayMentor.employerJobTitle}}</span><span> </span>
+                    <span class="font-weight-bold">{{displayCtrl.displayMentor.fname}}</span>
+                    <span class="text-black-50">{{displayCtrl.displayMentor.employerJobTitle}}</span><span> </span>
                 </div>
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <strong><p>WEB LINKS</p></strong>
@@ -90,11 +90,11 @@
                         <table class="table table-bordered">
                             <tr>
                                 <th width="30%">First Name:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.fname}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.fname}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Last Name:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.lname}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.lname}}</td>
                             </tr>
                         </table>
                     </div>
@@ -102,55 +102,55 @@
                         <table class="table table-bordered">
                             <tr>
                                 <th width="30%">Company Name:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.companyName}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.companyName}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Job Title:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.employerJobTitle}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.employerJobTitle}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Department:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.jobTitleDepartment}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.jobTitleDepartment}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Industry:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.primaryWorkingIndustry}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.primaryWorkingIndustry}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Career History:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.briefCareerHistory}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.briefCareerHistory}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Undergraduate Course:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.undergraduateCourse}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.undergraduateCourse}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Undergraduate Institution:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.undergraduateInstitution}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.undergraduateInstitution}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Undergraduate Year Of Graduation:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.undergraduateYearOfGraduation}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.undergraduateYearOfGraduation}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Postgraduate Course:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.postgraduateCourse}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.postgraduateCourse}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Postgradute Institution:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.postgraduateInstitution}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.postgraduateInstitution}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Postgradute Year Of Graduation:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.postgraduateYearOfGraduation}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.postgraduateYearOfGraduation}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Method of Mentoring:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.modeOfMentoringSessions}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.modeOfMentoringSessions}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Mentoring Preferences:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.mentoringPreference}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.mentoringPreference}}</td>
                             </tr>
                         </table>
                     </div>
@@ -167,19 +167,19 @@
                         <table class="table table-bordered">
                             <tr>
                                 <th width="30%">Phone Number:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.phoneNumber}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.phoneNumber}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Email:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.email}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.email}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Current Residence:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.currentWorkAndLivingCountry}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.currentWorkAndLivingCountry}}</td>
                             </tr>
                             <tr>
                                 <th width="30%">Bio:</th>
-                                <td width="70%">{{mentorCtrl.displayMentor.bio}}</td>
+                                <td width="70%">{{displayCtrl.displayMentor.bio}}</td>
                             </tr>
                         </table>
                     </div>
@@ -194,23 +194,23 @@
                             <h4 class="text-right">Current Mentor Details</h4>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels" for="fname">First Name: </label><output type="text" class="values" id="fname"> {{mentorCtrl.displayMentor.fname}}</output></div>
-                            <div class="col-md-6"><label class="labels" for="lname">Last Name: </label><output type="text" class="values" id="lname"> {{mentorCtrl.displayMentor.lname}}</output></div>
+                            <div class="col-md-6"><label class="labels" for="fname">First Name: </label><output type="text" class="values" id="fname"> {{displayCtrl.displayMentor.fname}}</output></div>
+                            <div class="col-md-6"><label class="labels" for="lname">Last Name: </label><output type="text" class="values" id="lname"> {{displayCtrl.displayMentor.lname}}</output></div>
                         </div> 
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels" for="companyName">Company Name: </label><output type="text" class="values" id="companyName"> {{mentorCtrl.displayMentor.companyName}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="employerJobTitle">Job Title: </label><output type="text" class="values" id="employerJobTitle"> {{mentorCtrl.displayMentor.employerJobTitle}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="jobTitleDepartment">Department: </label><output type="text" class="values" id="jobTitleDepartment"> {{mentorCtrl.displayMentor.jobTitleDepartment}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="primaryWorkingIndustry">Industry: </label><output type="text" class="values" id="primaryWorkingIndustry"> {{mentorCtrl.displayMentor.primaryWorkingIndustry}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="briefCareerHistory">Career History: </label><output type="text" class="values" id="briefCareerHistory"> {{mentorCtrl.displayMentor.briefCareerHistory}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="undergraduateCourse">Undergraduate Course: </label><output type="text" class="values" id="undergraduateCourse"> {{mentorCtrl.displayMentor.undergraduateCourse}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="undergraduateInstitution">Undergraduate Institution: </label><output type="text" class="values" id="undergraduateInstitution"> {{mentorCtrl.displayMentor.undergraduateInstitution}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="undergraduateYearOfGraduation">Undergraduate Year Of Graduation: </label><output type="text" class="values" id="undergraduateYearOfGraduation"> {{mentorCtrl.displayMentor.undergraduateYearOfGraduation}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="postgraduateCourse">Postgraduate Course: </label><output type="text" class="values" id="postgraduateCourse"> {{mentorCtrl.displayMentor.postgraduateCourse}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="postgraduteInstitution">Postgradute Institution: </label><output type="text" class="values" id="postgraduteInstitution"> {{mentorCtrl.displayMentor.postgraduteInstitution}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="postgraduteYearOfGraduation">Postgradute Year Of Graduation: </label><output type="text" class="values" id="postgraduteYearOfGraduation"> {{mentorCtrl.displayMentor.postgraduteYearOfGraduation}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="modeOfMentoringSessions">Method of Mentoring: </label><output type="text" class="values" id="modeOfMentoringSessions"> {{mentorCtrl.displayMentor.modeOfMentoringSessions}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="mentoringPreference">Mentoring Preferences: </label><output type="text" class="values" id="mentoringPreference"> {{mentorCtrl.displayMentor.mentoringPreference}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="companyName">Company Name: </label><output type="text" class="values" id="companyName"> {{displayCtrl.displayMentor.companyName}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="employerJobTitle">Job Title: </label><output type="text" class="values" id="employerJobTitle"> {{displayCtrl.displayMentor.employerJobTitle}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="jobTitleDepartment">Department: </label><output type="text" class="values" id="jobTitleDepartment"> {{displayCtrl.displayMentor.jobTitleDepartment}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="primaryWorkingIndustry">Industry: </label><output type="text" class="values" id="primaryWorkingIndustry"> {{displayCtrl.displayMentor.primaryWorkingIndustry}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="briefCareerHistory">Career History: </label><output type="text" class="values" id="briefCareerHistory"> {{displayCtrl.displayMentor.briefCareerHistory}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="undergraduateCourse">Undergraduate Course: </label><output type="text" class="values" id="undergraduateCourse"> {{displayCtrl.displayMentor.undergraduateCourse}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="undergraduateInstitution">Undergraduate Institution: </label><output type="text" class="values" id="undergraduateInstitution"> {{displayCtrl.displayMentor.undergraduateInstitution}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="undergraduateYearOfGraduation">Undergraduate Year Of Graduation: </label><output type="text" class="values" id="undergraduateYearOfGraduation"> {{displayCtrl.displayMentor.undergraduateYearOfGraduation}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="postgraduateCourse">Postgraduate Course: </label><output type="text" class="values" id="postgraduateCourse"> {{displayCtrl.displayMentor.postgraduateCourse}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="postgraduteInstitution">Postgradute Institution: </label><output type="text" class="values" id="postgraduteInstitution"> {{displayCtrl.displayMentor.postgraduteInstitution}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="postgraduteYearOfGraduation">Postgradute Year Of Graduation: </label><output type="text" class="values" id="postgraduteYearOfGraduation"> {{displayCtrl.displayMentor.postgraduteYearOfGraduation}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="modeOfMentoringSessions">Method of Mentoring: </label><output type="text" class="values" id="modeOfMentoringSessions"> {{displayCtrl.displayMentor.modeOfMentoringSessions}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="mentoringPreference">Mentoring Preferences: </label><output type="text" class="values" id="mentoringPreference"> {{displayCtrl.displayMentor.mentoringPreference}}</output></div>
                         </div>
                     </div>
                 </div>
@@ -223,10 +223,10 @@
                             <h4 class="text-right">Contact Information</h4>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels" for="phoneNumber">Phone Number:</label><output type="text" class="values" id="phoneNumber"> {{mentorCtrl.displayMentor.phoneNumber}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="email">Email:</label><output type="text" class="values" id="email"> {{mentorCtrl.displayMentor.email}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="currentWorkAndLivingCountry">Current Residence:</label><output type="text" class="values" id="currentWorkAndLivingCountry"> {{mentorCtrl.displayMentor.currentWorkAndLivingCountry}}</output></div>
-                            <div class="col-md-12"><label class="labels" for="bio">Bio:</label><output type="text" class="values" id="bio"> {{mentorCtrl.displayMentor.bio}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="phoneNumber">Phone Number:</label><output type="text" class="values" id="phoneNumber"> {{displayCtrl.displayMentor.phoneNumber}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="email">Email:</label><output type="text" class="values" id="email"> {{displayCtrl.displayMentor.email}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="currentWorkAndLivingCountry">Current Residence:</label><output type="text" class="values" id="currentWorkAndLivingCountry"> {{displayCtrl.displayMentor.currentWorkAndLivingCountry}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="bio">Bio:</label><output type="text" class="values" id="bio"> {{displayCtrl.displayMentor.bio}}</output></div>
                         </div>
                         <div class="mt-5 text-center"><button class="btn btn-primary edit-button" type="button">Edit Mentor Details</button></div>
                     </div>

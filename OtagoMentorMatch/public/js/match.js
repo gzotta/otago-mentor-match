@@ -54,15 +54,6 @@ module.factory("getMentorFeedbackFormAPI", function($resource) {
     return $resource("/api/mentorFeedbackForms/:id");
 });
 
-// Factory for the ngResource object that will get a Mentor by email.
-module.factory("getMentorByEmailAPI", function($resource) {
-    return $resource("/api/mentors/mentor/:email", {}, {
-        fetchAllStateCodes: {
-            method: 'GET',
-            isArray: false, // Response is an array of objects
-        }
-    });
-});
 
 
 ///////////////////////////
@@ -70,13 +61,7 @@ module.factory("getMentorByEmailAPI", function($resource) {
 /////////////////////////
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function(getMyMatchesByIdMentorAPI, getMentorByEmailAPI, saveMentorFeedbackFormAPI, $window, $sessionStorage) {
-
-
-    // Get Mentor by email.
-    this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
-    //console.log('Mentor: ' + this.displayMentor);
-
+module.controller("MentorController", function(getMyMatchesByIdMentorAPI, saveMentorFeedbackFormAPI, $window, $sessionStorage) {
 
 
 
@@ -143,15 +128,6 @@ module.factory("allMenteesAPI", function($resource) {
     return $resource("/api/mentees");
 });
 
-// Factory for the ngResource object that will get a Mentor by email.
-module.factory("getMenteeByEmailAPI", function($resource) {
-    return $resource("/api/mentees/mentee/:email", {}, {
-        fetchAllStateCodes: {
-            method: 'GET',
-            isArray: false, // Response is an array of objects
-        }
-    });
-});
 
 
 
@@ -160,10 +136,7 @@ module.factory("getMenteeByEmailAPI", function($resource) {
 /////////////////////////
 
 // Controller for managing Mentee resources.
-module.controller("MenteeController", function(allMenteesAPI, saveMenteeFeedbackFormAPI, getMenteeByEmailAPI, $sessionStorage, $window) {
-
-    this.displayMentee = getMenteeByEmailAPI.get({ "email": $sessionStorage.mentee.email });
-    //console.log(this.displayMentee);
+module.controller("MenteeController", function(allMenteesAPI, saveMenteeFeedbackFormAPI, $sessionStorage, $window) {
 
 
     // load Mentees.
@@ -609,6 +582,89 @@ module.controller("RegisterController", function(registerMenteeAPI, registerMent
     };
 
 });
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////Display Mentor Resources Section///////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////
+//-----Display Mentor Factories------//
+//////////////////////////////////////
+
+
+// Factory for the ngResource object that will get a Mentor by email.
+module.factory("getMentorByEmailAPI", function($resource) {
+    return $resource("/api/mentors/mentor/:email", {}, {
+        fetchAllStateCodes: {
+            method: 'GET',
+            isArray: false, // Response is an array of objects
+        }
+    });
+});
+
+
+
+////////////////////////////////////////
+//----Display Mentor Controler-------//
+//////////////////////////////////////
+
+// Controller for managing display user resources.
+module.controller("DisplayMentorController", function(getMenteeByEmailAPI, getMentorByEmailAPI, $sessionStorage, $window) {
+
+
+    // Get Mentor by email.
+    this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
+    //console.log('Mentor: ' + this.displayMentor);
+
+
+});
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////Display Mentee Resources Section///////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////
+//-----Display Mentee Factories------//
+//////////////////////////////////////
+
+// Factory for the ngResource object that will get a Mentor by email.
+module.factory("getMenteeByEmailAPI", function($resource) {
+    return $resource("/api/mentees/mentee/:email", {}, {
+        fetchAllStateCodes: {
+            method: 'GET',
+            isArray: false, // Response is an array of objects
+        }
+    });
+});
+
+
+
+
+////////////////////////////////////////
+//----Display Mentee Controler-------//
+//////////////////////////////////////
+
+// Controller for managing display user resources.
+module.controller("DisplayMenteeController", function(getMenteeByEmailAPI, getMentorByEmailAPI, $sessionStorage, $window) {
+
+    this.displayMentee = getMenteeByEmailAPI.get({ "email": $sessionStorage.mentee.email });
+    //console.log(this.displayMentee);
+
+
+
+});
+
+
+
 
 
 
