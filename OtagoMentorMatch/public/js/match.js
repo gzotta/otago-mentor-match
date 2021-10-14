@@ -72,11 +72,11 @@ module.factory("getMentorByEmailAPI", function($resource) {
 // Controller for managing Mentor resources.
 module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorByEmailAPI, $window, $sessionStorage) {
 
-    if (!$sessionStorage.mentor == null) {
-        // Get Mentor by Email
-        this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
-        //console.log(this.displayMentor);
-    }
+
+    // Get Mentor by email.
+    this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
+    //console.log('Mentor: ' + this.displayMentor);
+
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function(mentor) {
@@ -162,8 +162,14 @@ module.factory("allMenteesAPI", function($resource) {
 
 // Factory for the ngResource object that will get a Mentor by email.
 module.factory("getMenteeByEmailAPI", function($resource) {
-    return $resource("/api/mentees/mentee/:email");
+    return $resource("/api/mentees/mentee/:email", {}, {
+        fetchAllStateCodes: {
+            method: 'GET',
+            isArray: false, // Response is an array of objects
+        }
+    });
 });
+
 
 
 ///////////////////////////
@@ -173,11 +179,9 @@ module.factory("getMenteeByEmailAPI", function($resource) {
 // Controller for managing Mentee resources.
 module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI, saveMenteeFeedbackFormAPI, getMenteeByEmailAPI, $sessionStorage, $window) {
 
-    if (!$sessionStorage.mentee == null) {
-        // Get Mentee by Email
-        this.displayMentee = getMenteeByEmailAPI.get({ "email": $sessionStorage.mentee.email });
-        //console.log(this.displayMentee);
-    }
+    this.displayMentee = getMenteeByEmailAPI.get({ "email": $sessionStorage.mentee.email });
+    //console.log(this.displayMentee);
+
 
     // Function to save (Register) a Mentee.
     this.registerMentee = function(mentee) {
