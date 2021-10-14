@@ -72,18 +72,22 @@
                     <div class="input-field col s6">
                         <input ng-model="mentor.fname" id="fname" type="text" class="validate" required>
                         <label for="fname">First Name</label>
+                        <span class="helper-text" data-error="Please enter your first name"></span>
                     </div>
                     <div class="input-field col s6">
                         <input ng-model="mentor.lname" id="lname" type="text" class="validate" required>
                         <label for="lname">Last Name</label>
+                        <span class="helper-text" data-error="Please enter your last name"></span>
                     </div>
                     <div class="input-field col s6">
-                        <input ng-model="mentor.email" id="email" type="text" class="validate" required>
+                        <input ng-model="mentor.email" id="email" type="email" class="validate" required>
                         <label for="email">Email Address</label>
+                        <span class="helper-text" data-error="Please enter a valid email address"></span>
                     </div>
                     <div class="input-field col s6">
                         <input ng-model="mentor.phoneNumber" id="phone_number" type="text" class="validate" required>
                         <label for="phoneNumber">Phone Number</label>
+                        <span class="helper-text" data-error="Please enter your phone number"></span>
                     </div>
                     <div class="input-field col s4" id="ethnicity">
                         <select ng-model="mentor.ethnicity" name="ethnicity" id="ethnicity" required>
