@@ -179,6 +179,13 @@ module.factory("deleteMenteeAccountAPI", function($resource) {
     return $resource("/api/mentees/mentee/:email");
 });
 
+
+// Factory for the ngResource object that will DELETE a Mentee by email.
+module.factory("deleteMenteeAccountAPI", function($resource) {
+    return $resource("/api/mentees/mentee/:email");
+});
+
+
 ///////////////////////////
 //---Mentee Controler---//
 /////////////////////////
@@ -190,7 +197,8 @@ module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI,
     this.deleteMenteeAccount = function() {
         this.menteeEmail = $sessionStorage.mentee.email;
         console.log('menteeEmail:' + this.menteeEmail);
-        deleteMenteeAccountAPI.delete(null, this.email,
+        //deleteMenteeAccountAPI.delete(null, { "email": this.menteeEmail },
+        deleteMenteeAccountAPI.delete(null, this.menteeEmail,
             function() {
                 console.log("success");
                 $sessionStorage.reset();
