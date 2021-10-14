@@ -24,45 +24,15 @@
 
 <body ng-controller="MentorController as mentorCtrl">
     <!--Navigation may not be neded in these forms-->
-    <nav class="nav-wrapper transparent">
-        <div class="container">
-            <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
-            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
-                <i class="material-icons">menu</i>
-            </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="black-text text-darken-6" href="index.html">Home</a></li>
-                <li><a class="black-text text-darken-6" href="#faqs">FAQs</a></li>
-                <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
-                <li>
-                    <a href="https://www.instagram.com/" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-            </ul>
-            <ul class="sidenav grey lighten-2" id="mobile-menu" style="transform: translateX(-105%);">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">FAQs</a></li>
-            </ul>
-        </div>
-    </nav>
+    
     <!--Start of page excluding navigation-->
+    
+    <a href="index.html" class="btn-large" style="position: absolute; margin: 0px 0px 0px 40px; float:left ">Back</a>
     <h2 class="center-align">Mentor Registration Form</h2>
+    
     <hr />
     <br />
+    
     <form class="col s12" ng-submit="mentorCtrl.registerMentor(mentor)" onsubmit="if(document.getElementById('accept').checked) { return true; } else { alert('Please indicate that you have read and agree to the Mentors Agreement'); return false; }">
         <div class="container">
             <div class="row">
