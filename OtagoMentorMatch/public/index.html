@@ -56,21 +56,16 @@
 
     <!-- SIGN UP MODAL -->
     <div id="modal-signup" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" style="text-align: center;">
             <h4>Create an Account</h4>
             <br>
             <h5>
-                Please choose whether you are a signing up to be a Mentor or <br> Mentee (Student).
+                Please choose whether you are signing up as a Mentor or Mentee.
             </h5>
             <br />
-            <div class="modal-footer">
-                <a href="mentorRegistration.html" class="modal-close btn-large green lighten-1">Mentor</a
-                >
-                <a
-                  href="menteeRegistration.html"
-                  class="modal-close btn-large"
-                  >Mentee</a
-                >
+            <div class="modal-footer" style="text-align: center;">
+                <a href="mentorRegistration.html" class="modal-close btn-large green lighten-1">Mentor</a>
+                <a href="menteeRegistration.html" class="modal-close btn-large">Mentee</a>
               </div>
         </div>
     </div>
@@ -78,12 +73,12 @@
     <!-- LOGIN MODAL -->
     <div id="modal-login" class="modal">
         <div class="modal-content">
-            <h4>Login</h4>
-            <p>{{loginCtrl.signInMessage}}</p>
+            <h4>{{loginCtrl.signInMessage}}</h4>
+            <br>
             <form ng-submit="loginCtrl.loginUser(user)" id="login-form">
                 <!--User selection radio button-->
                 <div class="row">
-                    <h4>Select type of user</h4>
+                    <h5>Select type of user:</h5>
                     <p>
                         <label>
                             <input ng-model="user.type" value="mentor" class="with-gap" name="mentor-user" type="radio" checked />
@@ -109,7 +104,7 @@
                 </div>
                 <div class="input-field">
                     <input ng-model="user.password" type="password" id="login-password" required />
-                    <label for="login-password">Your password</label>
+                    <label for="login-password">Password</label>
                 </div>
                 <button type="submit" class="btn yellow darken-2 z-depth-0">Login</button>
             </form>

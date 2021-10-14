@@ -65,19 +65,19 @@
             <!-- right column -->
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                    <span class="font-weight-bold">{{displayCtrl.displayMentee.fname}}</span>
+                    <span class="font-weight-bold">{{displayCtrl.displayMentee.fname}} {{displayCtrl.displayMentee.fname}}</span>
                     <span class="text-black-50">{{displayCtrl.displayMentee.fname}}</span><span> </span>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Delete Account</button></div>
+                <!--<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Delete Account</button></div>-->
             </div>
 
             <!-- middle column new -->
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Current Mentee Details</h4>
+                        <h4 class="text-right">My Details</h4>
                     </div>
-                    <div class="row mt-2">
+                    <!--<div class="row mt-2">
                         <table class="table table-bordered">
                             <tr>
                                 <th width="30%">First Name:</th>
@@ -96,7 +96,7 @@
                                 <td width="70%">{{displayCtrl.displayMentee.email}}</td>
                             </tr>
                         </table>
-                    </div>
+                    </div>-->
                     <div class="row mt-3">
                         <table class="table table-bordered">
                             <tr>
@@ -104,38 +104,38 @@
                                 <td width="70%">{{displayCtrl.displayMentee.yearOfStudy}}</td>
                             </tr>
                             <tr>
-                                <th width="30%">Year Of Study:</th>
-                                <td width="70%">{{displayCtrl.displayMentee.yearOfStudy}}</td>
+                                <th width="70%">Year Of Study:</th>
+                                <td width="30%">{{displayCtrl.displayMentee.yearOfStudy}}</td>
                             </tr>
                             <tr>
-                                <th width="30%">Industry of Interest:</th>
-                                <td width="70%">{{displayCtrl.displayMentee.industryOfInterest}}</td>
+                                <th width="40%">Industry of Interest:</th>
+                                <td width="60%">{{displayCtrl.displayMentee.industryOfInterest}}</td>
                             </tr>
                             <tr>
-                                <th width="30%">Learning Methods:</th>
-                                <td width="70%">{{displayCtrl.displayMentee.learningMethod}}</td>
+                                <th width="40%">Learning Methods:</th>
+                                <td width="60%">{{displayCtrl.displayMentee.learningMethod}}</td>
                             </tr>
                             <tr>
-                                <th width="30%">Personal Interests:</th>
-                                <td width="70%">{{displayCtrl.displayMentee.personalInterests}}</td>
+                                <th width="40%">Personal Interests:</th>
+                                <td width="60%">{{displayCtrl.displayMentee.personalInterests}}</td>
                             </tr>
                             <tr>
-                                <th width="30%">Bio:</th>
-                                <td width="70%">{{displayCtrl.displayMentee.bio}}</td>
+                                <th width="20%">Bio:</th>
+                                <td width="80%">{{displayCtrl.displayMentee.bio}}</td>
                             </tr>
                         </table>
                     </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary remove-button" type="button">Edit My Profile</button></div>
                 </div>
             </div>
 
             <!-- left column new -->
+            <!--
             <div class="col-md-4">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Progress Tracker</h4>
                     </div>
-                    <div class="col-md-12"><label class="labels">Mentor Name</label><input type="text" class="form-control" placeholder="mentor name" value=""></div>
+                    <div class="col-md-12"><label class="labels">Mentor Name</label><input type="text" class="form-control" placeholder="John Smith" value=""></div>
                     <label class="labels">Session Number</label>
                     <select class="form-control" id="exampleFormControlSelect1">
                                     <option>0</option>
@@ -144,7 +144,9 @@
                                     <option>3</option>
                         </select>
                 </div>
+                <div class="mt-5 text-center"><button class="btn btn-primary remove-button" type="button">Edit My Profile</button></div>
             </div>
+        -->
 
             <!-- middle column old
                 <div class="col-md-5 border-right">
