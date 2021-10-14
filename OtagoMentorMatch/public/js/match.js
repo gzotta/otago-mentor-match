@@ -70,27 +70,14 @@ module.factory("getMentorByEmailAPI", function($resource) {
 /////////////////////////
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function(getMyMatchesByIdMentorAPI, registerMentorAPI, getMentorByEmailAPI, saveMentorFeedbackFormAPI, $window, $sessionStorage) {
+module.controller("MentorController", function(getMyMatchesByIdMentorAPI, getMentorByEmailAPI, saveMentorFeedbackFormAPI, $window, $sessionStorage) {
 
 
     // Get Mentor by email.
-    //this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
+    this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
     //console.log('Mentor: ' + this.displayMentor);
 
 
-    // Function to save (Register) a Mentor.
-    this.registerMentor = function(mentor) {
-        registerMentorAPI.save(null, mentor,
-            // success callback
-            function() {
-                $window.location = 'index.html';
-            },
-            // erro callback
-            function(error) {
-                console.log(error);
-            }
-        );
-    };
 
 
     // Function to Sign out for Mentor.
@@ -133,11 +120,6 @@ module.controller("MentorController", function(getMyMatchesByIdMentorAPI, regist
 //---Mentee Factories---//
 /////////////////////////
 
-// Factory for the ngResource object that will register a Mentee to the web service.
-module.factory("registerMenteeAPI", function($resource) {
-    return $resource("/api/registerMentee");
-});
-
 // Factory for the ngResource object that will get a Mentee by email from the web service.
 module.factory("menteesAPI", function($resource) {
     return $resource("/api/mentees/:email");
@@ -178,34 +160,16 @@ module.factory("getMenteeByEmailAPI", function($resource) {
 /////////////////////////
 
 // Controller for managing Mentee resources.
-module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI, saveMenteeFeedbackFormAPI, getMenteeByEmailAPI, $sessionStorage, $window) {
+module.controller("MenteeController", function(allMenteesAPI, saveMenteeFeedbackFormAPI, getMenteeByEmailAPI, $sessionStorage, $window) {
 
-    //this.displayMentee = getMenteeByEmailAPI.get({ "email": $sessionStorage.mentee.email });
+    this.displayMentee = getMenteeByEmailAPI.get({ "email": $sessionStorage.mentee.email });
     //console.log(this.displayMentee);
 
 
-    // Function to save (Register) a Mentee.
-    this.registerMentee = function(mentee) {
-        registerMenteeAPI.save(null, mentee,
-            // success callback
-            function() {
-                $window.location = 'index.html';
-            },
-            // Error callback
-            function(error) {
-                console.log(error);
-            }
-        );
-
-    };
     // load Mentees.
     this.mentees = allMenteesAPI.query();
 
-    // Function to Sign Out for Mentee
-    this.signOut = function() {
-        $sessionStorage.$reset();
-        $window.location = 'index.html';
-    };
+
 
 
     // Function to save a MenteeFeedbackForm.
@@ -578,6 +542,80 @@ module.controller("AdminController", function(getAllMatchesAPI, getAllMenteeFeed
 
 
 
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////Registration Resources Section///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////
+//-----Registration Factories------//
+////////////////////////////////
+
+// Factory for the ngResource object that will register a Mentee to the web service.
+module.factory("registerMenteeAPI", function($resource) {
+    return $resource("/api/registerMentee");
+});
+
+//////////////////////////////////
+//----Registration Controler-------//
+////////////////////////////////
+
+// Controller for managing Mentee resources.
+module.controller("RegisterController", function(registerMenteeAPI, registerMentorAPI, $sessionStorage, $window) {
+
+    //this.displayMentee = getMenteeByEmailAPI.get({ "email": $sessionStorage.mentee.email });
+    //console.log(this.displayMentee);
+
+
+    // Function to save (Register) a Mentee.
+    this.registerMentee = function(mentee) {
+        registerMenteeAPI.save(null, mentee,
+            // success callback
+            function() {
+                $window.location = 'index.html';
+            },
+            // Error callback
+            function(error) {
+                console.log(error);
+            }
+        );
+
+    };
+
+
+    // Function to save (Register) a Mentor.
+    this.registerMentor = function(mentor) {
+        registerMentorAPI.save(null, mentor,
+            // success callback
+            function() {
+                $window.location = 'index.html';
+            },
+            // erro callback
+            function(error) {
+                console.log(error);
+            }
+        );
+    };
+
+
+    // Function to Sign Out users.
+    this.signOut = function() {
+        $sessionStorage.$reset();
+        $window.location = 'index.html';
+    };
+
+});
+
+
+
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////Workshop Resources Section///////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -589,7 +627,6 @@ module.controller("AdminController", function(getAllMatchesAPI, getAllMenteeFeed
 //////////////////////////////////
 //----Workshop Controler-------//
 ////////////////////////////////
-
 
 
 
