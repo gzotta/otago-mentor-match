@@ -54,8 +54,9 @@ module.factory("getMentorFeedbackFormAPI", function($resource) {
     return $resource("/api/mentorFeedbackForms/:id");
 });
 
+// Factory for the ngResource object that will DELETE a Mentor by email.
 module.factory("deleteMentorAccountAPI", function($resource) {
-    return $resource("/api/mentors/mentor/:email");
+    return $resource("/api/mentors/mentor/remove/:email");
 });
 
 ///////////////////////////
@@ -64,6 +65,29 @@ module.factory("deleteMentorAccountAPI", function($resource) {
 
 // Controller for managing Mentor resources.
 module.controller("MentorController", function(registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, deleteMentorAccountAPI, $window, $sessionStorage) {
+
+    //function for deleting mentor account
+    this.deleteMentorAccount = function() {
+        this.mentorEmail = $sessionStorage.mentor.email;
+        console.log('mentorEmail:' + this.mentorEmail);
+        deleteMentorAccountAPI.delete(null, this.mentorEmail,
+            function() {
+                console.log("success");
+                $sessionStorage.reset();
+                $window.location = 'index.html';
+            },
+            // error callback
+            function(error) {
+                console.log("Delete method failed");
+                console.log(error);
+            }
+        );
+    };
+
+
+
+
+
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function(mentor) {
@@ -86,22 +110,7 @@ module.controller("MentorController", function(registerMentorAPI, saveMentorFeed
         $window.location = 'index.html';
     };
 
-    //function for deleting mentor account
-    this.deleteMentorAccount = function() {
-        console.log($sessionStorage.mentor);
-        deleteMentorAccountAPI.remove(null, $sessionStorage.mentor,
-            function() {
-                console.log("success");
-                $sessionStorage.reset();
-                $window.location = 'index.html';
-            },
-            // error callback
-            function(error) {
-                console.log("hello");
-                console.log(error);
-            }
-        );
-    };
+
 
     // Function to save a MentorFeedbackForm.
     this.saveMentorFeedbackForm = function(mentorFeedbackForm) {
@@ -123,7 +132,7 @@ module.controller("MentorController", function(registerMentorAPI, saveMentorFeed
         console.log(mentorFeedbackForm);
     }
 
-    
+
 
 
 });
@@ -165,12 +174,38 @@ module.factory("allMenteesAPI", function($resource) {
     return $resource("/api/mentees");
 });
 
+// Factory for the ngResource object that will DELETE a Mentee by email.
+module.factory("deleteMenteeAccountAPI", function($resource) {
+    return $resource("/api/mentees/mentee/:email");
+});
+
 ///////////////////////////
 //---Mentee Controler---//
 /////////////////////////
 
 // Controller for managing Mentee resources.
-module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $sessionStorage, $window) {
+module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, deleteMenteeAccountAPI, $sessionStorage, $window) {
+
+    //function for deleting mentee account
+    this.deleteMenteeAccount = function() {
+        this.menteeEmail = $sessionStorage.mentee.email;
+        console.log('menteeEmail:' + this.menteeEmail);
+        deleteMenteeAccountAPI.delete(null, this.email,
+            function() {
+                console.log("success");
+                $sessionStorage.reset();
+                $window.location = 'index.html';
+            },
+            // error callback
+            function(error) {
+                console.log("Delete method failed");
+                console.log(error);
+            }
+        );
+    };
+
+
+
 
     // Function to save (Register) a Mentee.
     this.registerMentee = function(mentee) {
