@@ -29,21 +29,21 @@
         <div id="admin" ng-include="'adminNavigation.html'"></div>
     </header>
     <div class="container">
-<ul class="collection" ng-controller="MatchController as matchCtrl">
-    <li class="collection-item avatar" data-ng-repeat="match in matchCtrl.myMenteeMatches">
+<ul class="collection" ng-controller="MentorController as matchCtrl">
+    <li class="collection-item avatar" data-ng-repeat="match in matchCtrl.myMentorMatches">
         <span class="title "><strong>Match ID:</strong> {{match.match_id}}</span>
         <div class="row">
             <div class="column">
                 <img src="/img/profile.jpg" class="circle">
        
-        <p><strong>Name:</strong> {{match.mentorFname}} {{match.mentorLname}} <br> <strong>Job Title:</strong> {{match.mentorEmployerJobTitle}} <br> 
-            <Strong>Department:</Strong> {{match.mentorJobTitleDepartment}} <br> <Strong>Bio</Strong>> {{match.mentorBio}}
+        <p><strong>Name:</strong> {{match.menteeFname}} {{match.menteeLname}} <br>
+            <Strong>Personal Interests:</Strong> {{match.menteePersonalInterest}} <br> <Strong>Bio:</Strong> {{match.menteeBio}}
         </p>
             </div>
             <div class="column">
                
        
-        <p><strong>Phone Number</strong> {{match.mentorPhoneNumber}} <br> <strong>Email:</strong> {{match.mentorEmail}}
+        <p><strong>Phone Number:</strong> {{match.menteePhoneNumber}} <br> <strong>Email:</strong> {{match.menteeEmail}}
         </p>
             </div>
           </div>

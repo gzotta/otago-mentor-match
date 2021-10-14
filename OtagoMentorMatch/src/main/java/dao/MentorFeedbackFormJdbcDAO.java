@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -145,8 +148,76 @@ public class MentorFeedbackFormJdbcDAO {
                 throw new DAOException(ex.getMessage(), ex);
             }
         }// end of method getFormById.
-        
+        //Get All mentor Feedback
+        public Collection<MentorFeedbackForm> getMentorFeedbackForms() {
 
+            String sql = "SELECT * FROM mentor_feedback_form";
+            try (
+                    // get connection to database.
+                    Connection dbCon = DbConnection.getConnection(databaseURI);
+                    // create the statement.
+                    PreparedStatement stmt = dbCon.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);) {
+                ResultSet rs = stmt.executeQuery(); // execute the query
+        
+                List<MentorFeedbackForm> feedbackForms = new ArrayList<>(); // using list to preserve data order
+        
+                // iterate through query results
+                while (rs.next()) {
+        
+                    Integer mentorFeedbackFormId = rs.getInt("mentor_feedback_form_id");
+                    String findingOMM = rs.getString("finding_omm");
+                    String enoughTimeToEstablishRelationship = rs.getString("enough_time_to_establish_relationship");
+                    String describeSessions = rs.getString("describe_sessions");
+                    String activeListeningRating = rs.getString("active_listening_rating");
+                    String feedbackRating = rs.getString("feedback_rating");
+                    String trustRating  = rs.getString("trust_rating");
+                    String achieveGoalRating = rs.getString("achieve_goal_rating");
+                    String developingStrategiesRating = rs.getString("developing_strategies_rating");
+                    String motivationRating = rs.getString("motivation_rating");
+                    String workingGoalsRating = rs.getString("working_goals_rating");
+                    String suitableMatch = rs.getString("suitable_match");
+                    boolean recommendation = rs.getBoolean("recommendation");
+                    String potentialImprovements = rs.getString("potential_improvements");
+                    String timeContributed = rs.getString("time_contributed");
+                    boolean continueRelationship = rs.getBoolean("continue_relationship");
+                    String joinNextIntake = rs.getString("join_next_intake");
+                    boolean testimonial = rs.getBoolean("testimonial");
+                    String takeaways = rs.getString("takeaways");
+                    Integer mentorId = rs.getInt("mentor_id");
+                    
+                    // use the data to create a MentorFeedbackForm object.
+                    MentorFeedbackForm feedbackForm = new MentorFeedbackForm();
+                    feedbackForm.setMentorFeedbackFormId(mentorFeedbackFormId);
+                    feedbackForm.setFindingOMM(findingOMM);
+                    feedbackForm.setEnoughTimeToEstablishRelationship(enoughTimeToEstablishRelationship);
+                    feedbackForm.setDescribeSessions(describeSessions);
+                    feedbackForm.setActiveListeningRating(activeListeningRating);
+                    feedbackForm.setFeedbackRating(feedbackRating);
+                    feedbackForm.setTrustRating(trustRating);
+                    feedbackForm.setAchieveGoalRating(achieveGoalRating);
+                    feedbackForm.setDevelopingStrategiesRating(developingStrategiesRating);
+                    feedbackForm.setMotivationRating(motivationRating);
+                    feedbackForm.setWorkingGoalsRating(workingGoalsRating);
+                    feedbackForm.setSuitableMatch(suitableMatch);
+                    feedbackForm.setRecommendation(recommendation);
+                    feedbackForm.setPotentialImprovements(potentialImprovements);
+                    feedbackForm.setTimeContributed(timeContributed);
+                    feedbackForm.setContinueRelationship(continueRelationship);
+                    feedbackForm.setJoinNextIntake(joinNextIntake);
+                    feedbackForm.setTestimonial(testimonial);
+                    feedbackForm.setTakeaways(takeaways);
+                    feedbackForm.setMentorId(mentorId);
+                    
+        
+                    feedbackForms.add(feedbackForm); // put it in the collection
+                }
+        
+                return feedbackForms;
+        
+            } catch (SQLException ex) {
+                throw new DAOException(ex.getMessage(), ex);
+            }
+        }
     
     // method to delete MentorFeedbackForm.
     public void removeMentorFeedbackForm(MentorFeedbackForm feedbackForm) {

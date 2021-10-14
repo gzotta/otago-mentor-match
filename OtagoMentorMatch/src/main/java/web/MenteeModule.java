@@ -23,7 +23,7 @@ public class MenteeModule extends Jooby {
         });
 
         // Get a Mentee by email.
-        get("/api/mentees/:email", (req) -> {
+        get("/api/mentees/mentee/:email", (req) -> {
             String email = req.param("email").value();
 
             if (menteeDao.getMenteeByEmail(email) == null) {
@@ -32,10 +32,10 @@ public class MenteeModule extends Jooby {
                 return menteeDao.getMenteeByEmail(email);
             }
         });
-        
+
         // GET all Mentees.
         get("/api/mentees", () -> menteeDao.getMentees());
-        
+
         // DELETE a Mentee.
         delete("/api/mentees/:email", (req, rsp) -> {
             String email = req.param("email").value();

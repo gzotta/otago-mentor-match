@@ -19,42 +19,38 @@
 
 </head>
 <style>
-    #mentors-details {
+    #feedback-details {
         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
     }
 
-    #mentors-details td,
+    #feedback-details td,
     #tblStocks th {
         border: 1px solid #ddd;
-        padding: 7px;
-        text-align: left;
+        padding: 8px;
     }
 
-    #mentors-details tr:nth-child(even) {
+    #feedback-details tr:nth-child(even) {
         background-color: #f2f2f2;
     }
 
-    #mentors-details tr:hover {
+    #feedback-details tr:hover {
         background-color: #ddd;
     }
 
-    #mentors-details th {
+    #feedback-details th {
         padding-top: 12px;
         padding-bottom: 12px;
-        padding-left: 12px;
-        padding-right: 12px;
+        padding-left:12px;
+        padding-right:12px;
         text-align: left;
         background-color: #294c67;
         ;
         color: white;
     }
-    .H1 {
-        text-align :center;
-    }
 </style>
-
+<!--Add Navigation Here-->
 
 <body>
     <header>
@@ -63,74 +59,70 @@
         <div id="mentor" ng-include="'mentorNavigation.html'" ></div>
         <div id="admin" ng-include="'adminNavigation.html'" ></div>
     </header>
-    <H1>List of All Mentors</H1>
+    <H1>List of All Mentee Feedback Forms</H1>
+    <button onclick="exportTableToExcel('feedback-details','mentee Feedback')" type="button" class="btn waves-effect waves-light">Export Data to Excel</button>
+    <br>
+    <br>
     <!--Mentors table -->
-    <button onclick="exportTableToExcel('mentors-details','mentors')" type="button" class="btn waves-effect waves-light">Export Data to Excel</button>
-    <br>
-    <br>
-    <div id="mentors-table">
-        <table id="mentors-details">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Ethnicity</th>
-                    <th>Iwi Afiliation</th>
-                    <th>Company Name</th>
-                    <th>Job Title</th>
-                    <th>Job Title Department</th>
-                    <th>Primary Working Industry</th>
-                    <th>Career History</th>
-                    <th>Mode of Mentoring</th>
-                    <th>Undergraduate Course</th>
-                    <th>Undergraduate Institution</th>
-                    <th>Undergraduate Year of Graduation</th>
-                    <th>Postgraduate Course</th>
-                    <th>Postgraduate Institution</th>
-                    <th>Postgraduate Year of Graduation</th>
-                    <th>Current Country</th>
-                    <th>Mentoring Preference</th>
-                    <th>How Find OMM</th>
-                    <th>Bio</th>
-                    <th>Extra Info</th>
-                    <th>New to Mentory</th>
+        <div id="feedback-table">
+            <table id="feedback-details">
+                <thead>
+                    <tr>
+                        <th>Feedback Form ID</th>
+                        <th>Communication Platform</th>
+                        <th>How Find OMM</th>
+                        <th>Quality of sessions</th>
+                        <th>Quality of Match</th>
+                        <th>Will provide reccommendation of OMM?</th>
+                        <th>Active Listening Rating</th>
+                        <th>Feedback Rating</th>
+                        <th>Trust Rating</th>
+                        <th>Achieve Goals Rating</th>
+                        <th>Development of Strategies Rating</th>
+                        <th>Motivation Rating</th>
+                        <th>Work Load Rating</th>
+                        <th>Programme Improvements</th>
+                        <th>Time Contributed</th>
+                        <th>Continue Relationship?</th>
+                        <th>Provide Testimonial?</th>
+                        <th>Other Comments</th>
+                        <th>Takeaways</th>
+                        <th>Mentee ID</th>
 
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody ng-controller="AdminController as adminCtrl">
-                <tr data-ng-repeat="mentor in adminCtrl.mentors">
-                    <td>{{mentor.fname}}</td>
-                    <td>{{mentor.lname}}</td>
-                    <td>{{mentor.email}}</td>
-                    <td>{{mentor.phoneNumber}}</td>
-                    <td>{{mentor.ethnicity}}</td>
-                    <td>{{mentor.iwiAfiliation}}</td>
-                    <td>{{mentor.companyName}}</td>
-                    <td>{{mentor.employerJobTitle}}</td>
-                    <td>{{mentor.jobTitleDepartment}}</td>
-                    <td>{{mentor.primaryWorkingIndustry}}</td>
-                    <td>{{mentor.briefCareerHistory}}</td>
-                    <td>{{mentor.modeOfMentoringSessions}}</td>
-                    <td>{{mentor.undergraduateCourse}}</td>
-                    <td>{{mentor.undergraduateInstitution}}</td>
-                    <td>{{mentor.undergraduateYearOfGraduation}}</td>
-                    <td>{{mentor.postgraduateCourse}}</td>
-                    <td>{{mentor.postgraduateInstitution}}</td>
-                    <td>{{mentor.postgraduateYearOfGraduation}}</td>
-                    <td>{{mentor.currentWorkAndLivingCountry}}</td>
-                    <td>{{mentor.mentoringPreference}}</td>
-                    <td>{{mentor.howFindOMM}}</td>
-                    <td>{{mentor.bio}}</td>
-                    <td>{{mentor.extraInfo}}</td>
-                    <td>{{mentor.newToMentory}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
+                        
+                    </tr>
+                </thead>
+                <tbody ng-controller="AdminController as adminCtrl">
+                    <tr data-ng-repeat="feedback in adminCtrl.menteeFeedback">
+                        <td>{{feedback.menteeFeedbackFormId}}</td>
+                        <td>{{feedback.communicationPlatform}}</td>
+                        <td>{{feedback.findingOMM}}</td>
+                        <td>{{feedback.sessionQuality}}</td>
+                        <td>{{feedback.qualityOfMatch}}</td>
+                        <td>{{feedback.recommendation}}</td>
+                        <td>{{feedback.activeListeningRating}}</td>
+                        <td>{{feedback.feedbackRating}}</td>
+                        <td>{{feedback.trustRating}}</td>
+                        <td>{{feedback.achieveGoalRating}}</td>
+                        <td>{{feedback.developingStrategiesRating}}</td>
+                        <td>{{feedback.motivationRating}}</td>
+                        <td>{{feedback.workingLoadRating}}</td>
+                        <td>{{feedback.programmeImprovements}}</td>
+                        <td>{{feedback.timeContributed}}</td>
+                        <td>{{feedback.continueRelationship}}</td>
+                        <td>{{feedback.testimonial}}</td>
+                        <td>{{feedback.otherComments}}</td>
+                        <td>{{feedback.takeaways}}</td>
+                        <td>{{feedback.menteeId}}</td>
+                        
+                        
+                        
+                     
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
 </body>
 <script>
     function exportTableToExcel(tableID, filename = '') {
@@ -165,7 +157,7 @@
          var mode = sessionStorage.getItem('ngStorage-user1');
          var x = document.getElementById("mentee");
          if(String(mode) == '"mentee"')
-         {console.log("true");
+         {console.log("mentee check");
          document.getElementById("mentee").style.display = "show";
          document.getElementById("mentor").style.display = "none";
          document.getElementById("admin").style.display = "none";
@@ -187,8 +179,5 @@
          else{console.log("false");}
 
 
- 
- console.log(String(mode)); // 'dark'
     </script>
-
 </html>

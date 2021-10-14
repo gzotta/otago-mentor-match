@@ -17,6 +17,8 @@ public class JournalEntryModule extends Jooby {
             rsp.status(Status.CREATED);
         });
 
+        // GET all Mentees.
+        get("/api/journalEntries", () -> journalEntryDao.getJournalEntries());
         // DELETE an Entry.
         delete("/api/journalEntries/:id", (req, rsp) -> {
             String id = req.param("id").value();
