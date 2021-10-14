@@ -1,156 +1,268 @@
 <!DOCTYPE html>
 <html ng-app="MatchingApp">
 
-    <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" />
-        <!-- font awesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        <!-- Compiled and minified CSS -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- CSS styling page -->
-        <link rel="stylesheet" href="/OtagoMentorMatch/public/css/profile-styles.css">
+    <!-- CSS styling page -->
+    <link type="text/css" rel="stylesheet" href="/css/profile-styles.css">
+
+    <!-- Provided CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
+
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+
+    <style>
+        .body {
+            background-image: url(../img/mango.jpg);
+            padding: 0px;
+            margin: 0px;
+            background-size: auto;
+        }
         
-        <!-- Provided CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
-        <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" />-->
+        .center {
+            text-align: center;
+            border: 3px solid black;
+            color: white;
+        }
         
-        <!-- Compiled and minified CSS -->
-        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />-->
+        .findbtn {
+            background-color: #5E35B1;
+        }
+        
+        .cards-container {
+            break-inside: avoid-column;
+        }
+        
+        .card {
+            display: inline-block;
+            overflow: visible;
+        }
+        
+        #findMentorTitle {
+            border: none;
+        }
+    </style>
+</head>
+<header>
+    <div id="mentee" ng-include="'menteeNavigation.html'"></div>
+    <div id="mentor" ng-include="'mentorNavigation.html'"></div>
+    <div id="admin" ng-include="'adminNavigation.html'"></div>
+</header>
 
-        <script src="js/angular.js"></script>
-        <script src="js/angular-resource.js"></script>
-        <script src="js/ngStorage.js"></script>
-        <script src="js/match.js"></script>
-
-        <style>
-            .body {
-                background-image: url(../img/mango.jpg);
-                padding: 0px;
-                margin: 0px;
-                background-size: auto;
-            }
-            
-            .center {
-                text-align: center;
-                border: 3px solid black;
-                color: white;
-            }
-            
-            .findbtn {
-                background-color: #5E35B1;
-            }
-            
-            .cards-container {
-                break-inside: avoid-column;
-            }
-            
-            .card {
-                display: inline-block;
-                overflow: visible;
-            }
-            
-            #findMentorTitle {
-                border: none;
-            }
-        </style>
-    </head>
-    <header class="white">
-        <nav class="nav-wrapper transparent">
-            <div class="container">
-                <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
-                <a href="#" class="sidenav-trigger" data-target="mobile-menu">
-                    <i class="material-icons">menu</i>
-                </a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a class="black-text text-darken-6" href="home.html">Home</a></li>
-                    <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
-                    <li><a class="black-text text-darken-6" href="#profile">Profile</a></li>
-                    <li><a class="black-text text-darken-6" href="journalEntryForm.html">Journal Entry Form</a></li>
-                    
-                    <li><a class="black-text text-darken-6" href="menteeFeedbackForm.html">Feedback Form</a></li>
-                    <li><a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a></li>
-                    <li>
-                        <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <body>
-        <div class="container rounded bg-white mt-5 mb-5">
-            <div class="row">
-                <!-- right column -->
-                <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Name</span><span class="text-black-50">Job Title</span><span> </span></div>
-
-                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                <p>WORK LINKS</p>
-                                <a href="">LinkedIn Profile</a><br/>
-                                <a href="">Website Link</a>
-                            </div>
-
-                    <br>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button modal-trigger" data-target="modal-remove" type="button">Remove Account</button></div>
+<body ng-controller="MentorController as mentorCtrl">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row" data-ng="mentorCtrl.displayMentor">
+            <!-- right column -->
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <span class="font-weight-bold">{{mentorCtrl.displayMentor.fname}}</span>
+                    <span class="text-black-50">{{mentorCtrl.displayMentor.employerJobTitle}}</span><span> </span>
                 </div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <strong><p>WEB LINKS</p></strong>
+                    <a href="">LinkedIn Profile</a>
+                    <a href="">Website Link</a>
+                </div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button modal-trigger" data-target="modal-remove" type="button">Delete Account</button></div>
+            </div>
 
-                <!-- delete account modal here -->
+            <!-- delete account modal here -->
 
-                <!-- middle column -->
+
+
+            <!-- middle column new -->
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Current Mentor Details</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">First Name:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.fname}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Last Name:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.lname}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row mt-3">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">Company Name:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.companyName}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Job Title:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.employerJobTitle}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Department:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.jobTitleDepartment}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Industry:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.primaryWorkingIndustry}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Career History:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.briefCareerHistory}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Undergraduate Course:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.undergraduateCourse}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Undergraduate Institution:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.undergraduateInstitution}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Undergraduate Year Of Graduation:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.undergraduateYearOfGraduation}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Postgraduate Course:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.postgraduateCourse}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Postgradute Institution:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.postgraduateInstitution}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Postgradute Year Of Graduation:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.postgraduateYearOfGraduation}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Method of Mentoring:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.modeOfMentoringSessions}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Mentoring Preferences:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.mentoringPreference}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- left column new -->
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Contact Info</h4>
+                    </div>
+                    <div class="row mt-3">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">Phone Number:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.phoneNumber}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Email:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.email}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Current Residence:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.currentWorkAndLivingCountry}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Bio:</th>
+                                <td width="70%">{{mentorCtrl.displayMentor.bio}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary edit-button" type="button">Edit My Profile</button></div>
+                </div>
+            </div>
+
+            <!-- middle column old
                 <div class="col-md-5 border-right">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Edit Mentor Settings</h4>
+                            <h4 class="text-right">Current Mentor Details</h4>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                            <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="" placeholder="last name"></div>
-                        </div>
+                            <div class="col-md-6"><label class="labels" for="fname">First Name: </label><output type="text" class="values" id="fname"> {{mentorCtrl.displayMentor.fname}}</output></div>
+                            <div class="col-md-6"><label class="labels" for="lname">Last Name: </label><output type="text" class="values" id="lname"> {{mentorCtrl.displayMentor.lname}}</output></div>
+                        </div> 
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Company Name</label><input type="text" class="form-control" placeholder="company name" value=""></div>
-                            <div class="col-md-12"><label class="labels">Job Title</label><input type="text" class="form-control" placeholder="job title" value=""></div>
-                            <div class="col-md-12"><label class="labels">Department</label><input type="text" class="form-control" placeholder="job department" value=""></div>
-                            <div class="col-md-12"><label class="labels">Industry</label><input type="text" class="form-control" placeholder="industry" value=""></div>
-                            <div class="col-md-12"><label class="labels">Brief Career History</label><input type="text" class="form-control" placeholder="career history" value=""></div>
-                            <div class="col-md-12"><label class="labels">Undergraduate Details</label><input type="text" class="form-control" placeholder="undergraduate details" value=""></div>
-                            <div class="col-md-12"><label class="labels">Postgradute Details</label><input type="text" class="form-control" placeholder="postgradute details" value=""></div>
-                            <div class="col-md-12"><label class="labels">Personal Interests</label><input type="text" class="form-control" placeholder="personal interests" value=""></div>
-                            <div class="col-md-12"><label class="labels">Bio</label><input type="text" class="form-control" placeholder="bio" value=""></div>
+                            <div class="col-md-12"><label class="labels" for="companyName">Company Name: </label><output type="text" class="values" id="companyName"> {{mentorCtrl.displayMentor.companyName}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="employerJobTitle">Job Title: </label><output type="text" class="values" id="employerJobTitle"> {{mentorCtrl.displayMentor.employerJobTitle}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="jobTitleDepartment">Department: </label><output type="text" class="values" id="jobTitleDepartment"> {{mentorCtrl.displayMentor.jobTitleDepartment}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="primaryWorkingIndustry">Industry: </label><output type="text" class="values" id="primaryWorkingIndustry"> {{mentorCtrl.displayMentor.primaryWorkingIndustry}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="briefCareerHistory">Career History: </label><output type="text" class="values" id="briefCareerHistory"> {{mentorCtrl.displayMentor.briefCareerHistory}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="undergraduateCourse">Undergraduate Course: </label><output type="text" class="values" id="undergraduateCourse"> {{mentorCtrl.displayMentor.undergraduateCourse}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="undergraduateInstitution">Undergraduate Institution: </label><output type="text" class="values" id="undergraduateInstitution"> {{mentorCtrl.displayMentor.undergraduateInstitution}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="undergraduateYearOfGraduation">Undergraduate Year Of Graduation: </label><output type="text" class="values" id="undergraduateYearOfGraduation"> {{mentorCtrl.displayMentor.undergraduateYearOfGraduation}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="postgraduateCourse">Postgraduate Course: </label><output type="text" class="values" id="postgraduateCourse"> {{mentorCtrl.displayMentor.postgraduateCourse}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="postgraduteInstitution">Postgradute Institution: </label><output type="text" class="values" id="postgraduteInstitution"> {{mentorCtrl.displayMentor.postgraduteInstitution}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="postgraduteYearOfGraduation">Postgradute Year Of Graduation: </label><output type="text" class="values" id="postgraduteYearOfGraduation"> {{mentorCtrl.displayMentor.postgraduteYearOfGraduation}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="modeOfMentoringSessions">Method of Mentoring: </label><output type="text" class="values" id="modeOfMentoringSessions"> {{mentorCtrl.displayMentor.modeOfMentoringSessions}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="mentoringPreference">Mentoring Preferences: </label><output type="text" class="values" id="mentoringPreference"> {{mentorCtrl.displayMentor.mentoringPreference}}</output></div>
                         </div>
                     </div>
                 </div>
+                -->
 
-                <!-- left column -->
+            <!-- left column old 
                 <div class="col-md-4">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Edit Contact Details</h4>
+                            <h4 class="text-right">Contact Information</h4>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email" value=""></div>
-                            <div class="col-md-12"><label class="labels">Country</label><input type="text" class="form-control" placeholder="enter country of residence" value=""></div>
-                        </div>    
-                        <div class="mt-5 text-center"><button class="btn btn-primary experience-button" type="button">Save Mentor Details</button></div>
+                            <div class="col-md-12"><label class="labels" for="phoneNumber">Phone Number:</label><output type="text" class="values" id="phoneNumber"> {{mentorCtrl.displayMentor.phoneNumber}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="email">Email:</label><output type="text" class="values" id="email"> {{mentorCtrl.displayMentor.email}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="currentWorkAndLivingCountry">Current Residence:</label><output type="text" class="values" id="currentWorkAndLivingCountry"> {{mentorCtrl.displayMentor.currentWorkAndLivingCountry}}</output></div>
+                            <div class="col-md-12"><label class="labels" for="bio">Bio:</label><output type="text" class="values" id="bio"> {{mentorCtrl.displayMentor.bio}}</output></div>
+                        </div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary edit-button" type="button">Edit Mentor Details</button></div>
                     </div>
                 </div>
+                -->
 
-            </div>
         </div>
-    </body>
+    </div>
+</body>
+
+<script>
+    //Scipt to block content from specific user groups
+    var mode = sessionStorage.getItem('ngStorage-user1');
+    var x = document.getElementById("mentee");
+    if (String(mode) == '"mentee"') {
+        console.log("true");
+        document.getElementById("mentee").style.display = "show";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "none";
+        //  x.style.display = "show";
+    } else if (String(mode) == '"mentor"') {
+        console.log("mentor check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "show";
+        document.getElementById("admin").style.display = "none";
+    } else if (String(mode) == '"admin"') {
+        console.log("admin check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "show";
+    } else {
+        console.log("false");
+    }
+    console.log(String(mode)); // 'dark'
+</script>
+
 </html>

@@ -54,12 +54,29 @@ module.factory("getMentorFeedbackFormAPI", function ($resource) {
     return $resource("/api/mentorFeedbackForms/:id");
 });
 
+// Factory for the ngResource object that will get a Mentor by email.
+module.factory("getMentorByEmailAPI", function($resource) {
+    return $resource("/api/mentors/mentor/:email", {}, {
+        fetchAllStateCodes: {
+            method: 'GET',
+            isArray: false, // Response is an array of objects
+        }
+    });
+});
+
+
 ///////////////////////////
 //---Mentor Controler---//
 /////////////////////////
 
 // Controller for managing Mentor resources.
-module.controller("MentorController", function (getMyMatchesByIdMentorAPI,registerMentorAPI, saveMentorFeedbackFormAPI, getMentorFeedbackFormAPI, $window, $sessionStorage) {
+module.controller("MentorController", function (getMyMatchesByIdMentorAPI,registerMentorAPI, getMentorByEmailAPI, saveMentorFeedbackFormAPI, $window, $sessionStorage) {
+
+
+    // Get Mentor by email.
+    this.displayMentor = getMentorByEmailAPI.get({ "email": $sessionStorage.mentor.email });
+    //console.log('Mentor: ' + this.displayMentor);
+
 
     // Function to save (Register) a Mentor.
     this.registerMentor = function (mentor) {
@@ -144,12 +161,28 @@ module.factory("allMenteesAPI", function ($resource) {
     return $resource("/api/mentees");
 });
 
+// Factory for the ngResource object that will get a Mentor by email.
+module.factory("getMenteeByEmailAPI", function($resource) {
+    return $resource("/api/mentees/mentee/:email", {}, {
+        fetchAllStateCodes: {
+            method: 'GET',
+            isArray: false, // Response is an array of objects
+        }
+    });
+});
+
+
+
 ///////////////////////////
 //---Mentee Controler---//
 /////////////////////////
 
 // Controller for managing Mentee resources.
-module.controller("MenteeController", function (registerMenteeAPI, allMenteesAPI, saveMenteeFeedbackFormAPI, getMenteeFeedbackFormAPI, $sessionStorage, $window) {
+module.controller("MenteeController", function(registerMenteeAPI, allMenteesAPI, saveMenteeFeedbackFormAPI, getMenteeByEmailAPI, $sessionStorage, $window) {
+
+    this.displayMentee = getMenteeByEmailAPI.get({ "email": $sessionStorage.mentee.email });
+    //console.log(this.displayMentee);
+
 
     // Function to save (Register) a Mentee.
     this.registerMentee = function (mentee) {
@@ -263,8 +296,8 @@ module.factory("mentorSignInAPI", function ($resource) {
 });
 
 // Factory for the ngResource object that will get a Mentee by email and then sign it in (Login). 
-module.factory("menteeSignInAPI", function ($resource) {
-    return $resource("/api/mentees/:email");
+module.factory("menteeSignInAPI", function($resource) {
+    return $resource("/api/mentees/mentee/:email");
 });
 // Factory for the ngResource object that will get a Mentee by email and then sign it in (Login). 
 module.factory("adminSignInAPI", function ($resource) {
