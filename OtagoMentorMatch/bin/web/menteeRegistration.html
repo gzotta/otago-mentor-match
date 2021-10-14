@@ -73,7 +73,7 @@
 
             <div class="row">
                 <div class="input-field col s6">
-                    <select id="yearOfStudy" ng-model="mentee.yearOfStudy">
+                    <select id="yearOfStudy" ng-model="mentee.yearOfStudy" required>
                         <option value="" disabled selected>Choose your option</option>
                         <option value="1st Year">1st Year</option>
                         <option value="2nd Year">2nd Year</option>
@@ -87,7 +87,7 @@
             <div class="row">
 
                 <div class="input-field col s6">
-                    <select id="industryOfInterest" ng-model="mentee.industryOfInterest">
+                    <select id="industryOfInterest" ng-model="mentee.industryOfInterest" required>
                         <option value="" disabled selected>Choose your industry</option>
                         <option value="Accounting">Accounting</option>
                         <option value="Health and Community Services">Health and Community Services</option>
@@ -120,19 +120,19 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea ng-model="mentee.personalInterests" id="personalInterests" class="materialize-textarea"></textarea>
+                    <textarea ng-model="mentee.personalInterests" id="personalInterests" class="materialize-textarea" required></textarea>
                     <label for="personalInterests">Please identify some personal interests</label>
                 </div>
                 <!--short bio-->
                 <div class="input-field col s12">
-                    <textarea ng-model="mentee.bio" id="bio" class="materialize-textarea"></textarea>
+                    <textarea ng-model="mentee.bio" id="bio" class="materialize-textarea" required></textarea>
                     <label for="bio">
                         Please provide a short bio
                     </label>
                 </div>
                 <!--motivation to join-->
                 <div class="input-field col s12">
-                    <textarea ng-model="mentee.motivationForJoiningOMM" id="motivationForJoiningOMM" class="materialize-textarea"></textarea>
+                    <textarea ng-model="mentee.motivationForJoiningOMM" id="motivationForJoiningOMM" class="materialize-textarea" required></textarea>
                     <label for="motivationForJoiningOMM">
                         Please describe your motivation for joining Otago Mentor Match
                     </label>
@@ -142,10 +142,10 @@
             <!--Perfered mode of interaction radio-->
             <div class="row">
 
-                <h4>Prefered mode of interaction during mentoring session</h4>
+                <h4>Preferred mode of interaction during mentoring session</h4>
                 <p>
                     <label>
-                        <input id="learningMethod"name="learningMethod" type="radio" checked ng-model="mentee.learningMethod" value="Skype" />
+                        <input id="learningMethod"name="learningMethod" type="radio" checked ng-model="mentee.learningMethod" value="Skype" required/>
                         <span>Skype</span>
                     </label>
                 </p>
@@ -190,7 +190,7 @@
                     <h4>How did you find about Otago Mentor Match?</h4>
                     <p>
                         <label>
-                            <input ng-model="mentee.howFindOMM" value="Alumni Office, University of Otago" class="with-gap" name="howFindOMM" type="radio" checked />
+                            <input ng-model="mentee.howFindOMM" value="Alumni Office, University of Otago" class="with-gap" name="howFindOMM" type="radio" required/>
                             <span>Alumni Office, University of Otago</span>
                         </label>
                     </p>

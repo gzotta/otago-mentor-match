@@ -152,7 +152,7 @@
                     </div>
                     <div class="input-field col s12">
                         <textarea ng-model="mentor.briefCareerHistory" id="briefCareerHistory" class="materialize-textarea" required></textarea>
-                        <label for="briefCareerHistory">Please Provide brief career history e.g Senior Lecturer (Management) University of Otago 2008-2012</label>
+                        <label for="briefCareerHistory">Please provide a brief career history e.g Senior Lecturer (Management) University of Otago 2008-2012</label>
                     </div>
                 </div>
                 <!--Perfered mode of interaction radio-->
@@ -161,7 +161,7 @@
                     <div class="radio">
                         <p>
                             <label>
-                            <input ng-model="mentor.modeOfMentoringSessions" value="skype" class="with-gap" name="modeOfMentoringSessions" type="radio" checked>
+                            <input ng-model="mentor.modeOfMentoringSessions" value="skype" class="with-gap" name="modeOfMentoringSessions" type="radio" required>
                             <span>Skype</span>
                         </label>
                         </p>
@@ -261,7 +261,7 @@
                 <h4>Mentoring Preferences</h4>
                 <p>
                     <label>
-                        <input ng-model="mentor.mentoringPreference" value="cv checking" class="with-gap" name="mentoringPreference" type="radio" checked />
+                        <input ng-model="mentor.mentoringPreference" value="cv checking" class="with-gap" name="mentoringPreference" type="radio" required />
                         <span>CV checking</span>
                     </label>
                 </p>
@@ -295,7 +295,7 @@
                 <h4>How did you find about Otago Mentor Match?</h4>
                 <p>
                     <label>
-                        <input ng-model="mentor.howFindOMM" value="alumni office, university of otago" class="with-gap" name="howFindOMM" type="radio" checked />
+                        <input ng-model="mentor.howFindOMM" value="alumni office, university of otago" class="with-gap" name="howFindOMM" type="radio" required/>
                         <span>Alumni Office, University of Otago</span>
                     </label>
                 </p>
@@ -330,7 +330,7 @@
                 <div class="row">
                     <h5>Please enter a brief bio about yourself to be shared with potential mentee's. (max 150 words)</h5>
                     <div class="input-field col s12">
-                        <textarea ng-model="mentor.bio" id="bio" class="materialize-textarea"></textarea>
+                        <textarea ng-model="mentor.bio" id="bio" class="materialize-textarea" required></textarea>
                         <label for="bio">Bio</label>
                     </div>
                     <div class="row">
@@ -340,13 +340,13 @@
                         </div>
                         <!--New to mentoring? Needs ID-->
                         <div class="input-field col s6">
-                            <select ng-model="mentor.newToMentory" name="newToMentory" id="newToMentory">
+                            <select ng-model="mentor.newToMentory" name="newToMentory" id="newToMentory" required>
                             <option value="" disabled selected>Choose your option</option>
                             <option value="First time">First time</option>
                             <option value="Been a mentor with Otago Mentor Match before">Been a mentor with Otago Mentor Match before</option>
                             <option value="Been a mentor with a different mentoring programme">Been a mentor with a different mentoring programme</option>
                         </select>
-                            <label for="newToMentory">Are you new to mentoring?</label>
+                            <label for="newToMentory" required>Are you new to mentoring?</label>
                         </div>
                     </div>
                     <!--Mentor's Agreement-->
@@ -379,7 +379,7 @@
         <div class="container">
             <div class="row">
                 <!--Submit button -> will need to have actions added to it when back end is implemented-->
-                <button type="submit" class="btn-large waves-effect waves-light"> Submit</button>
+                <button type="submit" class="btn-large waves-effect waves-light">Submit</button>
             </div>
         </div>
     </form>
