@@ -1,0 +1,31 @@
+body {
+    background: white;
+}
+
+.remove-button {
+    background: #0d6efd;
+    box-shadow: none;
+    border: #0d6efd;
+}
+
+.edit-button {
+    background: #0d6efd;
+    box-shadow: none;
+    border: #0d6efd;
+}
+
+.labels {
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+output.values {
+    display: inline;
+    color: black;
+    font-size: 20px;
+    padding: 6px;
+  }
+
+.p {
+    padding-bottom: 20px;
+}

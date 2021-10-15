@@ -7,14 +7,13 @@ public class JournalEntry {
     private String notes;
     private Integer matchId;
 
-
-    //empty constructor.
+    // empty constructor.
     public JournalEntry() {
     }
 
-
-    //constructor with all fields.
-    public JournalEntry(Integer journalEntryId, String topicsCovered, String lengthOfSession, String notes, Integer matchId) {
+    // constructor with all fields.
+    public JournalEntry(Integer journalEntryId, String topicsCovered, String lengthOfSession, String notes,
+            Integer matchId) {
         this.journalEntryId = journalEntryId;
         this.topicsCovered = topicsCovered;
         this.lengthOfSession = lengthOfSession;
@@ -22,8 +21,7 @@ public class JournalEntry {
         this.matchId = matchId;
     }
 
-
-    //getters and setters.
+    // getters and setters.
     public Integer getJournalEntryId() {
         return this.journalEntryId;
     }
@@ -64,20 +62,12 @@ public class JournalEntry {
         this.matchId = matchId;
     }
 
-
-
-    //to string. 
+    // to string.
     @Override
     public String toString() {
-        return "{" +
-            " journal_entry_id='" + journalEntryId + "'" +
-            ", topicsCovered='" + topicsCovered + "'" +
-            ", lengthOfSession='" + lengthOfSession + "'" +
-            ", notes='" + notes + "'" +
-            ", matchId='" + matchId + "'" +
-            "}";
+        return "{" + " journal_entry_id='" + journalEntryId + "'" + ", topicsCovered='" + topicsCovered + "'"
+                + ", lengthOfSession='" + lengthOfSession + "'" + ", notes='" + notes + "'" + ", matchId='" + matchId
+                + "'" + "}";
     }
-
-
 
 }

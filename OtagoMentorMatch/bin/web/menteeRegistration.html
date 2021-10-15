@@ -8,8 +8,7 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -21,14 +20,16 @@
     <script src="js/angular-resource.js"></script>
     <script src="js/ngStorage.js"></script>
     <script src="js/match.js"></script>
+    
     <title>Mentee Registration</title>
 </head>
 
-<body ng-controller="MenteeController as menteeCtrl">
+<body ng-controller="RegisterController as registerCtrl">
+    <a href="index.html" class="btn-large" style="position: absolute; margin: 0px 0px 0px 40px; float:left ">Back</a>
     <h2 class="center-align">Mentee Registration Form</h2>
     <hr />
     <br />
-    <form class="col s12" id="menteeForm" ng-submit="menteeCtrl.registerMentee(mentee)">
+    <form class="col s12" id="menteeForm" ng-submit="registerCtrl.registerMentee(mentee)">
         <div class="container">
             <!--Personal details-->
             <h4>Personal Details</h4>
@@ -56,27 +57,23 @@
                 </div>
             </div>
 
+            <!--Password-->
+            <h4>Password</h4>
             <div class="row">
                 <div class="input-field col s6">
-                    <input ng-model="mentee.menteePassword" id="menteePassword" type="password" class="validate">
-                    <label for="menteePassword">Password</label>
-
+                    <input ng-model="mentee.menteePassword" name="password" id="password" type="password" required>
+                    <label for="password">Password</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="lblpasswordConfirm" type="password">
-                    <label id="lblPasswordConfirm" for="passwordConfirm" data-error="Password not match"
-                        data-success="Password Match">Password (Confirm)</label>
-
-
-
+                    <input name="confirm_password" type="password" id="confirm_password" required>
+                    <label for="confirm_password">Confirm Password</label>
+                    <span id="message"></span>
                 </div>
             </div>
 
-
-
             <div class="row">
                 <div class="input-field col s6">
-                    <select id="yearOfStudy" ng-model="mentee.yearOfStudy">
+                    <select id="yearOfStudy" ng-model="mentee.yearOfStudy" required>
                         <option value="" disabled selected>Choose your option</option>
                         <option value="1st Year">1st Year</option>
                         <option value="2nd Year">2nd Year</option>
@@ -90,31 +87,31 @@
             <div class="row">
 
                 <div class="input-field col s6">
-                    <select id="industryOfInterest" ng-model="mentee.industryOfInterest">
+                    <select id="industryOfInterest" ng-model="mentee.industryOfInterest" required>
                         <option value="" disabled selected>Choose your industry</option>
                         <option value="Accounting">Accounting</option>
                         <option value="Health and Community Services">Health and Community Services</option>
                         <option value="Mining and Construction">Mining and Construction</option>
-                        <option value="Agriculture / Hoticulture / Viticulture">Agriculture / Hoticulture / Viticulture</option>
+                        <option value="Agriculture Hoticulture Viticulture">Agriculture / Hoticulture / Viticulture</option>
                         <option value="Hospitality and Tourism">Hospitality and Tourism</option>
                         <option value="Retail Trade">Retail Trade</option>
-                        <option value="Computing / IT / Communications">Computing / IT / Communications</option>
+                        <option value="Computing IT Communications">Computing / IT / Communications</option>
                         <option value="Legal Services">Legal Services</option>
                         <option value="Science and Research">Science and Research</option>
-                        <option value="Cultural / Sport and Recreational Services">Cultural / Sport and Recreational Services</option>
+                        <option value="Cultural Sport and Recreational Services">Cultural / Sport and Recreational Services</option>
                         <option value="Local Government">Local Government</option>
-                        <option value="Surveying / Mining and Construction">Surveying / Mining and Construction</option>
+                        <option value="Surveying Mining and Construction">Surveying / Mining and Construction</option>
                         <option value="Education">Education</option>
                         <option value="Management and Consulting">Management and Consulting</option>
                         <option value="Visual Arts and Design">Visual Arts and Design</option>
-                        <option value="Electricity / Gas and Water Supply">Electricity / Gas and Water Supply</option>
+                        <option value="Electricity Gas and Water Supply">Electricity / Gas and Water Supply</option>
                         <option value="Manufacturing">Manufacturing</option>
                         <option value="Wholesale Trade">Wholesale Trade</option>
                         <option value="Environmental">Environmental</option>
                         <option value="Marketing">Marketing</option>
-                        <option value="Wholesale / Retail Trade">Wholesale / Retail Trade</option>
+                        <option value="Wholesale Retail Trade">Wholesale / Retail Trade</option>
                         <option value="Finance and Insurance">Finance and Insurance</option>
-                        <option value="Media / Publising and Entertainment">Media / Publising and Entertainment</option>
+                        <option value="Media Publishing and Entertainment">Media / Publishing and Entertainment</option>
                         <option value="Government and Defence">Government and Defence</option>
                     </select>
                     <label>Industry of Interest</label>
@@ -123,21 +120,19 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea ng-model="mentee.personalInterests" id="personalInterests"
-                        class="materialize-textarea"></textarea>
+                    <textarea ng-model="mentee.personalInterests" id="personalInterests" class="materialize-textarea" required></textarea>
                     <label for="personalInterests">Please identify some personal interests</label>
                 </div>
                 <!--short bio-->
                 <div class="input-field col s12">
-                    <textarea ng-model="mentee.bio" id="bio" class="materialize-textarea"></textarea>
+                    <textarea ng-model="mentee.bio" id="bio" class="materialize-textarea" required></textarea>
                     <label for="bio">
                         Please provide a short bio
                     </label>
                 </div>
                 <!--motivation to join-->
                 <div class="input-field col s12">
-                    <textarea ng-model="mentee.motivationForJoiningOMM" id="motivationForJoiningOMM"
-                        class="materialize-textarea"></textarea>
+                    <textarea ng-model="mentee.motivationForJoiningOMM" id="motivationForJoiningOMM" class="materialize-textarea" required></textarea>
                     <label for="motivationForJoiningOMM">
                         Please describe your motivation for joining Otago Mentor Match
                     </label>
@@ -147,10 +142,10 @@
             <!--Perfered mode of interaction radio-->
             <div class="row">
 
-                <h4>Prefered mode of interaction during mentoring session</h4>
+                <h4>Preferred mode of interaction during mentoring session</h4>
                 <p>
                     <label>
-                        <input id="learningMethod"name="learningMethod" type="radio" checked ng-model="mentee.learningMethod" value="Skype" />
+                        <input id="learningMethod"name="learningMethod" type="radio" checked ng-model="mentee.learningMethod" value="Skype" required/>
                         <span>Skype</span>
                     </label>
                 </p>
@@ -169,7 +164,7 @@
                 <p>
                     <label>
                         <input name="learningMethod" type="radio" ng-model="mentee.learningMethod" value="Facebook, Messenger, Video Chat"/>
-                        <span>Facebook, Messenger, Video Chat</span>
+                        <span>Facebook Messenger, Video Chat</span>
                     </label>
                 </p>
                 <p>
@@ -190,12 +185,12 @@
                         <span>Email</span>
                     </label>
                 </p>
-             <!-- How find OMM-->
+                <!-- How find OMM-->
                 <div class="row">
                     <h4>How did you find about Otago Mentor Match?</h4>
                     <p>
                         <label>
-                            <input ng-model="mentee.howFindOMM" value="Alumni Office, University of Otago" class="with-gap" name="howFindOMM" type="radio" checked />
+                            <input ng-model="mentee.howFindOMM" value="Alumni Office, University of Otago" class="with-gap" name="howFindOMM" type="radio" required/>
                             <span>Alumni Office, University of Otago</span>
                         </label>
                     </p>
@@ -224,9 +219,9 @@
                         </label>
                     </p>
                 </div>
-<!--Random matching?-->
+                <!--Random matching?-->
                 <div class="row">
-                    <h4>Are you interest in random matching?</h4>
+                    <h4>Are you interested in random matching?</h4>
                     <p>
                         <label>
                             <input ng-model="mentee.randomMatching" value="Yes" class="with-gap" name="randomMatching" type="radio"  />
@@ -239,14 +234,14 @@
                             <span>No</span>
                         </label>
                     </p>
-            </div>
+                </div>
 
-            <button type="submit" class="btn-large waves-effect waves-light"> Submit</button>
-        </div>
+                <button type="submit" class="btn-large waves-effect waves-light"> Submit</button>
+            </div>
 
     </form>
 
-<!--test-->
+    <!--test-->
 
 
 
@@ -255,11 +250,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('select').formSelect();
             $('.modal').modal();
             $('.tooltipped').tooltip();
             $('.sidenav').sidenav();
+        });
+    </script>
+    <!--Function to check (confirm) password-->
+    <script>
+        $('#password, #confirm_password').on('keyup', function() {
+            if ($('#password').val() == $('#confirm_password').val()) {
+                $('#message').html('Matching').css('color', 'green');
+            } else
+                $('#message').html('Not Matching').css('color', 'red');
         });
     </script>
 </body>

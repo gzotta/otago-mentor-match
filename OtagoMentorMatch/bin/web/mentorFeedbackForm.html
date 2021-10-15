@@ -22,15 +22,15 @@
     <title>Mentor Feedback Form</title>
 </head>
 
-<body ng-controller="MentorFeedbackFormsController as mentorFeedbackCtrl">
+<body ng-controller="MentorController as mentorFeedbackCtrl">
     <h2 class="center-align">Mentor Feedback Form</h2>
     <hr />
     <br />
-    <form ng-submit="mentorFeedbackCtrl.registerMentorFeedbackForms(mentorFeedbackForm)">
+    <form ng-submit="mentorFeedbackCtrl.saveMentorFeedbackForm(mentorFeedbackForm)">
         <div class="container">
             <div class="row">
                 <!--Radio of communication method-->
-                <h5>What forms of communication have you used during your sessions</h5>
+                <h5>Which forms of communication have you used during your sessions?</h5>
                 <p>
                     <label>
                         <input name="communicationPlatform" type="radio"
@@ -56,7 +56,7 @@
                     <label>
                         <input name="communicationPlatform" type="radio"
                             ng-model="mentorFeedbackForm.communicationPlatform" value="WhatsApp" />
-                        <span>WhasApp</span>
+                        <span>WhatsApp</span>
                     </label>
                 </p>
                 <p>
@@ -139,7 +139,7 @@
             <div class="row">
 
                 <!--Description of Mentoring sessions radio-->
-                <h5>How would you best describe your sessions with your student mentee</h5>
+                <h5>How would you best describe your sessions with your student mentee?</h5>
                 <p>
                     <label>
                         <input name="describeSessions" type="radio" 
@@ -177,7 +177,7 @@
 
             <!--is three months long enough-->
             <div class="row">
-                <h5>Is three months a long enough period to establish a relationship for the program</h5>
+                <h5>Is three months a long enough period to establish a relationship for the programme?</h5>
                 <p>
                     <label>
                         <input name="enoughTimeToEstablishRelationship" type="radio"
@@ -190,8 +190,8 @@
                     <label>
                         <input name="enoughTimeToEstablishRelationship" type="radio"
                             ng-model="mentorFeedbackForm.enoughTimeToEstablishRelationship"
-                            value="Yes, but a longer length program 6-12 months would be better" />
-                        <span>Yes, but a longer length program 6-12 months would be better</span>
+                            value="Yes, but a longer length programme 6-12 months would be better" />
+                        <span>Yes, but a longer length programme 6-12 months would be better</span>
                     </label>
                 </p>
                 <p>
@@ -232,7 +232,7 @@
                         <span>Poor</span>
                     </label>
                 </p>
-                <h5>Would you reccommend Otago Mentor Match to your peers</h5>
+                <h5>Would you reccommend Otago Mentor Match to your peers?</h5>
                 <p>
                     <label>
                         <input name="recommendation" type="radio" ng-model="mentorFeedbackForm.recommendation"
@@ -414,6 +414,19 @@
                         Can you tell us something you have taken away from this experience?
                     </label>
                 </div>
+                <h5>Would you be keen to join the next intake?</h5>
+                <p>
+                    <label>
+                        <input name="intake" type="radio" ng-model="mentorFeedbackForm.joinNextIntake" value="Yes"/>
+                        <span>Yes</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input name="intake" type="radio"ng-model="mentorFeedbackForm.joinNextIntake" value="No" />
+                        <span>No</span>
+                    </label>
+                </p>
             </div>
             <!--Submit and cancel button-->
             <div align="right">

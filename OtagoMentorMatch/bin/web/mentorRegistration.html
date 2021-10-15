@@ -22,48 +22,18 @@
     <title>Mentor Registration</title>
 </head>
 
-<body ng-controller="MentorController as mentorCtrl">
+<body ng-controller="RegisterController as registerCtrl">
     <!--Navigation may not be neded in these forms-->
-    <nav class="nav-wrapper transparent">
-        <div class="container">
-            <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
-            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
-                <i class="material-icons">menu</i>
-            </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="black-text text-darken-6" href="index.html">Home</a></li>
-                <li><a class="black-text text-darken-6" href="#faqs">FAQs</a></li>
-                <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
-                <li>
-                    <a href="https://www.instagram.com/" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-            </ul>
-            <ul class="sidenav grey lighten-2" id="mobile-menu" style="transform: translateX(-105%);">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Matches</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">FAQs</a></li>
-            </ul>
-        </div>
-    </nav>
+    
     <!--Start of page excluding navigation-->
+    
+    <a href="index.html" class="btn-large" style="position: absolute; margin: 0px 0px 0px 40px; float:left ">Back</a>
     <h2 class="center-align">Mentor Registration Form</h2>
+    
     <hr />
     <br />
-    <form class="col s12" ng-submit="mentorCtrl.registerMentor(mentor)" onsubmit="if(document.getElementById('accept').checked) { return true; } else { alert('Please indicate that you have read and agree to the Mentors Agreement'); return false; }">
+    
+    <form class="col s12" ng-submit="registerCtrl.registerMentor(mentor)" onsubmit="if(document.getElementById('accept').checked) { return true; } else { alert('Please indicate that you have read and agree to the Mentors Agreement'); return false; }">
         <div class="container">
             <div class="row">
                 <!--Personal details-->
@@ -72,18 +42,22 @@
                     <div class="input-field col s6">
                         <input ng-model="mentor.fname" id="fname" type="text" class="validate" required>
                         <label for="fname">First Name</label>
+                        <span class="helper-text" data-error="Please enter your first name"></span>
                     </div>
                     <div class="input-field col s6">
                         <input ng-model="mentor.lname" id="lname" type="text" class="validate" required>
                         <label for="lname">Last Name</label>
+                        <span class="helper-text" data-error="Please enter your last name"></span>
                     </div>
                     <div class="input-field col s6">
-                        <input ng-model="mentor.email" id="email" type="text" class="validate" required>
+                        <input ng-model="mentor.email" id="email" type="email" class="validate" required>
                         <label for="email">Email Address</label>
+                        <span class="helper-text" data-error="Please enter a valid email address"></span>
                     </div>
                     <div class="input-field col s6">
                         <input ng-model="mentor.phoneNumber" id="phone_number" type="text" class="validate" required>
                         <label for="phoneNumber">Phone Number</label>
+                        <span class="helper-text" data-error="Please enter your phone number"></span>
                     </div>
                     <div class="input-field col s4" id="ethnicity">
                         <select ng-model="mentor.ethnicity" name="ethnicity" id="ethnicity" required>
@@ -124,12 +98,13 @@
                 <h4>Password</h4>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input ng-model="mentor.mentorPassword" id="mentorPassword" type="password" class="validate" required>
-                        <label for="mentorPassword">Password</label>
+                        <input ng-model="mentor.mentorPassword" name="password" id="password" type="password" required>
+                        <label for="password">Password</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="" type="text" class="">
-                        <label for="">Confirm Password</label>
+                        <input name="confirm_password" type="password" id="confirm_password" required>
+                        <label for="confirm_password">Confirm Password</label>
+                        <span id="message"></span>
                     </div>
                 </div>
                 <!--Employer Details-->
@@ -152,33 +127,32 @@
                             <option value="" disabled selected>Choose your industry</option><option value="Accounting">Accounting</option>
                             <option value="Health and Community Services">Health and Community Services</option>
                             <option value="Mining and Construction">Mining and Construction</option>
-                            <option value="Agriculture / Hoticulture / Viticulture">Agriculture / Hoticulture / Viticulture</option>
+                            <option value="Agriculture Hoticulture Viticulture">Agriculture / Hoticulture / Viticulture</option>
                             <option value="Hospitality and Tourism">Hospitality and Tourism</option>
                             <option value="Retail Trade">Retail Trade</option>
-                            <option value="Computing / IT / Communications">Computing / IT / Communications</option>
+                            <option value="Computing IT Communications">Computing / IT / Communications</option>
                             <option value="Legal Services">Legal Services</option>
                             <option value="Science and Research">Science and Research</option>
-                            <option value="Cultural / Sport and Recreational Services">Cultural / Sport and Recreational Services</option>
+                            <option value="Cultural Sport and Recreational Services">Cultural / Sport and Recreational Services</option>
                             <option value="Local Government">Local Government</option>
-                            <option value="Surveying / Mining and Construction">Surveying / Mining and Construction</option>
+                            <option value="Surveying Mining and Construction">Surveying / Mining and Construction</option>
                             <option value="Education">Education</option>
                             <option value="Management and Consulting">Management and Consulting</option>
                             <option value="Visual Arts and Design">Visual Arts and Design</option>
-                            <option value="Electricity / Gas and Water Supply">Electricity / Gas and Water Supply</option>
+                            <option value="Electricity Gas and Water Supply">Electricity / Gas and Water Supply</option>
                             <option value="Manufacturing">Manufacturing</option>
                             <option value="Wholesale Trade">Wholesale Trade</option>
                             <option value="Environmental">Environmental</option>
                             <option value="Marketing">Marketing</option>
-                            <option value="Wholesale / Retail Trade">Wholesale / Retail Trade</option>
                             <option value="Finance and Insurance">Finance and Insurance</option>
-                            <option value="Media / Publising and Entertainment">Media / Publising and Entertainment</option>
+                            <option value="Media Publishing and Entertainment">Media / Publishing and Entertainment</option>
                             <option value="Government and Defence">Government and Defence</option>
                         </select>
                         <label for="primaryWorkingIndustry">Which industry do you primarily work in?</label>
                     </div>
                     <div class="input-field col s12">
                         <textarea ng-model="mentor.briefCareerHistory" id="briefCareerHistory" class="materialize-textarea" required></textarea>
-                        <label for="briefCareerHistory">Please Provide brief career history e.g Senior Lecturer (Management) University of Otago 2008-2012</label>
+                        <label for="briefCareerHistory">Please provide a brief career history e.g Senior Lecturer (Management) University of Otago 2008-2012</label>
                     </div>
                 </div>
                 <!--Perfered mode of interaction radio-->
@@ -187,7 +161,7 @@
                     <div class="radio">
                         <p>
                             <label>
-                            <input ng-model="mentor.modeOfMentoringSessions" value="skype" class="with-gap" name="modeOfMentoringSessions" type="radio" checked>
+                            <input ng-model="mentor.modeOfMentoringSessions" value="skype" class="with-gap" name="modeOfMentoringSessions" type="radio" required>
                             <span>Skype</span>
                         </label>
                         </p>
@@ -212,7 +186,7 @@
                         <p>
                             <label>
                             <input ng-model="mentor.modeOfMentoringSessions" value="facebook, messenger, video" class="with-gap" name="modeOfMentoringSessions" type="radio">
-                            <span>Facebook, Messenger, Video Chat</span>
+                            <span>Facebook Messenger, Video Chat</span>
                         </label>
                         </p>
                     </div>
@@ -287,7 +261,7 @@
                 <h4>Mentoring Preferences</h4>
                 <p>
                     <label>
-                        <input ng-model="mentor.mentoringPreference" value="cv checking" class="with-gap" name="mentoringPreference" type="radio" checked />
+                        <input ng-model="mentor.mentoringPreference" value="cv checking" class="with-gap" name="mentoringPreference" type="radio" required />
                         <span>CV checking</span>
                     </label>
                 </p>
@@ -321,7 +295,7 @@
                 <h4>How did you find about Otago Mentor Match?</h4>
                 <p>
                     <label>
-                        <input ng-model="mentor.howFindOMM" value="alumni office, university of otago" class="with-gap" name="howFindOMM" type="radio" checked />
+                        <input ng-model="mentor.howFindOMM" value="alumni office, university of otago" class="with-gap" name="howFindOMM" type="radio" required/>
                         <span>Alumni Office, University of Otago</span>
                     </label>
                 </p>
@@ -356,7 +330,7 @@
                 <div class="row">
                     <h5>Please enter a brief bio about yourself to be shared with potential mentee's. (max 150 words)</h5>
                     <div class="input-field col s12">
-                        <textarea ng-model="mentor.bio" id="bio" class="materialize-textarea"></textarea>
+                        <textarea ng-model="mentor.bio" id="bio" class="materialize-textarea" required></textarea>
                         <label for="bio">Bio</label>
                     </div>
                     <div class="row">
@@ -366,13 +340,13 @@
                         </div>
                         <!--New to mentoring? Needs ID-->
                         <div class="input-field col s6">
-                            <select ng-model="mentor.newToMentory" name="newToMentory" id="newToMentory">
+                            <select ng-model="mentor.newToMentory" name="newToMentory" id="newToMentory" required>
                             <option value="" disabled selected>Choose your option</option>
                             <option value="First time">First time</option>
                             <option value="Been a mentor with Otago Mentor Match before">Been a mentor with Otago Mentor Match before</option>
                             <option value="Been a mentor with a different mentoring programme">Been a mentor with a different mentoring programme</option>
                         </select>
-                            <label for="newToMentory">Are you new to mentoring?</label>
+                            <label for="newToMentory" required>Are you new to mentoring?</label>
                         </div>
                     </div>
                     <!--Mentor's Agreement-->
@@ -405,7 +379,7 @@
         <div class="container">
             <div class="row">
                 <!--Submit button -> will need to have actions added to it when back end is implemented-->
-                <button type="submit" class="btn-large waves-effect waves-light"> Submit</button>
+                <button type="submit" class="btn-large waves-effect waves-light">Submit</button>
             </div>
         </div>
     </form>
@@ -418,6 +392,15 @@
             $('.modal').modal();
             $('.tooltipped').tooltip();
             $('.sidenav').sidenav();
+        });
+    </script>
+    <!--Function to check (confirm) password-->
+    <script>
+        $('#password, #confirm_password').on('keyup', function() {
+            if ($('#password').val() == $('#confirm_password').val()) {
+                $('#message').html('Matching').css('color', 'green');
+            } else
+                $('#message').html('Not Matching').css('color', 'red');
         });
     </script>
 </body>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+ <!-- general navbar -->
+ <html ng-app="MatchingApp">
+  
+  <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" />
+      <!-- font awesome -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+      <!-- Compiled and minified CSS -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <!-- CSS styling page -->
+      <link rel="stylesheet" href="/OtagoMentorMatch/public/css/nav-styles.css">
+      
+      <!-- Provided CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" />
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
+
+      <script src="js/angular.js"></script>
+      <script src="js/angular-resource.js"></script>
+      <script src="js/ngStorage.js"></script>
+
+      <style>
+          .body {
+              background-image: url(../img/mango.jpg);
+              padding: 0px;
+              margin: 0px;
+              background-size: auto;
+          }
+          
+          .center {
+              text-align: center;
+              border: 3px solid black;
+              color: white;
+          }
+          
+          .findbtn {
+              background-color: #5E35B1;
+          }
+          
+          .cards-container {
+              break-inside: avoid-column;
+          }
+          
+          .card {
+              display: inline-block;
+              overflow: visible;
+          }
+          
+          #findMentorTitle {
+              border: none;
+          }
+      </style>
+
+  </head>
+  <body>
+    <header class="white">
+      <nav class="nav-wrapper transparent">
+          <div class="container">
+              <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
+              <a href="#" class="sidenav-trigger" data-target="mobile-menu">
+                  <i class="material-icons">menu</i>
+              </a>
+              <ul class="right hide-on-med-and-down">
+                  <li><a class="black-text text-darken-6" href="home.html">Home</a></li>
+                  <li><a class="black-text text-darken-6" href="#profile.html">Profile</a></li>
+                  <li><a class="black-text text-darken-6" href="#matches.html">Mentor Match</a></li>
+                  <li><a class="black-text text-darken-6" href="journalEntryForm.html">Journal</a></li>
+                  <li><a class="black-text text-darken-6" href="menteeFeedbackForm.html">Feedback Form</a></li>
+                  <li><a class="black-text text-darken-6" href="#Resources.html">Resources</a></li>
+                  <li><a class="black-text text-darken-6" href="#Contact.html">Contact</a></li>
+                  <li><a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a></li>
+                  
+                  <li>
+                      <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
+                          <i class="fab fa-facebook"></i>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="LinkedIn">
+                          <i class="fab fa-LinkedIn"></i>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+    </header>
+  </body>
+</html>

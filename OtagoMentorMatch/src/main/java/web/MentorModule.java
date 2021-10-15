@@ -27,9 +27,9 @@ public class MentorModule extends Jooby {
         });
 
         // DELETE a Mentor.
-        delete("/api/mentors/:email", (req, rsp) -> {
+        delete("/api/mentors/mentor/:email", (req, rsp) -> {
             String email = req.param("email").value();
-            Mentor mentor = mentorDao.getMentorByEmail(String.valueOf(email));
+            Mentor mentor = (Mentor) mentorDao.getMentorByEmail(String.valueOf(email));
             mentorDao.removeMentor(mentor);
             rsp.status(Status.NO_CONTENT);
         });
