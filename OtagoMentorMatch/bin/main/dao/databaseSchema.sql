@@ -3,6 +3,7 @@ CREATE TABLE admin (
     password varchar(16) NOT NULL,
     fname varchar(50) NOT NULL,
     lname varchar (50) NOT NULL,
+    email varchar (50) NOT NULL,
     phone_number varchar(20) NOT NULL,
     CONSTRAINT admin_PK PRIMARY KEY (admin_id)
 );
