@@ -16,7 +16,6 @@
 
     <style>
         .body {
-            background-image: url(../img/mango.jpg);
             padding: 0px;
             margin: 0px;
             background-size: auto;
@@ -46,40 +45,11 @@
         }
     </style>
 </head>
-<header class="white">
-    <nav class="nav-wrapper transparent">
-        <div class="container">
-            <a href="#" class="brand-logo black-text">Otago Mentor Match</a>
-            <a href="#" class="sidenav-trigger" data-target="mobile-menu">
-                <i class="material-icons">menu</i>
-            </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="black-text text-darken-6" href="home.html">Home</a></li>
-                <li><a class="black-text text-darken-6" href="#matches">Matches</a></li>
-                <li><a class="black-text text-darken-6" href="#profile">Profile</a></li>
-                <li><a class="black-text text-darken-6" href="journalEntryForm.html">Journal Entry Form</a></li>
-                
-                <li><a class="black-text text-darken-6" href="menteeFeedbackForm.html">Feedback Form</a></li>
-                <li><a class="black-text text-darken-6" href="#contact">Contact</a></li>
-                <li><a ng-click="menteeCtrl.signOut()" class="black-text text-darken-6" href="index.html">Sign Out</a></li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="tooltipped btn-floating btn-small indigo darken-4" data-position="bottom" data-tooltip="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<header>
+
+    <div id="mentee" ng-include="'menteeNavigation.html'"></div>
+    <div id="mentor" ng-include="'mentorNavigation.html'"></div>
+    <div id="admin" ng-include="'adminNavigation.html'"></div>
 </header>
 
 <body class="body" ng-controller="MatchController as matchCtrl">
@@ -100,7 +70,7 @@
             <button class="industry" ng-click="matchCtrl.selectIndustry('Mining and Construction')">
                 Mining and Construction
             </button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Agriculture / Hoticulture / Viticulture')">
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Agriculture Hoticulture Viticulture')">
                 Agriculture / Hoticulture / Viticulture
             </button>
             <button class="industry" ng-click="matchCtrl.selectIndustry('Hospitality and Tourism')">
@@ -109,7 +79,7 @@
             <button class="industry" ng-click="matchCtrl.selectIndustry('Retail Trade')">
                 Retail Trade
             </button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Computing / IT / Communications')">
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Computing IT Communications')">
                 Computing / IT / Communications
             </button>
             <button class="industry" ng-click="matchCtrl.selectIndustry('Legal Services')">
@@ -118,13 +88,13 @@
             <button class="industry" ng-click="matchCtrl.selectIndustry('Science and Research')">
                 Science and Research
             </button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Cultural / Sport and Recreational Services')">
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Cultural Sport and Recreational Services')">
                 Cultural / Sport and Recreational Services
             </button>
             <button class="industry" ng-click="matchCtrl.selectIndustry('Local Government')">
                 Local Government
             </button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Surveying / Mining and Construction')">
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Surveying Mining and Construction')">
                 Surveying / Mining and Construction
             </button>
             <button class="industry" ng-click="matchCtrl.selectIndustry('Education')">
@@ -136,7 +106,7 @@
             <button class="industry" ng-click="matchCtrl.selectIndustry('Visual Arts and Design')">
                 Visual Arts and Design
             </button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Electricity / Gas and Water Supply')">
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Electricity Gas and Water Supply')">
                 Electricity / Gas and Water Supply
             </button>
             <button class="industry" ng-click="matchCtrl.selectIndustry('Manufacturing')">
@@ -154,8 +124,8 @@
             <button class="industry" ng-click="matchCtrl.selectIndustry('Finance and Insurance')">
                 Finance and Insurance
             </button>
-            <button class="industry" ng-click="matchCtrl.selectIndustry('Marketing')">
-                Media / Publising and Entertainment
+            <button class="industry" ng-click="matchCtrl.selectIndustry('Media Publishing and Entertainment')">
+                Media / Publishing and Entertainment
             </button>
             <button class="industry" ng-click="matchCtrl.selectIndustry('Government and Defence')">
                 Government and Defence
@@ -180,7 +150,7 @@
                         <p>Undergraduate Degree: {{mentor.undergraduateCourse}}</p>
                         <p>Postgraduate Degree: {{mentor.postgraduateCourse}}</p>
                         <br>
-                        <a class="waves-effect waves-red btn findbtn">Match</a>
+                        <a class="waves-effect waves-red btn findbtn" ng-click="matchCtrl.storeMentorId(mentor); matchCtrl.storeMatch()">Match</a>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">{{mentor.fname}}<i class="material-icons right">close</i></span>
@@ -217,6 +187,36 @@
         $('.sidenav').sidenav();
         $('.carousel').carousel();
     });
+</script>
+<script>
+    //Scipt to block content from specific user groups
+    var mode = sessionStorage.getItem('ngStorage-user1');
+    var x = document.getElementById("mentee");
+    if (String(mode) == '"mentee"') {
+        console.log("true");
+        document.getElementById("mentee").style.display = "show";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "none";
+        //  x.style.display = "show";
+    } else if (String(mode) == '"mentor"') {
+        console.log("mentor check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "show";
+        document.getElementById("admin").style.display = "none";
+    } else if (String(mode) == '"admin"') {
+        console.log("admin check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "show";
+    } else {
+        console.log("false");
+    }
+
+
+
+    console.log(String(mode)); // 'dark'
 </script>
 
 </html>

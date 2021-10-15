@@ -24,16 +24,16 @@
     <title>Mentee Feedback Form</title>
 </head>
 
-<body ng-controller="MenteeFeedbackFormsController as menteeFeedbackCtrl">
-
+<body ng-controller="MenteeController as menteeFeedbackCtrl">
+    <a href="home.html" class="btn-large" style="position: absolute; margin: 0px 0px 0px 40px; float:left ">Back</a>
     <h2 class="center-align">Mentee Feedback Form</h2>
     <hr />
     <br />
-<form ng-submit="menteeFeedbackCtrl.registerMenteeFeedbackForms(menteeFeedbackForm)">
+<form ng-submit="menteeFeedbackCtrl.saveMenteeFeedbackForm(menteeFeedbackForm)">
     <div class="container">
     <div class="row">
         <!--Radio of communication method-->
-        <h5>What forms of communication have you used during your sessions</h5>
+        <h5>Which forms of communication have you used during your sessions?</h5>
         <p>
             <label>
                 <input name="communicationPlatform" type="radio" ng-model="menteeFeedbackForm.communicationPlatform" value="Face to Face"/>
@@ -162,7 +162,7 @@
     <div class="row">
 
 
-        <h5>How would you rate the quality of your match</h5>
+        <h5>How would you rate the quality of your match?</h5>
         <p>
             <label>
                 <input name="qualityOfMatch" type="radio" ng-model="menteeFeedbackForm.qualityOfMatch" value="Excellent" />
@@ -181,7 +181,7 @@
                 <span>Poor</span>
             </label>
         </p>
-        <h5>Would you reccommend Otago Mentor Match to your peers</h5>
+        <h5>Would you reccommend Otago Mentor Match to your peers?</h5>
         <p>
             <label>
                 <input name="recommendation" type="radio" ng-model="menteeFeedbackForm.recommendation" value="Yes" />
@@ -218,7 +218,7 @@
                 <option value="Poor">Poor</option>
                 <option value="Not at this point">Not at this point</option>
             </select>
-            <label>Constructive feedback/ proactive approach</label>
+            <label>Constructive feedback/proactive approach</label>
         </div>
     </div>
     <div class="row">
@@ -281,7 +281,7 @@
     <!--Text area for improvements -->
     <div class="row">
         <div class="input-field col s12">
-            <textarea ng-model="menteeFeedbackForm.programeImprovements"id="improvement" class="materialize-textarea"></textarea>
+            <textarea ng-model="menteeFeedbackForm.programmeImprovements"id="improvement" class="materialize-textarea"></textarea>
             <label for="improvement">
                 Which aspects of the programme do you think could improve and which aspects did you enjoy most?
             </label>
@@ -364,9 +364,9 @@
     </div>
     <!--Submit and cancel button-->
     <div align="right">
-        <a button class="btn-large waves-effect waves-light red"> cancel</a>
+        <a button class="btn-large waves-effect waves-light red">Cancel</a>
 
-        <button class="btn-large waves-effect waves-light" type="submit"> Submit</button>
+        <button class="btn-large waves-effect waves-light" type="submit">Submit</button>
 
     </div>
     <br>

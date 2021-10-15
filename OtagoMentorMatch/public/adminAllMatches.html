@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html ng-app="MatchingApp">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--Style sheet excel-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- Compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+
+</head>
+<style>
+    #matches-details {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #matches-details td,
+    #tblStocks th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #matches-details tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #matches-details tr:hover {
+        background-color: #ddd;
+    }
+
+    #matches-details th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left:12px;
+        padding-right:12px;
+        text-align: left;
+        background-color: #294c67;
+        ;
+        color: white;
+    }
+</style>
+<!--Add Navigation Here-->
+
+<body>
+    <header>
+       
+        <div id="mentee" ng-include="'menteeNavigation.html'" ></div>
+        <div id="mentor" ng-include="'mentorNavigation.html'" ></div>
+        <div id="admin" ng-include="'adminNavigation.html'" ></div>
+    </header>
+    <H1>List of All Matches</H1>
+    <button onclick="exportTableToExcel('matches-details','matches')" type="button" class="btn waves-effect waves-light">Export Data to Excel</button>
+    <br>
+    <br>
+    <!--Mentors table -->
+        <div id="matches-table">
+            <table id="matches-details">
+                <thead>
+                    <tr>
+                        <th>Match ID</th>
+                        <th>Mentee ID</th>
+                        <th>Mentee First Name</th>
+                        <th>Mentee Last Name</th>
+                        <th>Mentor ID</th>
+                        <th>Mentor First Name</th>
+                        <th>Mentor Last Name</th>
+                   
+
+                        
+                    </tr>
+                </thead>
+                <tbody ng-controller="AdminController as adminCtrl">
+                    <tr data-ng-repeat="match in adminCtrl.matches">
+                        <td>{{match.match_id}}</td>
+                        <td>{{match.menteeId}}</td>
+                        <td>{{match.menteeFname}}</td>
+                        <td>{{match.menteeLname}}</td>
+                        <td>{{match.mentorId}}</td>
+                        <td>{{match.mentorFname}}</td>
+                        <td>{{match.mentorLname}}</td>
+                     
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+</body>
+<script>
+    function exportTableToExcel(tableID, filename = '') {
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+        filenmae = filename ? filename + '.xls' : 'exel_data.xls';
+        downloadLink = document.createElement("a");
+
+        document.body.appendChild(downloadLink);
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+            // Setting the file name
+            downloadLink.download = filename;
+
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+</script>
+<script>
+    //Scipt to block content from specific user groups
+         var mode = sessionStorage.getItem('ngStorage-user1');
+         var x = document.getElementById("mentee");
+         if(String(mode) == '"mentee"')
+         {console.log("true");
+         document.getElementById("mentee").style.display = "show";
+         document.getElementById("mentor").style.display = "none";
+         document.getElementById("admin").style.display = "none";
+       //  x.style.display = "show";
+     }else if (String(mode) =='"mentor"'){
+         console.log("mentor check");
+         //x.style.display = "none";
+         document.getElementById("mentee").style.display = "none";
+         document.getElementById("mentor").style.display = "show";
+         document.getElementById("admin").style.display = "none";
+     }
+     else if (String(mode) =='"admin"'){
+         console.log("admin check");
+         //x.style.display = "none";
+         document.getElementById("mentee").style.display = "none";
+         document.getElementById("mentor").style.display = "none";
+         document.getElementById("admin").style.display = "show";
+     }
+         else{console.log("false");}
+
+
+ 
+ console.log(String(mode)); // 'dark'
+    </script>
+</html>

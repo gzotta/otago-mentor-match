@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html ng-app="MatchingApp">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link type="text/css" rel="stylesheet" href="/css/profile-styles.css">
+
+    <!-- Provided CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" />
+
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+
+    <style>
+        .body {
+            background-image: url(../img/mango.jpg);
+            padding: 0px;
+            margin: 0px;
+            background-size: auto;
+        }
+        
+        .center {
+            text-align: center;
+            border: 3px solid black;
+            color: white;
+        }
+        
+        .findbtn {
+            background-color: #5E35B1;
+        }
+        
+        .cards-container {
+            break-inside: avoid-column;
+        }
+        
+        .card {
+            display: inline-block;
+            overflow: visible;
+        }
+        
+        #findMentorTitle {
+            border: none;
+        }
+    </style>
+</head>
+<header>
+    <div id="mentee" ng-include="'menteeNavigation.html'"></div>
+    <div id="mentor" ng-include="'mentorNavigation.html'"></div>
+    <div id="admin" ng-include="'adminNavigation.html'"></div>
+</header>
+
+<body ng-controller="DisplayMenteeController as displayCtrl">
+    <div class="container rounded bg-white mt-5 mb-5" data-ng="displayCtrl.displayMentee">
+
+        <div class="row">
+            <!-- right column -->
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <span class="font-weight-bold">{{displayCtrl.displayMentee.fname}} {{displayCtrl.displayMentee.lname}}</span>
+                    <span class="text-black-50">Phone Number: {{displayCtrl.displayMentee.phoneNumber}}</span>
+                    <span class="text-black-50">Email: {{displayCtrl.displayMentee.email}}</span>
+                    <div class="mt-5 text-center"><button class="btn btn-primary remove-button" type="button">Edit My Profile</button></div>
+                </div>
+                <!--<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Delete Account</button></div>-->
+            </div>
+
+            <!-- middle column new -->
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">My Details</h4>
+                    </div>
+                    <!--<div class="row mt-2">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">First Name:</th>
+                                <td width="70%">{{displayCtrl.displayMentee.fname}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Last Name:</th>
+                                <td width="70%">{{displayCtrl.displayMentee.lname}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Phone Number:</th>
+                                <td width="70%">{{displayCtrl.displayMentee.phoneNumber}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Email:</th>
+                                <td width="70%">{{displayCtrl.displayMentee.email}}</td>
+                            </tr>
+                        </table>
+                    </div>-->
+                    <div class="row mt-3">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="70%">Year Of Study:</th>
+                                <td width="30%">{{displayCtrl.displayMentee.yearOfStudy}}</td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Industry of Interest:</th>
+                                <td width="70%">{{displayCtrl.displayMentee.industryOfInterest}}</td>
+                            </tr>
+                            <tr>
+                                <th width="40%">Learning Methods:</th>
+                                <td width="60%">{{displayCtrl.displayMentee.learningMethod}}</td>
+                            </tr>
+                            <tr>
+                                <th width="40%">Personal Interests:</th>
+                                <td width="60%">{{displayCtrl.displayMentee.personalInterests}}</td>
+                            </tr>
+                            <tr>
+                                <th width="20%">Bio:</th>
+                                <td width="80%">{{displayCtrl.displayMentee.bio}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- left column new -->
+            <!--
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Progress Tracker</h4>
+                    </div>
+                    <div class="col-md-12"><label class="labels">Mentor Name</label><input type="text" class="form-control" placeholder="John Smith" value=""></div>
+                    <label class="labels">Session Number</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                        </select>
+                </div>
+                
+            </div>
+        -->
+
+            <!-- middle column old
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Edit Mentee Settings</h4>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" placeholder=i d id="mode"></div>
+                            <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="" placeholder="last name"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
+                            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="enter email" value=""></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Year of Study</label><input type="text" class="form-control" placeholder="year of study" value=""></div>
+                            <div class="col-md-12"><label class="labels">Motivation For Joining OMM</label><input type="text" class="form-control" placeholder="motivation for joining OMM" value=""></div>
+                            <div class="col-md-12"><label class="labels">Industry Of Interest</label><input type="text" class="form-control" placeholder="industry of interest" value=""></div>
+                            <div class="col-md-12"><label class="labels">Learning Method</label><input type="text" class="form-control" placeholder="preferred learning method" value=""></div>
+                            <div class="col-md-12"><label class="labels">Personal Interests</label><input type="text" class="form-control" placeholder="personal interests" value=""></div>
+                            <div class="col-md-12"><label class="labels">Bio</label><input type="text" class="form-control" placeholder="bio" value=""></div>
+                        </div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary remove-button" type="button">Save Mentee Profile</button></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Year of Study</label><input type="text" class="form-control" placeholder="year of study" value=""></div>
+                        <div class="col-md-12"><label class="labels">Motivation For Joining OMM</label><input type="text" class="form-control" placeholder="motivation for joining OMM" value=""></div>
+                        <div class="col-md-12"><label class="labels">Industry Of Interest</label><input type="text" class="form-control" placeholder="industry of interest" value=""></div>
+                        <div class="col-md-12"><label class="labels">Learning Method</label><input type="text" class="form-control" placeholder="preferred learning method" value=""></div>
+                        <div class="col-md-12"><label class="labels">Personal Interests</label><input type="text" class="form-control" placeholder="personal interests" value=""></div>
+                        <div class="col-md-12"><label class="labels">Bio</label><input type="text" class="form-control" placeholder="bio" value=""></div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Mentee Profile</button></div>
+                </div>
+                -->
+
+            <!-- left column old
+                <div class="col-md-5">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Mentor Match Progress</h4>
+                        </div>
+                        <div class="col-md-12"><label class="labels">Mentor Name</label><input type="text" class="form-control" placeholder="mentor name" value=""></div>
+                        <label class="labels">Session Number</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                        <div class="col-md-12"><label class="labels">Topics Covered</label><input type="text" class="form-control" placeholder="topics covered" value=""></div>
+                        <div class="col-md-12"><label class="labels">Length Of Session</label><input type="text" class="form-control" placeholder="session length" value=""></div>
+                        <div class="col-md-12"><label class="labels">Additional Notes</label><input type="text" class="form-control" placeholder="additional notes" value=""></div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary experience-button" type="button">Save Journal Entry</button></div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Delete Mentee Account</button></div>
+                </div>
+                -->
+
+        </div>
+    </div>
+</body>
+<script>
+    //Scipt to block content from specific user groups
+    var mode = sessionStorage.getItem('ngStorage-user1');
+    var x = document.getElementById("mentee");
+    if (String(mode) == '"mentee"') {
+        console.log("true");
+        document.getElementById("mentee").style.display = "show";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "none";
+        //  x.style.display = "show";
+    } else if (String(mode) == '"mentor"') {
+        console.log("mentor check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "show";
+        document.getElementById("admin").style.display = "none";
+    } else if (String(mode) == '"admin"') {
+        console.log("admin check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "show";
+    } else {
+        console.log("false");
+    }
+    console.log(String(mode)); // 'dark'
+</script>
+
+</html>

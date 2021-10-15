@@ -1,0 +1,30 @@
+
+.body {
+    background-image: url(../img/mango.jpg);
+    padding: 0px;
+    margin: 0px;
+    background-size: auto;
+}
+
+.center {
+    text-align: center;
+    border: 3px solid black;
+    color: white;
+}
+
+.findbtn {
+    background-color: #5E35B1;
+}
+
+.cards-container {
+    break-inside: avoid-column;
+}
+
+.card {
+    display: inline-block;
+    overflow: visible;
+}
+
+#findMentorTitle {
+    border: none;
+}

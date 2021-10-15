@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html ng-app="MatchingApp" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/match.js"></script>
+    <title>Mentoring Session Worksheet</title>
+</head>
+<body>
+
+    <header>
+
+        <div id="mentee" ng-include="'menteeNavigation.html'"></div>
+        <div id="mentor" ng-include="'mentorNavigation.html'"></div>
+        <div id="admin" ng-include="'adminNavigation.html'"></div>
+    </header>
+    <div class="container">
+<ul class="collection" ng-controller="MentorController as matchCtrl">
+    <li class="collection-item avatar" data-ng-repeat="match in matchCtrl.myMentorMatches">
+        <span class="title "><strong>Match ID:</strong> {{match.match_id}}</span>
+        <div class="row">
+            <div class="column">
+                <img src="/img/profile.jpg" class="circle">
+       
+        <p><strong>Name:</strong> {{match.menteeFname}} {{match.menteeLname}} <br>
+            <Strong>Personal Interests:</Strong> {{match.menteePersonalInterest}} <br> <Strong>Bio:</Strong> {{match.menteeBio}}
+        </p>
+            </div>
+            <div class="column">
+               
+       
+        <p><strong>Phone Number:</strong> {{match.menteePhoneNumber}} <br> <strong>Email:</strong> {{match.menteeEmail}}
+        </p>
+            </div>
+          </div>
+        
+    </li>
+</ul>
+</div>
+</body>
+<style>.column {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }</style>
+  <script>
+    //Scipt to block content from specific user groups
+    var mode = sessionStorage.getItem('ngStorage-user1');
+    var x = document.getElementById("mentee");
+    if (String(mode) == '"mentee"') {
+        console.log("true");
+        document.getElementById("mentee").style.display = "show";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "none";
+        //  x.style.display = "show";
+    } else if (String(mode) == '"mentor"') {
+        console.log("mentor check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "show";
+        document.getElementById("admin").style.display = "none";
+    } else if (String(mode) == '"admin"') {
+        console.log("admin check");
+        //x.style.display = "none";
+        document.getElementById("mentee").style.display = "none";
+        document.getElementById("mentor").style.display = "none";
+        document.getElementById("admin").style.display = "show";
+    } else {
+        console.log("false");
+    }
+
+
+
+    console.log(String(mode)); // 'dark'
+</script>
+</html>
